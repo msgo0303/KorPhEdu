@@ -89,20 +89,42 @@
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
+
+        /* 인트로 커튼 슬라이드 효과 */
+        #intro-curtain {
+            transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+        #intro-curtain.slide-up {
+            transform: translateY(-100%);
+        }
+
+        /* 하단 스크롤 유도선 애니메이션 기믹 */
+        @keyframes scrolldown {
+            0% { transform: translateY(-100%); }
+            50% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+        .animate-scrolldown {
+            animation: scrolldown 1.5s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="bg-ksu-white text-slate-800 font-sans antialiased selection:bg-ksu-teal selection:text-white" vid="10">
 
     
-    <div id="intro-curtain" class="fixed inset-0 z-50 bg-ksu-white flex items-center justify-center pointer-events-none transition-transform duration-1000 ease-expo delay-1000" vid="11">
-        <div id="intro-logo" class="flex items-center gap-4 opacity-0 transition-all duration-700 ease-out" vid="12">
-            <div class="w-12 h-12 bg-ksu-navy rounded-lg flex items-center justify-center" vid="13">
-                <i data-lucide="book-open" class="text-white w-6 h-6" vid="14"></i>
+    <div id="intro-curtain" class="fixed inset-0 z-50 bg-white flex items-center justify-center origin-top">
+        <div class="relative flex flex-col items-center">
+            <div id="intro-logo" class="opacity-0 transition-opacity duration-700 ease-in-out relative w-16 h-16 mb-6">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 0L56 40L96 30L64 56L90 90L50 68L10 90L36 56L4 30L44 40L50 0Z" fill="#1E3A8A"></path>
+                    <path d="M50 0L56 40L96 30L64 56L50 68L50 0Z" fill="#0F766E"></path>
+                </svg>
             </div>
-            <div class="flex flex-col border-l-2 border-ksu-teal pl-4" vid="15">
-                <span class="text-2xl font-bold tracking-tight text-ksu-navy" vid="16">한국자기이해교육원</span>
-                <span class="text-xs font-semibold text-ksu-teal tracking-widest uppercase" vid="17">K S U I</span>
-            </div>
+            
+            <div id="intro-line" class="h-[2px] bg-[#1E3A8A] mb-5 block" style="width: 0px;"></div>
+            
+            <h1 id="intro-text" class="text-2xl tracking-widest font-bold text-[#1E3A8A] opacity-0 transition-opacity duration-700">KSUI</h1>
+            <p id="intro-sub" class="text-xs tracking-widest text-slate-400 mt-2 opacity-0 transition-opacity duration-700">KOREA SELF-UNDERSTANDING INSTITUTE</p>
         </div>
     </div>
 
@@ -130,7 +152,6 @@
 
     
     <header class="relative w-full h-screen flex flex-col justify-center overflow-hidden" vid="32">
-        
         <div class="absolute inset-0 z-0" vid="33">
             <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=2850&amp;q=80" alt="Institute Background" class="w-full h-full object-cover object-center" vid="34">
             <div class="absolute inset-0 hero-overlay" vid="35"></div>
@@ -141,18 +162,27 @@
                 <span class="w-8 h-[2px] bg-ksu-teal" vid="38"></span>
                 <span class="text-ksu-teal font-semibold tracking-widest text-sm uppercase" vid="39">Institution of Excellence</span>
             </div>
+            
             <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight mb-8 reveal-up delay-200 keep-all" vid="40">
                 한국자기이해교육원
             </h1>
-            <p class="text-lg md:text-2xl text-slate-300 max-w-2xl leading-relaxed font-light reveal-up delay-300 keep-all" vid="41">
+            <p class="text-lg md:text-2xl text-slate-300 max-w-2xl leading-relaxed font-light mb-12 reveal-up delay-300 keep-all" vid="41">
                 과학적 성향 검사를 통한 자기 정체성 확립,<br class="hidden md:block" vid="42"> 전문가 양성 및 공공 교육의 표준을 제시합니다.
             </p>
+
+            <div class="reveal-up delay-300">
+                <a href="#about" class="inline-flex items-center justify-center bg-white text-[#1E3A8A] px-8 py-4 font-bold text-sm tracking-widest hover:bg-slate-100 transition-colors group rounded-md shadow-lg">
+                    DISCOVER MORE
+                    <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
         </div>
 
-        
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 reveal-up delay-500" vid="43">
-            <span class="text-white/60 text-xs font-medium tracking-widest uppercase" vid="44">스크롤하여 더 알아보기</span>
-            <i data-lucide="arrow-down" class="text-ksu-teal w-5 h-5 animate-bounce" vid="45"></i>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 reveal-up delay-500 opacity-70 hover:opacity-100 transition-opacity">
+            <span class="text-white/50 text-[10px] tracking-widest uppercase">스크롤하여 더 알아보기</span>
+            <div class="w-[1px] h-12 bg-white/20 relative overflow-hidden">
+                <div class="w-full h-1/2 bg-ksu-teal absolute top-0 animate-scrolldown"></div>
+            </div>
         </div>
     </header>
 
@@ -507,100 +537,107 @@
     </footer>
 
     <script vid="268">
-        
+        // 아이콘 엔진 가동
         lucide.createIcons();
 
         document.addEventListener('DOMContentLoaded', () => {
-            
-            
+            // 인트로 가동을 위한 요소 캡처
             const curtain = document.getElementById('intro-curtain');
             const logo = document.getElementById('intro-logo');
-            
-            
-            setTimeout(() => {
-                logo.classList.remove('opacity-0');
-                logo.classList.add('opacity-100');
+            const line = document.getElementById('intro-line');
+            const text = document.getElementById('intro-text');
+            const sub = document.getElementById('intro-sub');
+
+            // 가로줄이 자바스크립트 명령을 받을 때 부드럽게 펴지도록 트랜지션 선언
+            if (line) {
+                line.style.transition = 'width 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
+            }
+
+            // 시퀀스 1단계: 로고 서서히 출현 (0.1초 후)
+            setTimeout(() => { 
+                if (logo) logo.classList.remove('opacity-0'); 
             }, 100);
 
-            
-            setTimeout(() => {
-                curtain.style.animation = "curtainUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards";
-                setTimeout(() => {
-                    curtain.style.display = 'none';
-                }, 1200); 
-            }, 1200);
+            // 시퀀스 2단계: 로고가 다 켜진 후, 가로줄이 중심에서 양옆으로 슥 그어짐 (0.7초 후)
+            setTimeout(() => { 
+                if (line) {
+                    line.style.width = '80px'; 
+                }
+            }, 700);
 
-            
+            // 시퀀스 3단계: 가로줄이 완전히 그어질 때 메인 타이틀 "KSUI" 먼저 등장 (1.3초 후)
+            setTimeout(() => { 
+                if (text) text.classList.remove('opacity-0'); 
+            }, 1300);
+
+            // 시퀀스 4단계: 시차를 두고 밑에 있는 서브 카피 "KOREA SELF-UNDERSTANDING..." 등장 (1.7초 후)
+            setTimeout(() => { 
+                if (sub) sub.classList.remove('opacity-0');
+            }, 1700);
+
+            // 시퀀스 5단계: 모든 요소가 완벽히 조합된 인트로를 잠시 보여준 후 커튼 오프 (3.2초 후)
+            setTimeout(() => {
+                if (curtain) {
+                    curtain.classList.add('slide-up');
+                }
+                
+                // 커튼이 올라가는 리빌 타이밍에 메인 홈 화면 요소들(reveal-up) 가동
+                setTimeout(() => {
+                    document.querySelectorAll('.reveal-up').forEach(el => {
+                        el.classList.add('active');
+                    });
+                }, 400);
+            }, 2400);
+
+            // 시퀀스 6단계: 인트로 완전 종료 후 마우스 클릭 가림막 완벽 삭제 제거
+            setTimeout(() => {
+                if (curtain) curtain.style.display = 'none';
+            }, 3700);
+
+            // 화면 스크롤 시 시각적 요소 추적 엔진(IntersectionObserver)
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
                 threshold: 0.15
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        
-                        
                     }
                 });
             }, observerOptions);
 
+            // 인트로 이후 나타날 하단 스크롤 요소들에 추적기 장착
             document.querySelectorAll('.reveal-up').forEach((el) => {
                 observer.observe(el);
             });
 
-            
+            // 이하 기존 비즈니스 탭 메뉴 및 캐러셀 제어 로직 유지...
             const tabBtns = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
-
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    
                     tabBtns.forEach(b => {
                         b.classList.remove('border-ksu-navy', 'text-ksu-navy');
                         b.classList.add('border-transparent', 'text-slate-500');
                     });
-                    
-                    
                     btn.classList.remove('border-transparent', 'text-slate-500');
                     btn.classList.add('border-ksu-navy', 'text-ksu-navy');
-
-                    
-                    tabContents.forEach(content => {
-                        content.classList.add('hidden');
-                        
-                        content.classList.remove('active'); 
-                    });
-
-                    
+                    tabContents.forEach(content => content.classList.add('hidden'));
                     const targetId = btn.getAttribute('data-target');
-                    const targetContent = document.getElementById(targetId);
-                    targetContent.classList.remove('hidden');
-                    
-                    
-                    setTimeout(() => {
-                        targetContent.classList.add('active');
-                    }, 50);
+                    document.getElementById(targetId).classList.remove('hidden');
                 });
             });
 
-            
             const carousel = document.getElementById('carousel');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
-
             if(carousel && prevBtn && nextBtn) {
                 const scrollAmount = 324; 
-
-                nextBtn.addEventListener('click', () => {
-                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                });
-
-                prevBtn.addEventListener('click', () => {
-                    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                });
+                nextBtn.addEventListener('click', () => { carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' }); });
+                prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' }); });
             }
         });
     </script>
