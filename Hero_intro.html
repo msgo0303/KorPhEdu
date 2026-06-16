@@ -1,0 +1,706 @@
+<html lang="ko" class="scroll-smooth" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">한국자기이해교육원 | Korea Self-Understanding Education Institute</title>
+    
+    
+    <script src="https://cdn.tailwindcss.com" vid="5"></script>
+    
+    
+    <script src="https://unpkg.com/lucide@latest" vid="6"></script>
+
+    
+    <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" vid="7">
+
+    <script vid="8">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Pretendard Variable"', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', '"Helvetica Neue"', '"Segoe UI"', '"Apple SD Gothic Neo"', '"Noto Sans KR"', '"Malgun Gothic"', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            white: '#FFFFFF',
+                            slate: '#F8FAFC',
+                            navy: '#1E3A8A',
+                            teal: '#0F766E',
+                            dark: '#0F172A'
+                        }
+                    },
+                    transitionTimingFunction: {
+                        'expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style vid="9">
+        
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            word-break: keep-all;
+        }
+
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        
+        #intro-curtain {
+            transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+        #intro-curtain.slide-up {
+            transform: translateY(-100%);
+        }
+
+        
+        .bg-diagonal-cut {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+        @media (min-width: 768px) {
+            .bg-diagonal-cut {
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+            }
+        }
+
+        .bg-diagonal-overlay {
+            background: linear-gradient(105deg, rgba(30,58,138,0.95) 0%, rgba(30,58,138,0.8) 50%, transparent 50.1%);
+        }
+
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  
+            scrollbar-width: none;  
+        }
+        
+        .snap-x-mandatory {
+            scroll-snap-type: x mandatory;
+        }
+        .snap-center-item {
+            scroll-snap-align: center;
+        }
+        @media (min-width: 768px) {
+            .snap-start-item {
+                scroll-snap-align: start;
+            }
+        }
+
+        
+        .structural-grid {
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .dark-structural-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-brand-white text-slate-800 font-sans selection:bg-brand-teal selection:text-white relative overflow-x-hidden" vid="10">
+
+    
+    <div id="intro-curtain" class="fixed inset-0 z-50 bg-brand-white flex items-center justify-center origin-top" vid="11">
+        <div class="relative flex flex-col items-center" vid="12">
+            
+            <div id="intro-logo" class="opacity-0 transition-opacity duration-700 ease-in-out relative w-16 h-16 mb-6" vid="13">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" vid="14">
+                    <path d="M50 0L56 40L96 30L64 56L90 90L50 68L10 90L36 56L4 30L44 40L50 0Z" fill="#1E3A8A" vid="15"></path>
+                    <path d="M50 0L56 40L96 30L64 56L50 68L50 0Z" fill="#0F766E" vid="16"></path>
+                </svg>
+            </div>
+            <div class="h-px w-0 bg-brand-navy mb-4 transition-all duration-700 delay-300" id="intro-line" vid="17"></div>
+            <h1 id="intro-text" class="text-2xl tracking-widest font-bold text-brand-navy opacity-0 transition-opacity duration-700 delay-500" vid="18">KSUI</h1>
+            <p id="intro-sub" class="text-xs tracking-widest text-slate-400 mt-2 opacity-0 transition-opacity duration-700 delay-700" vid="19">KOREA SELF-UNDERSTANDING INSTITUTE</p>
+        </div>
+    </div>
+
+    
+    <nav class="fixed w-full z-40 top-0 transition-all duration-300" id="navbar" vid="20">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between" vid="21">
+            <div class="flex items-center gap-3" vid="22">
+                <svg class="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" vid="23">
+                    <path d="M50 0L56 40L96 30L64 56L90 90L50 68L10 90L36 56L4 30L44 40L50 0Z" fill="#FFFFFF" vid="24"></path>
+                </svg>
+                <span class="text-white font-bold tracking-tight text-lg hidden md:block" vid="25">한국자기이해교육원</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-white/90" vid="26">
+                <a href="#about" class="hover:text-white transition-colors" vid="27">ABOUT</a>
+                <a href="#business" class="hover:text-white transition-colors" vid="28">BUSINESS</a>
+                <a href="#partners" class="hover:text-white transition-colors" vid="29">FACULTY</a>
+                <a href="#vision" class="hover:text-white transition-colors" vid="30">VISION</a>
+            </div>
+            <button class="md:hidden text-white" vid="31"><i data-lucide="menu" vid="32"></i></button>
+        </div>
+    </nav>
+
+    
+    <section class="relative min-h-screen flex items-center bg-brand-navy overflow-hidden bg-diagonal-cut pb-20 md:pb-32" vid="33">
+        
+        <div class="absolute inset-0 z-0" vid="34">
+            <img src="https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920&amp;q=80" alt="Architecture" class="w-full h-full object-cover opacity-40 mix-blend-luminosity" vid="35">
+            <div class="absolute inset-0 bg-brand-navy/70 mix-blend-multiply" vid="36"></div>
+            
+            <div class="absolute inset-0 bg-diagonal-overlay hidden md:block" vid="37"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full pt-20" vid="38">
+            <div class="max-w-3xl" vid="39">
+                
+                <div class="hero-item opacity-0 translate-y-10 transition-all duration-1000 ease-expo" vid="40">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 border border-brand-teal/50 text-brand-teal bg-brand-navy/50 backdrop-blur-sm text-xs font-bold tracking-widest mb-6 uppercase" vid="41">
+                        <i data-lucide="building-2" class="w-3 h-3" vid="42"></i> Public Education Hub
+                    </span>
+                </div>
+                
+                <h1 class="hero-item opacity-0 translate-y-10 transition-all duration-1000 delay-100 ease-expo text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6" vid="43">
+                    한국자기이해교육원
+                </h1>
+                
+                <p class="hero-item opacity-0 translate-y-10 transition-all duration-1000 delay-200 ease-expo text-lg md:text-2xl text-slate-300 font-light leading-relaxed max-w-2xl mb-12" vid="44">
+                    과학적 성향 검사를 통한 자기 정체성 확립, 전문가 양성 및 <strong class="font-medium text-white" vid="45">공공 교육의 표준</strong>을 제시합니다.
+                </p>
+                
+                <div class="hero-item opacity-0 translate-y-10 transition-all duration-1000 delay-300 ease-expo" vid="46">
+                    <a href="#about" class="inline-flex items-center justify-center bg-brand-white text-brand-navy px-8 py-4 font-bold text-sm tracking-widest hover:bg-slate-100 transition-colors group" vid="47">
+                        DISCOVER MORE
+                        <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" vid="48"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 hero-item opacity-0 delay-500 transition-opacity duration-1000" vid="49">
+            <span class="text-white/50 text-[10px] tracking-widest uppercase" vid="50">스크롤하여 더 알아보기</span>
+            <div class="w-[1px] h-12 bg-white/20 relative overflow-hidden" vid="51">
+                <div class="w-full h-1/2 bg-white absolute top-0 animate-[scrolldown_1.5s_ease-in-out_infinite]" vid="52"></div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="about" class="py-24 md:py-32 bg-brand-white relative" vid="53">
+        <div class="absolute inset-0 structural-grid opacity-50 z-0" vid="54"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10" vid="55">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center" vid="56">
+                
+                
+                <div class="lg:col-span-5 reveal" vid="57">
+                    <div class="flex items-center gap-4 mb-6" vid="58">
+                        <div class="h-px w-12 bg-brand-teal" vid="59"></div>
+                        <h2 class="text-xs font-bold tracking-[0.2em] text-brand-teal uppercase" vid="60">About Our Institute</h2>
+                    </div>
+                    
+                    <h3 class="text-3xl md:text-4xl font-bold text-brand-navy leading-tight tracking-tight mb-8" vid="61">
+                        자기이해 전문가를 양성하는<br vid="62">공공 교육의 허브
+                    </h3>
+                    
+                    <div class="space-y-6 text-slate-600 leading-relaxed text-sm md:text-base" vid="63">
+                        <p vid="64">
+                            한국자기이해교육원은 학술 연구와 임상 데이터를 기반으로 설립된 공공 교육 기관입니다. 개인의 성향과 잠재력을 객관적으로 분석하여, 사회적 가치를 창출하는 전문가를 양성합니다.
+                        </p>
+                        <p vid="65">
+                            단순한 진단을 넘어 지속 가능한 교육 솔루션을 위한 체계적인 그리드 프레임워크를 구축하며, 전국 대학 및 공공기관과의 협력을 통해 대한민국 진로 및 심리 교육의 새로운 패러다임을 제안합니다.
+                        </p>
+                    </div>
+
+                    <div class="mt-10 grid grid-cols-2 gap-6 border-t border-slate-200 pt-8" vid="66">
+                        <div vid="67">
+                            <div class="text-3xl font-bold text-brand-navy mb-1" vid="68">10k+</div>
+                            <div class="text-xs text-slate-500 tracking-wide uppercase" vid="69">Certified Experts</div>
+                        </div>
+                        <div vid="70">
+                            <div class="text-3xl font-bold text-brand-navy mb-1" vid="71">150+</div>
+                            <div class="text-xs text-slate-500 tracking-wide uppercase" vid="72">Partner Institutions</div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="lg:col-span-7 relative h-[500px] md:h-[700px] w-full mt-10 lg:mt-0" vid="73">
+                    
+                    <div class="absolute top-1/4 right-0 w-3/4 h-1/2 bg-brand-slate clip-path-polygon z-0" vid="74"></div>
+
+                    
+                    <div class="absolute top-0 left-0 w-[55%] h-[60%] shadow-2xl reveal delay-100 z-10 border border-white/10" vid="75">
+                        <img src="https://images.pexels.com/photos/716281/pexels-photo-716281.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;q=80" alt="Seminar" class="w-full h-full object-cover grayscale-[30%]" vid="76">
+                        <div class="absolute bottom-0 left-0 bg-brand-navy text-white text-[10px] px-3 py-2 tracking-widest" vid="77">CLINICAL DATA</div>
+                    </div>
+                    
+                    
+                    <div class="absolute top-[15%] left-[22%] w-[55%] h-[65%] shadow-2xl reveal delay-200 z-20 border border-white/10" vid="78">
+                        <img src="https://images.pexels.com/photos/3184328/pexels-photo-3184328.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;q=80" alt="Discussion" class="w-full h-full object-cover" vid="79">
+                    </div>
+
+                    
+                    <div class="absolute bottom-0 right-0 w-[50%] h-[55%] shadow-2xl reveal delay-300 z-30 border-4 border-brand-white" vid="80">
+                        <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;q=80" alt="Analysis" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" vid="81">
+                        <div class="absolute top-0 right-0 bg-brand-teal text-white p-3" vid="82">
+                            <i data-lucide="bar-chart-2" class="w-6 h-6" vid="83"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="business" class="py-24 md:py-32 bg-brand-slate relative border-y border-slate-200" vid="84">
+        <div class="max-w-7xl mx-auto px-6 relative z-10" vid="85">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal" vid="86">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-teal uppercase mb-4" vid="87">Core Business</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-brand-navy tracking-tight" vid="88">체계화된 교육 비즈니스 모델</h3>
+            </div>
+
+            
+            <div class="w-full reveal delay-100" vid="89">
+                
+                <div class="flex overflow-x-auto no-scrollbar border-b border-slate-300 mb-8 snap-x-mandatory" role="tablist" vid="90">
+                    <button class="tab-btn active shrink-0 px-6 md:px-8 py-4 text-sm md:text-base font-bold text-brand-navy border-b-2 border-brand-navy snap-start-item transition-colors focus:outline-none" data-target="tab-1" vid="91">
+                        기관 맞춤형 단체 교육
+                    </button>
+                    <button class="tab-btn shrink-0 px-6 md:px-8 py-4 text-sm md:text-base font-medium text-slate-400 border-b-2 border-transparent hover:text-brand-navy snap-start-item transition-colors focus:outline-none" data-target="tab-2" vid="92">
+                        민간 자격증 및 강사 과정
+                    </button>
+                    <button class="tab-btn shrink-0 px-6 md:px-8 py-4 text-sm md:text-base font-medium text-slate-400 border-b-2 border-transparent hover:text-brand-navy snap-start-item transition-colors focus:outline-none" data-target="tab-3" vid="93">
+                        검사지 및 교구재 비즈니스
+                    </button>
+                </div>
+
+                
+                <div class="relative min-h-[400px]" vid="94">
+                    
+                    <div id="tab-1" class="tab-content block animate-[fadeIn_0.5s_ease-out]" vid="95">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-start" vid="96">
+                            <div class="aspect-video relative bg-slate-200 overflow-hidden group border border-slate-200 rounded-md" vid="97">
+                                <img src="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;q=80" alt="B2B Education" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" vid="98">
+                                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold text-brand-navy border border-slate-200" vid="99">B2B / B2G</div>
+                            </div>
+                            <div class="flex flex-col justify-center h-full" vid="100">
+                                <h4 class="text-2xl font-bold text-brand-navy mb-4" vid="101">공공 및 기업 맞춤형 솔루션</h4>
+                                <p class="text-slate-600 mb-8 leading-relaxed" vid="102">
+                                    조직의 특성과 구성원의 성향을 분석하여 최적화된 교육 프로그램을 설계합니다. 학업 성취도 향상, 직무 몰입도 증진, 조직 내 소통 강화를 위한 검증된 워크숍을 제공합니다.
+                                </p>
+                                <div class="flex flex-wrap gap-2" vid="103">
+                                    <span class="px-3 py-1.5 bg-white border border-slate-200 text-xs font-medium text-slate-600 rounded-md shadow-sm" vid="104">#대학생진로워크숍</span>
+                                    <span class="px-3 py-1.5 bg-white border border-slate-200 text-xs font-medium text-slate-600 rounded-md shadow-sm" vid="105">#기업임직원커뮤니케이션</span>
+                                    <span class="px-3 py-1.5 bg-white border border-slate-200 text-xs font-medium text-slate-600 rounded-md shadow-sm" vid="106">#성향검사라이선스제공</span>
+                                    <span class="px-3 py-1.5 bg-white border border-slate-200 text-xs font-medium text-brand-teal rounded-md shadow-sm" vid="107">#B2G지자체협약</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div id="tab-2" class="tab-content hidden animate-[fadeIn_0.5s_ease-out]" vid="108">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-start" vid="109">
+                            <div class="aspect-video relative bg-slate-200 overflow-hidden group border border-slate-200 rounded-md" vid="110">
+                                <img src="https://images.pexels.com/photos/5212359/pexels-photo-5212359.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;q=80" alt="Certification" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" vid="111">
+                                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold text-brand-navy border border-slate-200" vid="112">B2C → B2B</div>
+                            </div>
+                            <div class="flex flex-col justify-center h-full" vid="113">
+                                <h4 class="text-2xl font-bold text-brand-navy mb-4" vid="114">공인된 전문가 양성 체계</h4>
+                                <p class="text-slate-600 mb-8 leading-relaxed" vid="115">
+                                    현장에서 즉시 활용 가능한 실무 중심의 자격증 과정입니다. 수료 후에는 파트너 강사로 활동할 수 있는 기회를 제공하며, 안정적인 수익 창출 모델을 연계합니다.
+                                </p>
+                                <div class="flex flex-wrap gap-2" vid="116">
+                                    <span class="px-3 py-1.5 bg-white border border-slate-200 text-xs font-medium text-slate-600 rounded-md shadow-sm" vid="117">#자기이해지도사_2급_1급</span>
+                                    <span class="px-3 py-1.5 bg-white border border-slate-200 text-xs font-medium text-slate-600 rounded-md shadow-sm" vid="118">#직능원정식등록</span>
+                                    <span class="px-3 py-1.5 bg-white border border-slate-200 text-xs font-medium text-brand-teal rounded-md shadow-sm" vid="119">#파트너강사출강권한</span>
+                                    <span class="px-3 py-1.5 bg-white border border-slate-200 text-xs font-medium text-slate-600 rounded-md shadow-sm" vid="120">#강사수익화코스</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div id="tab-3" class="tab-content hidden animate-[fadeIn_0.5s_ease-out]" vid="121">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-start" vid="122">
+                            <div class="aspect-video relative bg-slate-200 overflow-hidden group border border-slate-200 rounded-md" vid="123">
+                                <img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;q=80" alt="Products" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" vid="124">
+                                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold text-brand-navy border border-slate-200" vid="125">Scalable Product</div>
+                            </div>
+                            <div class="flex flex-col justify-center h-full" vid="126">
+                                <h4 class="text-2xl font-bold text-brand-navy mb-4" vid="127">독자적 평가 도구 및 교구</h4>
+                                <p class="text-slate-600 mb-8 leading-relaxed" vid="128">
+                                    자체 연구소에서 개발한 높은 신뢰도의 진단 검사지와 현장 교육의 효과를 극대화하는 실물/디지털 교구재를 파트너들에게 독점 공급합니다.
+                                </p>
+                                <div class="flex flex-wrap gap-2" vid="129">
+                                    <span class="px-3 py-1.5 bg-white border border-slate-200 text-xs font-medium text-slate-600 rounded-md shadow-sm" vid="130">#자체개발검사지</span>
+                                    <span class="px-3 py-1.5 bg-white border border-slate-200 text-xs font-medium text-slate-600 rounded-md shadow-sm" vid="131">#힐링교구재세트</span>
+                                    <span class="px-3 py-1.5 bg-white border border-slate-200 text-xs font-medium text-brand-teal rounded-md shadow-sm" vid="132">#디지털라이선스</span>
+                                    <span class="px-3 py-1.5 bg-white border border-slate-200 text-xs font-medium text-slate-600 rounded-md shadow-sm" vid="133">#강사몰대량공급</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="partners" class="py-24 md:py-32 bg-brand-white overflow-hidden" vid="134">
+        <div class="max-w-7xl mx-auto px-6 mb-12 flex justify-between items-end reveal" vid="135">
+            <div vid="136">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-teal uppercase mb-4" vid="137">Faculty &amp; Partners</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-brand-navy tracking-tight" vid="138">전문 연구위원 및 강사진</h3>
+            </div>
+            <div class="hidden md:flex gap-2" vid="139">
+                <button id="prev-btn" class="w-10 h-10 border border-slate-300 flex items-center justify-center hover:bg-brand-navy hover:border-brand-navy hover:text-white transition-colors" vid="140"><i data-lucide="arrow-left" class="w-4 h-4" vid="141"></i></button>
+                <button id="next-btn" class="w-10 h-10 border border-slate-300 flex items-center justify-center hover:bg-brand-navy hover:border-brand-navy hover:text-white transition-colors" vid="142"><i data-lucide="arrow-right" class="w-4 h-4" vid="143"></i></button>
+            </div>
+        </div>
+
+        
+        
+        <div class="pl-6 md:pl-[calc((100%-80rem)/2+1.5rem)] pb-8 reveal delay-100" vid="144">
+            <div id="carousel" class="flex gap-6 overflow-x-auto snap-x-mandatory no-scrollbar pb-8 pt-4" vid="145">
+                
+                
+                <div class="snap-start-item snap-center-item shrink-0 w-[280px] md:w-[320px] bg-white border border-slate-200 hover:shadow-xl transition-shadow duration-300 rounded-md overflow-hidden group flex flex-col h-[480px]" vid="146">
+                    
+                    <div class="h-[40%] bg-slate-100 relative overflow-hidden" vid="147">
+                        <img src="https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400&amp;q=80" alt="Dr. Hong" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0" vid="148">
+                        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/50 to-transparent" vid="149"></div>
+                        <div class="absolute bottom-3 left-4 text-white font-bold text-lg" vid="150">홍길동 박사</div>
+                    </div>
+                    
+                    <div class="h-[60%] p-6 flex flex-col bg-brand-slate" vid="151">
+                        <div class="text-xs font-bold text-brand-teal mb-4 uppercase tracking-wider" vid="152">상임 연구위원</div>
+                        <ul class="space-y-3 text-sm text-slate-600 flex-grow border-l-2 border-brand-navy/20 pl-4" vid="153">
+                            <li class="relative leading-snug" vid="154">서울대학교 교육심리학 박사</li>
+                            <li class="relative leading-snug" vid="155">前 한국청소년정책연구원 자문위원</li>
+                            <li class="relative leading-snug" vid="156">KSUT (자기이해진단) 평가도구 수석 개발자</li>
+                            <li class="relative leading-snug" vid="157">대기업 임원 리더십 코칭 500+시간</li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-slate-200" vid="158">
+                            <i data-lucide="linkedin" class="w-4 h-4 text-slate-400 hover:text-brand-navy cursor-pointer" vid="159"></i>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="snap-start-item snap-center-item shrink-0 w-[280px] md:w-[320px] bg-white border border-slate-200 hover:shadow-xl transition-shadow duration-300 rounded-md overflow-hidden group flex flex-col h-[480px]" vid="160">
+                    <div class="h-[40%] bg-slate-100 relative overflow-hidden" vid="161">
+                        <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400&amp;q=80" alt="Prof. Kim" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0" vid="162">
+                        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/50 to-transparent" vid="163"></div>
+                        <div class="absolute bottom-3 left-4 text-white font-bold text-lg" vid="164">김지윤 교수</div>
+                    </div>
+                    <div class="h-[60%] p-6 flex flex-col bg-brand-slate" vid="165">
+                        <div class="text-xs font-bold text-brand-teal mb-4 uppercase tracking-wider" vid="166">수석 교육센터장</div>
+                        <ul class="space-y-3 text-sm text-slate-600 flex-grow border-l-2 border-brand-navy/20 pl-4" vid="167">
+                            <li class="relative leading-snug" vid="168">연세대학교 인지심리 석사</li>
+                            <li class="relative leading-snug" vid="169">B2B 기업 교육 커리큘럼 총괄 설계</li>
+                            <li class="relative leading-snug" vid="170">자기이해지도사 1급 양성과정 전담 교수</li>
+                            <li class="relative leading-snug" vid="171">공공기관 조직문화 개선 프로젝트 PM</li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-slate-200" vid="172">
+                            <i data-lucide="linkedin" class="w-4 h-4 text-slate-400 hover:text-brand-navy cursor-pointer" vid="173"></i>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="snap-start-item snap-center-item shrink-0 w-[280px] md:w-[320px] bg-white border border-slate-200 hover:shadow-xl transition-shadow duration-300 rounded-md overflow-hidden group flex flex-col h-[480px]" vid="174">
+                    <div class="h-[40%] bg-slate-100 relative overflow-hidden" vid="175">
+                        <img src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=400&amp;q=80" alt="Researcher Lee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0" vid="176">
+                        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/50 to-transparent" vid="177"></div>
+                        <div class="absolute bottom-3 left-4 text-white font-bold text-lg" vid="178">이민석 책임</div>
+                    </div>
+                    <div class="h-[60%] p-6 flex flex-col bg-brand-slate" vid="179">
+                        <div class="text-xs font-bold text-brand-teal mb-4 uppercase tracking-wider" vid="180">솔루션 파트장</div>
+                        <ul class="space-y-3 text-sm text-slate-600 flex-grow border-l-2 border-brand-navy/20 pl-4" vid="181">
+                            <li class="relative leading-snug" vid="182">데이터 사이언스 기반 HR 애널리틱스 전문가</li>
+                            <li class="relative leading-snug" vid="183">디지털 교구재 및 자동화 플랫폼 기획</li>
+                            <li class="relative leading-snug" vid="184">빅데이터 성향 분석 알고리즘 고도화</li>
+                            <li class="relative leading-snug" vid="185">前 글로벌 IT기업 HR Tech 리드</li>
+                        </ul>
+                        <div class="mt-4 pt-4 border-t border-slate-200" vid="186">
+                            <i data-lucide="linkedin" class="w-4 h-4 text-slate-400 hover:text-brand-navy cursor-pointer" vid="187"></i>
+                        </div>
+                    </div>
+                </div>
+
+                 
+                 <div class="snap-start-item snap-center-item shrink-0 w-[280px] md:w-[320px] bg-white border border-slate-200 hover:shadow-xl transition-shadow duration-300 rounded-md overflow-hidden group flex flex-col h-[480px]" vid="188">
+                    <div class="h-[40%] bg-brand-navy flex items-center justify-center" vid="189">
+                        <i data-lucide="plus" class="w-12 h-12 text-white/50" vid="190"></i>
+                    </div>
+                    <div class="h-[60%] p-6 flex flex-col justify-center items-center text-center bg-brand-slate" vid="191">
+                        <h4 class="text-lg font-bold text-brand-navy mb-2" vid="192">파트너 강사 지원</h4>
+                        <p class="text-sm text-slate-500 mb-6" vid="193">검증된 커리큘럼과 함께 성장할 전문가를 모십니다.</p>
+                        <a href="#" class="text-xs font-bold text-brand-teal border-b border-brand-teal pb-1 hover:text-brand-navy hover:border-brand-navy transition-colors" vid="194">지원하기</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="vision" class="py-24 md:py-32 bg-brand-navy relative overflow-hidden text-white border-t-8 border-brand-teal" vid="195">
+        <div class="absolute inset-0 dark-structural-grid opacity-20 z-0" vid="196"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10" vid="197">
+            <div class="mb-16 reveal" vid="198">
+                <h2 class="text-xs font-bold tracking-[0.2em] text-brand-teal uppercase mb-4" vid="199">Strategic Vision</h2>
+                <h3 class="text-3xl md:text-4xl font-bold tracking-tight" vid="200">5 Core Goals</h3>
+            </div>
+
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1px bg-white/10 border border-white/10 p-px" vid="201">
+                
+                
+                <div class="bg-brand-navy p-8 md:p-10 reveal delay-100 hover:bg-[#25449A] transition-colors group" vid="202">
+                    <div class="text-brand-teal font-mono text-4xl mb-6 opacity-50 group-hover:opacity-100 transition-opacity font-light" vid="203">01</div>
+                    <h4 class="text-xl font-bold mb-4 leading-tight" vid="204">공공성 중심의<br vid="205">청년 정체성 확립 지원</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed" vid="206">사회 진출을 앞둔 청년들이 명확한 자기 이해를 바탕으로 진로를 설계할 수 있도록 공공 교육 프로그램을 확대합니다.</p>
+                </div>
+
+                
+                <div class="bg-brand-navy p-8 md:p-10 reveal delay-200 hover:bg-[#25449A] transition-colors group" vid="207">
+                    <div class="text-brand-teal font-mono text-4xl mb-6 opacity-50 group-hover:opacity-100 transition-opacity font-light" vid="208">02</div>
+                    <h4 class="text-xl font-bold mb-4 leading-tight" vid="209">신뢰도 높은 민간 자격<br vid="210">전문가 10,000명 양성</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed" vid="211">체계화된 커리큘럼을 통해 현장 실무 능력을 갖춘 지도사를 배출하여, 전국적인 교육 인프라를 구축합니다.</p>
+                </div>
+
+                
+                <div class="bg-brand-navy p-8 md:p-10 reveal delay-300 hover:bg-[#25449A] transition-colors group" vid="212">
+                    <div class="text-brand-teal font-mono text-4xl mb-6 opacity-50 group-hover:opacity-100 transition-opacity font-light" vid="213">03</div>
+                    <h4 class="text-xl font-bold mb-4 leading-tight" vid="214">자체 빅데이터 기반<br vid="215">성향 분석 솔루션 고도화</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed" vid="216">누적된 임상 데이터를 바탕으로 진단 도구의 타당성과 신뢰도를 지속적으로 연구하고 개선합니다.</p>
+                </div>
+
+                
+                <div class="bg-brand-navy p-8 md:p-10 reveal delay-100 hover:bg-[#25449A] transition-colors group lg:col-span-2" vid="217">
+                    <div class="text-brand-teal font-mono text-4xl mb-6 opacity-50 group-hover:opacity-100 transition-opacity font-light" vid="218">04</div>
+                    <h4 class="text-xl font-bold mb-4 leading-tight" vid="219">전국 대학교 및 지자체 협약 교육 거점 확대</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed max-w-xl" vid="220">단일 기관을 넘어 B2G 및 산학협력을 통해 전국 단위의 교육 거점을 확보하고, 표준화된 자기이해 교육 모듈을 공교육 시스템에 안착시킵니다.</p>
+                </div>
+
+                
+                <div class="bg-brand-navy p-8 md:p-10 reveal delay-200 hover:bg-[#25449A] transition-colors group" vid="221">
+                    <div class="text-brand-teal font-mono text-4xl mb-6 opacity-50 group-hover:opacity-100 transition-opacity font-light" vid="222">05</div>
+                    <h4 class="text-xl font-bold mb-4 leading-tight" vid="223">지속 가능한 교육 교구재<br vid="224">인프라 자동화 및 상생</h4>
+                    <p class="text-sm text-slate-300 leading-relaxed" vid="225">디지털 라이선스 및 실물 교구재 유통 과정을 자동화하여 파트너 강사들에게 안정적이고 수익성 있는 생태계를 제공합니다.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <footer class="bg-brand-dark text-slate-400 py-16 border-t border-white/5" vid="226">
+        <div class="max-w-7xl mx-auto px-6" vid="227">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 border-b border-white/10 pb-12" vid="228">
+                
+                <div class="md:col-span-2" vid="229">
+                    <div class="flex items-center gap-3 mb-6" vid="230">
+                        <svg class="w-6 h-6" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" vid="231">
+                            <path d="M50 0L56 40L96 30L64 56L90 90L50 68L10 90L36 56L4 30L44 40L50 0Z" fill="#0F766E" vid="232"></path>
+                        </svg>
+                        <span class="text-white font-bold tracking-tight" vid="233">한국자기이해교육원</span>
+                    </div>
+                    <p class="text-sm leading-relaxed max-w-sm mb-6" vid="234">
+                        과학적 분석과 체계적인 교육 시스템으로 개인의 성장과 조직의 발전을 지원하는 공공 교육 전문 기관.
+                    </p>
+                </div>
+                
+                
+                <div vid="235">
+                    <h5 class="text-white text-xs font-bold tracking-widest uppercase mb-4" vid="236">Information</h5>
+                    <ul class="space-y-2 text-sm" vid="237">
+                        <li vid="238"><a href="#" class="hover:text-white transition-colors" vid="239">기관 소개</a></li>
+                        <li vid="240"><a href="#" class="hover:text-white transition-colors" vid="241">오시는 길</a></li>
+                        <li vid="242"><a href="#" class="hover:text-white transition-colors" vid="243">공지사항</a></li>
+                        <li vid="244"><a href="#" class="hover:text-white transition-colors" vid="245">강사 지원</a></li>
+                    </ul>
+                </div>
+
+                
+                <div vid="246">
+                    <h5 class="text-white text-xs font-bold tracking-widest uppercase mb-4" vid="247">Contact</h5>
+                    <ul class="space-y-2 text-sm" vid="248">
+                        <li vid="249"><a href="mailto:info@ksui.co.kr" class="hover:text-white transition-colors" vid="250">info@ksui.co.kr</a></li>
+                        <li vid="251">02-1234-5678</li>
+                    </ul>
+                </div>
+            </div>
+
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center text-xs leading-relaxed gap-4" vid="252">
+                <div class="space-y-1" vid="253">
+                    <p vid="254">
+                        <strong class="text-slate-300" vid="255">상호명:</strong> 한국자기이해교육원 <span class="mx-2 opacity-30" vid="256">|</span> 
+                        <strong class="text-slate-300" vid="257">대표:</strong> 김대표 <span class="mx-2 opacity-30" vid="258">|</span> 
+                        <strong class="text-slate-300" vid="259">사업자등록번호:</strong> 123-45-67890
+                    </p>
+                    <p vid="260">
+                        <strong class="text-slate-300" vid="261">민간자격등록번호:</strong> 제 2026-001234 호 <span class="mx-2 opacity-30" vid="262">|</span> 
+                        <strong class="text-slate-300" vid="263">주소:</strong> 서울특별시 강남구 테헤란로 123, 지식산업센터 15층
+                    </p>
+                </div>
+                <div vid="264">
+                    © 2026 KSUI. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script vid="265">
+        
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const curtain = document.getElementById('intro-curtain');
+            const logo = document.getElementById('intro-logo');
+            const line = document.getElementById('intro-line');
+            const text = document.getElementById('intro-text');
+            const sub = document.getElementById('intro-sub');
+
+            
+            setTimeout(() => { logo.classList.remove('opacity-0'); }, 100);
+            setTimeout(() => { 
+                line.classList.remove('w-0'); 
+                line.classList.add('w-16'); 
+            }, 600);
+            setTimeout(() => { text.classList.remove('opacity-0'); }, 900);
+            setTimeout(() => { sub.classList.remove('opacity-0'); }, 1200);
+
+            
+            setTimeout(() => {
+                curtain.classList.add('slide-up');
+                
+                
+                setTimeout(() => {
+                    document.querySelectorAll('.hero-item').forEach(el => {
+                        el.classList.remove('opacity-0', 'translate-y-10');
+                    });
+                }, 500);
+
+            }, 2500);
+
+            
+            setTimeout(() => {
+                curtain.style.display = 'none';
+            }, 3700);
+
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-brand-navy/95', 'backdrop-blur-md', 'border-b', 'border-white/10');
+                } else {
+                    navbar.classList.remove('bg-brand-navy/95', 'backdrop-blur-md', 'border-b', 'border-white/10');
+                }
+            });
+
+            
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    
+                    tabBtns.forEach(b => {
+                        b.classList.remove('text-brand-navy', 'border-brand-navy', 'font-bold');
+                        b.classList.add('text-slate-400', 'border-transparent', 'font-medium');
+                    });
+                    
+                    
+                    btn.classList.remove('text-slate-400', 'border-transparent', 'font-medium');
+                    btn.classList.add('text-brand-navy', 'border-brand-navy', 'font-bold');
+
+                    
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden');
+                    });
+
+                    
+                    const targetId = btn.getAttribute('data-target');
+                    document.getElementById(targetId).classList.remove('hidden');
+                });
+            });
+
+            
+            const carousel = document.getElementById('carousel');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (carousel && prevBtn && nextBtn) {
+                const scrollAmount = 344; 
+                
+                nextBtn.addEventListener('click', () => {
+                    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+                
+                prevBtn.addEventListener('click', () => {
+                    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+            }
+
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes scrolldown {
+                    0% { transform: translateY(-100%); }
+                    50% { transform: translateY(0); }
+                    100% { transform: translateY(100%); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+
+</body></html>
