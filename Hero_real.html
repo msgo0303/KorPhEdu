@@ -568,52 +568,112 @@
         });
 
         
-        // [잔상 버그 완벽 해결] 스크롤 및 모바일 메뉴 초기화 연동 시스템
+        // [완벽 통합본] 스크롤 위치 및 모바일 메뉴 오픈 상태 실시간 스킨 동기화 엔진
         const navbar = document.getElementById('navbar');
         const navBrand = document.getElementById('nav-brand');
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const drawer = document.getElementById('mobile-drawer');
         const drawerContent = document.getElementById('mobile-drawer-content');
-        const title = document.getElementById('mobile-nav-title');
         const links = document.querySelectorAll('.mobile-link');
 
-        // 1. 스크롤 인터랙션 엔진 (PC/모바일 공통)
-        window.addEventListener('scroll', () => {
+        // 헬퍼 함수: 스크롤 위치 및 메뉴 열림 여부에 따라 상단바와 드롭다운의 UI 디자인을 강제로 판정/새로고침
+        function refreshNavSkin() {
             const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
 
             if (window.scrollY > 50) {
-                // 스크롤 내려갔을 때 테마 (흰색 불투명)
-                navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-white shadow-sm";
-                
+                // ==========================================
+                // [CASE A] 스크롤이 50px 이상 내려간 상태 (불투명 흰색 테마)
+                // ==========================================
+                if (isMenuOpen) {
+                    // 메뉴가 열려있다면: 상단바 흰색 + 드롭다운 메뉴도 정갈한 흰색 배경 연동
+                    navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-white shadow-sm";
+                    drawer.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                    drawerContent.style.borderColor = '#f1f5f9';
+                    
+                    links.forEach(link => {
+                        link.className = "mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1";
+                    });
+                    mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6" style="color: #0f172a;"></i>';
+                } else {
+                    // 메뉴가 닫혀있다면: 일반적인 흰색 상단바 규칙 복구
+                    navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-white shadow-sm";
+                    mobileBtn.style.color = '#475569';
+                    mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                }
+
+                // 타이틀 로고 명칭 및 PC 링크 색상 (어두운 네이비 및 슬레이트 색상 고정)
+                navBrand.className = "text-navy font-semibold tracking-tight text-lg transition-colors";
                 document.querySelectorAll('nav a:not(.bg-teal)').forEach(el => {
                     el.className = "text-slate-600 hover:text-navy text-sm font-medium transition-colors";
                 });
-                navBrand.className = "text-navy font-semibold tracking-tight text-lg transition-colors";
 
-                if (!isMenuOpen) {
-                    mobileBtn.style.color = '#475569';
-                }
             } else {
-                // 최상단 테마 (완전 투명) - 메뉴가 열려있지 않을 때만 투명화
-                if (!isMenuOpen) {
-                    navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-transparent";
+                // ==========================================
+                // [CASE B] 최상단 영역 (배경 이미지가 비치는 투명 테마 구간)
+                // ==========================================
+                if (isMenuOpen) {
+                    // 메뉴가 열려있다면: 상단바 + 메뉴창이 완벽히 일체화된 반투명 네이비 유리 무드로 일제 전환
+                    navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-navy/80 backdrop-blur-md shadow-xl";
+                    drawer.style.backgroundColor = 'transparent'; // 메뉴 자체는 투명하게 하여 상단바와 이어지게 처리
+                    drawerContent.style.borderColor = 'rgba(255, 255, 255, 0.1)';
                     
-                    document.querySelectorAll('nav a:not(.bg-teal)').forEach(el => {
-                        el.className = "text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm";
+                    links.forEach(link => {
+                        link.className = "mobile-link text-white/80 hover:text-white text-base font-medium transition-colors py-1";
                     });
+                    mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6" style="color: #ffffff;"></i>';
+                    
+                    // ★ 버그 해결: 투명 영역에서 메뉴가 열려있을 때 타이틀 텍스트 흰색 강제 사수!
                     navBrand.className = "text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors";
+                } else {
+                    // 메뉴가 닫혀있다면: 원래의 완전 투명 깨끗한 오리지널 스킨으로 초기화
+                    navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-transparent";
                     mobileBtn.style.color = '#ffffff';
+                    mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                    
+                    // 타이틀 원본 화이트 복구
+                    navBrand.className = "text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors";
                 }
+
+                // PC용 상단 링크 원본 화이트 복구
+                document.querySelectorAll('nav a:not(.bg-teal)').forEach(el => {
+                    el.className = "text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm";
+                });
             }
-        });
+            lucide.createIcons();
+        }
 
-        
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
+        // 1. 실시간 스크롤 감지 인터랙션 무한 루프 엔진 (메뉴가 오픈된 상태에서도 상시 연동 스위칭)
+        window.addEventListener('scroll', refreshNavSkin);
 
+        // 2. 모바일 메뉴 수직 드롭다운 트리거 온클릭 엔진
+        function toggleMobileMenu() {
+            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
+
+            if (isMenuOpen) {
+                // [닫기 모션] 
+                drawer.style.height = '0px';
+                drawer.style.opacity = '0';
+                
+                // 애니메이션 렌더링 스케일 타이밍 꼬임 방지를 위해 즉시 스킨 리프레시 호출
+                setTimeout(() => {
+                    refreshNavSkin();
+                }, 10);
+            } else {
+                // [열기 모션] 자바스크립트 정밀 오토 하이트 모션 가동
+                drawer.style.height = 'auto';
+                const autoHeight = drawer.scrollHeight + 'px';
+                drawer.style.height = '0px';
+                
+                drawer.style.height = autoHeight;
+                drawer.style.opacity = '1';
+                
+                // 열리는 순간 즉시 현재 스크롤 위치를 계산해서 디자인 실시간 매칭
+                refreshNavSkin();
+            }
+        }
+
+        // 3. 인터랙션 무옵션 IntersectionObserver 애니메이션 (기존 로직 유지)
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -622,18 +682,13 @@
                 }
             });
         }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => { observer.observe(el); });
 
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
-
-        
+        // 4. 비즈니스 탭 메뉴 스위칭 (기존 로직 유지)
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
-
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                
                 tabBtns.forEach(b => {
                     b.classList.remove('border-navy', 'text-navy', 'active');
                     b.classList.add('border-transparent', 'text-slate-500');
@@ -642,95 +697,22 @@
                     c.classList.add('hidden');
                     c.classList.remove('animate-slide-up');
                 });
-
-                
                 btn.classList.add('border-navy', 'text-navy', 'active');
                 btn.classList.remove('border-transparent', 'text-slate-500');
-                
                 const targetId = btn.getAttribute('data-target');
                 const targetContent = document.getElementById(targetId);
                 targetContent.classList.remove('hidden');
-                
                 void targetContent.offsetWidth; 
                 targetContent.classList.add('animate-slide-up');
             });
         });
 
-        
+        // 5. 연구진 캐러셀 제어 (기존 로직 유지)
         function scrollCarousel(direction) {
             const carousel = document.getElementById('partner-carousel');
             const scrollAmount = carousel.offsetWidth * 0.8; 
-            carousel.scrollBy({
-                left: direction * scrollAmount,
-                behavior: 'smooth'
-            });
+            carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
-
-        // [Navigation 변수 제거] 모바일 메뉴 드롭다운 토글 엔진
-        function toggleMobileMenu() {
-            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
-
-            if (isMenuOpen) {
-                // [닫기 액션] 
-                drawer.style.height = '0px';
-                drawer.style.opacity = '0';
-                mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-                
-                if (window.scrollY > 50) {
-                    navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-white shadow-sm";
-                    mobileBtn.style.color = '#475569';
-                } else {
-                    navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-transparent";
-                    mobileBtn.style.color = '#ffffff';
-                }
-            } else {
-                // [열기 액션] 현재 스크롤 위치에 맞춰 드롭다운 스킨 주입
-                if (window.scrollY > 50) {
-                    // 스크롤 다운 상태에서 오픈 -> 정갈한 불투명 흰색 무드
-                    drawer.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-                    drawerContent.style.borderColor = '#f1f5f9';
-                    links.forEach(link => {
-                        link.className = "mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1";
-                    });
-                    mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6" style="color: #0f172a;"></i>';
-                } else {
-                    // 최상단 투명 상태에서 오픈 -> 완전 투명 연동 무드
-                    navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-navy/80 backdrop-blur-md shadow-xl";
-                    drawer.style.backgroundColor = 'transparent'; 
-                    drawerContent.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                    links.forEach(link => {
-                        link.className = "mobile-link text-white/80 hover:text-white text-base font-medium transition-colors py-1";
-                    });
-                    mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6" style="color: #ffffff;"></i>';
-                }
-                
-                // 자연스러운 오토 하이트 모션 가동
-                drawer.style.height = 'auto';
-                const autoHeight = drawer.scrollHeight + 'px';
-                drawer.style.height = '0px';
-                setTimeout(() => {
-                    drawer.style.height = autoHeight;
-                    drawer.style.opacity = '1';
-                }, 10);
-            }
-            lucide.createIcons();
-        }
-
-        // [보완] 스크롤 시 모바일 햄버거 버튼 색상도 흰색/회색으로 유기적 변경되도록 연동 기능 확장
-        window.addEventListener('scroll', () => {
-            const mobileBtn = document.getElementById('mobile-menu-btn');
-            const drawer = document.getElementById('mobile-drawer');
-            // 모바일 메뉴가 열려있지 않을 때만 스크롤 색상 스위칭 작동
-            if (drawer && drawer.classList.contains('translate-x-full')) {
-                if (window.scrollY > 50) {
-                    mobileBtn.classList.remove('text-white');
-                    mobileBtn.classList.add('text-slate-600');
-                } else {
-                    mobileBtn.classList.remove('text-slate-600');
-                    mobileBtn.classList.add('text-white');
-                }
-            }
-        });
     </script>
 
 </body></html>
