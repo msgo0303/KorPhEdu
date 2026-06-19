@@ -45,19 +45,33 @@
 <body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-teal selection:text-white" vid="10">
 
     
-    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar" vid="11">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center" vid="12">
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-transparent" id="navbar" vid="11">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-50" id="nav-container" vid="12">
             <div class="flex items-center gap-3" vid="13">
-                <div class="bg-navy rounded-md p-1.5 shadow-sm" id="nav-logo-bg" vid="14">
-                    <i data-lucide="book-open-check" class="text-white w-5 h-5" id="nav-logo-icon" vid="15"></i>
+                <div class="bg-navy rounded-md p-1.5 shadow-sm transition-colors" id="nav-logo-bg" vid="14">
+                    <i data-lucide="book-open-check" class="text-white w-5 h-5 transition-colors" id="nav-logo-icon" vid="15"></i>
                 </div>
                 <span class="text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors" id="nav-brand" vid="16">한국자기이해교육원</span>
             </div>
+            
             <div class="hidden md:flex gap-8 items-center" vid="17">
                 <a href="#" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm" vid="18">기관소개</a>
                 <a href="#" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm" vid="19">비즈니스</a>
                 <a href="#" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm" vid="20">연구진</a>
                 <a href="#" class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm" vid="21">문의하기</a>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="block md:hidden text-white focus:outline-none transition-colors" id="mobile-menu-btn">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div id="mobile-drawer" class="absolute top-full left-0 w-full bg-transparent overflow-hidden transition-all duration-300 ease-in-out flex flex-col md:hidden" style="height: 0px; opacity: 0;">
+            <div class="py-6 px-6 flex flex-col gap-5 border-t border-white/10" id="mobile-drawer-content">
+                <a href="#" onclick="toggleMobileMenu()" class="mobile-link text-white/80 hover:text-white text-base font-medium transition-colors py-1">기관소개</a>
+                <a href="#" onclick="toggleMobileMenu()" class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">비즈니스</a>
+                <a href="#" onclick="toggleMobileMenu()" class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">연구진</a>
+                <a href="#" onclick="toggleMobileMenu()" class="mt-2 text-center bg-teal text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm">문의하기</a>
             </div>
         </div>
     </nav>
@@ -82,8 +96,7 @@
     <section id="brand-canvas-section" class="relative h-[200vh] bg-slatebg" vid="29">
         <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden py-24" vid="30">
             
-            <div id="brand-box" class="bg-navy flex flex-col items-center justify-center text-white will-change-[width,border-radius] shadow-2xl relative overflow-hidden" style="width: 320px; height: 320px; border-radius: 24px;" vid="31">
-                
+            <div id="brand-box" class="bg-navy flex flex-col items-center justify-center text-white will-change-[width,height,border-radius] shadow-2xl relative overflow-hidden" style="width: 320px; height: 320px; border-radius: 24px;" vid="31">
                 
                 <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;" vid="32"></div>
 
@@ -369,44 +382,99 @@
         });
 
         
+        // =========================================================================
+        // [서브페이지 최적화] 메뉴 오픈 시 무조건 흰색 테마 고정 연동 엔진
+        // =========================================================================
         const navbar = document.getElementById('navbar');
         const navBrand = document.getElementById('nav-brand');
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const drawer = document.getElementById('mobile-drawer');
+        const drawerContent = document.getElementById('mobile-drawer-content');
+        const links = document.querySelectorAll('.mobile-link');
         const navLinks = document.querySelectorAll('.nav-link');
         const logoBg = document.getElementById('nav-logo-bg');
-        const logoIcon = document.getElementById('nav-logo-icon');
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white', 'shadow-sm', 'py-3');
-                navbar.classList.remove('py-4');
-                navBrand.classList.remove('text-white', 'drop-shadow-md');
-                navBrand.classList.add('text-navy');
+        // 헬퍼 함수: 스크롤 위치 및 메뉴 열림 여부에 따라 상단바와 드롭다운의 UI 디자인을 실시간 강제 새로고침
+        function refreshNavSkin() {
+            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
+
+            // 🎯 [조건 변경] 메뉴가 열려있다면 스크롤 위치 불문하고 '무조건 CASE A(흰색 테마)'로 강제 판정
+            if (window.scrollY > 50 || isMenuOpen) {
+                // ==========================================
+                // [CASE A] 불투명 흰색 테마 (스크롤 다운 OR 모바일 메뉴 오픈 상태)
+                // ==========================================
+                navbar.className = "fixed w-full z-50 top-0 transition-all duration-300 bg-white shadow-sm";
                 
+                if (isMenuOpen) {
+                    // 메뉴가 열려있을 때: 드롭다운 메뉴도 정갈한 흰색 배경으로 일체화
+                    drawer.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                    drawerContent.style.borderColor = '#f1f5f9';
+                    
+                    links.forEach(link => {
+                        link.className = "mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1";
+                    });
+                    mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6" style="color: #0f172a;"></i>';
+                } else {
+                    // 메뉴가 닫혀있을 때: 일반적인 햄버거 메뉴 아이콘 노출
+                    mobileBtn.style.color = '#475569';
+                    mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                }
+
+                // 타이틀 로고 명칭 및 링크 색상을 어두운 색으로 고정 (흰 배경 대비)
+                navBrand.className = "text-navy font-semibold tracking-tight text-lg transition-colors";
                 navLinks.forEach(el => {
-                    el.classList.remove('text-white/90', 'hover:text-white', 'drop-shadow-sm');
-                    el.classList.add('text-slate-600', 'hover:text-navy');
+                    el.className = "nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors";
                 });
-                
-                logoBg.classList.remove('bg-navy');
-                logoBg.classList.add('bg-teal');
-                
+                logoBg.className = "bg-teal rounded-md p-1.5 shadow-sm transition-colors";
+
             } else {
-                navbar.classList.remove('bg-white', 'shadow-sm', 'py-3');
-                navbar.classList.add('py-4');
-                navBrand.classList.add('text-white', 'drop-shadow-md');
-                navBrand.classList.remove('text-navy');
+                // ==========================================
+                // [CASE B] 최상단 평상시 영역 (메뉴가 접혀있고 맨 위일 때만 완전 투명)
+                // ==========================================
+                navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-transparent";
+                mobileBtn.style.color = '#ffffff';
+                mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
                 
+                // 원래의 웅장한 화이트 가독성 셋 복구
+                navBrand.className = "text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors";
                 navLinks.forEach(el => {
-                    el.classList.add('text-white/90', 'hover:text-white', 'drop-shadow-sm');
-                    el.classList.remove('text-slate-600', 'hover:text-navy');
+                    el.className = "nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm";
                 });
-
-                logoBg.classList.add('bg-navy');
-                logoBg.classList.remove('bg-teal');
+                logoBg.className = "bg-navy rounded-md p-1.5 shadow-sm transition-colors";
             }
-        });
+            lucide.createIcons();
+        }
+
+        // 1. 실시간 스크롤 감지 인터랙션 실행
+        window.addEventListener('scroll', refreshNavSkin);
+
+        // 2. 모바일 메뉴 수직 드롭다운 트리거 온클릭 엔진
+        function toggleMobileMenu() {
+            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
+
+            if (isMenuOpen) {
+                // [닫기 모션] 
+                drawer.style.height = '0px';
+                drawer.style.opacity = '0';
+                setTimeout(() => {
+                    refreshNavSkin();
+                }, 10);
+            } else {
+                // [열기 모션] 자바스크립트 정밀 오토 하이트 모션 가동
+                drawer.style.height = 'auto';
+                const autoHeight = drawer.scrollHeight + 'px';
+                drawer.style.height = '0px';
+                
+                drawer.style.height = autoHeight;
+                drawer.style.opacity = '1';
+                
+                // 열리는 순간 즉시 테마 동기화 함수 호출 (isMenuOpen이 true이므로 무조건 흰색 바 변신)
+                refreshNavSkin();
+            }
+        }
 
         
+        // [수정] 위아래·양옆 사방으로 균일 팽창 및 화면 보호 여백 사수 스크롤 엔진
         const brandSection = document.getElementById('brand-canvas-section');
         const brandBox = document.getElementById('brand-box');
         const brandContent = document.getElementById('brand-content');
@@ -415,33 +483,43 @@
             const rect = brandSection.getBoundingClientRect();
             const windowHeight = window.innerHeight;
             
-            
             const scrolledPastTop = -rect.top;
             const scrollableDistance = rect.height - windowHeight;
             
-            
-            let progress = maxScroll = scrollableDistance > 0 ? scrolledPastTop / scrollableDistance : 0;
+            let progress = scrollableDistance > 0 ? scrolledPastTop / scrollableDistance : 0;
             progress = Math.max(0, Math.min(1, progress));
 
-            
+            // 완만한 확대감을 위한 삼차 감속 가속도(Cubic Ease-Out) 매핑
             const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
             const easedProgress = easeOutCubic(progress);
 
-            
+            // 반응형 기본 장착 크기 판정 (모바일 vs 데스크톱)
             const isMobile = window.innerWidth < 768;
-            const baseSize = isMobile ? 320 : 450;
-            const targetWidth = window.innerWidth;
-            
-            
-            const currentWidth = baseSize + (targetWidth - baseSize) * easedProgress;
-            const currentRadius = 24 * (1 - easedProgress);
+            const baseSize = isMobile ? 320 : 420; // 최초 정방형 크기
 
+            // 🎯 최대 팽창 시 상하좌우에 남겨둘 고급스러운 여백 픽셀 설정 (예: 24px)
+            const edgeMargin = isMobile ? 16 : 32; 
+
+            // 타겟 최대 크기 연산 (전체 화면 크기에서 상하좌우 여백을 제해 안전구역 확보)
+            const maxTargetWidth = window.innerWidth - (edgeMargin * 2);
+            const maxTargetHeight = window.innerHeight - (edgeMargin * 2);
+
+            // 1단계: 실시간 가로/세로 동시 스케일링 확장 공식
+            const currentWidth = baseSize + (maxTargetWidth - baseSize) * easedProgress;
+            const currentHeight = baseSize + (maxTargetHeight - baseSize) * easedProgress;
+
+            // 2단계: 완전히 넓어졌을 때도 박스의 고유 라운딩 모서리가 살짝 유지되도록 보정 (0이 아닌 최소 12px~16px 유지)
+            const minRadius = isMobile ? 12 : 20;
+            const currentRadius = minRadius + (24 - minRadius) * (1 - easedProgress);
+
+            // 3단계: 가공된 스타일값을 DOM 요소에 다이렉트 바인딩
             brandBox.style.width = `${currentWidth}px`;
+            brandBox.style.height = `${currentHeight}px`;
             brandBox.style.borderRadius = `${currentRadius}px`;
 
-            
+            // 중앙 콘텐츠 로고 마크 확대 비율 보완 (기존 로직 유지)
             if (easedProgress > 0.8) {
-                const scaleAmount = 1 + ((easedProgress - 0.8) * 0.5); 
+                const scaleAmount = 1 + ((easedProgress - 0.8) * 0.4); 
                 brandContent.style.transform = `scale(${scaleAmount})`;
             } else {
                 brandContent.style.transform = `scale(1)`;
