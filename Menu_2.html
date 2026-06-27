@@ -173,62 +173,75 @@
             </div>
 
             
+            <!-- 핵심 비즈니스 포트폴리오 3단 카드 레이아웃 (우측 상단 팝업 버튼 유도 인프라 신설) -->
+            <!-- [모바일 최적화 완료] 모바일에서는 항상 설명 노출, PC에서는 호버 시 노출되는 3단 카드 -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8" vid="49">
                 
-                
-                <div class="reveal delay-100 relative h-[450px] overflow-hidden rounded-xl shadow-md group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-white" vid="50">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="기관 맞춤형 단체 교육" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" vid="51">
+                <!-- Card 01: 기관 맞춤형 단체 교육 -->
+                <div class="reveal delay-100 relative h-[450px] overflow-hidden rounded-xl shadow-md group cursor-pointer transition-all duration-300 md:hover:-translate-y-2 md:hover:shadow-xl bg-white" onclick="location.href='#'" vid="50">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="기관 맞춤형 단체 교육" class="absolute inset-0 w-full h-full object-cover rounded-xl transition-transform duration-700 md:group-hover:scale-105" vid="51">
                     
-                    
-                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500 flex flex-col justify-end p-8" vid="52">
-                        
-                        
-                        <div class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out" vid="53">
-                            <div class="w-10 h-1 bg-teal mb-5 rounded-full transition-all duration-500 group-hover:w-16" vid="54"></div>
+                    <!-- 우측 상단 유도 버튼 (모바일에서는 조금 더 선명한 테알 컬러로 기본 포인트 강조) -->
+                    <div class="absolute top-6 right-6 w-11 h-11 bg-teal md:bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 shadow-lg z-20 text-white transition-all duration-300 md:group-hover:bg-teal md:group-hover:border-teal/30 md:group-hover:scale-110 pointer-events-none">
+                        <i data-lucide="arrow-up-right" class="w-5 h-5 transition-transform duration-300 md:group-hover:translate-x-0.5 md:group-hover:-translate-y-0.5"></i>
+                    </div>
+
+                    <!-- 내부 그라데이션 마스크: 모바일 bg-black/50 기본 적용, PC에서만 호버 분기 작동 -->
+                    <div class="absolute inset-0 bg-black/50 md:bg-black/40 md:group-hover:bg-black/60 rounded-xl transition-colors duration-500 flex flex-col justify-end p-8" vid="52">
+                        <!-- 텍스트 트랙: 모바일에서는 기본 배치(opacity-100, translateY-0), PC에서만 슬라이딩 업 애니메이션 가동 -->
+                        <div class="transform translate-y-0 md:translate-y-8 md:group-hover:translate-y-0 transition-transform duration-500 ease-out" vid="53">
+                            <div class="w-10 h-1 bg-teal mb-5 rounded-full transition-all duration-500 md:group-hover:w-16" vid="54"></div>
                             <h3 class="text-white text-2xl md:text-3xl font-bold mb-4 break-keep tracking-tight shadow-black/50 drop-shadow-sm" vid="55">
                                 01. 기관 맞춤형 단체 교육
                             </h3>
-                            <p class="text-white/95 text-sm leading-relaxed break-keep opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100" vid="56">
+                            <!-- 설명 문단: 모바일에서는 상시 노출(opacity-100), PC에서만 숨어있다가 호버 시 노출 -->
+                            <p class="text-white/95 text-sm leading-relaxed break-keep opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 delay-100" vid="56">
                                 대학교 취업지원센터 및 대기업·공공기관 임직원 역량 강화 솔루션 (자체 성향검사 라이선스 패키지 대량 공급)
                             </p>
                         </div>
                     </div>
                 </div>
 
-                
-                <div class="reveal delay-200 relative h-[450px] overflow-hidden rounded-xl shadow-md group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-white" vid="57">
-                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="민간 자격증 및 강사 과정" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" vid="58">
+                <!-- Card 02: 민간 자격증 및 강사 과정 -->
+                <div class="reveal delay-200 relative h-[450px] overflow-hidden rounded-xl shadow-md group cursor-pointer transition-all duration-300 md:hover:-translate-y-2 md:hover:shadow-xl bg-white" onclick="location.href='#'" vid="57">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="민간 자격증 및 강사 과정" class="absolute inset-0 w-full h-full object-cover rounded-xl transition-transform duration-700 md:group-hover:scale-105" vid="58">
                     
-                    
-                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500 flex flex-col justify-end p-8" vid="59">
-                        
-                        
-                        <div class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out" vid="60">
-                            <div class="w-10 h-1 bg-teal mb-5 rounded-full transition-all duration-500 group-hover:w-16" vid="61"></div>
+                    <!-- 우측 상단 유도 버튼 -->
+                    <div class="absolute top-6 right-6 w-11 h-11 bg-teal md:bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 shadow-lg z-20 text-white transition-all duration-300 md:group-hover:bg-teal md:group-hover:border-teal/30 md:group-hover:scale-110 pointer-events-none">
+                        <i data-lucide="arrow-up-right" class="w-5 h-5 transition-transform duration-300 md:group-hover:translate-x-0.5 md:group-hover:-translate-y-0.5"></i>
+                    </div>
+
+                    <!-- 내부 그라데이션 마스크 -->
+                    <div class="absolute inset-0 bg-black/50 md:bg-black/40 md:group-hover:bg-black/60 rounded-xl transition-colors duration-500 flex flex-col justify-end p-8" vid="59">
+                        <div class="transform translate-y-0 md:translate-y-8 md:group-hover:translate-y-0 transition-transform duration-500 ease-out" vid="60">
+                            <div class="w-10 h-1 bg-teal mb-5 rounded-full transition-all duration-500 md:group-hover:w-16" vid="61"></div>
                             <h3 class="text-white text-2xl md:text-3xl font-bold mb-4 break-keep tracking-tight shadow-black/50 drop-shadow-sm" vid="62">
                                 02. 민간 자격증 및 강사 과정
                             </h3>
-                            <p class="text-white/95 text-sm leading-relaxed break-keep opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100" vid="63">
+                            <p class="text-white/95 text-sm leading-relaxed break-keep opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 delay-100" vid="63">
                                 한국직업능력연구원 정식 등록 '자기이해지도사' 자격 과정 운영 (파트너 강사 양성 및 전국 출강 권한 인프라 연계)
                             </p>
                         </div>
                     </div>
                 </div>
 
-                
-                <div class="reveal delay-300 relative h-[450px] overflow-hidden rounded-xl shadow-md group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-white" vid="64">
-                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="검사지 및 교구재 비즈니스" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" vid="65">
+                <!-- Card 03: 검사지 및 교구재 비즈니스 -->
+                <div class="reveal delay-300 relative h-[450px] overflow-hidden rounded-xl shadow-md group cursor-pointer transition-all duration-300 md:hover:-translate-y-2 md:hover:shadow-xl bg-white" onclick="location.href='#'" vid="64">
+                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="검사지 및 교구재 비즈니스" class="absolute inset-0 w-full h-full object-cover rounded-xl transition-transform duration-700 md:group-hover:scale-105" vid="65">
                     
-                    
-                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500 flex flex-col justify-end p-8" vid="66">
-                        
-                        
-                        <div class="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out" vid="67">
-                            <div class="w-10 h-1 bg-teal mb-5 rounded-full transition-all duration-500 group-hover:w-16" vid="68"></div>
+                    <!-- 우측 상단 유도 버튼 -->
+                    <div class="absolute top-6 right-6 w-11 h-11 bg-teal md:bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 shadow-lg z-20 text-white transition-all duration-300 md:group-hover:bg-teal md:group-hover:border-teal/30 md:group-hover:scale-110 pointer-events-none">
+                        <i data-lucide="arrow-up-right" class="w-5 h-5 transition-transform duration-300 md:group-hover:translate-x-0.5 md:group-hover:-translate-y-0.5"></i>
+                    </div>
+
+                    <!-- 내부 그라데이션 마스크 -->
+                    <div class="absolute inset-0 bg-black/50 md:bg-black/40 md:group-hover:bg-black/60 rounded-xl transition-colors duration-500 flex flex-col justify-end p-8" vid="66">
+                        <div class="transform translate-y-0 md:translate-y-8 md:group-hover:translate-y-0 transition-transform duration-500 ease-out" vid="67">
+                            <div class="w-10 h-1 bg-teal mb-5 rounded-full transition-all duration-500 md:group-hover:w-16" vid="68"></div>
                             <h3 class="text-white text-2xl md:text-3xl font-bold mb-4 break-keep tracking-tight shadow-black/50 drop-shadow-sm" vid="69">
                                 03. 검사지 및 교구재 비즈니스
                             </h3>
-                            <p class="text-white/95 text-sm leading-relaxed break-keep opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100" vid="70">
+                            <p class="text-white/95 text-sm leading-relaxed break-keep opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 delay-100" vid="70">
                                 자체 특허 진단 검사지 및 정서 힐링 카드 툴킷 패키지 유통 (소속 강사 대량 위탁 공급 및 자동화 시스템 수익 구축)
                             </p>
                         </div>
