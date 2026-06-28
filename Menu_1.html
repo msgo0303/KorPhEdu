@@ -1,18 +1,21 @@
-<html lang="ko" class="scroll-smooth" vid="0"><head vid="1">
+<html lang="ko" class="scroll-smooth" vid="0">
+
+<head vid="1">
     <meta charset="UTF-8" vid="2">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
     <title vid="4">기관소개 | 한국자기이해교육원 KSUI</title>
-    
-    
-    <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" vid="5">
-    
-    
+
+
+    <link rel="stylesheet" as="style" crossorigin=""
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" vid="5">
+
+
     <script src="https://cdn.tailwindcss.com" vid="6"></script>
-    
-    
+
+
     <script src="https://unpkg.com/lucide@latest" vid="7"></script>
 
-    
+
     <script vid="8">
         tailwind.config = {
             theme: {
@@ -34,83 +37,134 @@
     </script>
 
     <style vid="9">
-        body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
-        .break-keep { word-break: keep-all; }
-        
-        
-        .reveal-up { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal-up.active { opacity: 1; transform: translateY(0); }
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .break-keep {
+            word-break: keep-all;
+        }
+
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
-<body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-teal selection:text-white" vid="10">
 
-    
+<body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-teal selection:text-white"
+    vid="10">
+
+
     <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-transparent" id="navbar" vid="11">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-50" id="nav-container" vid="12">
-            
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-50" id="nav-container"
+            vid="12">
+
             <a href="Hero_real.html" class="flex items-center gap-3">
                 <div class="bg-navy rounded-md p-1.5 shadow-sm transition-colors" id="nav-logo-bg" vid="14">
-                    <i data-lucide="book-open-check" class="text-white w-5 h-5 transition-colors" id="nav-logo-icon" vid="15"></i>
+                    <i data-lucide="book-open-check" class="text-white w-5 h-5 transition-colors" id="nav-logo-icon"
+                        vid="15"></i>
                 </div>
-                <span class="text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors" id="nav-brand" vid="16">한국자기이해교육원</span>
+                <span class="text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors"
+                    id="nav-brand" vid="16">한국자기이해교육원</span>
             </a>
-            
+
             <div class="hidden md:flex gap-8 items-center" vid="17">
-                <a href="Menu_1.html" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm" vid="18">기관소개</a>
-                <a href="menu_2.html" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm" vid="19">비즈니스</a>
-                <a href="Hero_real.html#partners" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm" vid="20">연구진</a>
-                <a href="Hero_real.html#contact" class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm" vid="21">문의하기</a>
+                <a href="Menu_1.html"
+                    class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm"
+                    vid="18">기관소개</a>
+                <a href="menu_2.html"
+                    class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm"
+                    vid="19">비즈니스</a>
+                <a href="Hero_real.html#partners"
+                    class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm"
+                    vid="20">연구진</a>
+                <a href="Hero_real.html#contact"
+                    class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm"
+                    vid="21">문의하기</a>
             </div>
 
-            <button onclick="toggleMobileMenu()" class="block md:hidden text-white focus:outline-none transition-colors" id="mobile-menu-btn">
+            <button onclick="toggleMobileMenu()" class="block md:hidden text-white focus:outline-none transition-colors"
+                id="mobile-menu-btn">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
 
-        <div id="mobile-drawer" class="absolute top-full left-0 w-full bg-transparent overflow-hidden transition-all duration-300 ease-in-out flex flex-col md:hidden" style="height: 0px; opacity: 0;">
+        <div id="mobile-drawer"
+            class="absolute top-full left-0 w-full bg-transparent overflow-hidden transition-all duration-300 ease-in-out flex flex-col md:hidden"
+            style="height: 0px; opacity: 0;">
             <div class="py-6 px-6 flex flex-col gap-5 border-t border-white/10" id="mobile-drawer-content">
-                <a href="Menu_1.html" class="mobile-link text-white/80 hover:text-white text-base font-medium transition-colors py-1">기관소개</a>
-                <a href="menu_2.html" class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">비즈니스</a>
-                <a href="Hero_real.html#partners" class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">연구진</a>
-                <a href="Hero_real.html#contact" class="mt-2 text-center bg-teal text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm">문의하기</a>
+                <a href="Menu_1.html"
+                    class="mobile-link text-white/80 hover:text-white text-base font-medium transition-colors py-1">기관소개</a>
+                <a href="menu_2.html"
+                    class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">비즈니스</a>
+                <a href="Hero_real.html#partners"
+                    class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">연구진</a>
+                <a href="Hero_real.html#contact"
+                    class="mt-2 text-center bg-teal text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm">문의하기</a>
             </div>
         </div>
     </nav>
 
-    
-    <header class="relative w-full h-[50vh] md:h-[65vh] overflow-hidden flex items-center justify-center bg-slate-900" vid="22">
-        
-        <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Academic Background" id="hero-bg" class="absolute inset-0 w-full h-full object-cover scale-110 opacity-0 transition-all duration-1500 ease-out transform origin-center" vid="23">
-        
-        
+
+    <header class="relative w-full h-[50vh] md:h-[65vh] overflow-hidden flex items-center justify-center bg-slate-900"
+        vid="22">
+
+        <img src="images/menu1/menu_1_0.jpg" alt="Academic Background" id="hero-bg"
+            class="absolute inset-0 w-full h-full object-cover scale-110 opacity-0 transition-all duration-1500 ease-out transform origin-center"
+            vid="23">
+
+
         <div class="absolute inset-0 bg-black/50 z-10" vid="24"></div>
-        
-        
+
+
         <div class="relative z-20 text-center px-6" vid="25">
-            <h2 id="hero-text" class="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.2] translate-y-12 opacity-0 transition-all duration-1000 ease-out delay-300" vid="26">
+            <h2 id="hero-text"
+                class="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.2] translate-y-12 opacity-0 transition-all duration-1000 ease-out delay-300"
+                vid="26">
                 한국자기이해교육원 <br vid="27"> <span class="text-teal-400" vid="28">기관소개</span>
             </h2>
         </div>
     </header>
 
-    
+
     <section id="brand-canvas-section" class="relative h-[200vh] bg-slatebg" vid="29">
         <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden py-24" vid="30">
-            
-            <div id="brand-box" class="bg-navy flex flex-col items-center justify-center text-white will-change-[width,height,border-radius] shadow-2xl relative overflow-hidden" style="width: 320px; height: 320px; border-radius: 24px;" vid="31">
-                
-                <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;" vid="32"></div>
 
-                <div class="relative z-10 flex flex-col items-center flex-shrink-0 transition-transform duration-500 text-center px-6" id="brand-content" vid="33">
-                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6 border border-white/20 shadow-inner" vid="34">
+            <div id="brand-box"
+                class="bg-navy flex flex-col items-center justify-center text-white will-change-[width,height,border-radius] shadow-2xl relative overflow-hidden"
+                style="width: 320px; height: 320px; border-radius: 24px;" vid="31">
+
+                <div class="absolute inset-0 opacity-5"
+                    style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;"
+                    vid="32"></div>
+
+                <div class="relative z-10 flex flex-col items-center flex-shrink-0 transition-transform duration-500 text-center px-6"
+                    id="brand-content" vid="33">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6 border border-white/20 shadow-inner"
+                        vid="34">
                         <i data-lucide="shield-check" class="w-10 h-10 md:w-12 md:h-12 text-white" vid="35"></i>
                     </div>
-                    
-                    <h3 id="brand-title" class="text-2xl md:text-3xl font-bold tracking-tight mb-2 whitespace-nowrap transition-all duration-300" style="opacity: 0; transform: translateY(15px);" vid="36">한국자기이해교육원</h3>
-                    
-                    <p id="brand-sub" class="text-teal-400 font-medium tracking-widest text-sm whitespace-nowrap uppercase mb-4 transition-all duration-300" style="opacity: 0; transform: translateY(15px);" vid="37">KSUI</p>
-                    
-                    <h4 id="brand-desc" class="text-white/80 font-normal text-sm md:text-base leading-relaxed max-w-sm break-keep transition-all duration-300" style="opacity: 0; transform: translateY(15px);" vid="263">
+
+                    <h3 id="brand-title"
+                        class="text-2xl md:text-3xl font-bold tracking-tight mb-2 whitespace-nowrap transition-all duration-300"
+                        style="opacity: 0; transform: translateY(15px);" vid="36">한국자기이해교육원</h3>
+
+                    <p id="brand-sub"
+                        class="text-teal-400 font-medium tracking-widest text-sm whitespace-nowrap uppercase mb-4 transition-all duration-300"
+                        style="opacity: 0; transform: translateY(15px);" vid="37">KSUI</p>
+
+                    <h4 id="brand-desc"
+                        class="text-white/80 font-normal text-sm md:text-base leading-relaxed max-w-sm break-keep transition-all duration-300"
+                        style="opacity: 0; transform: translateY(15px);" vid="263">
                         과학적 분석과 체계적인 교육 인프라로 <br> 개인의 고유한 가치를 발견하고 증명합니다.
                     </h4>
                 </div>
@@ -119,13 +173,14 @@
         </div>
     </section>
 
-    
+
     <section class="py-24 md:py-32 bg-white relative z-10" vid="38">
         <div class="max-w-7xl mx-auto px-6" vid="39">
-            
-            
+
+
             <div class="max-w-4xl mx-auto text-center mb-20 reveal-up" vid="40">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-navy leading-tight mb-8 break-keep tracking-tight" vid="41">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-navy leading-tight mb-8 break-keep tracking-tight"
+                    vid="41">
                     "객관적 지표로 고유함을 증명하고,<br class="hidden md:block" vid="42"> 체계적 시스템으로 성장을 디자인합니다."
                 </h2>
                 <p class="text-lg md:text-xl text-slate-600 leading-relaxed font-light break-keep" vid="43">
@@ -133,38 +188,50 @@
                 </p>
             </div>
 
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12" id="metrics-container" vid="44">
-                
-                <div class="p-8 bg-slatebg rounded-2xl border border-slate-100 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow" vid="45">
-                    <div class="w-14 h-14 bg-teal/10 rounded-xl flex items-center justify-center mb-6 text-teal-600" vid="46">
+
+                <div class="p-8 bg-slatebg rounded-2xl border border-slate-100 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
+                    vid="45">
+                    <div class="w-14 h-14 bg-teal/10 rounded-xl flex items-center justify-center mb-6 text-teal-600"
+                        vid="46">
                         <i data-lucide="building-2" class="w-7 h-7" vid="47"></i>
                     </div>
                     <p class="text-slate-500 font-medium text-sm tracking-widest mb-2" vid="48">협업한 기관</p>
-                    <div class="text-5xl font-bold text-navy mb-4 font-mono tracking-tighter flex items-center justify-center" vid="49">
-                        <span class="counter-val" data-target="150" vid="50">0</span><span class="text-teal-500 ml-1" vid="51">+</span>
+                    <div class="text-5xl font-bold text-navy mb-4 font-mono tracking-tighter flex items-center justify-center"
+                        vid="49">
+                        <span class="counter-val" data-target="150" vid="50">0</span><span class="text-teal-500 ml-1"
+                            vid="51">+</span>
                     </div>
                     <p class="text-sm text-slate-400 font-light break-keep" vid="52">대학교, 대기업, 공공기관 산학협력 누적</p>
                 </div>
 
-                <div class="p-8 bg-slatebg rounded-2xl border border-slate-100 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow" vid="53">
-                    <div class="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6 text-navy" vid="54">
+                <div class="p-8 bg-slatebg rounded-2xl border border-slate-100 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
+                    vid="53">
+                    <div class="w-14 h-14 bg-navy/5 rounded-xl flex items-center justify-center mb-6 text-navy"
+                        vid="54">
                         <i data-lucide="users" class="w-7 h-7" vid="55"></i>
                     </div>
                     <p class="text-slate-500 font-medium text-sm tracking-widest mb-2" vid="56">민간 자격증 합격</p>
-                    <div class="text-5xl font-bold text-navy mb-4 font-mono tracking-tighter flex items-center justify-center" vid="57">
-                        <span class="counter-val" data-target="10250" vid="58">0</span><span class="text-teal-500 ml-1" vid="59">+</span>
+                    <div class="text-5xl font-bold text-navy mb-4 font-mono tracking-tighter flex items-center justify-center"
+                        vid="57">
+                        <span class="counter-val" data-target="10250" vid="58">0</span><span class="text-teal-500 ml-1"
+                            vid="59">+</span>
                     </div>
                     <p class="text-sm text-slate-400 font-light break-keep" vid="60">정식 등록 지도사 배출 규모</p>
                 </div>
 
-                <div class="p-8 bg-slatebg rounded-2xl border border-slate-100 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow" vid="61">
-                    <div class="w-14 h-14 bg-teal/10 rounded-xl flex items-center justify-center mb-6 text-teal-600" vid="62">
+                <div class="p-8 bg-slatebg rounded-2xl border border-slate-100 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
+                    vid="61">
+                    <div class="w-14 h-14 bg-teal/10 rounded-xl flex items-center justify-center mb-6 text-teal-600"
+                        vid="62">
                         <i data-lucide="package" class="w-7 h-7" vid="63"></i>
                     </div>
                     <p class="text-slate-500 font-medium text-sm tracking-widest mb-2" vid="64">개발한 교구재</p>
-                    <div class="text-5xl font-bold text-navy mb-4 font-mono tracking-tighter flex items-center justify-center" vid="65">
-                        <span class="counter-val" data-target="45" vid="66">0</span><span class="text-teal-500 ml-1" vid="67">+</span>
+                    <div class="text-5xl font-bold text-navy mb-4 font-mono tracking-tighter flex items-center justify-center"
+                        vid="65">
+                        <span class="counter-val" data-target="45" vid="66">0</span><span class="text-teal-500 ml-1"
+                            vid="67">+</span>
                     </div>
                     <p class="text-sm text-slate-400 font-light break-keep" vid="68">자체 특허 평가 진단지 및 감정 툴킷 카드 세트</p>
                 </div>
@@ -173,80 +240,105 @@
         </div>
     </section>
 
-    
+
     <section class="py-24 md:py-32 bg-slatebg overflow-hidden relative" vid="69">
         <div class="max-w-7xl mx-auto px-6" vid="70">
-            
+
             <div class="text-center mb-20 reveal-up" vid="71">
-                <span class="text-teal font-bold text-sm tracking-widest block mb-3 uppercase" vid="72">Structural Strengths</span>
+                <span class="text-teal font-bold text-sm tracking-widest block mb-3 uppercase" vid="72">Structural
+                    Strengths</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-navy tracking-tight" vid="73">KSUI 경쟁력</h2>
             </div>
 
             <div class="space-y-24 md:space-y-32" vid="74">
-                
-                
+
+
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center" vid="75">
-                    <div class="matrix-el matrix-left opacity-0 -translate-x-[50px] transition-all duration-1000 ease-out order-last lg:order-none" vid="76">
-                        <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-slate-200" vid="77">
-                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Academic Research" class="w-full h-full object-cover" vid="78">
+                    <div class="matrix-el matrix-left opacity-0 -translate-x-[50px] transition-all duration-1000 ease-out order-last lg:order-none"
+                        vid="76">
+                        <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-slate-200"
+                            vid="77">
+                            <img src="images/menu1/menu_1_1.jpg"
+                                alt="Academic Research" class="w-full h-full object-cover" vid="78">
                             <div class="absolute inset-0 bg-navy/10 mix-blend-multiply" vid="79"></div>
                         </div>
                     </div>
-                    <div class="matrix-el matrix-right opacity-0 translate-x-[50px] transition-all duration-1000 ease-out flex flex-col justify-center" vid="80">
-                        <div class="text-teal font-mono text-xl md:text-2xl font-bold mb-4 opacity-70" vid="81">01.</div>
-                        <h3 class="text-2xl md:text-3xl font-bold text-navy mb-6 break-keep tracking-tight" vid="82">공인된 학술적 신뢰도</h3>
+                    <div class="matrix-el matrix-right opacity-0 translate-x-[50px] transition-all duration-1000 ease-out flex flex-col justify-center"
+                        vid="80">
+                        <div class="text-teal font-mono text-xl md:text-2xl font-bold mb-4 opacity-70" vid="81">01.
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-navy mb-6 break-keep tracking-tight" vid="82">공인된
+                            학술적 신뢰도</h3>
                         <p class="text-slate-600 text-lg leading-relaxed font-light break-keep" vid="83">
                             특허청 기질 분석 특허 및 직능원 정식 등록 자격증 보유로 검증된 공공 교육을 제공합니다.
                         </p>
                     </div>
                 </div>
 
-                
+
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center" vid="84">
-                    <div class="matrix-el matrix-left opacity-0 -translate-x-[50px] transition-all duration-1000 ease-out flex flex-col justify-center order-first lg:order-none" vid="85">
-                        <div class="text-teal font-mono text-xl md:text-2xl font-bold mb-4 opacity-70" vid="86">02.</div>
-                        <h3 class="text-2xl md:text-3xl font-bold text-navy mb-6 break-keep tracking-tight" vid="87">확실한 비즈니스 유틸리티</h3>
+                    <div class="matrix-el matrix-left opacity-0 -translate-x-[50px] transition-all duration-1000 ease-out flex flex-col justify-center order-first lg:order-none"
+                        vid="85">
+                        <div class="text-teal font-mono text-xl md:text-2xl font-bold mb-4 opacity-70" vid="86">02.
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-navy mb-6 break-keep tracking-tight" vid="87">확실한
+                            비즈니스 유틸리티</h3>
                         <p class="text-slate-600 text-lg leading-relaxed font-light break-keep" vid="88">
                             교육 수료 후 파트너 출강 연계 및 교구재 다량 위탁 공급망 구축으로 확실한 ROI를 보장합니다.
                         </p>
                     </div>
-                    <div class="matrix-el matrix-right opacity-0 translate-x-[50px] transition-all duration-1000 ease-out" vid="89">
-                        <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-slate-200" vid="90">
-                            <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Corporate Workshop" class="w-full h-full object-cover" vid="91">
+                    <div class="matrix-el matrix-right opacity-0 translate-x-[50px] transition-all duration-1000 ease-out"
+                        vid="89">
+                        <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-slate-200"
+                            vid="90">
+                            <img src="images/menu1/menu_1_2.jpg"
+                                alt="Corporate Workshop" class="w-full h-full object-cover" vid="91">
                             <div class="absolute inset-0 bg-teal/10 mix-blend-multiply" vid="92"></div>
                         </div>
                     </div>
                 </div>
 
-                
+
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center" vid="93">
-                    <div class="matrix-el matrix-left opacity-0 -translate-x-[50px] transition-all duration-1000 ease-out order-last lg:order-none" vid="94">
-                        <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-slate-200" vid="95">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&amp;w=2070&amp;auto=format&amp;fit=crop" alt="Data Analytics" class="w-full h-full object-cover" vid="96">
+                    <div class="matrix-el matrix-left opacity-0 -translate-x-[50px] transition-all duration-1000 ease-out order-last lg:order-none"
+                        vid="94">
+                        <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-slate-200"
+                            vid="95">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&amp;w=2070&amp;auto=format&amp;fit=crop"
+                                alt="Data Analytics" class="w-full h-full object-cover" vid="96">
                             <div class="absolute inset-0 bg-navy/10 mix-blend-multiply" vid="97"></div>
                         </div>
                     </div>
-                    <div class="matrix-el matrix-right opacity-0 translate-x-[50px] transition-all duration-1000 ease-out flex flex-col justify-center" vid="98">
-                        <div class="text-teal font-mono text-xl md:text-2xl font-bold mb-4 opacity-70" vid="99">03.</div>
-                        <h3 class="text-2xl md:text-3xl font-bold text-navy mb-6 break-keep tracking-tight" vid="100">자체 빅데이터 분석 솔루션</h3>
+                    <div class="matrix-el matrix-right opacity-0 translate-x-[50px] transition-all duration-1000 ease-out flex flex-col justify-center"
+                        vid="98">
+                        <div class="text-teal font-mono text-xl md:text-2xl font-bold mb-4 opacity-70" vid="99">03.
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-navy mb-6 break-keep tracking-tight" vid="100">자체
+                            빅데이터 분석 솔루션</h3>
                         <p class="text-slate-600 text-lg leading-relaxed font-light break-keep" vid="101">
                             수만 명의 누적 임상 데이터 알고리즘을 기반으로 한 오차 없는 다면적 기질 검사 시스템을 운영합니다.
                         </p>
                     </div>
                 </div>
 
-                
+
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center" vid="102">
-                    <div class="matrix-el matrix-left opacity-0 -translate-x-[50px] transition-all duration-1000 ease-out flex flex-col justify-center order-first lg:order-none" vid="103">
-                        <div class="text-teal font-mono text-xl md:text-2xl font-bold mb-4 opacity-70" vid="104">04.</div>
-                        <h3 class="text-2xl md:text-3xl font-bold text-navy mb-6 break-keep tracking-tight" vid="105">강력한 파트너 상생 생태계</h3>
+                    <div class="matrix-el matrix-left opacity-0 -translate-x-[50px] transition-all duration-1000 ease-out flex flex-col justify-center order-first lg:order-none"
+                        vid="103">
+                        <div class="text-teal font-mono text-xl md:text-2xl font-bold mb-4 opacity-70" vid="104">04.
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-navy mb-6 break-keep tracking-tight" vid="105">
+                            강력한 파트너 상생 생태계</h3>
                         <p class="text-slate-600 text-lg leading-relaxed font-light break-keep" vid="106">
                             전국 대학교 거점 확보 및 자격 소지 강사 전용 스마트 몰 인프라를 통한 동반 성장을 도모합니다.
                         </p>
                     </div>
-                    <div class="matrix-el matrix-right opacity-0 translate-x-[50px] transition-all duration-1000 ease-out" vid="107">
-                        <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-slate-200" vid="108">
-                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&amp;w=2084&amp;auto=format&amp;fit=crop" alt="Partnership Ecosystem" class="w-full h-full object-cover" vid="109">
+                    <div class="matrix-el matrix-right opacity-0 translate-x-[50px] transition-all duration-1000 ease-out"
+                        vid="107">
+                        <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-slate-200"
+                            vid="108">
+                            <img src="images/menu1/menu_1_4.jpg"
+                                alt="Partnership Ecosystem" class="w-full h-full object-cover" vid="109">
                             <div class="absolute inset-0 bg-teal/10 mix-blend-multiply" vid="110"></div>
                         </div>
                     </div>
@@ -256,27 +348,31 @@
         </div>
     </section>
 
-    
+
     <section class="py-24 bg-white border-t border-slate-200" vid="111">
         <div class="max-w-7xl mx-auto px-6 reveal-up" vid="112">
-            
+
             <div class="mb-12" vid="113">
-                <span class="text-teal font-bold text-sm tracking-widest block mb-3 uppercase" vid="114">Contact &amp; Access</span>
+                <span class="text-teal font-bold text-sm tracking-widest block mb-3 uppercase" vid="114">Contact &amp;
+                    Access</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-navy tracking-tight" vid="115">오시는 길</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" vid="116">
-                
-                
-                <div class="w-full h-[350px] bg-slate-100 rounded-2xl border border-slate-200 shadow-inner flex flex-col items-center justify-center text-slate-400 relative overflow-hidden group" vid="117">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.631433890137!2d127.0253457!3d37.4983422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca14ad3ef5b9d%3A0x6b80307963d76295!2z7ISc7Jq47m56rec6rWsIO2Gte2VqOuhnCAxMjM!5e0!3m2!1sko!2skr!4v1680000000000" 
-                            class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+
+
+                <div class="w-full h-[350px] bg-slate-100 rounded-2xl border border-slate-200 shadow-inner flex flex-col items-center justify-center text-slate-400 relative overflow-hidden group"
+                    vid="117">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.631433890137!2d127.0253457!3d37.4983422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca14ad3ef5b9d%3A0x6b80307963d76295!2z7ISc7Jq47m56rec6rWsIO2Gte2VqOuhnCAxMjM!5e0!3m2!1sko!2skr!4v1680000000000"
+                        class="w-full h-full border-0" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
 
-                
+
                 <div class="flex flex-col justify-center space-y-10" vid="121">
-                    
+
                     <div vid="122">
                         <div class="flex items-center gap-3 mb-3 text-navy font-bold text-lg" vid="123">
                             <i data-lucide="map-pin" class="w-5 h-5 text-teal" vid="124"></i>
@@ -294,7 +390,8 @@
                             <h4 vid="131">운영 시간</h4>
                         </div>
                         <ul class="text-slate-600 font-light space-y-2 ml-8" vid="132">
-                            <li vid="133">평일 <span class="font-medium text-slate-800" vid="134">09:00 - 18:00</span></li>
+                            <li vid="133">평일 <span class="font-medium text-slate-800" vid="134">09:00 - 18:00</span>
+                            </li>
                             <li class="text-sm text-slate-500" vid="135">(점심시간 12:00 - 13:00)</li>
                             <li class="text-rose-500 font-medium pt-1" vid="136">주말 및 공휴일 휴무</li>
                         </ul>
@@ -312,7 +409,8 @@
                             </li>
                             <li class="flex items-center gap-2" vid="145">
                                 <span class="text-slate-400 w-12 text-sm font-medium" vid="146">Email</span>
-                                <a href="mailto:contact@ksui.ac.kr" class="text-teal-600 hover:underline" vid="147">contact@ksui.ac.kr</a>
+                                <a href="mailto:contact@ksui.ac.kr" class="text-teal-600 hover:underline"
+                                    vid="147">contact@ksui.ac.kr</a>
                             </li>
                         </ul>
                     </div>
@@ -323,14 +421,16 @@
         </div>
     </section>
 
-    
+
     <footer class="bg-[#0F172A] pt-16 pb-8 border-t-4 border-teal relative overflow-hidden" vid="148">
-        
-        <i data-lucide="book-open-check" class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none" vid="149"></i>
-        
+
+        <i data-lucide="book-open-check"
+            class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none"
+            vid="149"></i>
+
         <div class="max-w-7xl mx-auto px-6 relative z-10" vid="150">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12" vid="151">
-                
+
                 <div class="lg:col-span-2" vid="152">
                     <div class="flex items-center gap-2 mb-6" vid="153">
                         <div class="bg-slate-800 rounded p-1" vid="154">
@@ -344,19 +444,30 @@
                 </div>
 
                 <div class="col-span-1 lg:col-span-2 text-sm text-slate-400" vid="158">
-                    <h4 class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block" vid="159">INSTITUTE INFO</h4>
+                    <h4 class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block"
+                        vid="159">INSTITUTE INFO</h4>
                     <ul class="space-y-3 font-light" vid="160">
-                        <li class="flex gap-4" vid="161"><span class="w-24 text-slate-500 font-medium shrink-0" vid="162">기관명</span> <span vid="163">한국자기이해교육원 (Korea Self-Understanding Education Institute)</span></li>
-                        <li class="flex gap-4" vid="164"><span class="w-24 text-slate-500 font-medium shrink-0" vid="165">대표자</span> <span vid="166">김대표</span></li>
-                        <li class="flex gap-4" vid="167"><span class="w-24 text-slate-500 font-medium shrink-0" vid="168">사업자등록번호</span> <span class="font-mono" vid="169">123-45-67890</span></li>
-                        <li class="flex gap-4" vid="170"><span class="w-24 text-slate-500 font-medium shrink-0" vid="171">민간자격등록</span> <span class="font-mono" vid="172">제 2026-001234 호</span></li>
-                        <li class="flex gap-4" vid="173"><span class="w-24 text-slate-500 font-medium shrink-0" vid="174">소재지</span> <span class="break-keep" vid="175">서울특별시 강남구 테헤란로 123, 지식산업센터 15층</span></li>
-                        <li class="flex gap-4" vid="176"><span class="w-24 text-slate-500 font-medium shrink-0" vid="177">고객센터</span> <span class="text-white font-medium" vid="178">02-1234-5678</span> <span class="text-xs" vid="179">(평일 09:00 - 18:00)</span></li>
+                        <li class="flex gap-4" vid="161"><span class="w-24 text-slate-500 font-medium shrink-0"
+                                vid="162">기관명</span> <span vid="163">한국자기이해교육원 (Korea Self-Understanding Education
+                                Institute)</span></li>
+                        <li class="flex gap-4" vid="164"><span class="w-24 text-slate-500 font-medium shrink-0"
+                                vid="165">대표자</span> <span vid="166">김대표</span></li>
+                        <li class="flex gap-4" vid="167"><span class="w-24 text-slate-500 font-medium shrink-0"
+                                vid="168">사업자등록번호</span> <span class="font-mono" vid="169">123-45-67890</span></li>
+                        <li class="flex gap-4" vid="170"><span class="w-24 text-slate-500 font-medium shrink-0"
+                                vid="171">민간자격등록</span> <span class="font-mono" vid="172">제 2026-001234 호</span></li>
+                        <li class="flex gap-4" vid="173"><span class="w-24 text-slate-500 font-medium shrink-0"
+                                vid="174">소재지</span> <span class="break-keep" vid="175">서울특별시 강남구 테헤란로 123, 지식산업센터
+                                15층</span></li>
+                        <li class="flex gap-4" vid="176"><span class="w-24 text-slate-500 font-medium shrink-0"
+                                vid="177">고객센터</span> <span class="text-white font-medium" vid="178">02-1234-5678</span>
+                            <span class="text-xs" vid="179">(평일 09:00 - 18:00)</span></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500" vid="180">
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500"
+                vid="180">
                 <p vid="181">© 2026 KSUI. All rights reserved.</p>
                 <div class="flex gap-6" vid="182">
                     <a href="#" class="hover:text-white transition-colors" vid="183">이용약관</a>
@@ -365,17 +476,17 @@
             </div>
         </div>
     </footer>
-    
-    
+
+
     <script vid="185">
-        
+
         lucide.createIcons();
 
-        
+
         document.addEventListener('DOMContentLoaded', () => {
             const heroImg = document.getElementById('hero-bg');
             const heroText = document.getElementById('hero-text');
-            
+
             setTimeout(() => {
                 heroImg.classList.remove('scale-110', 'opacity-0');
                 heroImg.classList.add('scale-100', 'opacity-100');
@@ -387,7 +498,7 @@
             }, 500);
         });
 
-        
+
         // =========================================================================
         // [서브페이지 최적화] 메뉴 오픈 시 무조건 흰색 테마 고정 연동 엔진
         // =========================================================================
@@ -410,12 +521,12 @@
                 // [CASE A] 불투명 흰색 테마 (스크롤 다운 OR 모바일 메뉴 오픈 상태)
                 // ==========================================
                 navbar.className = "fixed w-full z-50 top-0 transition-all duration-300 bg-white shadow-sm";
-                
+
                 if (isMenuOpen) {
                     // 메뉴가 열려있을 때: 드롭다운 메뉴도 정갈한 흰색 배경으로 일체화
                     drawer.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
                     drawerContent.style.borderColor = '#f1f5f9';
-                    
+
                     links.forEach(link => {
                         link.className = "mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1";
                     });
@@ -440,7 +551,7 @@
                 navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-transparent";
                 mobileBtn.style.color = '#ffffff';
                 mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-                
+
                 // 원래의 웅장한 화이트 가독성 셋 복구
                 navBrand.className = "text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors";
                 navLinks.forEach(el => {
@@ -470,21 +581,21 @@
                 drawer.style.height = 'auto';
                 const autoHeight = drawer.scrollHeight + 'px';
                 drawer.style.height = '0px';
-                
+
                 drawer.style.height = autoHeight;
                 drawer.style.opacity = '1';
-                
+
                 // 열리는 순간 즉시 테마 동기화 함수 호출 (isMenuOpen이 true이므로 무조건 흰색 바 변신)
                 refreshNavSkin();
             }
         }
 
-        
+
         // [초고속 타이밍 + 전체 텍스트 페이드 부상 버전] 스크롤 인터랙션 엔진
         const brandSection = document.getElementById('brand-canvas-section');
         const brandBox = document.getElementById('brand-box');
         const brandContent = document.getElementById('brand-content');
-        
+
         // 🎯 텍스트 제어 변수들 신설
         const brandTitle = document.getElementById('brand-title');
         const brandSub = document.getElementById('brand-sub');
@@ -493,10 +604,10 @@
         window.addEventListener('scroll', () => {
             const rect = brandSection.getBoundingClientRect();
             const windowHeight = window.innerHeight;
-            
+
             const scrolledPastTop = -rect.top;
             const scrollableDistance = rect.height - windowHeight;
-            
+
             let progress = scrollableDistance > 0 ? scrolledPastTop / scrollableDistance : 0;
             progress = Math.max(0, Math.min(1, progress));
 
@@ -505,7 +616,7 @@
 
             const isMobile = window.innerWidth < 768;
             const baseSize = isMobile ? 320 : 420;
-            const edgeMargin = isMobile ? 16 : 32; 
+            const edgeMargin = isMobile ? 16 : 32;
 
             const maxTargetWidth = window.innerWidth - (edgeMargin * 2);
             const maxTargetHeight = window.innerHeight - (edgeMargin * 2);
@@ -522,7 +633,7 @@
 
             // 로고 마크 확대 비율 (기존 유지)
             if (easedProgress > 0.8) {
-                const scaleAmount = 1 + ((easedProgress - 0.8) * 0.4); 
+                const scaleAmount = 1 + ((easedProgress - 0.8) * 0.4);
                 brandContent.style.transform = `scale(${scaleAmount})`;
             } else {
                 brandContent.style.transform = `scale(1)`;
@@ -531,9 +642,9 @@
             // =========================================================================
             // 🎯 [신설] 초고속 3단 병렬 텍스트 부상 알고리즘 (타이밍 대폭 상향)
             // =========================================================================
-            
+
             // 1) 메인 타이틀 (한국자기이해교육원): 스크롤 하자마자 (0.05 지점) 즉시 피어오름
-            let titleProg = Math.max(0, Math.min(1, (progress - 0.05) * 4)); 
+            let titleProg = Math.max(0, Math.min(1, (progress - 0.05) * 4));
             brandTitle.style.opacity = titleProg;
             brandTitle.style.transform = `translateY(${15 * (1 - titleProg)}px)`;
 
@@ -548,11 +659,11 @@
             brandDesc.style.transform = `translateY(${15 * (1 - descProg)}px)`;
         });
 
-        
+
         const animateCountUp = (el) => {
             if (el.dataset.counted) return;
             el.dataset.counted = true;
-            
+
             const target = parseInt(el.getAttribute('data-target'), 10);
             const duration = 2000;
             const start = performance.now();
@@ -560,7 +671,7 @@
             const updateCounter = (time) => {
                 const elapsed = time - start;
                 const progress = Math.min(elapsed / duration, 1);
-                
+
                 const ease = 1 - Math.pow(1 - progress, 4);
                 const current = Math.floor(target * ease);
 
@@ -569,13 +680,13 @@
                 if (progress < 1) {
                     requestAnimationFrame(updateCounter);
                 } else {
-                    el.innerText = target.toLocaleString(); 
+                    el.innerText = target.toLocaleString();
                 }
             };
             requestAnimationFrame(updateCounter);
         };
 
-        
+
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -587,7 +698,7 @@
 
         document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
 
-        
+
         const metricsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -597,24 +708,24 @@
                 }
             });
         }, { threshold: 0.3 });
-        
+
         const metricsContainer = document.getElementById('metrics-container');
         if (metricsContainer) {
             metricsObserver.observe(metricsContainer);
         }
 
-        
+
         const matrixElements = document.querySelectorAll('.matrix-el');
-        
+
         const matrixObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    
+
                     entry.target.classList.remove('opacity-0', '-translate-x-[50px]', 'translate-x-[50px]');
                     entry.target.classList.add('opacity-100', 'translate-x-0');
                 } else {
-                    
-                    
+
+
                     if (entry.boundingClientRect.top > 0) {
                         entry.target.classList.remove('opacity-100', 'translate-x-0');
                         if (entry.target.classList.contains('matrix-left')) {
@@ -631,4 +742,6 @@
 
     </script>
 
-</body></html>
+</body>
+
+</html>
