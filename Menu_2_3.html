@@ -1,0 +1,789 @@
+<html lang="ko" class="scroll-smooth" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">검사지 및 교구재 | 한국자기이해교육원</title>
+    
+    <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" vid="5">
+    <script src="https://cdn.tailwindcss.com/3.4.17" vid="6"></script>
+    <script src="https://unpkg.com/lucide@latest" vid="7"></script>
+
+    <script vid="8">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { DEFAULT: '#1E3A8A', dark: '#0F172A' },
+                        teal: { DEFAULT: '#0F766E', light: '#14B8A6' },
+                        slatebg: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style vid="9">
+        body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+        
+        .keep-all { word-break: keep-all; }
+        
+        
+        .text-fill-anim {
+            background-image: linear-gradient(to right, #0F172A 50%, #94A3B8 50%);
+            background-size: 200% 100%;
+            background-position: 100% 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: background-position 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .text-fill-anim.filled {
+            background-position: 0 0;
+        }
+
+        
+        .dropdown-menu {
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+        }
+        .dropdown-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
+        .row-phase {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .row-phase.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        
+        .acc-icon { position: relative; width: 20px; height: 20px; }
+        .acc-line-h, .acc-line-v {
+            position: absolute;
+            background-color: #0F172A;
+            transition: transform 0.4s ease, background-color 0.4s ease;
+        }
+        .acc-line-h { width: 20px; height: 2px; top: 9px; left: 0; }
+        .acc-line-v { width: 2px; height: 20px; top: 0; left: 9px; }
+        .faq-item.active .acc-line-v { transform: rotate(90deg); }
+        .faq-item.active .acc-line-h { background-color: #0F766E; }
+        .faq-item.active .acc-line-v { background-color: #0F766E; }
+
+    </style>
+</head>
+<body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-teal selection:text-white" vid="10">
+
+    
+    <nav class="fixed w-full z-50 top-0 bg-white shadow-sm py-4 transition-all duration-300" vid="11">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center" vid="12">
+            <div class="flex items-center gap-3 cursor-pointer" vid="13">
+                <div class="bg-navy rounded-md p-1.5" vid="14">
+                    <i data-lucide="book-open-check" class="text-white w-5 h-5" vid="15"></i>
+                </div>
+                <span class="text-navy font-bold tracking-tight text-lg" vid="16">한국자기이해교육원</span>
+            </div>
+            <div class="hidden md:flex gap-8 items-center" vid="17">
+                <a href="#" class="text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="18">기관소개</a>
+                <a href="#" class="text-navy font-bold text-sm transition-colors border-b-2 border-navy pb-0.5" vid="19">비즈니스</a>
+                <a href="#" class="text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="20">연구진</a>
+                <a href="#" class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm" vid="21">문의하기</a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <section class="pt-32 pb-24 px-6 bg-white relative overflow-hidden flex flex-col justify-center border-b border-slate-100" vid="22">
+        <div class="max-w-7xl mx-auto w-full relative z-10" vid="23">
+            
+            
+            <div class="text-xs md:text-sm font-medium text-slate-500 mb-8 flex items-center gap-2 relative z-50" vid="24">
+                
+                
+                <div class="relative group" id="dd1-wrap" vid="25">
+                    <button class="flex items-center gap-1 hover:text-navy transition-colors focus:outline-none" id="btn-dd1" vid="26">
+                        비즈니스 <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" id="icon-dd1" vid="27"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 top-full mt-2 w-32 bg-white border border-slate-200 rounded-lg shadow-lg opacity-0 invisible transform -translate-y-2 py-1" id="menu-dd1" vid="28">
+                        <a href="Hero_real.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors" vid="29">홈</a>
+                        <a href="Menu_1.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors" vid="30">기관소개</a>
+                        <a href="Menu_2.html" class="block px-4 py-2 text-navy font-semibold bg-slate-50 transition-colors" vid="31">비즈니스</a>
+                        <a href="Hero_real.html#partners" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors" vid="32">연구진</a>
+                    </div>
+                </div>
+                
+                <span class="text-slate-300" vid="33">/</span>
+                
+                
+                <div class="relative group" id="dd2-wrap" vid="34">
+                    <button class="flex items-center gap-1 hover:text-navy transition-colors text-navy font-semibold focus:outline-none" id="btn-dd2" vid="35">
+                        검사지 및 교구재 <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" id="icon-dd2" vid="36"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 top-full mt-2 w-44 bg-white border border-slate-200 rounded-lg shadow-lg opacity-0 invisible transform -translate-y-2 py-1" id="menu-dd2" vid="37">
+                        <a href="Menu_2_1.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors" vid="38">단체교육 상세</a>
+                        <a href="Menu_2_2.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors" vid="39">자격증 및 강사과정</a>
+                        <a href="#" class="block px-4 py-2 text-navy font-semibold bg-slate-50 transition-colors" vid="40">검사지 및 교구재</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="max-w-4xl relative z-20" vid="41">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.2] mb-8 keep-all" vid="42">
+                    <span class="block text-fill-anim line-1 pb-2" vid="43">검사지 및 교구재</span>
+                    <span class="block text-fill-anim line-2" vid="44">가장 중요한 것을 먼저 이해하는 것</span>
+                </h2>
+                
+                <div id="hero-subtext" class="opacity-0 translate-y-4 text-lg md:text-xl text-slate-600 font-light leading-relaxed keep-all max-w-2xl border-l-2 border-teal pl-4" vid="45">
+                    교육원이 개발 및 특허 등록한 다면적 자기이해 검사지와 감정 교구재를 통해, 집단 내 역학을 관찰하고 개인의 정체성을 맞춤형으로 설계합니다.
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-slate-50 to-transparent pointer-events-none z-0" vid="46"></div>
+    </section>
+
+    
+    <section class="py-24 md:py-32 px-6 bg-slatebg relative" vid="47">
+        <div class="max-w-4xl mx-auto reveal-up" vid="48">
+            <div class="bg-white rounded-xl border border-slate-200 p-8 md:p-12 shadow-sm" vid="49">
+                
+                
+                <div class="flex items-center gap-6 border-b border-slate-200 mb-8 overflow-x-auto whitespace-nowrap hide-scrollbar" vid="50">
+                    <button class="tab-btn pb-3 text-teal font-bold border-b-2 border-teal transition-colors text-sm md:text-base focus:outline-none" data-tab="tab-1" vid="51">검사지</button>
+                    <button class="tab-btn pb-3 text-slate-500 hover:text-navy border-b-2 border-transparent transition-colors text-sm md:text-base focus:outline-none" data-tab="tab-2" vid="52">교구재</button>
+                    <button class="tab-btn pb-3 text-slate-500 hover:text-navy border-b-2 border-transparent transition-colors text-sm md:text-base focus:outline-none" data-tab="tab-3" vid="53">수료증</button>
+                </div>
+                
+                
+                <div class="relative min-h-[300px]" vid="54">
+                    
+                    
+                    <div id="tab-1" class="tab-content transition-opacity duration-300 opacity-100 block" vid="55">
+                        <h3 class="text-navy text-2xl font-bold keep-all" vid="56">다면적 자기이해 검사지</h3>
+                        <div class="w-12 h-1 bg-teal my-5" vid="57"></div>
+                        <p class="text-slate-600 mb-10 leading-relaxed keep-all text-sm md:text-base" vid="58">
+                            한국자기이해교육원이 자체 개발 및 특허 등록한 다면적 자기이해 분석 도구는, 개인의 기질적 성향, 정서적 패턴, 그리고 사회적 역동성을 정교하게 측정합니다.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" vid="59">
+                            
+                            <button class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition text-left flex flex-col group focus:outline-none focus:ring-2 focus:ring-teal/50" vid="60">
+                                <div class="w-full aspect-[4/3] bg-slate-100 flex items-center justify-center text-slate-300 relative overflow-hidden" vid="61">
+                                    <i data-lucide="clipboard-list" class="w-10 h-10 relative z-10 transition-transform group-hover:scale-110 duration-500" vid="62"></i>
+                                    <div class="absolute inset-0 bg-slate-200/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="63"></div>
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow bg-white relative z-20 border-t border-slate-100" vid="64">
+                                    <h4 class="text-navy font-bold text-sm md:text-base mb-2 group-hover:text-teal transition-colors keep-all" vid="65">전문가용 다면적 분석 검사지</h4>
+                                    <p class="text-slate-500 text-xs md:text-sm keep-all flex-grow leading-relaxed" vid="66">상담사 및 전문 강사를 위한 심층 기질 분석 및 정서 패턴 측정지</p>
+                                    <div class="mt-4 flex justify-end" vid="67">
+                                        <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-teal/10 flex items-center justify-center transition-colors" vid="68">
+                                            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-teal transition-colors" vid="69"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition text-left flex flex-col group focus:outline-none focus:ring-2 focus:ring-teal/50" vid="70">
+                                <div class="w-full aspect-[4/3] bg-slate-100 flex items-center justify-center text-slate-300 relative overflow-hidden" vid="71">
+                                    <i data-lucide="book-open" class="w-10 h-10 relative z-10 transition-transform group-hover:scale-110 duration-500" vid="72"></i>
+                                    <div class="absolute inset-0 bg-slate-200/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="73"></div>
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow bg-white relative z-20 border-t border-slate-100" vid="74">
+                                    <h4 class="text-navy font-bold text-sm md:text-base mb-2 group-hover:text-teal transition-colors keep-all" vid="75">기업형 집단 진단 워크북</h4>
+                                    <p class="text-slate-500 text-xs md:text-sm keep-all flex-grow leading-relaxed" vid="76">대기업 HR 및 조직 진단 전용 집단 적성 분석 및 역학 매핑 도구</p>
+                                    <div class="mt-4 flex justify-end" vid="77">
+                                        <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-teal/10 flex items-center justify-center transition-colors" vid="78">
+                                            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-teal transition-colors" vid="79"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition text-left flex flex-col group focus:outline-none focus:ring-2 focus:ring-teal/50" vid="80">
+                                <div class="w-full aspect-[4/3] bg-slate-100 flex items-center justify-center text-slate-300 relative overflow-hidden" vid="81">
+                                    <i data-lucide="compass" class="w-10 h-10 relative z-10 transition-transform group-hover:scale-110 duration-500" vid="82"></i>
+                                    <div class="absolute inset-0 bg-slate-200/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="83"></div>
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow bg-white relative z-20 border-t border-slate-100" vid="84">
+                                    <h4 class="text-navy font-bold text-sm md:text-base mb-2 group-hover:text-teal transition-colors keep-all" vid="85">청년 진로 정체성 탐색지</h4>
+                                    <p class="text-slate-500 text-xs md:text-sm keep-all flex-grow leading-relaxed" vid="86">대학생 및 취업준비생을 위한 직무 적성 및 자아 정체성 발견 검사지</p>
+                                    <div class="mt-4 flex justify-end" vid="87">
+                                        <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-teal/10 flex items-center justify-center transition-colors" vid="88">
+                                            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-teal transition-colors" vid="89"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                        </div>
+                    </div>
+
+                    
+                    <div id="tab-2" class="tab-content transition-opacity duration-300 opacity-0 hidden" vid="90">
+                        <h3 class="text-navy text-2xl font-bold keep-all" vid="91">감정 코칭 &amp; 힐링 교구재 키트</h3>
+                        <div class="w-12 h-1 bg-teal my-5" vid="92"></div>
+                        <p class="text-slate-600 mb-10 leading-relaxed keep-all text-sm md:text-base" vid="93">
+                            교육 현장에서 즉시 활용 가능한 감정 정서 코칭 교구재와 카드 키트는, 참여자들의 내면을 시각화하고 그들 간의 공감대를 물리적으로 형성합니다.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" vid="94">
+                            
+                            <button class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition text-left flex flex-col group focus:outline-none focus:ring-2 focus:ring-teal/50" vid="95">
+                                <div class="w-full aspect-[4/3] bg-slate-100 flex items-center justify-center text-slate-300 relative overflow-hidden" vid="96">
+                                    <i data-lucide="layers" class="w-10 h-10 relative z-10 transition-transform group-hover:scale-110 duration-500" vid="97"></i>
+                                    <div class="absolute inset-0 bg-slate-200/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="98"></div>
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow bg-white relative z-20 border-t border-slate-100" vid="99">
+                                    <h4 class="text-navy font-bold text-sm md:text-base mb-2 group-hover:text-teal transition-colors keep-all" vid="100">감정 분류 카드덱 (EC-Deck)</h4>
+                                    <p class="text-slate-500 text-xs md:text-sm keep-all flex-grow leading-relaxed" vid="101">기초 감정 48종 및 복합 감정 24종을 시각화한 전문 코칭 카드 세트</p>
+                                    <div class="mt-4 flex justify-end" vid="102">
+                                        <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-teal/10 flex items-center justify-center transition-colors" vid="103">
+                                            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-teal transition-colors" vid="104"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition text-left flex flex-col group focus:outline-none focus:ring-2 focus:ring-teal/50" vid="105">
+                                <div class="w-full aspect-[4/3] bg-slate-100 flex items-center justify-center text-slate-300 relative overflow-hidden" vid="106">
+                                    <i data-lucide="users" class="w-10 h-10 relative z-10 transition-transform group-hover:scale-110 duration-500" vid="107"></i>
+                                    <div class="absolute inset-0 bg-slate-200/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="108"></div>
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow bg-white relative z-20 border-t border-slate-100" vid="109">
+                                    <h4 class="text-navy font-bold text-sm md:text-base mb-2 group-hover:text-teal transition-colors keep-all" vid="110">집단 역학 보드게임 키트</h4>
+                                    <p class="text-slate-500 text-xs md:text-sm keep-all flex-grow leading-relaxed" vid="111">팀 내 역할 분담 및 갈등 유형을 시뮬레이션하는 대인관계 교육용 보드게임</p>
+                                    <div class="mt-4 flex justify-end" vid="112">
+                                        <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-teal/10 flex items-center justify-center transition-colors" vid="113">
+                                            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-teal transition-colors" vid="114"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition text-left flex flex-col group focus:outline-none focus:ring-2 focus:ring-teal/50" vid="115">
+                                <div class="w-full aspect-[4/3] bg-slate-100 flex items-center justify-center text-slate-300 relative overflow-hidden" vid="116">
+                                    <i data-lucide="briefcase" class="w-10 h-10 relative z-10 transition-transform group-hover:scale-110 duration-500" vid="117"></i>
+                                    <div class="absolute inset-0 bg-slate-200/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="118"></div>
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow bg-white relative z-20 border-t border-slate-100" vid="119">
+                                    <h4 class="text-navy font-bold text-sm md:text-base mb-2 group-hover:text-teal transition-colors keep-all" vid="120">오프라인 워크숍 실습 툴킷</h4>
+                                    <p class="text-slate-500 text-xs md:text-sm keep-all flex-grow leading-relaxed" vid="121">출강 및 현장 교육 시즌별 맞춤형 워크북, 포스터, 플립차트 패키지</p>
+                                    <div class="mt-4 flex justify-end" vid="122">
+                                        <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-teal/10 flex items-center justify-center transition-colors" vid="123">
+                                            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-teal transition-colors" vid="124"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                        </div>
+                    </div>
+
+                    
+                    <div id="tab-3" class="tab-content transition-opacity duration-300 opacity-0 hidden" vid="125">
+                        <h3 class="text-navy text-2xl font-bold keep-all" vid="126">수료증 및 인증 디자인 시스템</h3>
+                        <div class="w-12 h-1 bg-teal my-5" vid="127"></div>
+                        <p class="text-slate-600 mb-10 leading-relaxed keep-all text-sm md:text-base" vid="128">
+                            교육원 수료증과 자격증은 기관의 전문성과 신뢰도를 상징합니다. 기관 맞춤형 디자인 시스템을 통해 단체 교육의 마무리를 완성합니다.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" vid="129">
+                            
+                            <button class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition text-left flex flex-col group focus:outline-none focus:ring-2 focus:ring-teal/50" vid="130">
+                                <div class="w-full aspect-[4/3] bg-slate-100 flex items-center justify-center text-slate-300 relative overflow-hidden" vid="131">
+                                    <i data-lucide="file-badge-2" class="w-10 h-10 relative z-10 transition-transform group-hover:scale-110 duration-500" vid="132"></i>
+                                    <div class="absolute inset-0 bg-slate-200/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="133"></div>
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow bg-white relative z-20 border-t border-slate-100" vid="134">
+                                    <h4 class="text-navy font-bold text-sm md:text-base mb-2 group-hover:text-teal transition-colors keep-all" vid="135">수료증 디자인 시스템</h4>
+                                    <p class="text-slate-500 text-xs md:text-sm keep-all flex-grow leading-relaxed" vid="136">기관 로고 및 교육 과정명을 맞춤 반영한 고급 수료증 디자인 및 인쇄 서비스</p>
+                                    <div class="mt-4 flex justify-end" vid="137">
+                                        <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-teal/10 flex items-center justify-center transition-colors" vid="138">
+                                            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-teal transition-colors" vid="139"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition text-left flex flex-col group focus:outline-none focus:ring-2 focus:ring-teal/50" vid="140">
+                                <div class="w-full aspect-[4/3] bg-slate-100 flex items-center justify-center text-slate-300 relative overflow-hidden" vid="141">
+                                    <i data-lucide="shield-check" class="w-10 h-10 relative z-10 transition-transform group-hover:scale-110 duration-500" vid="142"></i>
+                                    <div class="absolute inset-0 bg-slate-200/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="143"></div>
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow bg-white relative z-20 border-t border-slate-100" vid="144">
+                                    <h4 class="text-navy font-bold text-sm md:text-base mb-2 group-hover:text-teal transition-colors keep-all" vid="145">디지털 자격 뱃지</h4>
+                                    <p class="text-slate-500 text-xs md:text-sm keep-all flex-grow leading-relaxed" vid="146">수료자 전용 QR코드 기반 디지털 자격 인증 배지 및 온라인 프로필 연동</p>
+                                    <div class="mt-4 flex justify-end" vid="147">
+                                        <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-teal/10 flex items-center justify-center transition-colors" vid="148">
+                                            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-teal transition-colors" vid="149"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <button class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition text-left flex flex-col group focus:outline-none focus:ring-2 focus:ring-teal/50" vid="150">
+                                <div class="w-full aspect-[4/3] bg-slate-100 flex items-center justify-center text-slate-300 relative overflow-hidden" vid="151">
+                                    <i data-lucide="star" class="w-10 h-10 relative z-10 transition-transform group-hover:scale-110 duration-500" vid="152"></i>
+                                    <div class="absolute inset-0 bg-slate-200/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" vid="153"></div>
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow bg-white relative z-20 border-t border-slate-100" vid="154">
+                                    <h4 class="text-navy font-bold text-sm md:text-base mb-2 group-hover:text-teal transition-colors keep-all" vid="155">우수 강사 인증 배지</h4>
+                                    <p class="text-slate-500 text-xs md:text-sm keep-all flex-grow leading-relaxed" vid="156">교육원 공식 파트너 강사 및 우수 수료자를 위한 특별 인증 마크 디자인</p>
+                                    <div class="mt-4 flex justify-end" vid="157">
+                                        <div class="w-8 h-8 rounded-full bg-slate-50 group-hover:bg-teal/10 flex items-center justify-center transition-colors" vid="158">
+                                            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 group-hover:text-teal transition-colors" vid="159"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="py-24 md:py-32 px-6 bg-slatebg border-t border-slate-200/50 relative" vid="160">
+        
+        
+        <div class="max-w-7xl mx-auto mb-16 reveal-up" vid="161">
+            <h2 class="text-3xl md:text-4xl font-bold text-navy keep-all border-l-4 border-teal pl-4 leading-snug" vid="162">
+                검사지 및 교구재 활용 구조
+            </h2>
+            <p class="mt-4 text-slate-500 text-sm md:text-base keep-all pl-5 md:pl-5 max-w-2xl leading-relaxed" vid="163">
+                검사지와 교구재가 실제 교육 현장에서 어떻게 활용되는지, 단계별 구조를 확인하세요.
+            </p>
+        </div>
+
+        
+        <div id="grid-container" class="max-w-7xl mx-auto space-y-4 md:space-y-6" vid="164">
+            
+            
+            <div class="row-phase grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6" vid="165">
+                <div class="bg-white rounded-xl p-6 md:p-8 border border-slate-200 shadow-sm flex flex-col hover:shadow-md transition-shadow" vid="166">
+                    <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-navy mb-5 shrink-0" vid="167">
+                        <i data-lucide="file-bar-chart" class="w-6 h-6" vid="168"></i>
+                    </div>
+                    <h4 class="text-navy font-bold text-base md:text-lg mb-3 keep-all" vid="169">사전 진단 설계</h4>
+                    <p class="text-slate-500 text-sm keep-all leading-relaxed" vid="170">교육 시작 전, 기관의 핵심 목적에 맞춰 검사지 유형을 선별하고 배포합니다.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 md:p-8 border border-slate-200 shadow-sm flex flex-col hover:shadow-md transition-shadow" vid="171">
+                    <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-navy mb-5 shrink-0" vid="172">
+                        <i data-lucide="users" class="w-6 h-6" vid="173"></i>
+                    </div>
+                    <h4 class="text-navy font-bold text-base md:text-lg mb-3 keep-all" vid="174">집단 역학 분석</h4>
+                    <p class="text-slate-500 text-sm keep-all leading-relaxed" vid="175">수집된 데이터를 기반으로 집단 내 성향 분포 및 역학 구조를 분석합니다.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 md:p-8 border border-slate-200 shadow-sm flex flex-col hover:shadow-md transition-shadow" vid="176">
+                    <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-navy mb-5 shrink-0" vid="177">
+                        <i data-lucide="search" class="w-6 h-6" vid="178"></i>
+                    </div>
+                    <h4 class="text-navy font-bold text-base md:text-lg mb-3 keep-all" vid="179">맞춤형 교안 연동</h4>
+                    <p class="text-slate-500 text-sm keep-all leading-relaxed" vid="180">분석 결과에 따라 최적화된 강의 교안과 워크숍 커리큘럼을 자동 매칭합니다.</p>
+                </div>
+            </div>
+
+            
+            <div class="row-phase grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6" vid="181">
+                <div class="bg-white rounded-xl p-6 md:p-8 border border-slate-200 shadow-sm flex flex-col hover:shadow-md transition-shadow" vid="182">
+                    <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-navy mb-5 shrink-0" vid="183">
+                        <i data-lucide="book-open" class="w-6 h-6" vid="184"></i>
+                    </div>
+                    <h4 class="text-navy font-bold text-base md:text-lg mb-3 keep-all" vid="185">실전 교구 활용</h4>
+                    <p class="text-slate-500 text-sm keep-all leading-relaxed" vid="186">현장에서 교구재 키트를 활용해 참여자들의 몰입도와 공감대를 극대화합니다.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 md:p-8 border border-slate-200 shadow-sm flex flex-col hover:shadow-md transition-shadow" vid="187">
+                    <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-navy mb-5 shrink-0" vid="188">
+                        <i data-lucide="message-circle" class="w-6 h-6" vid="189"></i>
+                    </div>
+                    <h4 class="text-navy font-bold text-base md:text-lg mb-3 keep-all" vid="190">피드백 및 소통</h4>
+                    <p class="text-slate-500 text-sm keep-all leading-relaxed" vid="191">1:1 코칭 및 그룹 퍼실리테이션을 통해 데이터 기반 피드백을 전달합니다.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 md:p-8 border border-slate-200 shadow-sm flex flex-col hover:shadow-md transition-shadow" vid="192">
+                    <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-navy mb-5 shrink-0" vid="193">
+                        <i data-lucide="bar-chart-2" class="w-6 h-6" vid="194"></i>
+                    </div>
+                    <h4 class="text-navy font-bold text-base md:text-lg mb-3 keep-all" vid="195">정량적 결과 측정</h4>
+                    <p class="text-slate-500 text-sm keep-all leading-relaxed" vid="196">교육 전후 데이터를 비교하여 성과를 객관적 수치로 산출하고 보고합니다.</p>
+                </div>
+            </div>
+
+            
+            <div class="row-phase grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6" vid="197">
+                <div class="bg-white rounded-xl p-6 md:p-8 border border-slate-200 shadow-sm flex flex-col hover:shadow-md transition-shadow" vid="198">
+                    <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-navy mb-5 shrink-0" vid="199">
+                        <i data-lucide="award" class="w-6 h-6" vid="200"></i>
+                    </div>
+                    <h4 class="text-navy font-bold text-base md:text-lg mb-3 keep-all" vid="201">수료증 발행</h4>
+                    <p class="text-slate-500 text-sm keep-all leading-relaxed" vid="202">수료자에게 기관 맞춤형 디자인의 공식 수료증을 발급하여 성취감을 부여합니다.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 md:p-8 border border-slate-200 shadow-sm flex flex-col hover:shadow-md transition-shadow" vid="203">
+                    <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-navy mb-5 shrink-0" vid="204">
+                        <i data-lucide="shield-check" class="w-6 h-6" vid="205"></i>
+                    </div>
+                    <h4 class="text-navy font-bold text-base md:text-lg mb-3 keep-all" vid="206">자격 인증 연동</h4>
+                    <p class="text-slate-500 text-sm keep-all leading-relaxed" vid="207">우수 수료자에게 교육원 공식 자격 뱃지 및 디지털 인증 프로필을 연동합니다.</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 md:p-8 border border-slate-200 shadow-sm flex flex-col hover:shadow-md transition-shadow" vid="208">
+                    <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center text-navy mb-5 shrink-0" vid="209">
+                        <i data-lucide="trending-up" class="w-6 h-6" vid="210"></i>
+                    </div>
+                    <h4 class="text-navy font-bold text-base md:text-lg mb-3 keep-all" vid="211">장기 추적 관리</h4>
+                    <p class="text-slate-500 text-sm keep-all leading-relaxed" vid="212">수료 후에도 참여자의 변화 곡선을 추적하여 장기적 성과 데이터를 축적합니다.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    
+    <section class="bg-slatebg py-24 md:py-32 px-6 border-t border-slate-200" vid="213">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-start" vid="214">
+            
+            <div class="md:col-span-4 md:sticky md:top-32 reveal-up" vid="215">
+                <span class="text-teal font-bold text-sm tracking-widest block mb-4" vid="216">FAQ VERIFICATION</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy leading-tight keep-all" vid="217">
+                    의뢰 전,<br vid="218">확인해보세요
+                </h2>
+                <div class="mt-6 w-12 h-1 bg-navy" vid="219"></div>
+                <p class="mt-6 text-slate-500 text-sm keep-all pr-4 leading-relaxed" vid="220">
+                    검사지 및 교구재 구매 및 활용과 관련하여 가장 자주 묻는 질문들을 모았습니다.
+                </p>
+            </div>
+
+            <div class="md:col-span-8 space-y-4 reveal-up" style="transition-delay: 200ms;" vid="221">
+                
+                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md" vid="222">
+                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none" vid="223">
+                        <span class="font-bold text-navy text-base md:text-lg pr-8 keep-all" vid="224">검사지는 구매 후 라이선스 기간이 있나요?</span>
+                        <div class="acc-icon shrink-0" vid="225">
+                            <div class="acc-line-h" vid="226"></div>
+                            <div class="acc-line-v" vid="227"></div>
+                        </div>
+                    </button>
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50" vid="228">
+                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 keep-all" vid="229">
+                            네, 모든 검사지는 기관 라이선스 기준으로 1년 단위 계약이 기본이며, 연장 시 추가 비용 혜택이 적용됩니다. 대학 및 공공기관은 다년 협약 시 특별 할인율이 제공됩니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md" vid="230">
+                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none" vid="231">
+                        <span class="font-bold text-navy text-base md:text-lg pr-8 keep-all" vid="232">교구재 키트는 한 세트당 몇 명까지 사용 가능한가요?</span>
+                        <div class="acc-icon shrink-0" vid="233">
+                            <div class="acc-line-h" vid="234"></div>
+                            <div class="acc-line-v" vid="235"></div>
+                        </div>
+                    </button>
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50" vid="236">
+                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 keep-all" vid="237">
+                            감정 코칭 카드덱 1세트는 1인~5인 소그룹 워크숍에 최적화되어 있으며, 집단 역학 보드게임은 4인~8인까지 사용 가능합니다. 대규모 인원 시에는 추가 세트 병행 구매를 권장드립니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md" vid="238">
+                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none" vid="239">
+                        <span class="font-bold text-navy text-base md:text-lg pr-8 keep-all" vid="240">검사지와 교구재 구매 시, 활용 교육도 함께 제공되나요?</span>
+                        <div class="acc-icon shrink-0" vid="241">
+                            <div class="acc-line-h" vid="242"></div>
+                            <div class="acc-line-v" vid="243"></div>
+                        </div>
+                    </button>
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50" vid="244">
+                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 keep-all" vid="245">
+                            네, 교구재 및 검사지를 구매하시는 기관 및 단체는 전문 지도사의 활용법 워크숍(2시간)을 무료로 제공받으실 수 있습니다. 심화 과정은 별도의 상담을 통해 신청 가능합니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md" vid="246">
+                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none" vid="247">
+                        <span class="font-bold text-navy text-base md:text-lg pr-8 keep-all" vid="248">수료증 디자인에 기관의 로고와 서명을 삽입할 수 있나요?</span>
+                        <div class="acc-icon shrink-0" vid="249">
+                            <div class="acc-line-h" vid="250"></div>
+                            <div class="acc-line-v" vid="251"></div>
+                        </div>
+                    </button>
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50" vid="252">
+                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 keep-all" vid="253">
+                            물론입니다. 단체 교육 수료증은 기관의 공식 로고, 담당자 서명, 교육 일자 등을 완벽하게 맞춤 제작하여 디지털 파일과 고급 인쇄물 모두 제공합니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md" vid="254">
+                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none" vid="255">
+                        <span class="font-bold text-navy text-base md:text-lg pr-8 keep-all" vid="256">디지털 자격 뱃지는 어떻게 활용할 수 있나요?</span>
+                        <div class="acc-icon shrink-0" vid="257">
+                            <div class="acc-line-h" vid="258"></div>
+                            <div class="acc-line-v" vid="259"></div>
+                        </div>
+                    </button>
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50" vid="260">
+                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 keep-all" vid="261">
+                            수료자는 개인 SNS, 이력서, LinkedIn 등에 QR코드 기반 디지털 배지를 임베드할 수 있으며, 기관은 내부 인재 관리 시스템과 연동하여 역량 데이터베이스를 구축할 수 있습니다.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <footer class="bg-[#0F172A] py-16 border-t border-white/5 relative overflow-hidden" vid="262">
+        <div class="max-w-7xl mx-auto px-6 relative z-10" vid="263">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-slate-800 pb-12 mb-8" vid="264">
+                <div vid="265">
+                    <div class="flex items-center gap-2 mb-6" vid="266">
+                        <div class="bg-slate-800 rounded p-1" vid="267">
+                            <i data-lucide="book-open-check" class="text-slate-300 w-5 h-5" vid="268"></i>
+                        </div>
+                        <span class="text-white font-bold text-xl tracking-tight" vid="269">한국자기이해교육원</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-slate-400 font-light keep-all" vid="270">
+                        <li vid="271"><span class="text-slate-500 font-medium mr-2" vid="272">대표자</span> 김대표</li>
+                        <li vid="273"><span class="text-slate-500 font-medium mr-2" vid="274">사업자등록번호</span> <span class="font-mono" vid="275">123-45-67890</span></li>
+                        <li vid="276"><span class="text-slate-500 font-medium mr-2" vid="277">민간자격등록번호</span> <span class="font-mono" vid="278">제 2026-001234 호</span></li>
+                        <li vid="279"><span class="text-slate-500 font-medium mr-2" vid="280">소재지</span> 서울특별시 강남구 테헤란로 123, 지식산업센터 15층</li>
+                    </ul>
+                </div>
+                <div class="flex gap-4" vid="281">
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors text-sm" vid="282">이용약관</a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors font-semibold text-sm" vid="283">개인정보처리방침</a>
+                </div>
+            </div>
+            <p class="text-slate-500 text-xs" vid="284">© 2026 KSUI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    
+    <script vid="285">
+        
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            
+            const d1Wrap = document.getElementById('dd1-wrap');
+            const btn1 = document.getElementById('btn-dd1');
+            const menu1 = document.getElementById('menu-dd1');
+            const icon1 = document.getElementById('icon-dd1');
+
+            const d2Wrap = document.getElementById('dd2-wrap');
+            const btn2 = document.getElementById('btn-dd2');
+            const menu2 = document.getElementById('menu-dd2');
+            const icon2 = document.getElementById('icon-dd2');
+
+            let d1Open = false;
+            let d2Open = false;
+
+            const close1 = () => {
+                d1Open = false;
+                menu1.classList.remove('active');
+                if (icon1) icon1.style.transform = 'rotate(0deg)';
+            };
+            const open1 = () => {
+                d1Open = true;
+                menu1.classList.add('active');
+                if (icon1) icon1.style.transform = 'rotate(180deg)';
+            };
+
+            const close2 = () => {
+                d2Open = false;
+                menu2.classList.remove('active');
+                if (icon2) icon2.style.transform = 'rotate(0deg)';
+            };
+            const open2 = () => {
+                d2Open = true;
+                menu2.classList.add('active');
+                if (icon2) icon2.style.transform = 'rotate(180deg)';
+            };
+
+            if (btn1) {
+                btn1.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (d1Open) {
+                        close1();
+                    } else {
+                        open1();
+                        if (d2Open) close2();
+                    }
+                });
+            }
+
+            if (btn2) {
+                btn2.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (d2Open) {
+                        close2();
+                    } else {
+                        open2();
+                        if (d1Open) close1();
+                    }
+                });
+            }
+
+            document.addEventListener('click', (e) => {
+                if (d1Open && d1Wrap && !d1Wrap.contains(e.target)) close1();
+                if (d2Open && d2Wrap && !d2Wrap.contains(e.target)) close2();
+            });
+
+            
+            setTimeout(() => {
+                const line1 = document.querySelector('.text-fill-anim.line-1');
+                if(line1) line1.classList.add('filled');
+                
+                setTimeout(() => {
+                    const line2 = document.querySelector('.text-fill-anim.line-2');
+                    if(line2) line2.classList.add('filled');
+                    
+                    setTimeout(() => {
+                        const subtext = document.getElementById('hero-subtext');
+                        if(subtext) {
+                            subtext.classList.remove('opacity-0', 'translate-y-4');
+                            subtext.style.transition = 'all 1s cubic-bezier(0.16, 1, 0.3, 1)';
+                        }
+                    }, 500); 
+                }, 1200); 
+            }, 300); 
+
+            
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+            document.querySelectorAll('.reveal-up').forEach(el => {
+                revealObserver.observe(el);
+            });
+
+            
+            const gridContainer = document.getElementById('grid-container');
+            if (gridContainer) {
+                const rowObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const rows = entry.target.querySelectorAll('.row-phase');
+                            rows.forEach((row, index) => {
+                                setTimeout(() => {
+                                    row.classList.add('active');
+                                }, index * 200); 
+                            });
+                            rowObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+                
+                rowObserver.observe(gridContainer);
+            }
+
+            
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.getAttribute('data-tab');
+                    
+                    
+                    tabBtns.forEach(b => {
+                        b.classList.remove('text-teal', 'font-bold', 'border-teal');
+                        b.classList.add('text-slate-500', 'border-transparent');
+                    });
+                    
+                    
+                    btn.classList.remove('text-slate-500', 'border-transparent');
+                    btn.classList.add('text-teal', 'font-bold', 'border-teal');
+                    
+                    
+                    tabContents.forEach(content => {
+                        content.classList.add('hidden');
+                        content.classList.remove('block');
+                        content.style.opacity = '0';
+                    });
+                    
+                    
+                    const targetContent = document.getElementById(targetId);
+                    if(targetContent) {
+                        targetContent.classList.remove('hidden');
+                        targetContent.classList.add('block');
+                        
+                        
+                        void targetContent.offsetWidth;
+                        targetContent.style.opacity = '1';
+                    }
+                });
+            });
+
+            
+            const accordions = document.querySelectorAll('.faq-item');
+            accordions.forEach(acc => {
+                const btn = acc.querySelector('button');
+                const content = acc.querySelector('.faq-content');
+
+                btn.addEventListener('click', () => {
+                    const isOpen = acc.classList.contains('active');
+
+                    
+                    accordions.forEach(a => {
+                        a.classList.remove('active');
+                        const c = a.querySelector('.faq-content');
+                        c.style.maxHeight = '0px';
+                        c.style.opacity = '0';
+                    });
+
+                    
+                    if (!isOpen) {
+                        acc.classList.add('active');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        content.style.opacity = '1';
+                    }
+                });
+            });
+
+        });
+    </script>
+
+
+</body></html>
