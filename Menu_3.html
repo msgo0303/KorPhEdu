@@ -84,20 +84,32 @@
 <body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-teal selection:text-white" vid="10">
 
     
-    <nav class="fixed w-full z-40 top-0 transition-all duration-300 bg-white shadow-sm py-3" id="navbar" vid="11">
-        <div class="max-w-7xl mx-auto px-6 py-1 flex justify-between items-center" vid="12">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='#'" vid="13">
-                <div class="bg-navy rounded-md p-1.5 shadow-sm" vid="14">
+    <nav class="fixed w-full z-50 top-0 bg-white shadow-sm py-4 transition-all duration-300" id="navbar" vid="11">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center relative z-50" id="nav-container" vid="12">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='Hero_real.html'" vid="13">
+                <div class="bg-navy rounded-md p-1.5" vid="14">
                     <i data-lucide="book-open-check" class="text-white w-5 h-5" vid="15"></i>
                 </div>
-                <span class="text-navy font-semibold tracking-tight text-lg transition-colors" id="nav-brand" vid="16">한국자기이해교육원</span>
+                <span class="text-navy font-bold tracking-tight text-lg" vid="16">한국자기이해교육원</span>
             </div>
             <div class="hidden md:flex gap-8 items-center" vid="17">
-                <a href="#" class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="18">기관소개</a>
-                <a href="#" class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="19">비즈니스</a>
-                
-                <a href="#hero" class="text-teal font-bold text-sm transition-colors" vid="20">연구진</a>
-                <a href="#consultation" class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors shadow-sm" vid="21">문의하기</a>
+                <a href="Menu_1.html" class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="18">기관소개</a>
+                <a href="Menu_2.html" class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="19">비즈니스</a>
+                <a href="#hero" class="nav-link text-teal font-bold text-sm transition-colors" vid="20">연구진</a>
+                <a href="Hero_real.html#contact" class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm" vid="21">문의하기</a>
+            </div>
+            
+            <button onclick="toggleMobileMenu()" class="block md:hidden text-slate-600 hover:text-navy focus:outline-none transition-colors" id="mobile-menu-btn">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div id="mobile-drawer" class="absolute top-full left-0 w-full bg-white shadow-md overflow-hidden transition-all duration-300 ease-in-out flex flex-col md:hidden" style="height: 0px; opacity: 0;">
+            <div class="py-6 px-6 flex flex-col gap-5 border-t border-slate-100" id="mobile-drawer-content">
+                <a href="Menu_1.html" class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">기관소개</a>
+                <a href="Menu_2.html" class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">비즈니스</a>
+                <a href="#hero" class="mobile-link text-teal font-bold text-base transition-colors py-1">연구진</a>
+                <a href="Hero_real.html#contact" class="mt-2 text-center bg-teal text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm">문의하기</a>
             </div>
         </div>
     </nav>
@@ -565,6 +577,46 @@
                     closeModal(overlay);
                 }
             });
+        });
+
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            if (!drawer) return;
+            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
+
+            if (isMenuOpen) {
+                drawer.style.height = '0px';
+                drawer.style.opacity = '0';
+                if (mobileBtn) mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+            } else {
+                drawer.style.height = 'auto';
+                const autoHeight = drawer.scrollHeight + 'px';
+                drawer.style.height = '0px';
+                
+                drawer.style.height = autoHeight;
+                drawer.style.opacity = '1';
+                if (mobileBtn) mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6" style="color: #0f172a;"></i>';
+            }
+            lucide.createIcons();
+        }
+
+        // 모바일 내비게이션 바 내부 클릭 시 이벤트 전파 차단
+        const navbarEl = document.querySelector('nav');
+        if (navbarEl) {
+            navbarEl.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+
+        // 화면의 다른 부분 클릭/터치 시 내비게이션 바 닫기
+        document.addEventListener('click', () => {
+            const drawer = document.getElementById('mobile-drawer');
+            if (!drawer) return;
+            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
+            if (isMenuOpen) {
+                toggleMobileMenu();
+            }
         });
     </script>
 
