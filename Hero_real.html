@@ -862,6 +862,19 @@
             }
         }
 
+        // 모바일 내비게이션 바 내부 클릭 시 이벤트 전파 차단
+        navbar.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // 화면의 다른 부분 클릭/터치 시 내비게이션 바 닫기
+        document.addEventListener('click', () => {
+            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
+            if (isMenuOpen) {
+                toggleMobileMenu();
+            }
+        });
+
         // 3. 인터랙션 무옵션 IntersectionObserver 애니메이션 (기존 로직 유지)
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
         const observer = new IntersectionObserver((entries, observer) => {

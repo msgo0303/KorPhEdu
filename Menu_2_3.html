@@ -1146,6 +1146,24 @@
             }
             lucide.createIcons();
         }
+
+        // 모바일 내비게이션 바 내부 클릭 시 이벤트 전파 차단
+        const navbarEl = document.querySelector('nav');
+        if (navbarEl) {
+            navbarEl.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+
+        // 화면의 다른 부분 클릭/터치 시 내비게이션 바 닫기
+        document.addEventListener('click', () => {
+            const drawer = document.getElementById('mobile-drawer');
+            if (!drawer) return;
+            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
+            if (isMenuOpen) {
+                toggleMobileMenu();
+            }
+        });
     </script>
 
 
