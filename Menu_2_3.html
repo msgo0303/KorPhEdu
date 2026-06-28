@@ -133,6 +133,25 @@
             transform: scale(1) translateY(0);
             opacity: 1;
         }
+        
+        #card-detail-modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #card-detail-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        #card-detail-card {
+            transform: scale(0.95) translateY(10px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #card-detail-modal.show #card-detail-card {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-teal selection:text-white" vid="10">
@@ -140,17 +159,17 @@
     
     <nav class="fixed w-full z-50 top-0 bg-white shadow-sm py-4 transition-all duration-300" vid="11">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center" vid="12">
-            <div class="flex items-center gap-3 cursor-pointer" vid="13">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='Hero_real.html'" vid="13">
                 <div class="bg-navy rounded-md p-1.5" vid="14">
                     <i data-lucide="book-open-check" class="text-white w-5 h-5" vid="15"></i>
                 </div>
                 <span class="text-navy font-bold tracking-tight text-lg" vid="16">한국자기이해교육원</span>
             </div>
             <div class="hidden md:flex gap-8 items-center" vid="17">
-                <a href="#" class="text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="18">기관소개</a>
-                <a href="#" class="text-navy font-bold text-sm transition-colors border-b-2 border-navy pb-0.5" vid="19">비즈니스</a>
-                <a href="#" class="text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="20">연구진</a>
-                <a href="#" class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm" vid="21">문의하기</a>
+                <a href="Menu_1.html" class="text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="18">기관소개</a>
+                <a href="Menu_2.html" class="text-navy font-bold text-sm transition-colors border-b-2 border-navy pb-0.5" vid="19">비즈니스</a>
+                <a href="Hero_real.html#partners" class="text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="20">연구진</a>
+                <a href="Hero_real.html#contact" class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm" vid="21">문의하기</a>
             </div>
         </div>
     </nav>
@@ -714,6 +733,32 @@
         </div>
     </div>
 
+    <!-- 카드 상세 정보 모달 -->
+    <div id="card-detail-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" vid="card-detail-modal-wrap">
+        <div id="card-detail-card" class="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-xl w-full relative" vid="card-detail-modal-inner">
+            <!-- X Close Button -->
+            <button type="button" id="close-card-detail-btn" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 focus:outline-none" vid="card-detail-close-x">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <h3 id="card-detail-title" class="text-xl md:text-2xl font-bold text-navy mb-4 keep-all" vid="card-detail-title-txt">카드 제목</h3>
+            
+            <div class="mb-6 rounded-xl overflow-hidden aspect-[16/9] w-full bg-slate-100 relative" vid="card-detail-img-wrap">
+                <img id="card-detail-image" src="" alt="상세 이미지" class="w-full h-full object-cover">
+            </div>
+
+            <div class="text-slate-600 text-sm md:text-base leading-relaxed keep-all border-t border-slate-100 pt-4" id="card-detail-desc" vid="card-detail-body-txt">
+                상세 설명 텍스트
+            </div>
+            
+            <div class="mt-6 flex justify-end" vid="card-detail-footer">
+                <button type="button" id="confirm-card-detail-btn" class="w-full sm:w-auto bg-teal hover:bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-sm focus:outline-none" vid="card-detail-confirm-btn">
+                    닫기
+                </button>
+            </div>
+        </div>
+    </div>
+
     <footer class="bg-[#0F172A] py-16 border-t border-white/5 relative overflow-hidden" vid="262">
         <div class="max-w-7xl mx-auto px-6 relative z-10" vid="263">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-slate-800 pb-12 mb-8" vid="264">
@@ -974,6 +1019,94 @@
                 privacyModal.addEventListener('click', (e) => {
                     if (e.target === privacyModal) {
                         hidePrivacy();
+                    }
+                });
+            }
+
+            // Card Detail Popup logic
+            const cardDetails = [
+                {
+                    title: "전문가용 다면적 분석 검사지",
+                    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop",
+                    desc: "전문가용 다면적 분석 검사지는 개인의 타고난 성격 기질과 후천적 성격 발달 상태를 입체적으로 분석합니다. 심도 있는 기질 유형 분류와 사회 행동 양식, 갈등 대처 메커니즘을 과학적 척도를 기반으로 진단하여 1:1 심층 상담 및 소그룹 코칭의 정밀한 가이드라인을 제공합니다."
+                },
+                {
+                    title: "기업형 집단 진단 워크북",
+                    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop",
+                    desc: "기업형 집단 진단 워크북은 부서 및 조직 단위의 소통 역량과 협업 시너지를 향상시키기 위한 그룹 진단 솔루션입니다. 구성원들의 업무 소통 스타일 분석, 리더십 스타일 분석 및 부서별 역량 매핑을 통해 최적의 인적 배치와 팀워크 활성화 로드맵을 수립하도록 돕습니다."
+                },
+                {
+                    title: "청년 진로 정체성 탐색지",
+                    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1000&auto=format&fit=crop",
+                    desc: "청년 진로 정체성 탐색지는 급변하는 고용 환경 속에서 청년층이 자신만의 고유한 강점과 직업 가치관을 탐색할 수 있도록 설계된 자아 분석 도구입니다. 성향 맞춤형 진로 탐색 가이드와 잠재 직무 매칭 정보를 제공하여 진로 결정 효능감을 크게 향상시킵니다."
+                },
+                {
+                    title: "감정 분류 카드덱 (EC-Deck)",
+                    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1000&auto=format&fit=crop",
+                    desc: "감정 분류 카드덱은 말로 표현하기 어려운 섬세한 내면의 감정을 시각적 일러스트와 텍스트를 통해 직관적으로 인지하고 표현할 수 있게 돕는 정서 매개 도구입니다. 개인 상담뿐 아니라 가족 상담, 청소년 집단 교육 프로그램 등에서 대화 촉진 및 공감대 형성에 널리 쓰입니다."
+                },
+                {
+                    title: "집단 역학 보드게임 키트",
+                    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000&auto=format&fit=crop",
+                    desc: "집단 역학 보드게임 키트는 게임 기반 학습(GBL) 방식을 도입하여, 팀 내에서 자연스럽게 발생하는 갈등 상황과 협업 구조를 시뮬레이션하는 게이미피케이션 교육 도구입니다. 게임 플레이 과정을 분석하여 상호 신뢰와 소통 방식을 주도적으로 피드백하고 깨닫게 해줍니다."
+                },
+                {
+                    title: "오프라인 워크숍 실습 툴킷",
+                    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1000&auto=format&fit=crop",
+                    desc: "오프라인 워크숍 실습 툴킷은 교육 현장에서 몰입도를 극대화할 수 있는 다채로운 시각 보조 교구들의 패키지입니다. 대형 플립차트, 참여형 미션 포스터, 스티커 킷트 등으로 구성되어 강사 중심의 강의를 넘어 전원이 적극적으로 참여하고 발표하는 자기주도식 학습을 지원합니다."
+                },
+                {
+                    title: "수료증 디자인 시스템",
+                    image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=1000&auto=format&fit=crop",
+                    desc: "수료증 디자인 시스템은 수료증의 신뢰도와 가치를 높이기 위해 제공되는 커스텀 브랜딩 서비스입니다. 고품질 텍스처 수입지와 특수 가공(금박/은박) 처리를 통해 완벽히 맞춤 디자인된 인쇄물 수료증과 모바일 및 메일 송부용 디지털 수료증 파일을 함께 제공합니다."
+                },
+                {
+                    title: "디지털 자격 뱃지",
+                    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1000&auto=format&fit=crop",
+                    desc: "디지털 자격 뱃지는 블록체인 및 대체 불가능 기술을 응용한 스마트 교육 인증 서비스입니다. 위변조가 불가능한 개별 고유 ID와 QR코드가 부여되며, 수료자들은 이를 개인 이력서, 링크드인 프로필, 소셜 미디어 등에 직접 첨부하여 대외 공신력을 손쉽게 검증받을 수 있습니다."
+                },
+                {
+                    title: "우수 강사 인증 배지",
+                    image: "https://images.unsplash.com/photo-1521791136364-7286472b5899?q=80&w=1000&auto=format&fit=crop",
+                    desc: "우수 강사 인증 배지는 최우수 교육 만족도를 달성했거나 강사 인프라에서 활발하게 활약하는 파트너들을 위한 교육원의 연례 우수 등급 라이선스 표식입니다. 이 인증 마크는 대외 비즈니스 미팅과 강의 수임 시, 교육원이 공식 품질을 보증하는 징표 역할을 하여 신뢰를 공고히 합니다."
+                }
+            ];
+
+            const cardDetailModal = document.getElementById('card-detail-modal');
+            const cardDetailTitle = document.getElementById('card-detail-title');
+            const cardDetailImage = document.getElementById('card-detail-image');
+            const cardDetailDesc = document.getElementById('card-detail-desc');
+            const closeCardDetailBtn = document.getElementById('close-card-detail-btn');
+            const confirmCardDetailBtn = document.getElementById('confirm-card-detail-btn');
+
+            const cardButtons = document.querySelectorAll('.tab-content .grid button');
+
+            cardButtons.forEach((btn, idx) => {
+                if (cardDetails[idx]) {
+                    btn.addEventListener('click', () => {
+                        const data = cardDetails[idx];
+                        cardDetailTitle.textContent = data.title;
+                        cardDetailImage.src = data.image;
+                        cardDetailImage.alt = data.title;
+                        cardDetailDesc.textContent = data.desc;
+                        cardDetailModal.classList.add('show');
+                    });
+                }
+            });
+
+            const hideCardDetail = () => {
+                if (cardDetailModal) {
+                    cardDetailModal.classList.remove('show');
+                }
+            };
+
+            if (closeCardDetailBtn) closeCardDetailBtn.addEventListener('click', hideCardDetail);
+            if (confirmCardDetailBtn) confirmCardDetailBtn.addEventListener('click', hideCardDetail);
+
+            if (cardDetailModal) {
+                cardDetailModal.addEventListener('click', (e) => {
+                    if (e.target === cardDetailModal) {
+                        hideCardDetail();
                     }
                 });
             }
