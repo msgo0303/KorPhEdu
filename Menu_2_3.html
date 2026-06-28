@@ -95,7 +95,44 @@
         .faq-item.active .acc-line-v { transform: rotate(90deg); }
         .faq-item.active .acc-line-h { background-color: #0F766E; }
         .faq-item.active .acc-line-v { background-color: #0F766E; }
-
+        
+        #success-modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #success-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        #modal-card {
+            transform: scale(0.95) translateY(10px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #success-modal.show #modal-card {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+        
+        #privacy-modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #privacy-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        #privacy-modal-card {
+            transform: scale(0.95) translateY(10px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #privacy-modal.show #privacy-modal-card {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-teal selection:text-white" vid="10">
@@ -119,7 +156,7 @@
     </nav>
 
     
-    <section class="pt-32 pb-24 px-6 bg-white relative overflow-hidden flex flex-col justify-center border-b border-slate-100" vid="22">
+    <section class="pt-32 pb-24 px-6 bg-white relative overflow-hidden min-h-[60vh] flex flex-col justify-center border-b border-slate-100" vid="22">
         <div class="max-w-7xl mx-auto w-full relative z-10" vid="23">
             
             
@@ -566,7 +603,117 @@
         </div>
     </section>
 
-    
+    <section class="py-24 px-6 bg-slatebg relative border-t border-slate-200/50" vid="254">
+        <div class="max-w-4xl mx-auto" vid="255">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200/60 p-8 md:p-12 reveal-up" vid="256">
+                
+                <div class="text-center mb-10" vid="257">
+                    <h3 class="text-2xl md:text-3xl font-bold text-navy keep-all" vid="258">연락처를 남겨주시면 빠른 시일 내로 확인 후 연락드리겠습니다.</h3>
+                </div>
+
+                <form id="consultation-form" class="space-y-6" vid="259">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" vid="260">
+                        
+                        
+                        <div class="col-span-1" vid="261">
+                            <label for="frm-name" class="block text-sm font-medium text-slate-500 mb-2" vid="262">이름</label>
+                            <input type="text" id="frm-name" required="" class="w-full bg-slatebg border border-slate-200 text-slate-900 rounded-lg focus:ring-4 focus:ring-teal/20 focus:border-teal block p-3.5 transition-colors outline-none" placeholder="홍길동" vid="263">
+                        </div>
+
+                        
+                        <div class="col-span-1" vid="264">
+                            <label for="frm-phone" class="block text-sm font-medium text-slate-500 mb-2" vid="265">연락처</label>
+                            <input type="tel" id="frm-phone" required="" class="w-full bg-slatebg border border-slate-200 text-slate-900 rounded-lg focus:ring-4 focus:ring-teal/20 focus:border-teal block p-3.5 transition-colors outline-none" placeholder="010-1234-5678" vid="266">
+                        </div>
+
+                        
+                        <div class="col-span-1 md:col-span-2" vid="267">
+                            <label for="frm-email" class="block text-sm font-medium text-slate-500 mb-2" vid="268">이메일</label>
+                            <input type="email" id="frm-email" required="" class="w-full bg-slatebg border border-slate-200 text-slate-900 rounded-lg focus:ring-4 focus:ring-teal/20 focus:border-teal block p-3.5 transition-colors outline-none" placeholder="example@ksui.co.kr" vid="269">
+                        </div>
+
+                        
+                        <div class="col-span-1 md:col-span-2" vid="270">
+                            <label for="frm-message" class="block text-sm font-medium text-slate-500 mb-2" vid="271">문의내용</label>
+                            <textarea id="frm-message" rows="5" required="" class="w-full bg-slatebg border border-slate-200 text-slate-900 rounded-lg focus:ring-4 focus:ring-teal/20 focus:border-teal block p-3.5 transition-colors outline-none resize-none" placeholder="문의하실 내용을 상세히 적어주세요." vid="272"></textarea>
+                        </div>
+                    </div>
+
+                    
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-6 mt-8 pt-6 border-t border-slate-100" vid="273">
+                        <div class="flex items-center w-full md:w-auto" vid="274">
+                            <input id="frm-consent" type="checkbox" required="" class="w-4 h-4 text-teal bg-slatebg border-slate-300 rounded focus:ring-teal focus:ring-2 cursor-pointer" vid="275">
+                            <label for="frm-consent" class="ml-2 text-sm font-medium text-slate-600 cursor-pointer" vid="276">개인정보 수집 및 이용에 동의합니다.</label>
+                            <button type="button" id="btn-privacy-detail" class="ml-2 text-sm text-teal hover:text-teal-600 underline underline-offset-2 shrink-0 focus:outline-none" vid="277">[자세히보기]</button>
+                        </div>
+                        
+                        <button type="submit" class="w-full md:w-auto text-white bg-navy hover:bg-navy-dark focus:ring-4 focus:ring-navy/30 font-medium rounded-lg text-base px-8 py-3.5 text-center transition-colors shadow-sm focus:outline-none" vid="278">
+                            문의 접수하기
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 개인정보 처리방침 모달 -->
+    <div id="privacy-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" vid="privacy-modal-wrap">
+        <div id="privacy-modal-card" class="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-xl w-full relative" vid="privacy-modal-inner">
+            <!-- X Close Button -->
+            <button type="button" id="close-privacy-btn" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 focus:outline-none" vid="privacy-close-x">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <h3 class="text-xl font-bold text-navy mb-4" vid="privacy-title">개인정보 수집 및 이용 동의</h3>
+            
+            <div class="text-slate-600 text-sm leading-relaxed overflow-y-auto max-h-[50vh] pr-2 space-y-4 text-left border-y border-slate-100 py-4" vid="privacy-body">
+                <p>한국자기이해교육원(이하 '교육원')은 고객 문의 응대 및 서비스 제공을 위해 아래와 같이 개인정보를 수집 및 이용합니다.</p>
+                
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-1">1. 수집하는 개인정보 항목</h4>
+                    <p>수집 항목: 성명, 연락처(전화번호), 이메일 주소, 소속 기관명, 문의 내용</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-1">2. 개인정보의 수집 및 이용 목적</h4>
+                    <p>목적: 문의 사항 확인, 답변 전달 및 상담 진행을 위한 의사소통 경로 확보</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-1">3. 개인정보의 보유 및 이용 기간</h4>
+                    <p>보유 기간: 법령에 따른 보존 기간 또는 목적 달성 후 지체 없이 파기 (최대 1년 보존)</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-1">4. 동의 거부 권리 및 불이익</h4>
+                    <p>고객님은 개인정보 수집 및 이용 동의를 거부할 권리가 있습니다. 단, 동의하지 않으실 경우 상담 서비스 접수 및 이용이 제한됩니다.</p>
+                </div>
+            </div>
+            
+            <div class="mt-6 flex justify-end" vid="privacy-footer">
+                <button type="button" id="confirm-privacy-btn" class="w-full sm:w-auto bg-teal hover:bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-sm focus:outline-none" vid="privacy-confirm-btn">
+                    확인
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="success-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" vid="279">
+        <div id="modal-card" class="bg-white rounded-2xl shadow-2xl p-8 md:p-10 max-w-md w-full text-center relative" vid="280">
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-teal/10 mb-6" vid="281">
+                <i data-lucide="check-circle" class="w-8 h-8 text-teal" vid="282"></i>
+            </div>
+            <h4 class="text-xl font-bold text-navy mb-3 keep-all" vid="283">접수 완료</h4>
+            <p class="text-slate-600 leading-relaxed text-sm md:text-base keep-all mb-8" vid="284">
+                문의 접수가 완료되었습니다.<br vid="285">담당 연구원이 확인 후 신속하게 답변드리겠습니다. 감사합니다.
+            </p>
+            <button id="close-modal-btn" type="button" class="w-full text-white bg-navy hover:bg-navy-dark focus:ring-4 focus:ring-navy/30 font-medium rounded-lg text-base px-5 py-3 transition-colors focus:outline-none" vid="286">
+                확인
+            </button>
+        </div>
+    </div>
+
     <footer class="bg-[#0F172A] py-16 border-t border-white/5 relative overflow-hidden" vid="262">
         <div class="max-w-7xl mx-auto px-6 relative z-10" vid="263">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-slate-800 pb-12 mb-8" vid="264">
@@ -782,6 +929,54 @@
                 });
             });
 
+            // Inquiry Form & Success Modal logic
+            const form = document.getElementById('consultation-form');
+            const modal = document.getElementById('success-modal');
+            const closeBtn = document.getElementById('close-modal-btn');
+
+            if(form && modal && closeBtn) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault(); 
+                    modal.classList.add('show');
+                    form.reset();
+                });
+
+                closeBtn.addEventListener('click', () => {
+                    modal.classList.remove('show');
+                });
+
+                modal.addEventListener('click', (e) => {
+                    if(e.target === modal) {
+                        modal.classList.remove('show');
+                    }
+                });
+            }
+
+            // Privacy Modal logic
+            const privacyBtn = document.getElementById('btn-privacy-detail');
+            const privacyModal = document.getElementById('privacy-modal');
+            const closePrivacyBtn = document.getElementById('close-privacy-btn');
+            const confirmPrivacyBtn = document.getElementById('confirm-privacy-btn');
+
+            if (privacyBtn && privacyModal) {
+                privacyBtn.addEventListener('click', () => {
+                    privacyModal.classList.add('show');
+                });
+
+                const hidePrivacy = () => {
+                    privacyModal.classList.remove('show');
+                };
+
+                if (closePrivacyBtn) closePrivacyBtn.addEventListener('click', hidePrivacy);
+                if (confirmPrivacyBtn) confirmPrivacyBtn.addEventListener('click', hidePrivacy);
+
+                // Hide when clicking outside the modal card
+                privacyModal.addEventListener('click', (e) => {
+                    if (e.target === privacyModal) {
+                        hidePrivacy();
+                    }
+                });
+            }
         });
     </script>
 
