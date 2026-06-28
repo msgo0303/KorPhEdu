@@ -85,6 +85,30 @@
             transform: translateY(0);
         }
 
+        .card-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+
+        .card-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 🎯 transition-delay 브라우저 강제 주입 클래스 (Tailwind 기본값 누락 해결) */
+        .delay-100 { transition-delay: 100ms !important; }
+        .delay-200 { transition-delay: 200ms !important; }
+        .delay-300 { transition-delay: 300ms !important; }
+        .delay-400 { transition-delay: 400ms !important; }
+        .delay-500 { transition-delay: 500ms !important; }
+
+        @media (min-width: 768px) {
+            .md\:delay-100 { transition-delay: 100ms !important; }
+            .md\:delay-200 { transition-delay: 200ms !important; }
+            .md\:delay-300 { transition-delay: 300ms !important; }
+        }
+
 
         .line-clamp-2 {
             display: -webkit-box;
@@ -554,7 +578,7 @@
                 <!-- 파트너 강사진 카드 끝 -->
                 <article
                     class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[420px] group transition-shadow hover:shadow-md"
-                    vid="183">
+                                vid="183">
                     <div class="h-[40%] relative overflow-hidden bg-slate-100 flex items-center justify-center"
                         vid="184">
                         <i data-lucide="users" class="w-16 h-16 text-slate-300" vid="185"></i>
@@ -592,7 +616,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-6 gap-6" vid="198">
 
-                <div class="md:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-navy hover:shadow-md transition-shadow reveal delay-100"
+                <div class="md:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-navy hover:shadow-md card-reveal md:delay-100"
                     vid="199">
                     <div class="flex justify-between items-start mb-4">
                         <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter" vid="200">01</div>
@@ -604,7 +628,7 @@
                         가치를 창출할 수 있도록 돕습니다.</p>
                 </div>
 
-                <div class="md:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-teal hover:shadow-md transition-shadow reveal delay-200"
+                <div class="md:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-teal hover:shadow-md card-reveal md:delay-200"
                     vid="204">
                     <div class="flex justify-between items-start mb-4">
                         <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter" vid="205">02</div>
@@ -616,7 +640,7 @@
                         상향 표준화합니다.</p>
                 </div>
 
-                <div class="md:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-navy hover:shadow-md transition-shadow reveal delay-300"
+                <div class="md:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-navy hover:shadow-md card-reveal md:delay-300"
                     vid="209">
                     <div class="flex justify-between items-start mb-4">
                         <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter" vid="210">03</div>
@@ -628,7 +652,7 @@
                         솔루션으로 확장합니다.</p>
                 </div>
 
-                <div class="md:col-span-3 md:col-start-1 lg:col-span-2 lg:col-start-2 bg-slatebg p-8 rounded-lg border-t-4 border-teal hover:shadow-md transition-shadow reveal delay-400"
+                <div class="md:col-span-3 md:col-start-1 lg:col-span-2 lg:col-start-2 bg-slatebg p-8 rounded-lg border-t-4 border-teal hover:shadow-md card-reveal md:delay-100"
                     vid="214">
                     <div class="flex justify-between items-start mb-4" vid="215">
                         <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter" vid="216">04</div>
@@ -640,7 +664,7 @@
                         격차를 해소합니다.</p>
                 </div>
 
-                <div class="md:col-span-3 lg:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-navy hover:shadow-md transition-shadow reveal delay-500"
+                <div class="md:col-span-3 lg:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-navy hover:shadow-md card-reveal md:delay-200"
                     vid="221">
                     <div class="flex justify-between items-start mb-4" vid="222">
                         <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter" vid="223">05</div>
@@ -885,7 +909,7 @@
                 }
             });
         }, observerOptions);
-        document.querySelectorAll('.reveal').forEach(el => { observer.observe(el); });
+        document.querySelectorAll('.reveal, .card-reveal').forEach(el => { observer.observe(el); });
 
         // 4. 비즈니스 탭 메뉴 스위칭 (기존 로직 유지)
         const tabBtns = document.querySelectorAll('.tab-btn');
