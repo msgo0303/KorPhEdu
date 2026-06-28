@@ -1,0 +1,571 @@
+<html lang="ko" class="scroll-smooth" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">연구진 소개 | 한국자기이해교육원 KSUT</title>
+    
+    
+    <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" vid="5">
+    
+    
+    <script src="https://cdn.tailwindcss.com/3.4.17" vid="6"></script>
+    
+    
+    <script src="https://unpkg.com/lucide@latest" vid="7"></script>
+
+    
+    <script vid="8">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { DEFAULT: '#1E3A8A', light: '#2563EB', dark: '#172B66' },
+                        teal: { DEFAULT: '#0F766E', light: '#14B8A6', dark: '#0B5953' },
+                        slatebg: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Pretendard', 'sans-serif'],
+                    },
+                    transitionTimingFunction: {
+                        'spring': 'cubic-bezier(0.16, 1, 0.3, 1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style vid="9">
+        body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .break-keep { word-break: keep-all; }
+        
+        
+        .reveal { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        .reveal.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
+        
+        .hero-text {
+            opacity: 0;
+            transform: translateY(2rem);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hero-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
+        .modal-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-card {
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .modal-overlay.show .modal-card {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-teal selection:text-white" vid="10">
+
+    
+    <nav class="fixed w-full z-40 top-0 transition-all duration-300 bg-white shadow-sm py-3" id="navbar" vid="11">
+        <div class="max-w-7xl mx-auto px-6 py-1 flex justify-between items-center" vid="12">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='#'" vid="13">
+                <div class="bg-navy rounded-md p-1.5 shadow-sm" vid="14">
+                    <i data-lucide="book-open-check" class="text-white w-5 h-5" vid="15"></i>
+                </div>
+                <span class="text-navy font-semibold tracking-tight text-lg transition-colors" id="nav-brand" vid="16">한국자기이해교육원</span>
+            </div>
+            <div class="hidden md:flex gap-8 items-center" vid="17">
+                <a href="#" class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="18">기관소개</a>
+                <a href="#" class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="19">비즈니스</a>
+                
+                <a href="#hero" class="text-teal font-bold text-sm transition-colors" vid="20">연구진</a>
+                <a href="#consultation" class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors shadow-sm" vid="21">문의하기</a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <header id="hero" class="pt-32 pb-16 px-6 relative overflow-hidden bg-white" vid="22">
+        <div class="max-w-7xl mx-auto flex flex-col items-center text-center" vid="23">
+            <h1 class="hero-text text-4xl md:text-5xl font-extrabold text-navy mb-4 tracking-tight break-keep" id="hero-title" vid="24">연구진 소개</h1>
+            <p class="hero-text text-base md:text-lg text-slate-500 font-light break-keep" id="hero-subtitle" vid="25">신뢰할 수 있는 경험과 노하우</p>
+            
+            
+            <div class="w-full h-[300px] md:h-[450px] relative overflow-hidden rounded-2xl shadow-sm mt-8 hero-text delay-300" id="hero-window" vid="26">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&amp;w=2000&amp;auto=format&amp;fit=crop" alt="Research Center" id="parallax-img" class="absolute inset-0 w-full h-full object-cover scale-110 will-change-transform" vid="27">
+                <div class="absolute inset-0 bg-navy/20 mix-blend-multiply" vid="28"></div>
+            </div>
+        </div>
+    </header>
+
+    
+    <section id="faculty" class="py-24 px-6 bg-white max-w-7xl mx-auto border-t border-slate-100" vid="29">
+        <div class="mb-16 reveal" vid="30">
+            <h2 class="text-3xl md:text-4xl font-bold text-navy tracking-tight mb-4 break-keep" vid="31">연구와 데이터에 기반한 솔루션</h2>
+            <p class="text-slate-600 text-lg max-w-3xl leading-relaxed break-keep" vid="32">학술적 엄밀함과 풍부한 현장 임상 경험을 결합하여, 최고의 자기이해 지표와 교육 모듈을 개척하는 핵심 의원단입니다.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" vid="33">
+            
+            <article class="flex flex-col gap-6 items-center bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition reveal delay-100" vid="34">
+                <div class="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-sm flex-shrink-0" vid="35">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="홍길동 박사" class="w-full h-full object-cover object-top" vid="36">
+                </div>
+                <div class="flex flex-col justify-center items-center text-center w-full" vid="37">
+                    <div class="mb-6" vid="38">
+                        <h3 class="text-2xl font-bold text-navy mb-1" vid="39">홍길동 박사</h3>
+                        <p class="text-teal font-medium text-sm tracking-wider uppercase" vid="40">상임 연구위원</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-600 text-sm mb-6 w-full max-w-xs mx-auto" vid="41">
+                        <div class="flex items-center justify-center gap-2" vid="42">
+                            <i data-lucide="phone" class="w-4 h-4 text-slate-400" vid="43"></i>
+                            <span vid="44">02-1234-5678</span>
+                        </div>
+                        <div class="flex items-center justify-center gap-2" vid="45">
+                            <i data-lucide="mail" class="w-4 h-4 text-slate-400" vid="46"></i>
+                            <span vid="47">hong@ksui.ac.kr</span>
+                        </div>
+                    </div>
+                    <button class="modal-trigger inline-flex items-center justify-center gap-2 px-5 py-2 border border-teal/40 text-teal rounded-full text-sm font-medium hover:bg-teal hover:text-white hover:border-teal transition-all duration-300 group" data-target="modal-member-1" vid="48">
+                        [자세히 보기] <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" vid="49"></i>
+                    </button>
+                </div>
+            </article>
+
+            
+            <article class="flex flex-col gap-6 items-center bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition reveal delay-200" vid="50">
+                <div class="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-sm flex-shrink-0 bg-slate-100" vid="51">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="김지영 연구원" class="w-full h-full object-cover object-top" vid="52">
+                </div>
+                <div class="flex flex-col justify-center items-center text-center w-full" vid="53">
+                    <div class="mb-6" vid="54">
+                        <h3 class="text-2xl font-bold text-navy mb-1" vid="55">김지영 연구원</h3>
+                        <p class="text-teal font-medium text-sm tracking-wider uppercase" vid="56">수석 강사 / 이사</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-600 text-sm mb-6 w-full max-w-xs mx-auto" vid="57">
+                        <div class="flex items-center justify-center gap-2" vid="58">
+                            <i data-lucide="phone" class="w-4 h-4 text-slate-400" vid="59"></i>
+                            <span vid="60">02-1234-5679</span>
+                        </div>
+                        <div class="flex items-center justify-center gap-2" vid="61">
+                            <i data-lucide="mail" class="w-4 h-4 text-slate-400" vid="62"></i>
+                            <span vid="63">kim@ksui.ac.kr</span>
+                        </div>
+                    </div>
+                    <button class="modal-trigger inline-flex items-center justify-center gap-2 px-5 py-2 border border-teal/40 text-teal rounded-full text-sm font-medium hover:bg-teal hover:text-white hover:border-teal transition-all duration-300 group" data-target="modal-member-2" vid="64">
+                        [자세히 보기] <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" vid="65"></i>
+                    </button>
+                </div>
+            </article>
+
+            
+            <article class="flex flex-col gap-6 items-center bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition reveal delay-300" vid="66">
+                <div class="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-sm flex-shrink-0 bg-slate-100" vid="67">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="이진우 박사" class="w-full h-full object-cover object-top" vid="68">
+                </div>
+                <div class="flex flex-col justify-center items-center text-center w-full" vid="69">
+                    <div class="mb-6" vid="70">
+                        <h3 class="text-2xl font-bold text-navy mb-1" vid="71">이진우 박사</h3>
+                        <p class="text-teal font-medium text-sm tracking-wider uppercase" vid="72">데이터 분석 센터장</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-600 text-sm mb-6 w-full max-w-xs mx-auto" vid="73">
+                        <div class="flex items-center justify-center gap-2" vid="74">
+                            <i data-lucide="phone" class="w-4 h-4 text-slate-400" vid="75"></i>
+                            <span vid="76">02-1234-5680</span>
+                        </div>
+                        <div class="flex items-center justify-center gap-2" vid="77">
+                            <i data-lucide="mail" class="w-4 h-4 text-slate-400" vid="78"></i>
+                            <span vid="79">lee@ksui.ac.kr</span>
+                        </div>
+                    </div>
+                    <button class="modal-trigger inline-flex items-center justify-center gap-2 px-5 py-2 border border-teal/40 text-teal rounded-full text-sm font-medium hover:bg-teal hover:text-white hover:border-teal transition-all duration-300 group" data-target="modal-member-3" vid="80">
+                        [자세히 보기] <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" vid="81"></i>
+                    </button>
+                </div>
+            </article>
+
+            
+            <article class="flex flex-col gap-6 items-center bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition reveal delay-400" vid="82">
+                <div class="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden shadow-sm flex-shrink-0 bg-slate-100" vid="83">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="박서연 박사" class="w-full h-full object-cover object-top" vid="84">
+                </div>
+                <div class="flex flex-col justify-center items-center text-center w-full" vid="85">
+                    <div class="mb-6" vid="86">
+                        <h3 class="text-2xl font-bold text-navy mb-1" vid="87">박서연 박사</h3>
+                        <p class="text-teal font-medium text-sm tracking-wider uppercase" vid="88">임상 심리 연구위원</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-600 text-sm mb-6 w-full max-w-xs mx-auto" vid="89">
+                        <div class="flex items-center justify-center gap-2" vid="90">
+                            <i data-lucide="phone" class="w-4 h-4 text-slate-400" vid="91"></i>
+                            <span vid="92">02-1234-5681</span>
+                        </div>
+                        <div class="flex items-center justify-center gap-2" vid="93">
+                            <i data-lucide="mail" class="w-4 h-4 text-slate-400" vid="94"></i>
+                            <span vid="95">park@ksui.ac.kr</span>
+                        </div>
+                    </div>
+                    <button class="modal-trigger inline-flex items-center justify-center gap-2 px-5 py-2 border border-teal/40 text-teal rounded-full text-sm font-medium hover:bg-teal hover:text-white hover:border-teal transition-all duration-300 group" data-target="modal-member-4" vid="96">
+                        [자세히 보기] <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" vid="97"></i>
+                    </button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    
+    <section id="consultation" class="bg-slate-50 border-t border-b border-slate-200/60 py-24 px-6 text-center" vid="98">
+        <div class="max-w-4xl mx-auto" vid="99">
+            <h2 class="text-3xl md:text-4xl font-bold text-navy tracking-tight reveal break-keep" vid="100">각종 분야의 전문가를 만나보세요</h2>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-12 w-full max-w-md mx-auto sm:max-w-none reveal delay-200" vid="101">
+                
+                <button class="modal-trigger bg-navy text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-navy-dark transition shadow-sm flex items-center justify-center gap-2" data-target="modal-search" vid="102">
+                    <i data-lucide="search" class="w-5 h-5" vid="103"></i> 전문가 검색
+                </button>
+                
+                <button class="modal-trigger bg-white text-navy border-2 border-navy px-8 py-4 rounded-xl font-semibold text-lg hover:bg-navy hover:text-white transition shadow-sm flex items-center justify-center gap-2" data-target="modal-contact" vid="104">
+                    <i data-lucide="mail" class="w-5 h-5" vid="105"></i> 문의하기
+                </button>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer class="bg-[#0F172A] pt-16 pb-8 border-t-4 border-teal relative overflow-hidden" vid="106">
+        <i data-lucide="book-open-check" class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none" vid="107"></i>
+        <div class="max-w-7xl mx-auto px-6 relative z-10" vid="108">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12" vid="109">
+                <div class="lg:col-span-1" vid="110">
+                    <div class="flex items-center gap-2 mb-6" vid="111">
+                        <div class="bg-slate-800 rounded p-1" vid="112">
+                            <i data-lucide="book-open-check" class="text-slate-300 w-5 h-5" vid="113"></i>
+                        </div>
+                        <span class="text-white font-bold text-xl tracking-tight" vid="114">한국자기이해교육원</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 break-keep" vid="115">
+                        과학적 성향 검사를 통한 자기 정체성 확립, 전문가 양성 및 공공 교육의 표준을 제시합니다.
+                    </p>
+                </div>
+                <div class="col-span-1 lg:col-span-2 text-sm text-slate-400 flex flex-col lg:items-end" vid="116">
+                    <div class="w-full max-w-lg" vid="117">
+                        <h4 class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block" vid="118">INSTITUTE INFO</h4>
+                        <ul class="space-y-3 font-light" vid="119">
+                            <li class="flex gap-4" vid="120"><span class="w-24 text-slate-500 font-medium shrink-0" vid="121">대표자</span> <span vid="122">김대표</span></li>
+                            <li class="flex gap-4" vid="123"><span class="w-24 text-slate-500 font-medium shrink-0" vid="124">사업자등록번호</span> <span class="font-mono" vid="125">123-45-67890</span></li>
+                            <li class="flex gap-4" vid="126"><span class="w-24 text-slate-500 font-medium shrink-0" vid="127">민간자격등록</span> <span class="font-mono" vid="128">제 2026-001234 호</span></li>
+                            <li class="flex gap-4" vid="129"><span class="w-24 text-slate-500 font-medium shrink-0" vid="130">소재지</span> <span class="break-keep" vid="131">서울특별시 강남구 테헤란로 123, 지식산업센터 15층</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500" vid="132">
+                <p vid="133">© 2026 KSUI. All rights reserved.</p>
+                <div class="flex gap-6" vid="134">
+                    <a href="#" class="hover:text-white transition-colors" vid="135">이용약관</a>
+                    <a href="#" class="hover:text-white transition-colors font-semibold" vid="136">개인정보처리방침</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <div id="modal-container" vid="137">
+        
+        <div id="modal-member-1" class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" vid="138">
+            <div class="modal-card bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-8 md:p-10 relative" vid="139">
+                <button class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition" vid="140">
+                    <i data-lucide="x" class="w-5 h-5" vid="141"></i>
+                </button>
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="홍길동 박사" class="w-full h-64 object-cover object-top rounded-xl mb-6 bg-slate-100" vid="142">
+                <h3 class="text-2xl font-bold text-navy mb-1" vid="143">홍길동 박사</h3>
+                <p class="text-teal font-medium" vid="144">상임 연구위원</p>
+                <div class="w-full h-px bg-slate-200 my-6" vid="145"></div>
+                <div class="space-y-6" vid="146">
+                    <div vid="147">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="148">경력</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="149">서울대학교 교육심리학 박사 / 前 한국청소년정책연구원 자문위원</p>
+                    </div>
+                    <div vid="150">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="151">자격증</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="152">자기이해지도사 1급 마스터 스펙 보증</p>
+                    </div>
+                    <div vid="153">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="154">자기소개</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="155">15년간 인간 기질 데이터 분석 알고리즘을 설계해 온 대한민국 교육 표준의 선두주자입니다.</p>
+                    </div>
+                    <div vid="156">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="157">전문분야</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="158">다면적 기질 특성론 연구, 대기업 HR 리더십 그룹 코칭 설계</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div id="modal-member-2" class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" vid="159">
+            <div class="modal-card bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-8 md:p-10 relative" vid="160">
+                <button class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition" vid="161">
+                    <i data-lucide="x" class="w-5 h-5" vid="162"></i>
+                </button>
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="김지영 연구원" class="w-full h-64 object-cover object-top rounded-xl mb-6 bg-slate-100" vid="163">
+                <h3 class="text-2xl font-bold text-navy mb-1" vid="164">김지영 연구원</h3>
+                <p class="text-teal font-medium" vid="165">수석 강사 / 이사</p>
+                <div class="w-full h-px bg-slate-200 my-6" vid="166"></div>
+                <div class="space-y-6" vid="167">
+                    <div vid="168">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="169">경력</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="170">연세대학교 교육심리학 석사 / 前 한국청소년정책연구원 자문위원</p>
+                    </div>
+                    <div vid="171">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="172">자격증</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="173">자기이해지도사 1급 마스터 스펙 보증</p>
+                    </div>
+                    <div vid="174">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="175">자기소개</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="176">15년간 인간 기질 데이터 분석 알고리즘을 설계해 온 대한민국 교육 표준의 선두주자입니다.</p>
+                    </div>
+                    <div vid="177">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="178">전문분야</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="179">다면적 기질 특성론 연구, 대기업 HR 리더십 그룹 코칭 설계</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div id="modal-member-3" class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" vid="180">
+            <div class="modal-card bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-8 md:p-10 relative" vid="181">
+                <button class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition" vid="182">
+                    <i data-lucide="x" class="w-5 h-5" vid="183"></i>
+                </button>
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="이진우 박사" class="w-full h-64 object-cover object-top rounded-xl mb-6 bg-slate-100" vid="184">
+                <h3 class="text-2xl font-bold text-navy mb-1" vid="185">이진우 박사</h3>
+                <p class="text-teal font-medium" vid="186">데이터 분석 센터장</p>
+                <div class="w-full h-px bg-slate-200 my-6" vid="187"></div>
+                <div class="space-y-6" vid="188">
+                    <div vid="189">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="190">경력</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="191">카이스트 교육심리학 박사 / 前 한국청소년정책연구원 자문위원</p>
+                    </div>
+                    <div vid="192">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="193">자격증</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="194">자기이해지도사 1급 마스터 스펙 보증</p>
+                    </div>
+                    <div vid="195">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="196">자기소개</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="197">15년간 인간 기질 데이터 분석 알고리즘을 설계해 온 대한민국 교육 표준의 선두주자입니다.</p>
+                    </div>
+                    <div vid="198">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="199">전문분야</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="200">다면적 기질 특성론 연구, 대기업 HR 리더십 그룹 코칭 설계</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div id="modal-member-4" class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" vid="201">
+            <div class="modal-card bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-8 md:p-10 relative" vid="202">
+                <button class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition" vid="203">
+                    <i data-lucide="x" class="w-5 h-5" vid="204"></i>
+                </button>
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="박서연 박사" class="w-full h-64 object-cover object-top rounded-xl mb-6 bg-slate-100" vid="205">
+                <h3 class="text-2xl font-bold text-navy mb-1" vid="206">박서연 박사</h3>
+                <p class="text-teal font-medium" vid="207">임상 심리 연구위원</p>
+                <div class="w-full h-px bg-slate-200 my-6" vid="208"></div>
+                <div class="space-y-6" vid="209">
+                    <div vid="210">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="211">경력</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="212">고려대학교 교육심리학 박사 / 前 한국청소년정책연구원 자문위원</p>
+                    </div>
+                    <div vid="213">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="214">자격증</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="215">자기이해지도사 1급 마스터 스펙 보증</p>
+                    </div>
+                    <div vid="216">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="217">자기소개</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="218">15년간 인간 기질 데이터 분석 알고리즘을 설계해 온 대한민국 교육 표준의 선두주자입니다.</p>
+                    </div>
+                    <div vid="219">
+                        <h4 class="text-slate-400 text-xs tracking-wider font-bold uppercase mb-2" vid="220">전문분야</h4>
+                        <p class="text-slate-700 text-sm leading-relaxed break-keep" vid="221">다면적 기질 특성론 연구, 대기업 HR 리더십 그룹 코칭 설계</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div id="modal-search" class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" vid="222">
+            <div class="modal-card bg-white rounded-2xl max-w-md w-full shadow-2xl p-8 text-center relative" vid="223">
+                <button class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition" vid="224">
+                    <i data-lucide="x" class="w-5 h-5" vid="225"></i>
+                </button>
+                <div class="w-16 h-16 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-4 text-navy" vid="226">
+                    <i data-lucide="shield-check" class="w-8 h-8" vid="227"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-navy mb-2" vid="228">인증 코드 입력</h3>
+                <p class="text-slate-500 text-sm mb-6 break-keep" vid="229">소지하고 계신 전문가 인증 코드 6자리를 입력해 주세요.</p>
+                <input type="text" maxlength="6" placeholder="6자리 코드" class="text-center text-2xl tracking-widest border-2 border-slate-200 rounded-xl p-4 w-full focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition font-mono mb-4" vid="230">
+                <button class="modal-close-action w-full bg-teal text-white px-8 py-3 rounded-lg font-semibold hover:bg-teal-dark transition shadow-sm" vid="231">
+                    확인
+                </button>
+            </div>
+        </div>
+
+        
+        <div id="modal-contact" class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" vid="232">
+            <div class="modal-card bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl p-8 relative" vid="233">
+                <button class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition" vid="234">
+                    <i data-lucide="x" class="w-5 h-5" vid="235"></i>
+                </button>
+                <div class="mb-8" vid="236">
+                    <h3 class="text-2xl font-bold text-navy mb-2" vid="237">문의 접수</h3>
+                    <p class="text-slate-500 text-sm break-keep" vid="238">기관명, 이름, 이메일, 상담 의뢰 내용을 작성해 주세요.</p>
+                </div>
+                <form class="space-y-4 text-left" onsubmit="event.preventDefault(); this.closest('.modal-overlay').querySelector('.modal-close').click();" vid="239">
+                    <div vid="240">
+                        <label class="block text-sm font-medium text-slate-700 mb-1" vid="241">기관명</label>
+                        <input type="text" required="" class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm" vid="242">
+                    </div>
+                    <div vid="243">
+                        <label class="block text-sm font-medium text-slate-700 mb-1" vid="244">이름</label>
+                        <input type="text" required="" class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm" vid="245">
+                    </div>
+                    <div vid="246">
+                        <label class="block text-sm font-medium text-slate-700 mb-1" vid="247">이메일</label>
+                        <input type="email" required="" class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm" vid="248">
+                    </div>
+                    <div vid="249">
+                        <label class="block text-sm font-medium text-slate-700 mb-1" vid="250">상담 의뢰 내용</label>
+                        <textarea required="" rows="4" class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm resize-none" vid="251"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-navy-dark transition shadow-sm mt-4" vid="252">
+                        제출하기
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <script vid="253">
+        
+        lucide.createIcons();
+
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            setTimeout(() => {
+                const title = document.getElementById('hero-title');
+                const subtitle = document.getElementById('hero-subtitle');
+                const windowImg = document.getElementById('hero-window');
+                
+                if(title) title.classList.add('show');
+                setTimeout(() => { if(subtitle) subtitle.classList.add('show'); }, 200);
+                setTimeout(() => { if(windowImg) windowImg.classList.add('show'); }, 400);
+            }, 100);
+
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        
+        const parallaxImg = document.getElementById('parallax-img');
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.scrollY;
+                    
+                    if(scrolled < window.innerHeight && parallaxImg) {
+                         parallaxImg.style.transform = `translateY(${scrolled * 0.3}px)`;
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        
+        const modalTriggers = document.querySelectorAll('.modal-trigger');
+        const modalCloses = document.querySelectorAll('.modal-close, .modal-close-action');
+        const modalOverlays = document.querySelectorAll('.modal-overlay');
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modal) {
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = trigger.getAttribute('data-target');
+                openModal(targetId);
+            });
+        });
+
+        modalCloses.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modal = btn.closest('.modal-overlay');
+                closeModal(modal);
+            });
+        });
+
+        modalOverlays.forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                
+                if (e.target === overlay) {
+                    closeModal(overlay);
+                }
+            });
+        });
+    </script>
+
+</body></html>
