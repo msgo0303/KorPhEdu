@@ -119,6 +119,10 @@
             visibility: visible;
             transform: translateY(0);
         }
+        .clear-blur {
+            opacity: 1 !important;
+            filter: blur(0px) !important;
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900 font-sans overflow-x-hidden selection:bg-teal selection:text-white" vid="10">
@@ -194,22 +198,23 @@
     </section>
 
     
-    <section class="py-24 px-6 bg-slatebg relative" vid="47">
-        <div class="max-w-7xl mx-auto" vid="48">
+    <!-- 100px padding added: originally py-24 (96px) + 100px = 196px -->
+    <section class="px-6 bg-slatebg relative text-center" style="padding-top: 196px; padding-bottom: 196px;" vid="47">
+        <div class="max-w-7xl mx-auto flex flex-col items-center" vid="48">
             
             
-            <div class="sticky top-24 z-10 py-4 mb-16 md:mb-24 backdrop-blur-sm bg-slatebg/80" vid="49">
-                <h2 id="blur-heading" class="text-3xl md:text-4xl font-bold text-navy tracking-tight opacity-20 blur-sm transition-all duration-100 keep-all" vid="50">
+            <div class="mb-16 md:mb-24" vid="49">
+                <h1 id="blur-heading" class="scroll-blur-text text-3xl md:text-4xl font-bold text-navy tracking-tight opacity-20 blur-sm transition-all duration-1000 ease-out keep-all" vid="50">
                     맞춤형 교육이란?
-                </h2>
+                </h1>
             </div>
 
             
-            <div class="max-w-4xl reveal-up" vid="51">
-                <h3 class="text-2xl md:text-3xl font-bold text-navy mb-6 leading-tight keep-all" vid="52">
+            <div class="max-w-4xl reveal-up mx-auto" vid="51">
+                <h3 class="scroll-blur-text text-2xl md:text-3xl font-bold text-navy mb-6 leading-tight keep-all opacity-20 blur-sm transition-all duration-1000 ease-out" vid="52">
                     조직의 고유한 도면을 분석하여,<br class="hidden md:block" vid="53"> 단 하나의 커리큘럼을 디자인합니다.
                 </h3>
-                <p class="text-slate-600 text-lg leading-relaxed keep-all" vid="54">
+                <p class="scroll-blur-text text-slate-600 text-lg leading-relaxed keep-all opacity-20 blur-sm transition-all duration-1000 ease-out" vid="54">
                     한국자기이해교육원의 단체 교육은 획일화된 강의를 지양합니다. 피교육자 전원의 다면적 성향 진단 데이터를 기반으로, 집단 역동을 최적화할 수 있는 과학적 맞춤형 솔루션을 제공합니다.
                 </p>
             </div>
@@ -559,29 +564,23 @@
 
 
             
-            const blurHeading = document.getElementById('blur-heading');
-            window.addEventListener('scroll', () => {
-                if(!blurHeading) return;
-                const rect = blurHeading.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                
-                
-                const startPoint = windowHeight * 0.8;
-                const endPoint = windowHeight * 0.4;
-                
-                let progress = 0;
-                if (rect.top > startPoint) {
-                    progress = 0;
-                } else if (rect.top < endPoint) {
-                    progress = 1;
-                } else {
-                    progress = 1 - ((rect.top - endPoint) / (startPoint - endPoint));
-                }
-
-                
-                blurHeading.style.opacity = 0.2 + (0.8 * progress);
-                blurHeading.style.filter = `blur(${4 - (4 * progress)}px)`;
-            });
+            const blurElements = document.querySelectorAll('.scroll-blur-text');
+            const targetSection = document.querySelector('section.bg-slatebg');
+            if (targetSection) {
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => {
+                                blurElements.forEach(el => {
+                                    el.classList.add('clear-blur');
+                                });
+                            }, 1500);
+                            sectionObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+                sectionObserver.observe(targetSection);
+            }
 
 
             
