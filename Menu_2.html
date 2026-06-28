@@ -69,23 +69,35 @@
     
     <!-- 상단 반응형 통합 내비게이션 바 (UI 유지 및 상호 링크 연동 완료) -->
     <nav class="fixed w-full z-50 top-0 transition-all duration-300 py-4 bg-transparent" id="navbar" vid="11">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center" vid="12">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center relative z-50" id="nav-container" vid="12">
             
-            <!-- 🎯 좌측 로고 영역: 기존 디자인을 완벽 사수하며 클릭 시 Hero_real.html로 돌아가는 기능 추가 -->
-            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='Hero_real.html'" vid="13">
-                <div class="bg-navy rounded-md p-1.5 shadow-sm nav-icon-bg transition-colors" vid="14">
-                    <i data-lucide="book-open-check" class="text-white w-5 h-5 nav-icon transition-colors" vid="15"></i>
+            <!-- 🎯 좌측 로고 영역: 클릭 시 Hero_real.html로 돌아가는 기능 추가 -->
+            <a href="Hero_real.html" class="flex items-center gap-3">
+                <div class="bg-navy rounded-md p-1.5 shadow-sm nav-icon-bg transition-colors" id="nav-logo-bg" vid="14">
+                    <i data-lucide="book-open-check" class="text-white w-5 h-5 nav-icon transition-colors" id="nav-logo-icon" vid="15"></i>
                 </div>
                 <span class="text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors" id="nav-brand" vid="16">한국자기이해교육원</span>
-            </div>
+            </a>
             
             <!-- 우측 PC 버전 링크 정돈 -->
             <div class="hidden md:flex gap-8 items-center" vid="17">
-                <!-- 🎯 타 페이지 및 제자리 이동 경로 설정 -->
                 <a href="Menu_1.html" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm" vid="18">기관소개</a>
-                <a href="menu_2.html" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm" vid="19">비즈니스</a>
+                <a href="Menu_2.html" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm" vid="19">비즈니스</a>
                 <a href="Hero_real.html#partners" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm" vid="20">연구진</a>
                 <a href="Hero_real.html#contact" class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm border border-transparent" vid="21">문의하기</a>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="block md:hidden text-white focus:outline-none transition-colors" id="mobile-menu-btn">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div id="mobile-drawer" class="absolute top-full left-0 w-full bg-transparent overflow-hidden transition-all duration-300 ease-in-out flex flex-col md:hidden" style="height: 0px; opacity: 0;">
+            <div class="py-6 px-6 flex flex-col gap-5 border-t border-white/10" id="mobile-drawer-content">
+                <a href="Menu_1.html" class="mobile-link text-white/80 hover:text-white text-base font-medium transition-colors py-1">기관소개</a>
+                <a href="Menu_2.html" class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">비즈니스</a>
+                <a href="Hero_real.html#partners" class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">연구진</a>
+                <a href="Hero_real.html#contact" class="mt-2 text-center bg-teal text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm">문의하기</a>
             </div>
         </div>
     </nav>
@@ -306,39 +318,74 @@
         
         const navbar = document.getElementById('navbar');
         const navBrand = document.getElementById('nav-brand');
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const drawer = document.getElementById('mobile-drawer');
+        const drawerContent = document.getElementById('mobile-drawer-content');
+        const links = document.querySelectorAll('.mobile-link');
         const navLinks = document.querySelectorAll('.nav-link');
-        const navIconBg = document.querySelector('.nav-icon-bg');
-        const navIcon = document.querySelector('.nav-icon');
+        const logoBg = document.getElementById('nav-logo-bg');
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.remove('bg-transparent', 'py-4');
-                navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'py-3', 'border-b', 'border-slate-100');
+        function refreshNavSkin() {
+            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
+
+            if (window.scrollY > 50 || isMenuOpen) {
+                navbar.className = "fixed w-full z-50 top-0 transition-all duration-300 bg-white shadow-sm py-4";
                 
-                navBrand.classList.remove('text-white', 'drop-shadow-md');
-                navBrand.classList.add('text-navy');
-                
+                if (isMenuOpen) {
+                    drawer.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                    drawerContent.style.borderColor = '#f1f5f9';
+                    
+                    links.forEach(link => {
+                        link.className = "mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1";
+                    });
+                    mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6" style="color: #0f172a;"></i>';
+                } else {
+                    mobileBtn.style.color = '#475569';
+                    mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                }
+
+                navBrand.className = "text-navy font-semibold tracking-tight text-lg transition-colors";
                 navLinks.forEach(el => {
-                    el.classList.remove('text-white/90', 'hover:text-white', 'drop-shadow-sm');
-                    el.classList.add('text-slate-600', 'hover:text-navy');
+                    el.className = "nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors";
                 });
-                
-                navIconBg.classList.add('bg-navy');
-                navIconBg.classList.remove('bg-transparent');
-                
+                logoBg.className = "bg-teal rounded-md p-1.5 shadow-sm transition-colors";
+
             } else {
-                navbar.classList.add('bg-transparent', 'py-4');
-                navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'py-3', 'border-b', 'border-slate-100');
+                navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-transparent py-4";
+                mobileBtn.style.color = '#ffffff';
+                mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
                 
-                navBrand.classList.add('text-white', 'drop-shadow-md');
-                navBrand.classList.remove('text-navy');
-                
+                navBrand.className = "text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors";
                 navLinks.forEach(el => {
-                    el.classList.add('text-white/90', 'hover:text-white', 'drop-shadow-sm');
-                    el.classList.remove('text-slate-600', 'hover:text-navy');
+                    el.className = "nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm";
                 });
+                logoBg.className = "bg-navy rounded-md p-1.5 shadow-sm transition-colors";
             }
-        });
+            lucide.createIcons();
+        }
+
+        window.addEventListener('scroll', refreshNavSkin);
+
+        function toggleMobileMenu() {
+            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
+
+            if (isMenuOpen) {
+                drawer.style.height = '0px';
+                drawer.style.opacity = '0';
+                setTimeout(() => {
+                    refreshNavSkin();
+                }, 10);
+            } else {
+                drawer.style.height = 'auto';
+                const autoHeight = drawer.scrollHeight + 'px';
+                drawer.style.height = '0px';
+                
+                drawer.style.height = autoHeight;
+                drawer.style.opacity = '1';
+                
+                refreshNavSkin();
+            }
+        }
 
         
         const observerOptions = {
