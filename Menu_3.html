@@ -120,9 +120,10 @@
                     class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors"
                     vid="19">비즈니스</a>
                 <a href="#hero" class="nav-link text-teal font-bold text-sm transition-colors" vid="20">연구진</a>
-                <a href="Hero_real.html#contact"
-                    class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm"
-                    vid="21">문의하기</a>
+                <button
+                    class="modal-trigger bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm cursor-pointer"
+                    data-target="modal-contact"
+                    vid="21">문의하기</button>
             </div>
 
             <button onclick="toggleMobileMenu()"
@@ -141,8 +142,10 @@
                 <a href="Menu_2.html"
                     class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">비즈니스</a>
                 <a href="#hero" class="mobile-link text-teal font-bold text-base transition-colors py-1">연구진</a>
-                <a href="Hero_real.html#contact"
-                    class="mt-2 text-center bg-teal text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm">문의하기</a>
+                <button
+                    class="modal-trigger mt-2 text-center bg-teal text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm cursor-pointer"
+                    data-target="modal-contact"
+                    onclick="toggleMobileMenu()">문의하기</button>
             </div>
         </div>
     </nav>
@@ -161,7 +164,7 @@
                 style="-webkit-mask-image: -webkit-radial-gradient(white, black); transform: translateZ(0);" vid="26">
                 <img src="images/menu3/menu_3_0.jpg"
                     alt="Research Center" id="parallax-img"
-                    class="absolute inset-0 w-full h-full object-cover scale-110 will-change-transform" vid="27">
+                    class="absolute inset-0 w-full h-full object-cover object-top scale-125 will-change-transform" vid="27">
                 <div class="absolute inset-0 bg-navy/20 mix-blend-multiply" vid="28"></div>
             </div>
         </div>
@@ -348,9 +351,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12" vid="109">
                 <div class="lg:col-span-1" vid="110">
                     <div class="flex items-center gap-2 mb-6" vid="111">
-                        <div class="bg-slate-800 rounded p-1" vid="112">
-                            <i data-lucide="book-open-check" class="text-slate-300 w-5 h-5" vid="113"></i>
-                        </div>
+                        <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" vid="footer-logo-img">
                         <span class="text-white font-bold text-xl tracking-tight" vid="114">한국자기이해교육원</span>
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6 break-keep" vid="115">
@@ -587,9 +588,9 @@
             <div class="modal-card bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl p-8 relative"
                 vid="233">
                 <button
-                    class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition"
+                    class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition font-bold text-xl"
                     vid="234">
-                    <i data-lucide="x" class="w-5 h-5" vid="235"></i>
+                    &times;
                 </button>
                 <div class="mb-8" vid="236">
                     <h3 class="text-2xl font-bold text-navy mb-2" vid="237">문의 접수</h3>
@@ -681,7 +682,8 @@
                     const scrolled = window.scrollY;
 
                     if (scrolled < window.innerHeight && parallaxImg) {
-                        parallaxImg.style.transform = `translateY(${scrolled * 0.3}px)`;
+                        // 🎯 scale(1.25)로 패럴랙스 공간을 늘리고 스크롤 계수를 0.06으로 줄여서 하단 잘림을 완벽 방지
+                        parallaxImg.style.transform = `translateY(${-scrolled * 0.06}px) scale(1.25)`;
                     }
                     ticking = false;
                 });
@@ -690,48 +692,54 @@
         }, { passive: true });
 
 
-        const modalTriggers = document.querySelectorAll('.modal-trigger');
-        const modalCloses = document.querySelectorAll('.modal-close, .modal-close-action');
-        const modalOverlays = document.querySelectorAll('.modal-overlay');
-
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.add('show');
-                document.body.style.overflow = 'hidden';
+        // 🎯 [개선] 이벤트 위임 방식으로 모바일 드로어 닫기 및 모달 제어 통합 처리
+        document.addEventListener('click', (e) => {
+            // 1. 모바일 내비게이션 바 드로어 외곽 클릭 시 닫기
+            const drawer = document.getElementById('mobile-drawer');
+            if (drawer) {
+                const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
+                if (isMenuOpen && !e.target.closest('nav')) {
+                    toggleMobileMenu();
+                }
             }
-        }
 
-        function closeModal(modal) {
-            if (modal) {
-                modal.classList.remove('show');
-                document.body.style.overflow = '';
-            }
-        }
-
-        modalTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
+            // 2. 모달 열기 (modal-trigger 클릭 시)
+            const trigger = e.target.closest('.modal-trigger');
+            if (trigger) {
                 e.preventDefault();
                 const targetId = trigger.getAttribute('data-target');
-                openModal(targetId);
-            });
-        });
-
-        modalCloses.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const modal = btn.closest('.modal-overlay');
-                closeModal(modal);
-            });
-        });
-
-        modalOverlays.forEach(overlay => {
-            overlay.addEventListener('click', (e) => {
-
-                if (e.target === overlay) {
-                    closeModal(overlay);
+                const modal = document.getElementById(targetId);
+                if (modal) {
+                    modal.classList.add('show');
+                    modal.style.opacity = '1';
+                    modal.style.visibility = 'visible';
+                    document.body.style.overflow = 'hidden';
                 }
-            });
+                return;
+            }
+
+            // 3. 모달 닫기 (X 버튼 및 닫기 액션 클릭 시)
+            const closeBtn = e.target.closest('.modal-close, .modal-close-action');
+            if (closeBtn) {
+                e.preventDefault();
+                const modal = closeBtn.closest('.modal-overlay');
+                if (modal) {
+                    modal.classList.remove('show');
+                    modal.style.opacity = '0';
+                    modal.style.visibility = 'hidden';
+                    document.body.style.overflow = '';
+                }
+                return;
+            }
+
+            // 4. 모달 닫기 (바깥 배경 overlay 클릭 시)
+            const overlay = e.target;
+            if (overlay && overlay.classList.contains('modal-overlay')) {
+                overlay.classList.remove('show');
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                document.body.style.overflow = '';
+            }
         });
 
         function toggleMobileMenu() {
@@ -756,23 +764,7 @@
             lucide.createIcons();
         }
 
-        // 모바일 내비게이션 바 내부 클릭 시 이벤트 전파 차단
-        const navbarEl = document.querySelector('nav');
-        if (navbarEl) {
-            navbarEl.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
-        }
 
-        // 화면의 다른 부분 클릭/터치 시 내비게이션 바 닫기
-        document.addEventListener('click', () => {
-            const drawer = document.getElementById('mobile-drawer');
-            if (!drawer) return;
-            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
-            if (isMenuOpen) {
-                toggleMobileMenu();
-            }
-        });
     </script>
 
 </body>
