@@ -1,4 +1,4 @@
-﻿<html lang="ko" class="scroll-smooth" vid="0">
+<html lang="ko" class="scroll-smooth" vid="0">
 
 <head vid="1">
     <meta charset="UTF-8" vid="2">
@@ -9,9 +9,15 @@
     <link rel="stylesheet" as="style" crossorigin=""
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" vid="5">
 
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <script src="https://cdn.tailwindcss.com" vid="6"></script>
 
+    <!-- Swiper JS & GSAP & ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <script src="https://unpkg.com/lucide@latest" vid="7"></script>
 
@@ -97,16 +103,38 @@
         }
 
         /* 🎯 transition-delay 브라우저 강제 주입 클래스 (Tailwind 기본값 누락 해결) */
-        .delay-100 { transition-delay: 100ms !important; }
-        .delay-200 { transition-delay: 200ms !important; }
-        .delay-300 { transition-delay: 300ms !important; }
-        .delay-400 { transition-delay: 400ms !important; }
-        .delay-500 { transition-delay: 500ms !important; }
+        .delay-100 {
+            transition-delay: 100ms !important;
+        }
+
+        .delay-200 {
+            transition-delay: 200ms !important;
+        }
+
+        .delay-300 {
+            transition-delay: 300ms !important;
+        }
+
+        .delay-400 {
+            transition-delay: 400ms !important;
+        }
+
+        .delay-500 {
+            transition-delay: 500ms !important;
+        }
 
         @media (min-width: 768px) {
-            .md\:delay-100 { transition-delay: 100ms !important; }
-            .md\:delay-200 { transition-delay: 200ms !important; }
-            .md\:delay-300 { transition-delay: 300ms !important; }
+            .md\:delay-100 {
+                transition-delay: 100ms !important;
+            }
+
+            .md\:delay-200 {
+                transition-delay: 200ms !important;
+            }
+
+            .md\:delay-300 {
+                transition-delay: 300ms !important;
+            }
         }
 
 
@@ -138,6 +166,288 @@
                 linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
         }
+
+        /* 🎯 [최종 수리] KSUI의 자랑스러운 이야기 섹션 컴포넌트 전체 슬림화 */
+        .main-proud-box {
+            padding: 48px 24px 32px;
+            /* 하단 패딩을 32px로 다이어트 */
+            background-color: #ffffff;
+            text-align: center;
+            overflow: hidden;
+            border-bottom: 1px solid #F1F5F9;
+            width: 100%;
+        }
+
+        .proud-txt {
+            font-size: 1.5rem;
+            /* 🎯 [수정] 텍스트 크기 축소 (1.75rem -> 1.5rem) */
+            font-weight: 800;
+            color: #1E3A8A;
+            margin-bottom: 2rem;
+            /* 🎯 [수정] 줄바꿈 유령 공백 축소 (3.5rem -> 2rem) */
+            letter-spacing: -0.025em;
+            word-break: keep-all;
+        }
+
+        .main-proud-swiper {
+            max-width: 1280px;
+            margin: 0 auto;
+            overflow: visible !important;
+            padding-bottom: 0px !important;
+            height: 180px !important;
+            /* Swiper 컨테이너의 높이를 카드의 max-height와 일치시켜 여백 제거 */
+        }
+
+        .main-proud-swiper .swiper-slide {
+            background: #F8FAFC;
+            border-radius: 1.25rem;
+            padding: 1.25rem;
+            /* 🎯 내부 패딩을 콤팩트하게 변경 */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.02), 0 2px 4px -2px rgb(0 0 0 / 0.02);
+            border: 1px solid #E2E8F0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 280px;
+            margin: 0 8px !important;
+            /* 🎯 좌우 대칭 마진으로 정중앙 배치 정렬 쏠림 해결 */
+            /* 🎯 [핵심] Swiper 내부 강제 스케일링 엔진을 무력화하는 절대 3종 안전장치 */
+            height: auto !important;
+            min-height: 0px !important;
+            max-height: 180px !important;
+            /* 🎯 [추가] 아무리 화면을 축소해서 줄바꿈이 일어나도 180px을 절대 넘지 못하도록 고정 */
+            box-sizing: border-box;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0.4;
+            transform: scale(0.92);
+        }
+
+        .main-proud-swiper .swiper-slide-active,
+        .main-proud-swiper .swiper-slide-next,
+        .main-proud-swiper .swiper-slide-prev {
+            opacity: 0.85;
+        }
+
+        .main-proud-swiper .swiper-slide-active {
+            opacity: 1 !important;
+            transform: scale(1);
+            background: #ffffff;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+            border-color: #CBD5E1;
+            height: auto !important;
+            /* 🎯 [수정] 활성화된 카드도 자율 높이 사수 */
+        }
+
+        .proud-logo-box {
+            height: 32px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .proud-logo-box img {
+            max-height: 100%;
+            object-fit: contain;
+            filter: grayscale(1);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .main-proud-swiper .swiper-slide-active .proud-logo-box img {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        .proud-con-box {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            /* 🎯 [수정] 내부 링크 버튼 등이 세로로 늘어나는 버그 방어 */
+            gap: 0.625rem;
+            flex-grow: 0;
+            width: 100%;
+            /* 🎯 [추가] 가로 너비는 꽉 채워서 글자 배치 안정화 */
+        }
+
+        .proud-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.4;
+            margin-bottom: 0px;
+            /* 마진을 없애고 gap으로 조정 */
+            word-break: keep-all;
+        }
+
+        .proud-title span {
+            color: #0F766E;
+            /* teal */
+            font-size: 1.05rem;
+            display: block;
+            margin-top: 0.25rem;
+            font-weight: 800;
+        }
+
+        .proud-more {
+            align-self: flex-start;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #0F766E;
+            /* teal */
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .proud-more:hover {
+            color: #1E3A8A;
+            /* navy */
+            border-bottom-color: #1E3A8A;
+        }
+
+        /* 🎯 태블릿 및 데스크톱을 위한 고정 가로폭 및 대칭 마진 추가 */
+        @media (min-width: 768px) {
+            .main-proud-swiper .swiper-slide {
+                width: 320px !important;
+                margin: 0 12px !important;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main-proud-swiper .swiper-slide {
+                width: 320px !important;
+                margin: 0 15px !important;
+            }
+        }
+
+        /* 슬라이드 네비게이션 제어부 */
+        .proud-control-wrap {
+            max-width: 1280px;
+            margin: 0.25rem auto 0.75rem;
+            /* 🎯 마진 탑을 2rem에서 0.25rem으로 대폭 축소 */
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 1rem;
+        }
+
+        .main-proud-prev,
+        .main-proud-next {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: #ffffff;
+            border: 1px solid #E2E8F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+        }
+
+        .main-proud-prev:hover,
+        .main-proud-next:hover {
+            background-color: #1E3A8A;
+            border-color: #1E3A8A;
+            color: #ffffff;
+        }
+
+        .main-proud-prev::before,
+        .main-proud-next::before {
+            font-size: 1.25rem;
+            color: #475569;
+            transition: color 0.3s ease;
+        }
+
+        .main-proud-prev:hover::before,
+        .main-proud-next:hover::before {
+            color: #ffffff;
+        }
+
+        .main-proud-prev::before {
+            content: '←';
+        }
+
+        .main-proud-next::before {
+            content: '→';
+        }
+
+        .main-proud-prev span,
+        .main-proud-next span {
+            display: none;
+        }
+
+        /* 페이징 및 자동재생 프로그레스바 */
+        .pagination-wrap {
+            max-width: 480px;
+            margin: 0.25rem auto 0;
+            /* 🎯 콤팩트한 마진 탑 지정 */
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .proud-pagination.bar {
+            position: relative;
+            flex-grow: 1;
+            height: 3px;
+            background-color: #E2E8F0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .proud-pagination.bar .swiper-pagination-progressbar-fill {
+            background-color: #0F766E !important;
+            /* teal */
+        }
+
+        .proud-autoplay {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .proud-autoplay button {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: #ffffff;
+            border: 1px solid #CBD5E1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.05);
+        }
+
+        .proud-autoplay button:hover {
+            background-color: #F1F5F9;
+            border-color: #94A3B8;
+        }
+
+        .proud-autoplay button::before {
+            font-size: 0.75rem;
+            color: #475569;
+        }
+
+        .proud-autoplay button.start::before {
+            content: '▶';
+        }
+
+        .proud-autoplay button.pause::before {
+            content: '❚❚';
+            font-weight: bold;
+        }
+
+        .proud-autoplay button span {
+            display: none;
+        }
     </style>
 </head>
 
@@ -148,10 +458,7 @@
     <div id="intro-curtain" class="fixed inset-0 z-50 bg-white flex items-center justify-center origin-top">
         <div class="relative flex flex-col items-center">
             <div id="intro-logo" class="opacity-0 transition-opacity duration-700 ease-in-out relative w-16 h-16 mb-6">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 0L56 40L96 30L64 56L90 90L50 68L10 90L36 56L4 30L44 40L50 0Z" fill="#1E3A8A"></path>
-                    <path d="M50 0L56 40L96 30L64 56L50 68L50 0Z" fill="#0F766E"></path>
-                </svg>
+                <img src="images/logo.png" alt="KSUI 로고" class="w-full h-full object-contain">
             </div>
             <div class="h-px w-0 bg-[#1E3A8A] mb-4 transition-all duration-700 delay-300" id="intro-line"></div>
             <h1 id="intro-text"
@@ -168,15 +475,13 @@
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-50 bg-transparent"
             id="nav-container" vid="18">
 
-            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='Hero_real.html'" vid="19">
-                <div class="bg-navy rounded-md p-1.5 shadow-sm" vid="20">
-                    <i data-lucide="book-open-check" class="text-white w-5 h-5" vid="21"></i>
-                </div>
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'" vid="19">
+                <img src="images/logo.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" vid="nav-logo-img">
                 <span class="text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors"
                     id="nav-brand" vid="22">한국자기이해교육원</span>
             </div>
 
-            <!-- Hero_real.html 우측 PC 버전 메뉴 구역 예시 -->
+            <!-- index.html 우측 PC 버전 메뉴 구역 예시 -->
             <div class="hidden md:flex gap-8 items-center" vid="23">
                 <a href="Menu_1.html"
                     class="text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm"
@@ -188,9 +493,10 @@
                 <a href="Menu_3.html"
                     class="text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm"
                     vid="26">연구진</a>
-                <a href="#contact"
-                    class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm"
-                    vid="27">문의하기</a>
+                <button
+                    class="modal-trigger bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm cursor-pointer"
+                    data-target="modal-contact"
+                    vid="27">문의하기</button>
             </div>
 
             <button onclick="toggleMobileMenu()" class="block md:hidden text-white focus:outline-none transition-colors"
@@ -209,8 +515,10 @@
                     class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">비즈니스</a>
                 <a href="Menu_3.html" onclick="toggleMobileMenu()"
                     class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">연구진</a>
-                <a href="#contact" onclick="toggleMobileMenu()"
-                    class="mt-2 text-center bg-teal text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm">문의하기</a>
+                <button
+                    class="modal-trigger mt-2 text-center bg-teal text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm cursor-pointer"
+                    data-target="modal-contact"
+                    onclick="toggleMobileMenu()">문의하기</button>
             </div>
         </div>
     </nav>
@@ -253,6 +561,216 @@
             <i data-lucide="arrow-down" class="text-teal w-5 h-5 animate-bounce-soft" vid="41"></i>
         </div>
     </section>
+
+
+    <!-- 🎯 [신설] 세종대학교 자랑스러운 이야기 (real_intro_sub.txt) 성과 Swiper 섹션 -->
+    <div class="main-proud-box" id="proud-section" vid="proud-stories-sec">
+        <p class="proud-txt">세계를 이끄는 KSUI의 자랑스러운 이야기</p>
+
+        <div class="swiper main-proud-swiper">
+            <div class="swiper-wrapper">
+
+                <!-- 슬라이드 1: QS 세계대학평가 -->
+                <div class="swiper-slide">
+                    <div class="proud-logo-box">
+                        <img src="https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo03.png"
+                            alt="QS WORLD UNIVERSITY RANKINGS">
+                    </div>
+                    <div class="proud-con-box">
+                        <p class="proud-title color-highlight">
+                            2026 QS 세계대학평가<br><span>국내 11위, 세계392위</span>
+                        </p>
+                        <a class="proud-more"
+                            href="https://pr.sejong.ac.kr/news/today/sejong-prism.do?mode=view&amp;articleNo=853082&amp;title=%EC%84%B8%EC%A2%85%EB%8C%80%2C+%E2%80%982026+QS+%EC%84%B8%EA%B3%84%EB%8C%80%ED%95%99%ED%8F%89%EA%B0%80%E2%80%99+%EA%B5%AD%EB%82%B4+11%EC%9C%84%2C+%EB%85%BC%EB%AC%B8+%ED%94%BC%EC%9D%B8%EC%9A%A9+%EC%9D%BC%EB%B0%98%EB%8C%80+1%EC%9C%84+%EA%B8%B0%EB%A1%9D"
+                            target="_blank" title="새창열림">
+                            자세히보기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 슬라이드 2: 대학혁신지원사업 -->
+                <div class="swiper-slide">
+                    <div class="proud-logo-box">
+                        <img src="https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo05.png"
+                            alt="대학혁신 지원사업">
+                    </div>
+                    <div class="proud-con-box">
+                        <p class="proud-title">
+                            2025 대학혁신지원사업<br>성과평가 3년연속 최우수 S등급
+                        </p>
+                        <a class="proud-more"
+                            href="https://pr.sejong.ac.kr/news/today/sejong-prism.do?mode=view&amp;articleNo=854362&amp;article.offset=0&amp;articleLimit=10"
+                            target="_blank" title="새창열림">
+                            자세히보기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 슬라이드 3: 라이덴 랭킹 -->
+                <div class="swiper-slide">
+                    <div class="proud-logo-box">
+                        <img src="https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo06.png"
+                            alt="CWTS Meaningful metrics">
+                    </div>
+                    <div class="proud-con-box">
+                        <p class="proud-title color-highlight">
+                            2025 라이덴 랭킹<br> 개정판(Open Edition) <span>국내 1위</span>
+                        </p>
+                        <a class="proud-more" href="https://www.joongang.co.kr/article/25380393" target="_blank"
+                            title="새창열림">
+                            자세히보기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 슬라이드 4: US News 세계대학평가 -->
+                <div class="swiper-slide">
+                    <div class="proud-logo-box">
+                        <img src="https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo01.png"
+                            alt="U.S.News">
+                    </div>
+                    <div class="proud-con-box">
+                        <p class="proud-title color-highlight">
+                            2025-2026 US News<br> 세계대학평가 2년 연속 <span>국내 3위, 세계 238위</span>
+                        </p>
+                        <a class="proud-more"
+                            href="https://news.chosun.com/pan/site/data/html_dir/2025/06/20/2025062001217.html"
+                            target="_blank" title="새창열림">
+                            자세히보기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 슬라이드 5: THE 세계대학평가 -->
+                <div class="swiper-slide">
+                    <div class="proud-logo-box">
+                        <img src="https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo02.png"
+                            alt="THE WORLD UNIVERSITY RANKINGS">
+                    </div>
+                    <div class="proud-con-box">
+                        <p class="proud-title color-highlight">
+                            2026 THE 세계대학평가<br> <span>국내8위, 세계251-300위</span>
+                        </p>
+                        <a class="proud-more"
+                            href="https://biz.newdaily.co.kr/site/data/html/2025/10/20/2025102000156.html"
+                            target="_blank" title="새창열림">
+                            자세히보기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 슬라이드 6 (복제): QS 세계대학평가 -->
+                <div class="swiper-slide">
+                    <div class="proud-logo-box">
+                        <img src="https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo03.png"
+                            alt="QS WORLD UNIVERSITY RANKINGS">
+                    </div>
+                    <div class="proud-con-box">
+                        <p class="proud-title color-highlight">
+                            2026 QS 세계대학평가<br><span>국내 11위, 세계392위</span>
+                        </p>
+                        <a class="proud-more"
+                            href="https://pr.sejong.ac.kr/news/today/sejong-prism.do?mode=view&amp;articleNo=853082&amp;title=%EC%84%B8%EC%A2%85%EB%8C%80%2C+%E2%80%982026+QS+%EC%84%B8%EA%B3%84%EB%8C%80%ED%95%99%ED%8F%89%EA%B0%80%E2%80%99+%EA%B5%AD%EB%82%B4+11%EC%9C%84%2C+%EB%85%BC%EB%AC%B8+%ED%94%BC%EC%9D%B8%EC%9A%A9+%EC%9D%BC%EB%B0%98%EB%8C%80+1%EC%9C%84+%EA%B8%B0%EB%A1%9D"
+                            target="_blank" title="새창열림">
+                            자세히보기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 슬라이드 7 (복제): 대학혁신지원사업 -->
+                <div class="swiper-slide">
+                    <div class="proud-logo-box">
+                        <img src="https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo05.png"
+                            alt="대학혁신 지원사업">
+                    </div>
+                    <div class="proud-con-box">
+                        <p class="proud-title">
+                            2025 대학혁신지원사업<br>성과평가 3년연속 최우수 S등급
+                        </p>
+                        <a class="proud-more"
+                            href="https://pr.sejong.ac.kr/news/today/sejong-prism.do?mode=view&amp;articleNo=854362&amp;article.offset=0&amp;articleLimit=10"
+                            target="_blank" title="새창열림">
+                            자세히보기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 슬라이드 8 (복제): 라이덴 랭킹 -->
+                <div class="swiper-slide">
+                    <div class="proud-logo-box">
+                        <img src="https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo06.png"
+                            alt="CWTS Meaningful metrics">
+                    </div>
+                    <div class="proud-con-box">
+                        <p class="proud-title color-highlight">
+                            2025 라이덴 랭킹<br> 개정판(Open Edition) <span>국내 1위</span>
+                        </p>
+                        <a class="proud-more" href="https://www.joongang.co.kr/article/25380393" target="_blank"
+                            title="새창열림">
+                            자세히보기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 슬라이드 9 (복제): US News 세계대학평가 -->
+                <div class="swiper-slide">
+                    <div class="proud-logo-box">
+                        <img src="https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo01.png"
+                            alt="U.S.News">
+                    </div>
+                    <div class="proud-con-box">
+                        <p class="proud-title color-highlight">
+                            2025-2026 US News<br> 세계대학평가 2년 연속 <span>국내 3위, 세계 238위</span>
+                        </p>
+                        <a class="proud-more"
+                            href="https://news.chosun.com/pan/site/data/html_dir/2025/06/20/2025062001217.html"
+                            target="_blank" title="새창열림">
+                            자세히보기
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 슬라이드 10 (복제): THE 세계대학평가 -->
+                <div class="swiper-slide">
+                    <div class="proud-logo-box">
+                        <img src="https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo02.png"
+                            alt="THE WORLD UNIVERSITY RANKINGS">
+                    </div>
+                    <div class="proud-con-box">
+                        <p class="proud-title color-highlight">
+                            2026 THE 세계대학평가<br> <span>국내8위, 세계251-300위</span>
+                        </p>
+                        <a class="proud-more"
+                            href="https://biz.newdaily.co.kr/site/data/html/2025/10/20/2025102000156.html"
+                            target="_blank" title="새창열림">
+                            자세히보기
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 슬라이드 컨트롤러 -->
+        <div class="proud-control-wrap" vid="proud-stories-control">
+            <div class="flex gap-2">
+                <div class="main-proud-prev" tabindex="0" role="button" aria-label="Previous slide"><span>Prev</span>
+                </div>
+                <div class="main-proud-next" tabindex="0" role="button" aria-label="Next slide"><span>Next</span></div>
+            </div>
+        </div>
+
+        <!-- 페이징 및 자동재생 컨트롤러 -->
+        <div class="pagination-wrap" vid="proud-stories-pagination">
+            <div class="proud-pagination bar">
+                <span class="swiper-pagination-progressbar-fill"></span>
+            </div>
+            <div class="proud-autoplay">
+                <button class="start" title="재생" type="button"><span>재생</span></button>
+                <button class="pause" title="정지" type="button"><span>정지</span></button>
+            </div>
+        </div>
+    </div>
 
 
     <section id="about" class="py-24 md:py-32 bg-slatebg relative" vid="42">
@@ -487,11 +1005,11 @@
 
 
                 <article
-                    class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[420px] group transition-shadow hover:shadow-md"
+                    class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[440px] group transition-shadow hover:shadow-md"
                     vid="132">
 
-                    <div class="h-[40%] relative overflow-hidden bg-slate-100" vid="133">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&amp;w=1000&amp;auto=format&amp;fit=crop"
+                    <div class="h-[50%] relative overflow-hidden bg-slate-100" vid="133">
+                        <img src="images/menu3/menu_3_1.jpg"
                             alt="Profile"
                             class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
                             vid="134">
@@ -499,7 +1017,7 @@
                         </div>
                     </div>
 
-                    <div class="h-[60%] p-6 flex flex-col" vid="136">
+                    <div class="h-[50%] p-6 flex flex-col" vid="136">
                         <span class="text-xs font-bold text-teal tracking-wider mb-2" vid="137">상임 연구위원</span>
                         <h3 class="text-xl font-bold text-navy mb-4" vid="138">홍길동 박사</h3>
                         <ul class="space-y-2 text-sm text-slate-600 flex-grow" vid="139">
@@ -518,17 +1036,17 @@
 
 
                 <article
-                    class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[420px] group transition-shadow hover:shadow-md"
+                    class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[440px] group transition-shadow hover:shadow-md"
                     vid="149">
-                    <div class="h-[40%] relative overflow-hidden bg-slate-100" vid="150">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&amp;w=1000&amp;auto=format&amp;fit=crop"
+                    <div class="h-[50%] relative overflow-hidden bg-slate-100" vid="150">
+                        <img src="images/menu3/menu_3_2.jpg"
                             alt="Profile"
                             class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
                             vid="151">
                         <div class="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors" vid="152">
                         </div>
                     </div>
-                    <div class="h-[60%] p-6 flex flex-col" vid="153">
+                    <div class="h-[50%] p-6 flex flex-col" vid="153">
                         <span class="text-xs font-bold text-teal tracking-wider mb-2" vid="154">수석 강사 / 이사</span>
                         <h3 class="text-xl font-bold text-navy mb-4" vid="155">김지영 연구원</h3>
                         <ul class="space-y-2 text-sm text-slate-600 flex-grow" vid="156">
@@ -547,17 +1065,17 @@
 
 
                 <article
-                    class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[420px] group transition-shadow hover:shadow-md"
+                    class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[440px] group transition-shadow hover:shadow-md"
                     vid="166">
-                    <div class="h-[40%] relative overflow-hidden bg-slate-100" vid="167">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&amp;w=1000&amp;auto=format&amp;fit=crop"
+                    <div class="h-[50%] relative overflow-hidden bg-slate-100" vid="167">
+                        <img src="images/menu3/menu_3_3.jpg"
                             alt="Profile"
                             class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
                             vid="168">
                         <div class="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors" vid="169">
                         </div>
                     </div>
-                    <div class="h-[60%] p-6 flex flex-col" vid="170">
+                    <div class="h-[50%] p-6 flex flex-col" vid="170">
                         <span class="text-xs font-bold text-teal tracking-wider mb-2" vid="171">데이터 분석 센터장</span>
                         <h3 class="text-xl font-bold text-navy mb-4" vid="172">이진우 박사</h3>
                         <ul class="space-y-2 text-sm text-slate-600 flex-grow" vid="173">
@@ -577,14 +1095,13 @@
 
                 <!-- 파트너 강사진 카드 끝 -->
                 <article
-                    class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[420px] group transition-shadow hover:shadow-md cursor-pointer"
-                    onclick="location.href='Menu_3.html'"
-                    vid="183">
-                    <div class="h-[40%] relative overflow-hidden bg-slate-100 flex items-center justify-center"
+                    class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[440px] group transition-shadow hover:shadow-md cursor-pointer"
+                    onclick="location.href='Menu_3.html'" vid="183">
+                    <div class="h-[50%] relative overflow-hidden bg-slate-100 flex items-center justify-center"
                         vid="184">
                         <i data-lucide="users" class="w-16 h-16 text-slate-300" vid="185"></i>
                     </div>
-                    <div class="h-[60%] p-6 flex flex-col items-center justify-center text-center" vid="186">
+                    <div class="h-[50%] p-6 flex flex-col items-center justify-center text-center" vid="186">
                         <h3 class="text-lg font-bold text-navy mb-2" vid="187">파트너 강사진</h3>
                         <p class="text-sm text-slate-500 mb-6" vid="188">전국 50여 명의 정식 인증 강사가<br vid="189">함께하고 있습니다.</p>
                         <button
@@ -693,9 +1210,7 @@
 
                 <div class="lg:col-span-2" vid="232">
                     <div class="flex items-center gap-2 mb-6" vid="233">
-                        <div class="bg-slate-800 rounded p-1" vid="234">
-                            <i data-lucide="book-open-check" class="text-slate-300 w-5 h-5" vid="235"></i>
-                        </div>
+                        <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" vid="footer-logo-img">
                         <span class="text-white font-bold text-xl tracking-tight" vid="236">한국자기이해교육원</span>
                     </div>
                     <p class="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm" vid="237">
@@ -719,7 +1234,8 @@
                         </li>
                         <li class="flex gap-4" vid="253"><span class="w-24 text-slate-500 font-medium shrink-0"
                                 vid="254">고객센터</span> <span class="text-white font-medium" vid="255">02-1234-5678</span>
-                            <span class="text-xs" vid="256">(평일 10:00 - 17:00)</span></li>
+                            <span class="text-xs" vid="256">(평일 10:00 - 17:00)</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -887,18 +1403,7 @@
             }
         }
 
-        // 모바일 내비게이션 바 내부 클릭 시 이벤트 전파 차단
-        navbar.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
 
-        // 화면의 다른 부분 클릭/터치 시 내비게이션 바 닫기
-        document.addEventListener('click', () => {
-            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
-            if (isMenuOpen) {
-                toggleMobileMenu();
-            }
-        });
 
         // 3. 인터랙션 무옵션 IntersectionObserver 애니메이션 (기존 로직 유지)
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
@@ -941,9 +1446,188 @@
             const scrollAmount = carousel.offsetWidth * 0.8;
             carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
+
+        // 🎯 [신설] 자랑스러운 세종대 이야기 Swiper & GSAP 초기화 코드
+        document.addEventListener('DOMContentLoaded', () => {
+            // Swiper 초기화
+            const proudSwiper = new Swiper('.main-proud-swiper', {
+                loop: true, // 🎯 슬라이드가 10개로 2배 확장되어 표준 루프 설정으로도 완벽하게 작용함
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                slidesPerView: 'auto', // 🎯 화면 비율 분할 대신 CSS의 고정 가로폭 적용
+                spaceBetween: 0, // 🎯 CSS 대칭 마진을 사용하여 쏠림 현상을 차단하므로 JS 마진은 0으로 세팅
+                centeredSlides: true,
+                navigation: {
+                    nextEl: '.main-proud-next',
+                    prevEl: '.main-proud-prev',
+                },
+                pagination: {
+                    el: '.proud-pagination.bar',
+                    type: 'progressbar',
+                },
+                breakpoints: {
+                    768: {
+                        spaceBetween: 0,
+                        centeredSlides: true,
+                    },
+                    1024: {
+                        spaceBetween: 0,
+                        centeredSlides: true,
+                    }
+                }
+            });
+
+            // 자동재생 토글 컨트롤
+            const playBtn = document.querySelector('.proud-autoplay .start');
+            const pauseBtn = document.querySelector('.proud-autoplay .pause');
+
+            if (playBtn && pauseBtn) {
+                // 초기 상태 세팅 (자동재생 실행 중이므로 재생 버튼 숨김, 정지 버튼 활성화)
+                playBtn.style.display = 'none';
+                pauseBtn.style.display = 'flex';
+
+                playBtn.addEventListener('click', () => {
+                    proudSwiper.autoplay.start();
+                    playBtn.style.display = 'none';
+                    pauseBtn.style.display = 'flex';
+                });
+
+                pauseBtn.addEventListener('click', () => {
+                    proudSwiper.autoplay.stop();
+                    pauseBtn.style.display = 'none';
+                    playBtn.style.display = 'flex';
+                });
+            }
+
+            // GSAP ScrollTrigger를 활용하여 스크롤 시 페이드인 애니메이션 (스크립트 연결 효과 재현)
+            if (window.gsap && window.ScrollTrigger) {
+                gsap.registerPlugin(ScrollTrigger);
+
+                gsap.fromTo('#proud-section',
+                    {
+                        opacity: 0,
+                        y: 60
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.2,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: '#proud-section',
+                            start: 'top 82%', // 뷰포트 하단 82% 지점에 오면 실행
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            } else {
+                // GSAP이 제대로 동작하지 않을 경우 대비해 Fallback 처리 (스크롤 감지 reveal 로직 활용)
+                const fallbackSection = document.getElementById('proud-section');
+                if (fallbackSection) {
+                    fallbackSection.style.opacity = '1';
+                    fallbackSection.style.transform = 'none';
+                    fallbackSection.classList.add('reveal');
+                    observer.observe(fallbackSection);
+                }
+            }
+        });
+
+        // 🎯 [개선] 이벤트 위임 방식으로 모바일 드로어 닫기 및 모달 제어 통합 처리
+        document.addEventListener('click', (e) => {
+            // 1. 모바일 내비게이션 바 드로어 외곽 클릭 시 닫기
+            const drawer = document.getElementById('mobile-drawer');
+            if (drawer) {
+                const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
+                if (isMenuOpen && !e.target.closest('nav')) {
+                    toggleMobileMenu();
+                }
+            }
+
+            // 2. 모달 열기 (modal-trigger 클릭 시)
+            const trigger = e.target.closest('.modal-trigger');
+            if (trigger) {
+                e.preventDefault();
+                const targetId = trigger.getAttribute('data-target');
+                const modal = document.getElementById(targetId);
+                if (modal) {
+                    modal.classList.add('show');
+                    modal.style.opacity = '1';
+                    modal.style.visibility = 'visible';
+                    document.body.style.overflow = 'hidden';
+                }
+                return;
+            }
+
+            // 3. 모달 닫기 (X 버튼 및 닫기 액션 클릭 시)
+            const closeBtn = e.target.closest('.modal-close, .modal-close-action');
+            if (closeBtn) {
+                e.preventDefault();
+                const modal = closeBtn.closest('.modal-overlay');
+                if (modal) {
+                    modal.classList.remove('show');
+                    modal.style.opacity = '0';
+                    modal.style.visibility = 'hidden';
+                    document.body.style.overflow = '';
+                }
+                return;
+            }
+
+            // 4. 모달 닫기 (바깥 배경 overlay 클릭 시)
+            const overlay = e.target;
+            if (overlay && overlay.classList.contains('modal-overlay')) {
+                overlay.classList.remove('show');
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                document.body.style.overflow = '';
+            }
+        });
     </script>
+
+    <!-- 🎯 [신설] 문의하기 팝업 모달 (Menu_3.html 연동) -->
+    <div id="modal-contact"
+        class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;">
+        <div class="modal-card bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl p-8 relative">
+            <button
+                class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition font-bold text-xl">
+                &times;
+            </button>
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-navy mb-2">문의 접수</h3>
+                <p class="text-slate-500 text-sm break-keep">기관명, 이름, 이메일, 상담 의뢰 내용을 작성해 주세요.</p>
+            </div>
+            <form class="space-y-4 text-left"
+                onsubmit="event.preventDefault(); this.closest('.modal-overlay').classList.remove('show'); document.body.style.overflow = ''; alert('문의가 성공적으로 접수되었습니다.');">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">기관명</label>
+                    <input type="text" required=""
+                        class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">이름</label>
+                    <input type="text" required=""
+                        class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">이메일</label>
+                    <input type="email" required=""
+                        class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">상담 의뢰 내용</label>
+                    <textarea required="" rows="4"
+                        class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm resize-none"></textarea>
+                </div>
+                <button type="submit"
+                    class="w-full bg-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-navy-dark transition shadow-sm mt-4">
+                    제출하기
+                </button>
+            </form>
+        </div>
+    </div>
 
 </body>
 
 </html>
-
