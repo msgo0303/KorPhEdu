@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 승인 페이지</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .user-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-image {
+            max-width: 200px;
+            display: block;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .btn-group {
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-approve {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-reject {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .btn-save {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        textarea,
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📋 팝업 신청 회원 관리 (승인/수정/제외)</h1>
+    <div id="user-list">대기 중인 데이터를 불러오는 중...</div>
+
+    <!-- Firebase SDK (v9 호환 모드 라이브러리) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+    <script>
+        // ⚠️ 본인의 Firebase 설정 값으로 반드시 변경해 주세요!
+        const firebaseConfig = {
+            apiKey: "AIzaSy...",
+            authDomain: "...",
+            databaseURL: "https://prototype-ksui-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "...",
+            storageBucket: "...",
+            messagingSenderId: "...",
+            appId: "..."
+        };
+
+        // Firebase 초기화
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        const userListDiv = document.getElementById('user-list');
+
+        // 1. Firebase에서 pending_users(승인 대기) 데이터 실시간 조회
+        database.ref('pending_users').on('value', (snapshot) => {
+            const data = snapshot.val();
+            userListDiv.innerHTML = '';
+
+            if (!data) {
+                userListDiv.innerHTML = '<p>현재 승인 대기 중인 항목이 없습니다. 😎</p>';
+                return;
+            }
+
+            // 데이터를 화면에 카드 형태로 뿌려주기
+            for (let id in data) {
+                const user = data[id];
+
+                const card = document.createElement('div');
+                card.className = 'user-card';
+                card.innerHTML = `
+                    <h3>👤 ${user.name} 님의 데이터 수정/승인</h3>
+                    <p style="font-size:12px; color:#888;">[내부보관] 지역: ${user.location} | 직책: ${user.position}</p>
+                    
+                    <label>특정 코드 (생년월일)</label>
+                    <input type="text" id="code-${id}" value="${user.code}">
+
+                    <label>전문분야 (단문)</label>
+                    <input type="text" id="specialty-${id}" value="${user.specialty}">
+
+                    <label>경력 (장문)</label>
+                    <textarea id="experience-${id}" rows="3">${user.experience}</textarea>
+
+                    <label>자기소개 (장문)</label>
+                    <textarea id="introduce-${id}" rows="4">${user.introduce}</textarea>
+
+                    <label>제출된 이미지</label>
+                    <a href="${user.imageUrl}" target="_blank">구글 드라이브에서 원본 보기</a>
+                    <input type="text" id="image-${id}" value="${user.imageUrl}">
+
+                    <div class="btn-group">
+                        <button class="btn-save" onclick="updateUser('${id}')">✏️ 내용 수정 보관</button>
+                        <button class="btn-approve" onclick="approveUser('${id}')">✅ 최종 승인 (사이트 반영)</button>
+                        <button class="btn-reject" onclick="rejectUser('${id}')">❌ 제외 (삭제)</button>
+                    </div>
+                `;
+                userListDiv.appendChild(card);
+            }
+        });
+
+        // 2. [수정] 버튼 기능: 현재 입력창에 있는 내용으로 DB 업데이트
+        function updateUser(id) {
+            const updatedData = {
+                code: document.getElementById(`code-${id}`).value,
+                specialty: document.getElementById(`specialty-${id}`).value,
+                experience: document.getElementById(`experience-${id}`).value,
+                introduce: document.getElementById(`introduce-${id}`).value,
+                imageUrl: document.getElementById(`image-${id}`).value
+            };
+
+            database.ref('pending_users/' + id).update(updatedData)
+                .then(() => alert('수정 내용이 저장되었습니다.'))
+                .catch((err) => alert('오류 발생: ' + err));
+        }
+
+        // 3. [최종 승인] 버튼 기능: approved_users로 이동시키고 pending_users에서는 삭제
+        function approveUser(id) {
+            // 현재 화면에 입력되어 있는 최신 내용들을 긁어옴 (수정 반영 승인 기능)
+            const code = document.getElementById(`code-${id}`).value;
+
+            if (!code || code.trim() === "") {
+                alert("특정 코드(생년월일)는 비워둘 수 없습니다.");
+                return;
+            }
+
+            database.ref('pending_users/' + id).once('value', (snapshot) => {
+                const user = snapshot.val();
+
+                // 최종 저장할 데이터 (사용자가 입력한 코드를 '키 값'으로 사용하여 매칭 속도 극대화)
+                const approvedData = {
+                    name: user.name,
+                    specialty: document.getElementById(`specialty-${id}`).value,
+                    experience: document.getElementById(`experience-${id}`).value,
+                    introduce: document.getElementById(`introduce-${id}`).value,
+                    imageUrl: document.getElementById(`image-${id}`).value
+                };
+
+                // approved_users/코드로 저장하고, pending_users에서는 삭제
+                database.ref('approved_users/' + code).set(approvedData)
+                    .then(() => {
+                        return database.ref('pending_users/' + id).remove();
+                    })
+                    .then(() => alert('최종 승인되어 사이트에 반영되었습니다!'))
+                    .catch((err) => alert('승인 오류: ' + err));
+            });
+        }
+
+        // 4. [제외] 버튼 기능: 대기 목록에서 그냥 삭제 (사이트 반영 안 됨)
+        function rejectUser(id) {
+            if (confirm('정말로 이 신청을 대기 목록에서 제외(삭제)하시겠습니까?')) {
+                database.ref('pending_users/' + id).remove()
+                    .then(() => alert('제외 처리되었습니다.'))
+                    .catch((err) => alert('제외 오류: ' + err));
+            }
+        }
+    </script>
+</body>
+
+</html>
