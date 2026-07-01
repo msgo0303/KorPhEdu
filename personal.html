@@ -213,7 +213,7 @@
             <form id="consultation-form" onsubmit="event.preventDefault(); nextStep(1);" class="p-6 md:p-8" vid="76">
                 
                 
-                <div id="step-1" class="block animate-[fadeIn_0.3s_ease-out]" vid="77">
+                <div id="step-1" class="block" vid="77">
                     <div class="mb-8" vid="78">
                         <span class="text-teal font-bold text-sm tracking-widest uppercase mb-1 block" vid="79">Step 1 of 2</span>
                         <h3 class="text-2xl font-extrabold text-navy break-keep" vid="80">상담 내용 및 일정 선택</h3>
@@ -269,26 +269,78 @@
                                     <input type="checkbox" name="consDays" value="토" class="custom-checkbox sr-only" vid="116">
                                     <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-400 text-sm font-medium transition-colors hover:bg-slate-100" vid="117">토</div>
                                 </label>
+                                <label class="cursor-pointer flex-1 min-w-[40px]" vid="117_sun">
+                                    <input type="checkbox" name="consDays" value="일" class="custom-checkbox sr-only" vid="117_sun_input">
+                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-400 text-sm font-medium transition-colors hover:bg-slate-100" vid="117_sun_div">일</div>
+                                </label>
                             </div>
 
                             <label class="block text-sm font-bold text-slate-800 mb-3" vid="118">희망 시간대 <span class="text-red-500" vid="119">*</span></label>
-                            <div class="grid grid-cols-1 gap-2" vid="120">
-                                <label class="cursor-pointer" vid="121">
-                                    <input type="radio" name="consTime" value="오전 10:00 - 12:00" class="peer sr-only" required="" vid="122">
-                                    <div class="flex items-center gap-3 py-3 px-4 border border-slate-200 bg-white rounded-xl text-slate-600 font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="123">
-                                        <i data-lucide="sun" class="w-4 h-4" vid="124"></i> 오전 10:00 - 12:00
+                            <div class="grid grid-cols-3 sm:grid-cols-4 gap-2" vid="120">
+                                <label class="cursor-pointer" vid="time-10">
+                                    <input type="radio" name="consTime" value="10:00" class="peer sr-only" required="" vid="time-10-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-10-div">
+                                        10:00
                                     </div>
                                 </label>
-                                <label class="cursor-pointer" vid="125">
-                                    <input type="radio" name="consTime" value="오후 14:00 - 16:00" class="peer sr-only" vid="126">
-                                    <div class="flex items-center gap-3 py-3 px-4 border border-slate-200 bg-white rounded-xl text-slate-600 font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="127">
-                                        <i data-lucide="coffee" class="w-4 h-4" vid="128"></i> 오후 14:00 - 16:00
+                                <label class="cursor-pointer" vid="time-11">
+                                    <input type="radio" name="consTime" value="11:00" class="peer sr-only" vid="time-11-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-11-div">
+                                        11:00
                                     </div>
                                 </label>
-                                <label class="cursor-pointer" vid="129">
-                                    <input type="radio" name="consTime" value="오후 16:00 - 18:00" class="peer sr-only" vid="130">
-                                    <div class="flex items-center gap-3 py-3 px-4 border border-slate-200 bg-white rounded-xl text-slate-600 font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="131">
-                                        <i data-lucide="sunset" class="w-4 h-4" vid="132"></i> 오후 16:00 - 18:00
+                                <label class="cursor-pointer" vid="time-12">
+                                    <input type="radio" name="consTime" value="12:00" class="peer sr-only" vid="time-12-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-12-div">
+                                        12:00
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer" vid="time-13">
+                                    <input type="radio" name="consTime" value="13:00" class="peer sr-only" vid="time-13-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-13-div">
+                                        13:00
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer" vid="time-14">
+                                    <input type="radio" name="consTime" value="14:00" class="peer sr-only" vid="time-14-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-14-div">
+                                        14:00
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer" vid="time-15">
+                                    <input type="radio" name="consTime" value="15:00" class="peer sr-only" vid="time-15-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-15-div">
+                                        15:00
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer" vid="time-16">
+                                    <input type="radio" name="consTime" value="16:00" class="peer sr-only" vid="time-16-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-16-div">
+                                        16:00
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer" vid="time-17">
+                                    <input type="radio" name="consTime" value="17:00" class="peer sr-only" vid="time-17-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-17-div">
+                                        17:00
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer" vid="time-18">
+                                    <input type="radio" name="consTime" value="18:00" class="peer sr-only" vid="time-18-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-18-div">
+                                        18:00
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer" vid="time-19">
+                                    <input type="radio" name="consTime" value="19:00" class="peer sr-only" vid="time-19-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-19-div">
+                                        19:00
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer" vid="time-20">
+                                    <input type="radio" name="consTime" value="20:00" class="peer sr-only" vid="time-20-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-20-div">
+                                        20:00
                                     </div>
                                 </label>
                             </div>
@@ -315,18 +367,24 @@
                         
                         <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-3" vid="147">
                             <label class="flex items-start gap-3 cursor-pointer group" vid="148">
-                                <div class="mt-0.5 relative flex items-center justify-center" vid="149">
+                                <div class="mt-1 relative flex items-center justify-center" vid="149">
                                     <input type="checkbox" id="agreeTOS" required="" class="peer appearance-none w-5 h-5 border-2 border-slate-300 rounded bg-white checked:bg-navy checked:border-navy transition-colors" vid="150">
                                     <i data-lucide="check" class="absolute w-3 h-3 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" vid="151"></i>
                                 </div>
-                                <span class="text-sm text-slate-600 font-medium group-hover:text-slate-800" vid="152"><span class="text-navy font-bold" vid="153">[필수]</span> 이용약관에 동의합니다</span>
+                                <div class="flex-1 flex items-center justify-between">
+                                    <span class="text-sm text-slate-600 font-medium group-hover:text-slate-800" vid="152"><span class="text-navy font-bold" vid="153">[필수]</span> 이용약관에 동의합니다</span>
+                                    <button type="button" onclick="event.preventDefault(); openTOSModal();" class="text-xs text-slate-400 hover:text-navy underline ml-2 shrink-0">보기</button>
+                                </div>
                             </label>
                             <label class="flex items-start gap-3 cursor-pointer group" vid="154">
-                                <div class="mt-0.5 relative flex items-center justify-center" vid="155">
+                                <div class="mt-1 relative flex items-center justify-center" vid="155">
                                     <input type="checkbox" id="agreePrivacy" required="" class="peer appearance-none w-5 h-5 border-2 border-slate-300 rounded bg-white checked:bg-navy checked:border-navy transition-colors" vid="156">
                                     <i data-lucide="check" class="absolute w-3 h-3 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" vid="157"></i>
                                 </div>
-                                <span class="text-sm text-slate-600 font-medium group-hover:text-slate-800" vid="158"><span class="text-navy font-bold" vid="159">[필수]</span> 개인정보처리방침에 동의합니다</span>
+                                <div class="flex-1 flex items-center justify-between">
+                                    <span class="text-sm text-slate-600 font-medium group-hover:text-slate-800" vid="158"><span class="text-navy font-bold" vid="159">[필수]</span> 개인정보처리방침에 동의합니다</span>
+                                    <button type="button" onclick="event.preventDefault(); openPrivacyModal();" class="text-xs text-slate-400 hover:text-navy underline ml-2 shrink-0">보기</button>
+                                </div>
                             </label>
                         </div>
                     </div>
@@ -337,11 +395,9 @@
                 </div>
 
                 
-                <div id="step-2" class="hidden animate-[fadeIn_0.3s_ease-out]" vid="162">
+                <div id="step-2" class="hidden" vid="162">
                     <div class="mb-8 text-center" vid="163">
-                        <div class="w-16 h-16 bg-navy/5 rounded-full flex items-center justify-center mx-auto mb-4 text-navy" vid="164">
-                            <i data-lucide="clipboard-check" class="w-8 h-8" vid="165"></i>
-                        </div>
+                        <img src="images/logo.png" alt="로고" class="h-10 mx-auto mb-4 object-contain" vid="165">
                         <span class="text-teal font-bold text-sm tracking-widest uppercase mb-1 block" vid="166">Step 2 of 2</span>
                         <h3 class="text-2xl font-extrabold text-navy break-keep" vid="167">입력 정보 확인</h3>
                         <p class="text-slate-500 text-sm mt-2 break-keep" vid="168">예약 확정 전 입력하신 정보를 다시 한 번 확인해 주세요.</p>
@@ -383,10 +439,8 @@
                 </div>
 
                 
-                <div id="step-3" class="hidden animate-[fadeIn_0.3s_ease-out] text-center py-8" vid="190">
-                    <div class="w-24 h-24 bg-teal/10 rounded-full flex items-center justify-center mx-auto mb-6 text-teal" vid="191">
-                        <i data-lucide="shield-check" class="w-12 h-12" vid="192"></i>
-                    </div>
+                <div id="step-3" class="hidden text-center py-8" vid="190">
+                    <img src="images/logo.png" alt="로고" class="h-16 mx-auto mb-6 object-contain" vid="191">
                     <h3 class="text-3xl font-extrabold text-navy mb-4 break-keep" vid="193">상담 예약이 접수되었습니다</h3>
                     <p class="text-slate-600 text-lg mb-8 break-keep leading-relaxed" vid="194">
                         담당자가 일정을 확인한 후,<br vid="195">입력해주신 연락처로 <strong vid="196">빠른 시일 내로 연락 드리겠습니다.</strong>
@@ -398,6 +452,49 @@
                 </div>
 
             </form>
+        </div>
+    </div>
+
+    <!-- 이용약관 팝업 모달 -->
+    <div id="tos-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] hidden items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0">
+        <div id="tos-modal-card" class="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl relative transition-all duration-300 ease-out transform scale-95 opacity-0">
+            <button onclick="closeTOSModal()" class="absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="p-6 border-b border-slate-100">
+                <h3 class="text-xl font-bold text-navy">이용약관</h3>
+            </div>
+            <div class="p-6 overflow-y-auto text-sm text-slate-600 space-y-4 leading-relaxed break-keep">
+                <p><strong>제 1 조 (목적)</strong><br>본 약관은 한국자기이해교육원(이하 "기관")이 제공하는 교육 프로그램 및 상담 서비스(이하 "서비스")의 이용조건 및 절차에 관한 사항을 규정함을 목적으로 합니다.</p>
+                <p><strong>제 2 조 (용어의 정의)</strong><br>1. "이용자"란 기관의 사이트에 접속하여 본 약관에 따라 기관이 제공하는 서비스를 받는 회원 및 비회원을 말합니다.<br>2. "서비스"란 기관이 온/오프라인을 통해 제공하는 자기이해 검사, 개인 상담, 전문가 양성 과정 등의 교육 및 상담 서비스를 의미합니다.</p>
+                <p><strong>제 3 조 (약관의 효력 및 변경)</strong><br>본 약관은 서비스 화면에 게시하거나 기타의 방법으로 이용자에게 공지함으로써 효력이 발생합니다. 기관은 관련 법령을 위배하지 않는 범위 내에서 본 약관을 개정할 수 있습니다.</p>
+                <p><strong>제 4 조 (서비스 이용 및 제한)</strong><br>서비스 이용은 기관의 업무상 또는 기술상 특별한 지장이 없는 한 연중무휴, 1일 24시간 운영을 원칙으로 합니다. 다만, 정기점검 등의 필요로 기관이 정한 날 또는 시간은 예외로 합니다.</p>
+            </div>
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end rounded-b-2xl">
+                <button onclick="closeTOSModal()" class="bg-navy text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-navy-dark transition-colors">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 개인정보 처리방침 팝업 모달 -->
+    <div id="privacy-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] hidden items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0">
+        <div id="privacy-modal-card" class="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl relative transition-all duration-300 ease-out transform scale-95 opacity-0">
+            <button onclick="closePrivacyModal()" class="absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="p-6 border-b border-slate-100">
+                <h3 class="text-xl font-bold text-navy">개인정보 처리방침</h3>
+            </div>
+            <div class="p-6 overflow-y-auto text-sm text-slate-600 space-y-4 leading-relaxed break-keep">
+                <p>한국자기이해교육원은 이용자의 개인정보를 중요시하며, "개인정보 보호법" 등 관련 법령을 준수하고 있습니다.</p>
+                <p><strong>1. 수집하는 개인정보 항목</strong><br>기관은 상담 예약 및 서비스 신청을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>- 필수항목: 이름, 연령, 연락처, 희망 상담유형, 희망 요일 및 시간대</p>
+                <p><strong>2. 개인정보의 수집 및 이용 목적</strong><br>수집된 개인정보는 상담 예약 관리, 본인 확인, 상담 일정 조율, 교육 프로그램 안내 및 서비스 제공을 위한 목적으로만 이용됩니다.</p>
+                <p><strong>3. 개인정보의 보유 및 이용 기간</strong><br>원칙적으로 개인정보의 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 관계법령의 규정에 의하여 보존할 필요가 있는 경우 일정 기간 보존합니다.</p>
+                <p><strong>4. 동의 거부 권리 및 불이익</strong><br>귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다. 다만, 동의를 거부할 경우 상담 예약 신청 및 서비스 이용이 제한될 수 있습니다.</p>
+            </div>
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end rounded-b-2xl">
+                <button onclick="closePrivacyModal()" class="bg-navy text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-navy-dark transition-colors">확인</button>
+            </div>
         </div>
     </div>
 
@@ -618,12 +715,113 @@
             if (e.target === modal) closeModal();
         });
 
+        // TOS & Privacy Modal Handlers
+        const tosModal = document.getElementById('tos-modal');
+        const tosCard = document.getElementById('tos-modal-card');
+        function openTOSModal() {
+            tosModal.classList.remove('hidden');
+            tosModal.classList.add('flex');
+            tosModal.offsetHeight;
+            tosModal.classList.remove('opacity-0');
+            tosModal.classList.add('opacity-100');
+            if (tosCard) {
+                tosCard.classList.remove('scale-95', 'opacity-0');
+                tosCard.classList.add('scale-100', 'opacity-100');
+            }
+        }
+        function closeTOSModal() {
+            tosModal.classList.remove('opacity-100');
+            tosModal.classList.add('opacity-0');
+            if (tosCard) {
+                tosCard.classList.remove('scale-100', 'opacity-100');
+                tosCard.classList.add('scale-95', 'opacity-0');
+            }
+            setTimeout(() => {
+                tosModal.classList.remove('flex');
+                tosModal.classList.add('hidden');
+            }, 300);
+        }
+
+        const privacyModal = document.getElementById('privacy-modal');
+        const privacyCard = document.getElementById('privacy-modal-card');
+        function openPrivacyModal() {
+            privacyModal.classList.remove('hidden');
+            privacyModal.classList.add('flex');
+            privacyModal.offsetHeight;
+            privacyModal.classList.remove('opacity-0');
+            privacyModal.classList.add('opacity-100');
+            if (privacyCard) {
+                privacyCard.classList.remove('scale-95', 'opacity-0');
+                privacyCard.classList.add('scale-100', 'opacity-100');
+            }
+        }
+        function closePrivacyModal() {
+            privacyModal.classList.remove('opacity-100');
+            privacyModal.classList.add('opacity-0');
+            if (privacyCard) {
+                privacyCard.classList.remove('scale-100', 'opacity-100');
+                privacyCard.classList.add('scale-95', 'opacity-0');
+            }
+            setTimeout(() => {
+                privacyModal.classList.remove('flex');
+                privacyModal.classList.add('hidden');
+            }, 300);
+        }
+
+        tosModal.addEventListener('click', (e) => {
+            if (e.target === tosModal) closeTOSModal();
+        });
+        privacyModal.addEventListener('click', (e) => {
+            if (e.target === privacyModal) closePrivacyModal();
+        });
+
         function goToStep(step) {
-            document.getElementById('step-1').classList.add('hidden');
-            document.getElementById('step-2').classList.add('hidden');
-            document.getElementById('step-3').classList.add('hidden');
+            const steps = [
+                document.getElementById('step-1'),
+                document.getElementById('step-2'),
+                document.getElementById('step-3')
+            ];
             
-            document.getElementById(`step-${step}`).classList.remove('hidden');
+            const currentStepEl = steps.find(el => el && !el.classList.contains('hidden'));
+            
+            if (currentStepEl && currentStepEl.id !== `step-${step}`) {
+                currentStepEl.style.transition = 'opacity 0.2s ease-in-out, transform 0.2s ease-in-out';
+                currentStepEl.style.opacity = '0';
+                currentStepEl.style.transform = 'translateY(-10px)';
+                
+                setTimeout(() => {
+                    currentStepEl.classList.add('hidden');
+                    currentStepEl.style.opacity = '';
+                    currentStepEl.style.transform = '';
+                    
+                    const nextStepEl = document.getElementById(`step-${step}`);
+                    if (nextStepEl) {
+                        nextStepEl.classList.remove('hidden');
+                        nextStepEl.style.opacity = '0';
+                        nextStepEl.style.transform = 'translateY(10px)';
+                        nextStepEl.style.transition = 'opacity 0.25s ease-out, transform 0.25s ease-out';
+                        
+                        nextStepEl.offsetHeight;
+                        
+                        nextStepEl.style.opacity = '1';
+                        nextStepEl.style.transform = 'translateY(0)';
+                        
+                        setTimeout(() => {
+                            nextStepEl.style.opacity = '';
+                            nextStepEl.style.transform = '';
+                            nextStepEl.style.transition = '';
+                        }, 250);
+                    }
+                }, 200);
+            } else {
+                steps.forEach(el => {
+                    if (el) el.classList.add('hidden');
+                });
+                const nextStepEl = document.getElementById(`step-${step}`);
+                if (nextStepEl) {
+                    nextStepEl.classList.remove('hidden');
+                }
+            }
         }
 
         function nextStep(currentStep) {
