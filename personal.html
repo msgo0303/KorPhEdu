@@ -158,9 +158,9 @@
                 <a href="Menu_3.html"
                     class="nav-link text-teal font-bold text-sm transition-colors border-b-2 border-teal pb-0.5"
                     vid="30">연구진</a>
-                <button onclick="openModal()"
-                    class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors shadow-sm"
-                    vid="31">문의하기</button>
+                <button id="nav-booking-btn" onclick="openModal()"
+                    class="hidden bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors shadow-sm"
+                    vid="31">예약하기</button>
             </div>
 
 
@@ -177,9 +177,9 @@
                 <a href="Menu_1.html" class="text-slate-600 font-medium py-2" vid="36">기관소개</a>
                 <a href="Menu_2.html" class="text-slate-600 font-medium py-2" vid="37">비즈니스</a>
                 <a href="Menu_3.html" class="text-teal font-bold py-2" vid="38">연구진</a>
-                <button onclick="openModal(); closeMobileMenu();"
-                    class="bg-teal text-white px-4 py-3 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors mt-2 text-center w-full"
-                    vid="39">문의하기</button>
+                <button id="mobile-booking-btn" onclick="openModal(); closeMobileMenu();"
+                    class="hidden bg-teal text-white px-4 py-3 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors mt-2 text-center w-full"
+                    vid="39">예약하기</button>
             </div>
         </div>
     </nav>
@@ -202,52 +202,59 @@
             </div>
 
 
-            <div class="max-w-4xl mx-auto mb-20" vid="47">
+            <!-- 수동 코드 입력 영역 (코드가 없거나 유효하지 않은 경우 노출) -->
+            <div id="code-entry-section" class="hidden max-w-md mx-auto text-center my-12 p-8 bg-white rounded-2xl shadow-sm border border-slate-100 transition-all duration-500">
+                <i data-lucide="shield-check" class="w-12 h-12 text-navy mx-auto mb-4"></i>
+                <h2 class="text-xl font-bold text-navy mb-2">전문가 프로필 조회</h2>
+                <p class="text-sm text-slate-400 mb-6 break-keep">부여받으신 6자리 코드를 입력하시면 해당 전문가의 프로필과 상담 예약 창이 활성화됩니다.</p>
+                <div class="flex gap-2">
+                    <input type="text" id="expert-code-input" maxlength="6" placeholder="6자리 코드 입력" class="w-full border-2 border-slate-200 rounded-xl p-3 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/10 transition text-center tracking-widest font-mono text-lg font-bold text-slate-800">
+                    <button onclick="checkExpertCode()" class="bg-navy text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-navy-dark transition whitespace-nowrap">조회하기</button>
+                </div>
+            </div>
+
+            <!-- 전문가 프로필 정보 영역 (Firebase 동적 바인딩) -->
+            <div id="profile-display-section" class="hidden max-w-4xl mx-auto mb-20" vid="47">
                 <div class="flex flex-col items-center text-center reveal active" vid="48">
                     <div class="w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-xl mb-10 relative mx-auto"
                         vid="49">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
-                            alt="홍길동 박사" class="w-full h-full object-cover object-top" vid="50">
+                        <img id="dynamic-img" src="" alt="전문가 프로필" class="w-full h-full object-cover object-top" vid="50">
                         <div class="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent" vid="51"></div>
                     </div>
                     <div class="mb-10" vid="52">
-                        <h3 class="text-3xl md:text-5xl font-bold text-navy mb-2" vid="53">홍길동 <span
-                                class="text-xl md:text-2xl text-slate-500 font-medium" vid="54">박사</span></h3>
-                        <p class="text-teal font-semibold text-sm tracking-[0.2em] uppercase" vid="55">상임 연구위원</p>
+                        <h3 class="text-3xl md:text-5xl font-bold text-navy mb-2" vid="53"><span id="dynamic-name"></span> <span
+                                class="text-xl md:text-2xl text-slate-500 font-medium" vid="54">전문가</span></h3>
+                        <p id="dynamic-position" class="text-teal font-semibold text-sm tracking-[0.2em] uppercase" vid="55"></p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left w-full" vid="56">
                         <div vid="57">
                             <h4 class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-4 border-b border-slate-200 pb-2"
                                 vid="58">학력 및 경력</h4>
-                            <p class="text-slate-700 break-keep leading-relaxed text-sm" vid="59">서울대학교 교육심리학 박사<br
-                                    vid="60">前 한국청소년정책연구원 자문위원</p>
+                            <p id="dynamic-experience" class="text-slate-700 break-keep leading-relaxed text-sm" style="white-space: pre-wrap;" vid="59"></p>
                         </div>
                         <div vid="61">
                             <h4 class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-4 border-b border-slate-200 pb-2"
                                 vid="62">전문 분야</h4>
-                            <p class="text-slate-700 break-keep leading-relaxed text-sm" vid="63">다면적 기질 특성론 연구, 대기업 HR
-                                리더십 코칭</p>
+                            <p id="dynamic-specialty" class="text-slate-700 break-keep leading-relaxed text-sm" vid="63"></p>
                         </div>
                         <div vid="64">
                             <h4 class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-4 border-b border-slate-200 pb-2"
                                 vid="65">자기소개</h4>
-                            <p class="text-slate-600 break-keep leading-relaxed text-sm" vid="66">"15년간 축적된 데이터와 임상 경험을
-                                바탕으로, 본질적인 변화를 이끌어냅니다."</p>
+                            <p id="dynamic-introduce" class="text-slate-600 break-keep leading-relaxed text-sm italic" style="white-space: pre-wrap;" vid="66"></p>
                         </div>
                     </div>
                 </div>
-            </div>
 
-
-            <div class="flex justify-center mt-16 reveal" style="transition-delay: 500ms;" vid="67">
-                <button onclick="openModal()"
-                    class="group relative overflow-hidden bg-navy text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-navy-dark transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 w-full max-w-md justify-center"
-                    vid="68">
-                    <div class="absolute inset-0 bg-white/10 w-0 group-hover:w-full transition-all duration-500 ease-out z-0"
-                        vid="69"></div>
-                    <i data-lucide="calendar-plus" class="w-6 h-6 z-10" vid="70"></i>
-                    <span class="z-10 tracking-wide" vid="71">전문가 상담 예약하기</span>
-                </button>
+                <div class="flex justify-center mt-16 reveal" style="transition-delay: 500ms;" vid="67">
+                    <button onclick="openModal()"
+                        class="group relative overflow-hidden bg-navy text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-navy-dark transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 w-full max-w-md justify-center"
+                        vid="68">
+                        <div class="absolute inset-0 bg-white/10 w-0 group-hover:w-full transition-all duration-500 ease-out z-0"
+                            vid="69"></div>
+                        <i data-lucide="calendar-plus" class="w-6 h-6 z-10" vid="70"></i>
+                        <span class="z-10 tracking-wide" vid="71">전문가 상담 예약하기</span>
+                    </button>
+                </div>
             </div>
 
         </div>
@@ -709,18 +716,39 @@
 
         // ⚠️ [필수] 본인의 Firebase 설정 정보로 알맞게 채워넣어 주세요!
         const firebaseConfig = {
-            apiKey: "AIzaSy...",
-            authDomain: "...",
+            authDomain: "prototype-ksui.firebaseapp.com",
             databaseURL: "https://prototype-ksui-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "...",
-            storageBucket: "...",
-            messagingSenderId: "...",
-            appId: "..."
+            storageBucket: "prototype-ksui.firebasestorage.app",
         };
 
         // Firebase 초기화
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
+
+        // 글로벌 변수로 현재 로드된 전문가 코드 관리
+        let currentCode = '';
+
+        // 💡 구글 드라이브 이미지 공유 URL을 직접 스트리밍 가능한 주소로 최적화하는 함수
+        function optimizeImageUrl(url) {
+            if (!url) return '';
+            if (url.includes('drive.google.com')) {
+                let fileId = '';
+                const fileDMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+                const idParamMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+                
+                if (fileDMatch && fileDMatch[1]) {
+                    fileId = fileDMatch[1];
+                } else if (idParamMatch && idParamMatch[1]) {
+                    fileId = idParamMatch[1];
+                }
+                
+                if (fileId) {
+                    // lh3.googleusercontent.com 주소는 구글의 CDN 엔드포인트로 대용량 스캔 대기화면을 우회하여 즉시 이미지를 표시합니다.
+                    return `https://lh3.googleusercontent.com/d/${fileId}`;
+                }
+            }
+            return url;
+        }
 
         // 💡 핵심: 페이지가 열리자마자 주소창의 파라미터(?code=6자리)를 분석해서 자동 조회 실행
         document.addEventListener('DOMContentLoaded', () => {
@@ -731,11 +759,23 @@
                 // 주소창에 정상 코드가 붙어서 넘어온 경우 자동 로드 실행
                 loadExpertProfile(codeParam);
             } else {
-                // 예외 처리: 코드가 안 붙어있으면 수동 입력창을 보여주거나 안내 메시지 출력
+                // 예외 처리: 코드가 안 붙어있으면 수동 입력창을 보여줌
                 const entrySection = document.getElementById('code-entry-section');
                 if (entrySection) entrySection.classList.remove('hidden');
             }
         });
+
+        // 🔍 수동 입력한 코드를 검증하고 로드하는 함수
+        function checkExpertCode() {
+            const codeInput = document.getElementById('expert-code-input').value.trim();
+
+            if (!codeInput || codeInput.length !== 6) {
+                alert('올바른 6자리 코드를 입력해 주세요.');
+                return;
+            }
+
+            loadExpertProfile(codeInput);
+        }
 
         // 💡 핵심: Firebase에서 특정 코드로 전문가 데이터를 가져와 화면에 뿌려주는 함수
         function loadExpertProfile(code) {
@@ -746,6 +786,8 @@
                     const data = snapshot.val();
 
                     if (data) {
+                        currentCode = code;
+
                         // Firebase에서 가져온 리얼 데이터를 기존 HTML 그릇에 바인딩
                         if (document.getElementById('dynamic-name')) document.getElementById('dynamic-name').innerText = data.name;
                         if (document.getElementById('dynamic-specialty')) document.getElementById('dynamic-specialty').innerText = data.specialty;
@@ -753,11 +795,15 @@
                         if (document.getElementById('dynamic-introduce')) document.getElementById('dynamic-introduce').innerText = `"${data.introduce}"`;
 
                         if (data.imageUrl && document.getElementById('dynamic-img')) {
-                            document.getElementById('dynamic-img').src = data.imageUrl;
+                            document.getElementById('dynamic-img').src = optimizeImageUrl(data.imageUrl);
                         }
                         if (data.position && document.getElementById('dynamic-position')) {
                             document.getElementById('dynamic-position').innerText = data.position;
                         }
+
+                        // 주소창에 파라미터 업데이트 (새로고침/복사 시 상태 유지)
+                        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?code=' + code;
+                        window.history.replaceState({ path: newUrl }, '', newUrl);
 
                         // 프로필 레이아웃 전면 노출 및 상단 '예약하기' 버튼들 활성화
                         if (document.getElementById('code-entry-section')) document.getElementById('code-entry-section').classList.add('hidden');
@@ -1088,8 +1134,31 @@
                 goToStep(2);
             }
             else if (currentStep === 2) {
+                // Firebase Realtime Database '/bookings' 경로에 예약 내역 저장
+                const days = Array.from(document.querySelectorAll('input[name="consDays"]:checked')).map(el => el.value);
+                const expertNameEl = document.getElementById('dynamic-name');
+                const expertName = expertNameEl ? expertNameEl.innerText.trim() : '';
 
-                goToStep(3);
+                const bookingData = {
+                    expertCode: currentCode || '',
+                    expertName: expertName,
+                    consType: document.querySelector('input[name="consType"]:checked').value,
+                    consDays: days,
+                    consTime: document.querySelector('input[name="consTime"]:checked').value,
+                    userName: document.getElementById('userName').value.trim(),
+                    userAge: parseInt(document.getElementById('userAge').value, 10),
+                    userPhone: document.getElementById('userPhone').value.trim(),
+                    submittedAt: new Date().toISOString()
+                };
+
+                database.ref('bookings').push(bookingData)
+                    .then(() => {
+                        goToStep(3);
+                    })
+                    .catch((error) => {
+                        console.error("Booking reservation database push failed: ", error);
+                        alert("예약 신청에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+                    });
             }
         }
     </script>
