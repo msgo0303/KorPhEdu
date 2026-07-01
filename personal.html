@@ -1,18 +1,21 @@
-<html lang="ko" class="scroll-smooth" vid="0"><head vid="1">
+<html lang="ko" class="scroll-smooth" vid="0">
+
+<head vid="1">
     <meta charset="UTF-8" vid="2">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
     <title vid="4">상담 예약 및 전문가 프로필 | 한국자기이해교육원 KSUT</title>
-    
-    
-    <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" vid="5">
-    
-    
+
+
+    <link rel="stylesheet" as="style" crossorigin=""
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" vid="5">
+
+
     <script src="https://cdn.tailwindcss.com/3.4.17" vid="6"></script>
-    
-    
+
+
     <script src="https://unpkg.com/lucide@latest" vid="7"></script>
 
-    
+
     <script vid="8">
         tailwind.config = {
             theme: {
@@ -37,21 +40,28 @@
     </script>
 
     <style vid="9">
-        body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
-        .break-keep { word-break: keep-all; }
-        
-        
-        .reveal { 
-            opacity: 0; 
-            transform: translateY(30px); 
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
-        }
-        .reveal.active { 
-            opacity: 1; 
-            transform: translateY(0); 
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
         }
 
-        
+        .break-keep {
+            word-break: keep-all;
+        }
+
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
         .gradient-reveal-text {
             background: linear-gradient(to right, #0F172A 50%, #94A3B8 50%);
             background-size: 200% 100%;
@@ -61,14 +71,18 @@
             color: transparent;
             display: inline-block;
         }
+
         .gradient-reveal-text.animate-reveal {
             animation: fillText 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
+
         @keyframes fillText {
-            to { background-position: 0 0; }
+            to {
+                background-position: 0 0;
+            }
         }
 
-        
+
         .splash-text-item {
             position: absolute;
             width: 100%;
@@ -77,328 +91,443 @@
             transform: translateY(20px);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
         .splash-text-item.active {
             opacity: 1;
             transform: translateY(0);
         }
+
         .splash-text-item.exit {
             opacity: 0;
             transform: translateY(-20px);
         }
 
-        
-        .custom-checkbox:checked + div {
+
+        .custom-checkbox:checked+div {
             background-color: #1E3A8A;
             border-color: #1E3A8A;
             color: white;
         }
     </style>
 </head>
-<body class="bg-slatebg text-slate-900 font-sans antialiased overflow-x-hidden overflow-hidden selection:bg-teal selection:text-white relative" vid="10">
 
-    
-    <div id="splash-screen" class="fixed inset-0 bg-slatebg z-[100] flex flex-col items-center justify-center transition-all duration-600 ease-in-out" vid="11">
+<body
+    class="bg-slatebg text-slate-900 font-sans antialiased overflow-x-hidden overflow-hidden selection:bg-teal selection:text-white relative"
+    vid="10">
+
+
+    <div id="splash-screen"
+        class="fixed inset-0 bg-slatebg z-[100] flex flex-col items-center justify-center transition-all duration-600 ease-in-out"
+        vid="11">
         <div class="w-full max-w-xs relative" vid="12">
             <div class="h-8 relative overflow-hidden mb-6 flex items-center justify-center" vid="13">
-                <div class="splash-text-item active text-navy font-semibold tracking-wide" vid="14">전문가 프로필 로드 중...</div>
+                <div class="splash-text-item active text-navy font-semibold tracking-wide" vid="14">전문가 프로필 로드 중...
+                </div>
                 <div class="splash-text-item text-navy font-semibold tracking-wide" vid="15">상담 일정 데이터 연동 중...</div>
                 <div class="splash-text-item text-navy font-semibold tracking-wide" vid="16">시스템 최적화 진행 중...</div>
                 <div class="splash-text-item text-navy font-semibold tracking-wide" vid="17">마지막 점검 중...</div>
             </div>
-            
+
             <div class="w-full h-1 bg-slate-200 rounded-full overflow-hidden relative" vid="18">
-                <div id="splash-progress-bar" class="absolute top-0 left-0 h-full bg-navy w-0 rounded-full transition-all duration-100 ease-linear shadow-[0_0_10px_rgba(30,58,138,0.5)]" vid="19"></div>
+                <div id="splash-progress-bar"
+                    class="absolute top-0 left-0 h-full bg-navy w-0 rounded-full transition-all duration-100 ease-linear shadow-[0_0_10px_rgba(30,58,138,0.5)]"
+                    vid="19"></div>
             </div>
-            <div class="text-center mt-3 text-xs text-slate-400 font-mono tracking-widest" id="splash-percentage" vid="20">0%</div>
+            <div class="text-center mt-3 text-xs text-slate-400 font-mono tracking-widest" id="splash-percentage"
+                vid="20">0%</div>
         </div>
     </div>
 
-    
+
     <nav class="fixed w-full z-40 top-0 transition-all duration-300 bg-transparent py-3" id="navbar" vid="21">
         <div class="max-w-7xl mx-auto px-6 py-1 flex justify-between items-center relative" vid="22">
             <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='#'" vid="23">
                 <img src="images/logo.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" id="nav-logo-box" vid="24">
-                <span class="text-navy font-semibold tracking-tight text-lg transition-colors" id="nav-brand" vid="26">한국자기이해교육원</span>
-            </div>
-            
-            
-            <div class="hidden md:flex gap-8 items-center" vid="27">
-                <a href="Menu_1.html" class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="28">기관소개</a>
-                <a href="Menu_2.html" class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="29">비즈니스</a>
-                <a href="Menu_3.html" class="nav-link text-teal font-bold text-sm transition-colors border-b-2 border-teal pb-0.5" vid="30">연구진</a>
-                <button onclick="openModal()" class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors shadow-sm" vid="31">문의하기</button>
+                <span class="text-navy font-semibold tracking-tight text-lg transition-colors" id="nav-brand"
+                    vid="26">한국자기이해교육원</span>
             </div>
 
-            
+
+            <div class="hidden md:flex gap-8 items-center" vid="27">
+                <a href="Menu_1.html"
+                    class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors"
+                    vid="28">기관소개</a>
+                <a href="Menu_2.html"
+                    class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors"
+                    vid="29">비즈니스</a>
+                <a href="Menu_3.html"
+                    class="nav-link text-teal font-bold text-sm transition-colors border-b-2 border-teal pb-0.5"
+                    vid="30">연구진</a>
+                <button onclick="openModal()"
+                    class="bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors shadow-sm"
+                    vid="31">문의하기</button>
+            </div>
+
+
             <button class="md:hidden text-slate-600 focus:outline-none" id="mobile-menu-btn" vid="32">
                 <i data-lucide="menu" class="w-6 h-6" id="menu-icon" vid="33"></i>
             </button>
         </div>
 
-        
-        <div id="mobile-drawer" class="md:hidden overflow-hidden transition-all duration-300 max-h-0 bg-white border-t border-slate-100 shadow-lg absolute w-full left-0 top-full opacity-0" vid="34">
+
+        <div id="mobile-drawer"
+            class="md:hidden overflow-hidden transition-all duration-300 max-h-0 bg-white border-t border-slate-100 shadow-lg absolute w-full left-0 top-full opacity-0"
+            vid="34">
             <div class="px-6 py-4 flex flex-col gap-4" vid="35">
                 <a href="Menu_1.html" class="text-slate-600 font-medium py-2" vid="36">기관소개</a>
                 <a href="Menu_2.html" class="text-slate-600 font-medium py-2" vid="37">비즈니스</a>
                 <a href="Menu_3.html" class="text-teal font-bold py-2" vid="38">연구진</a>
-                <button onclick="openModal(); closeMobileMenu();" class="bg-teal text-white px-4 py-3 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors mt-2 text-center w-full" vid="39">문의하기</button>
+                <button onclick="openModal(); closeMobileMenu();"
+                    class="bg-teal text-white px-4 py-3 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors mt-2 text-center w-full"
+                    vid="39">문의하기</button>
             </div>
         </div>
     </nav>
 
-    
+
     <main class="pt-32 pb-24 px-6 relative z-10 min-h-screen" vid="40">
         <div class="max-w-7xl mx-auto" vid="41">
-            
-            
+
+
             <div class="text-center md:text-left mb-16 pt-12 md:pt-20 px-4 md:px-0" vid="42">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight break-keep leading-tight md:leading-tight" vid="43">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight break-keep leading-tight md:leading-tight"
+                    vid="43">
                     <span class="gradient-reveal-text block" id="hero-line1" vid="44">전문가와 함께하는</span>
                     <span class="gradient-reveal-text block mt-2" id="hero-line2" vid="45">깊이 있는 상담 서비스</span>
                 </h1>
-                <p class="mt-6 text-slate-500 text-lg md:text-xl font-light reveal delay-500 break-keep max-w-2xl" vid="46">
+                <p class="mt-6 text-slate-500 text-lg md:text-xl font-light reveal delay-500 break-keep max-w-2xl"
+                    vid="46">
                     검증된 전문성과 풍부한 임상 경험을 바탕으로, 당신의 성장과 조직의 발전을 위한 최적의 솔루션을 제공합니다.
                 </p>
             </div>
 
-            
+
             <div class="max-w-4xl mx-auto mb-20" vid="47">
                 <div class="flex flex-col items-center text-center reveal active" vid="48">
-                    <div class="w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-xl mb-10 relative mx-auto" vid="49">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="홍길동 박사" class="w-full h-full object-cover object-top" vid="50">
+                    <div class="w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-xl mb-10 relative mx-auto"
+                        vid="49">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
+                            alt="홍길동 박사" class="w-full h-full object-cover object-top" vid="50">
                         <div class="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent" vid="51"></div>
                     </div>
                     <div class="mb-10" vid="52">
-                        <h3 class="text-3xl md:text-5xl font-bold text-navy mb-2" vid="53">홍길동 <span class="text-xl md:text-2xl text-slate-500 font-medium" vid="54">박사</span></h3>
+                        <h3 class="text-3xl md:text-5xl font-bold text-navy mb-2" vid="53">홍길동 <span
+                                class="text-xl md:text-2xl text-slate-500 font-medium" vid="54">박사</span></h3>
                         <p class="text-teal font-semibold text-sm tracking-[0.2em] uppercase" vid="55">상임 연구위원</p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left w-full" vid="56">
                         <div vid="57">
-                            <h4 class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-4 border-b border-slate-200 pb-2" vid="58">학력 및 경력</h4>
-                            <p class="text-slate-700 break-keep leading-relaxed text-sm" vid="59">서울대학교 교육심리학 박사<br vid="60">前 한국청소년정책연구원 자문위원</p>
+                            <h4 class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-4 border-b border-slate-200 pb-2"
+                                vid="58">학력 및 경력</h4>
+                            <p class="text-slate-700 break-keep leading-relaxed text-sm" vid="59">서울대학교 교육심리학 박사<br
+                                    vid="60">前 한국청소년정책연구원 자문위원</p>
                         </div>
                         <div vid="61">
-                            <h4 class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-4 border-b border-slate-200 pb-2" vid="62">전문 분야</h4>
-                            <p class="text-slate-700 break-keep leading-relaxed text-sm" vid="63">다면적 기질 특성론 연구, 대기업 HR 리더십 코칭</p>
+                            <h4 class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-4 border-b border-slate-200 pb-2"
+                                vid="62">전문 분야</h4>
+                            <p class="text-slate-700 break-keep leading-relaxed text-sm" vid="63">다면적 기질 특성론 연구, 대기업 HR
+                                리더십 코칭</p>
                         </div>
                         <div vid="64">
-                            <h4 class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-4 border-b border-slate-200 pb-2" vid="65">자기소개</h4>
-                            <p class="text-slate-600 break-keep leading-relaxed text-sm" vid="66">"15년간 축적된 데이터와 임상 경험을 바탕으로, 본질적인 변화를 이끌어냅니다."</p>
+                            <h4 class="text-slate-400 font-bold uppercase text-xs tracking-widest mb-4 border-b border-slate-200 pb-2"
+                                vid="65">자기소개</h4>
+                            <p class="text-slate-600 break-keep leading-relaxed text-sm" vid="66">"15년간 축적된 데이터와 임상 경험을
+                                바탕으로, 본질적인 변화를 이끌어냅니다."</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            
+
             <div class="flex justify-center mt-16 reveal" style="transition-delay: 500ms;" vid="67">
-                <button onclick="openModal()" class="group relative overflow-hidden bg-navy text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-navy-dark transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 w-full max-w-md justify-center" vid="68">
-                    <div class="absolute inset-0 bg-white/10 w-0 group-hover:w-full transition-all duration-500 ease-out z-0" vid="69"></div>
+                <button onclick="openModal()"
+                    class="group relative overflow-hidden bg-navy text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-navy-dark transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 w-full max-w-md justify-center"
+                    vid="68">
+                    <div class="absolute inset-0 bg-white/10 w-0 group-hover:w-full transition-all duration-500 ease-out z-0"
+                        vid="69"></div>
                     <i data-lucide="calendar-plus" class="w-6 h-6 z-10" vid="70"></i>
                     <span class="z-10 tracking-wide" vid="71">전문가 상담 예약하기</span>
                 </button>
             </div>
-            
+
         </div>
     </main>
 
-    
-    <div id="consultation-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0" vid="72">
-        <div id="consultation-modal-card" class="bg-white rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative transition-all duration-300 ease-out transform scale-95 opacity-0" vid="73">
-            
-            
-            <button onclick="closeModal()" class="absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10" vid="74">
+
+    <div id="consultation-modal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0"
+        vid="72">
+        <div id="consultation-modal-card"
+            class="bg-white rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative transition-all duration-300 ease-out transform scale-95 opacity-0"
+            vid="73">
+
+
+            <button onclick="closeModal()"
+                class="absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10"
+                vid="74">
                 <i data-lucide="x" class="w-5 h-5" vid="75"></i>
             </button>
 
             <form id="consultation-form" onsubmit="event.preventDefault(); nextStep(1);" class="p-6 md:p-8" vid="76">
-                
-                
+
+
                 <div id="step-1" class="block" vid="77">
                     <div class="mb-8" vid="78">
-                        <span class="text-teal font-bold text-sm tracking-widest uppercase mb-1 block" vid="79">Step 1 of 2</span>
+                        <span class="text-teal font-bold text-sm tracking-widest uppercase mb-1 block" vid="79">Step 1
+                            of 2</span>
                         <h3 class="text-2xl font-extrabold text-navy break-keep" vid="80">상담 내용 및 일정 선택</h3>
                         <p class="text-slate-500 text-sm mt-2 break-keep" vid="81">원하시는 상담 유형과 일정을 선택해 주세요.</p>
                     </div>
 
                     <div class="space-y-8" vid="82">
-                        
+
                         <div vid="83">
-                            <label class="block text-sm font-bold text-slate-800 mb-3" vid="84">상담 유형 <span class="text-red-500" vid="85">*</span></label>
+                            <label class="block text-sm font-bold text-slate-800 mb-3" vid="84">상담 유형 <span
+                                    class="text-red-500" vid="85">*</span></label>
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" vid="86">
                                 <label class="cursor-pointer" vid="87">
-                                    <input type="radio" name="consType" value="개인 상담" class="peer sr-only" required="" vid="88">
-                                    <div class="text-center py-3 px-2 border-2 border-slate-200 rounded-xl text-slate-600 font-medium transition-all peer-checked:border-navy peer-checked:bg-navy peer-checked:text-white hover:border-navy/30" vid="89">개인 상담</div>
+                                    <input type="radio" name="consType" value="개인 상담" class="peer sr-only" required=""
+                                        vid="88">
+                                    <div class="text-center py-3 px-2 border-2 border-slate-200 rounded-xl text-slate-600 font-medium transition-all peer-checked:border-navy peer-checked:bg-navy peer-checked:text-white hover:border-navy/30"
+                                        vid="89">개인 상담</div>
                                 </label>
                                 <label class="cursor-pointer" vid="90">
                                     <input type="radio" name="consType" value="기업/단체 교육" class="peer sr-only" vid="91">
-                                    <div class="text-center py-3 px-2 border-2 border-slate-200 rounded-xl text-slate-600 font-medium transition-all peer-checked:border-navy peer-checked:bg-navy peer-checked:text-white hover:border-navy/30" vid="92">기업/단체 교육</div>
+                                    <div class="text-center py-3 px-2 border-2 border-slate-200 rounded-xl text-slate-600 font-medium transition-all peer-checked:border-navy peer-checked:bg-navy peer-checked:text-white hover:border-navy/30"
+                                        vid="92">기업/단체 교육</div>
                                 </label>
                                 <label class="cursor-pointer" vid="93">
                                     <input type="radio" name="consType" value="자격증 과정 문의" class="peer sr-only" vid="94">
-                                    <div class="text-center py-3 px-2 border-2 border-slate-200 rounded-xl text-slate-600 font-medium transition-all peer-checked:border-navy peer-checked:bg-navy peer-checked:text-white hover:border-navy/30 break-keep" vid="95">자격증 과정 문의</div>
+                                    <div class="text-center py-3 px-2 border-2 border-slate-200 rounded-xl text-slate-600 font-medium transition-all peer-checked:border-navy peer-checked:bg-navy peer-checked:text-white hover:border-navy/30 break-keep"
+                                        vid="95">자격증 과정 문의</div>
                                 </label>
                             </div>
                         </div>
 
-                        
+
                         <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100" vid="96">
-                            <label class="block text-sm font-bold text-slate-800 mb-3" vid="97">희망 요일 (다중 선택 가능) <span class="text-red-500" vid="98">*</span></label>
+                            <label class="block text-sm font-bold text-slate-800 mb-3" vid="97">희망 요일 (다중 선택 가능) <span
+                                    class="text-red-500" vid="98">*</span></label>
                             <div class="flex flex-wrap gap-2 mb-6" vid="99">
-                                
+
                                 <label class="cursor-pointer flex-1 min-w-[40px]" vid="100">
-                                    <input type="checkbox" name="consDays" value="월" class="custom-checkbox sr-only" vid="101">
-                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-500 text-sm font-medium transition-colors hover:bg-slate-100" vid="102">월</div>
+                                    <input type="checkbox" name="consDays" value="월" class="custom-checkbox sr-only"
+                                        vid="101">
+                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-500 text-sm font-medium transition-colors hover:bg-slate-100"
+                                        vid="102">월</div>
                                 </label>
                                 <label class="cursor-pointer flex-1 min-w-[40px]" vid="103">
-                                    <input type="checkbox" name="consDays" value="화" class="custom-checkbox sr-only" vid="104">
-                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-500 text-sm font-medium transition-colors hover:bg-slate-100" vid="105">화</div>
+                                    <input type="checkbox" name="consDays" value="화" class="custom-checkbox sr-only"
+                                        vid="104">
+                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-500 text-sm font-medium transition-colors hover:bg-slate-100"
+                                        vid="105">화</div>
                                 </label>
                                 <label class="cursor-pointer flex-1 min-w-[40px]" vid="106">
-                                    <input type="checkbox" name="consDays" value="수" class="custom-checkbox sr-only" vid="107">
-                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-500 text-sm font-medium transition-colors hover:bg-slate-100" vid="108">수</div>
+                                    <input type="checkbox" name="consDays" value="수" class="custom-checkbox sr-only"
+                                        vid="107">
+                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-500 text-sm font-medium transition-colors hover:bg-slate-100"
+                                        vid="108">수</div>
                                 </label>
                                 <label class="cursor-pointer flex-1 min-w-[40px]" vid="109">
-                                    <input type="checkbox" name="consDays" value="목" class="custom-checkbox sr-only" vid="110">
-                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-500 text-sm font-medium transition-colors hover:bg-slate-100" vid="111">목</div>
+                                    <input type="checkbox" name="consDays" value="목" class="custom-checkbox sr-only"
+                                        vid="110">
+                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-500 text-sm font-medium transition-colors hover:bg-slate-100"
+                                        vid="111">목</div>
                                 </label>
                                 <label class="cursor-pointer flex-1 min-w-[40px]" vid="112">
-                                    <input type="checkbox" name="consDays" value="금" class="custom-checkbox sr-only" vid="113">
-                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-500 text-sm font-medium transition-colors hover:bg-slate-100" vid="114">금</div>
+                                    <input type="checkbox" name="consDays" value="금" class="custom-checkbox sr-only"
+                                        vid="113">
+                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-500 text-sm font-medium transition-colors hover:bg-slate-100"
+                                        vid="114">금</div>
                                 </label>
                                 <label class="cursor-pointer flex-1 min-w-[40px]" vid="115">
-                                    <input type="checkbox" name="consDays" value="토" class="custom-checkbox sr-only" vid="116">
-                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-400 text-sm font-medium transition-colors hover:bg-slate-100" vid="117">토</div>
+                                    <input type="checkbox" name="consDays" value="토" class="custom-checkbox sr-only"
+                                        vid="116">
+                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-400 text-sm font-medium transition-colors hover:bg-slate-100"
+                                        vid="117">토</div>
                                 </label>
                                 <label class="cursor-pointer flex-1 min-w-[40px]" vid="117_sun">
-                                    <input type="checkbox" name="consDays" value="일" class="custom-checkbox sr-only" vid="117_sun_input">
-                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-400 text-sm font-medium transition-colors hover:bg-slate-100" vid="117_sun_div">일</div>
+                                    <input type="checkbox" name="consDays" value="일" class="custom-checkbox sr-only"
+                                        vid="117_sun_input">
+                                    <div class="text-center py-2 px-1 border border-slate-200 bg-white rounded-lg text-slate-400 text-sm font-medium transition-colors hover:bg-slate-100"
+                                        vid="117_sun_div">일</div>
                                 </label>
                             </div>
 
-                            <label class="block text-sm font-bold text-slate-800 mb-3" vid="118">희망 시간대 <span class="text-red-500" vid="119">*</span></label>
+                            <label class="block text-sm font-bold text-slate-800 mb-3" vid="118">희망 시간대 <span
+                                    class="text-red-500" vid="119">*</span></label>
                             <div class="grid grid-cols-3 sm:grid-cols-4 gap-2" vid="120">
                                 <label class="cursor-pointer" vid="time-10">
-                                    <input type="radio" name="consTime" value="10:00" class="peer sr-only" required="" vid="time-10-input">
-                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-10-div">
+                                    <input type="radio" name="consTime" value="10:00" class="peer sr-only" required=""
+                                        vid="time-10-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50"
+                                        vid="time-10-div">
                                         10:00
                                     </div>
                                 </label>
                                 <label class="cursor-pointer" vid="time-11">
-                                    <input type="radio" name="consTime" value="11:00" class="peer sr-only" vid="time-11-input">
-                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-11-div">
+                                    <input type="radio" name="consTime" value="11:00" class="peer sr-only"
+                                        vid="time-11-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50"
+                                        vid="time-11-div">
                                         11:00
                                     </div>
                                 </label>
                                 <label class="cursor-pointer" vid="time-12">
-                                    <input type="radio" name="consTime" value="12:00" class="peer sr-only" vid="time-12-input">
-                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-12-div">
+                                    <input type="radio" name="consTime" value="12:00" class="peer sr-only"
+                                        vid="time-12-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50"
+                                        vid="time-12-div">
                                         12:00
                                     </div>
                                 </label>
                                 <label class="cursor-pointer" vid="time-13">
-                                    <input type="radio" name="consTime" value="13:00" class="peer sr-only" vid="time-13-input">
-                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-13-div">
+                                    <input type="radio" name="consTime" value="13:00" class="peer sr-only"
+                                        vid="time-13-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50"
+                                        vid="time-13-div">
                                         13:00
                                     </div>
                                 </label>
                                 <label class="cursor-pointer" vid="time-14">
-                                    <input type="radio" name="consTime" value="14:00" class="peer sr-only" vid="time-14-input">
-                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-14-div">
+                                    <input type="radio" name="consTime" value="14:00" class="peer sr-only"
+                                        vid="time-14-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50"
+                                        vid="time-14-div">
                                         14:00
                                     </div>
                                 </label>
                                 <label class="cursor-pointer" vid="time-15">
-                                    <input type="radio" name="consTime" value="15:00" class="peer sr-only" vid="time-15-input">
-                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-15-div">
+                                    <input type="radio" name="consTime" value="15:00" class="peer sr-only"
+                                        vid="time-15-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50"
+                                        vid="time-15-div">
                                         15:00
                                     </div>
                                 </label>
                                 <label class="cursor-pointer" vid="time-16">
-                                    <input type="radio" name="consTime" value="16:00" class="peer sr-only" vid="time-16-input">
-                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-16-div">
+                                    <input type="radio" name="consTime" value="16:00" class="peer sr-only"
+                                        vid="time-16-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50"
+                                        vid="time-16-div">
                                         16:00
                                     </div>
                                 </label>
                                 <label class="cursor-pointer" vid="time-17">
-                                    <input type="radio" name="consTime" value="17:00" class="peer sr-only" vid="time-17-input">
-                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-17-div">
+                                    <input type="radio" name="consTime" value="17:00" class="peer sr-only"
+                                        vid="time-17-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50"
+                                        vid="time-17-div">
                                         17:00
                                     </div>
                                 </label>
                                 <label class="cursor-pointer" vid="time-18">
-                                    <input type="radio" name="consTime" value="18:00" class="peer sr-only" vid="time-18-input">
-                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-18-div">
+                                    <input type="radio" name="consTime" value="18:00" class="peer sr-only"
+                                        vid="time-18-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50"
+                                        vid="time-18-div">
                                         18:00
                                     </div>
                                 </label>
                                 <label class="cursor-pointer" vid="time-19">
-                                    <input type="radio" name="consTime" value="19:00" class="peer sr-only" vid="time-19-input">
-                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-19-div">
+                                    <input type="radio" name="consTime" value="19:00" class="peer sr-only"
+                                        vid="time-19-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50"
+                                        vid="time-19-div">
                                         19:00
                                     </div>
                                 </label>
                                 <label class="cursor-pointer" vid="time-20">
-                                    <input type="radio" name="consTime" value="20:00" class="peer sr-only" vid="time-20-input">
-                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50" vid="time-20-div">
+                                    <input type="radio" name="consTime" value="20:00" class="peer sr-only"
+                                        vid="time-20-input">
+                                    <div class="text-center py-2 border border-slate-200 bg-white rounded-xl text-slate-600 text-sm font-medium transition-all peer-checked:border-teal peer-checked:bg-teal/5 peer-checked:text-teal hover:bg-slate-50"
+                                        vid="time-20-div">
                                         20:00
                                     </div>
                                 </label>
                             </div>
                         </div>
 
-                        
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4" vid="133">
                             <div vid="134">
-                                <label class="block text-sm font-bold text-slate-800 mb-1" vid="135">이름 <span class="text-red-500" vid="136">*</span></label>
-                                <input type="text" id="userName" required="" class="w-full border-2 border-slate-200 rounded-xl p-3 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/10 transition text-slate-800 font-medium bg-slate-50/50" vid="137">
+                                <label class="block text-sm font-bold text-slate-800 mb-1" vid="135">이름 <span
+                                        class="text-red-500" vid="136">*</span></label>
+                                <input type="text" id="userName" required=""
+                                    class="w-full border-2 border-slate-200 rounded-xl p-3 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/10 transition text-slate-800 font-medium bg-slate-50/50"
+                                    vid="137">
                             </div>
                             <div class="flex gap-4" vid="138">
                                 <div class="w-1/3" vid="139">
-                                    <label class="block text-sm font-bold text-slate-800 mb-1" vid="140">연령 <span class="text-red-500" vid="141">*</span></label>
-                                    <input type="number" id="userAge" required="" min="10" max="99" placeholder="예: 30" class="w-full border-2 border-slate-200 rounded-xl p-3 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/10 transition text-slate-800 font-medium bg-slate-50/50 text-center" vid="142">
+                                    <label class="block text-sm font-bold text-slate-800 mb-1" vid="140">연령 <span
+                                            class="text-red-500" vid="141">*</span></label>
+                                    <input type="number" id="userAge" required="" min="10" max="99" placeholder="예: 30"
+                                        class="w-full border-2 border-slate-200 rounded-xl p-3 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/10 transition text-slate-800 font-medium bg-slate-50/50 text-center"
+                                        vid="142">
                                 </div>
                                 <div class="w-2/3" vid="143">
-                                    <label class="block text-sm font-bold text-slate-800 mb-1" vid="144">연락처 <span class="text-red-500" vid="145">*</span></label>
-                                    <input type="tel" id="userPhone" required="" placeholder="010-0000-0000" class="w-full border-2 border-slate-200 rounded-xl p-3 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/10 transition text-slate-800 font-medium bg-slate-50/50" vid="146">
+                                    <label class="block text-sm font-bold text-slate-800 mb-1" vid="144">연락처 <span
+                                            class="text-red-500" vid="145">*</span></label>
+                                    <input type="tel" id="userPhone" required="" placeholder="010-0000-0000"
+                                        class="w-full border-2 border-slate-200 rounded-xl p-3 focus:outline-none focus:border-navy focus:ring-4 focus:ring-navy/10 transition text-slate-800 font-medium bg-slate-50/50"
+                                        vid="146">
                                 </div>
                             </div>
                         </div>
 
-                        
+
                         <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-3" vid="147">
                             <label class="flex items-start gap-3 cursor-pointer group" vid="148">
                                 <div class="mt-1 relative flex items-center justify-center" vid="149">
-                                    <input type="checkbox" id="agreeTOS" required="" class="peer appearance-none w-5 h-5 border-2 border-slate-300 rounded bg-white checked:bg-navy checked:border-navy transition-colors" vid="150">
-                                    <i data-lucide="check" class="absolute w-3 h-3 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" vid="151"></i>
+                                    <input type="checkbox" id="agreeTOS" required=""
+                                        class="peer appearance-none w-5 h-5 border-2 border-slate-300 rounded bg-white checked:bg-navy checked:border-navy transition-colors"
+                                        vid="150">
+                                    <i data-lucide="check"
+                                        class="absolute w-3 h-3 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity"
+                                        vid="151"></i>
                                 </div>
                                 <div class="flex-1 flex items-center justify-between">
-                                    <span class="text-sm text-slate-600 font-medium group-hover:text-slate-800" vid="152"><span class="text-navy font-bold" vid="153">[필수]</span> 이용약관에 동의합니다</span>
-                                    <button type="button" onclick="event.preventDefault(); openTOSModal();" class="text-xs text-slate-400 hover:text-navy underline ml-2 shrink-0">보기</button>
+                                    <span class="text-sm text-slate-600 font-medium group-hover:text-slate-800"
+                                        vid="152"><span class="text-navy font-bold" vid="153">[필수]</span> 이용약관에
+                                        동의합니다</span>
+                                    <button type="button" onclick="event.preventDefault(); openTOSModal();"
+                                        class="text-xs text-slate-400 hover:text-navy underline ml-2 shrink-0">보기</button>
                                 </div>
                             </label>
                             <label class="flex items-start gap-3 cursor-pointer group" vid="154">
                                 <div class="mt-1 relative flex items-center justify-center" vid="155">
-                                    <input type="checkbox" id="agreePrivacy" required="" class="peer appearance-none w-5 h-5 border-2 border-slate-300 rounded bg-white checked:bg-navy checked:border-navy transition-colors" vid="156">
-                                    <i data-lucide="check" class="absolute w-3 h-3 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity" vid="157"></i>
+                                    <input type="checkbox" id="agreePrivacy" required=""
+                                        class="peer appearance-none w-5 h-5 border-2 border-slate-300 rounded bg-white checked:bg-navy checked:border-navy transition-colors"
+                                        vid="156">
+                                    <i data-lucide="check"
+                                        class="absolute w-3 h-3 text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-opacity"
+                                        vid="157"></i>
                                 </div>
                                 <div class="flex-1 flex items-center justify-between">
-                                    <span class="text-sm text-slate-600 font-medium group-hover:text-slate-800" vid="158"><span class="text-navy font-bold" vid="159">[필수]</span> 개인정보처리방침에 동의합니다</span>
-                                    <button type="button" onclick="event.preventDefault(); openPrivacyModal();" class="text-xs text-slate-400 hover:text-navy underline ml-2 shrink-0">보기</button>
+                                    <span class="text-sm text-slate-600 font-medium group-hover:text-slate-800"
+                                        vid="158"><span class="text-navy font-bold" vid="159">[필수]</span> 개인정보처리방침에
+                                        동의합니다</span>
+                                    <button type="button" onclick="event.preventDefault(); openPrivacyModal();"
+                                        class="text-xs text-slate-400 hover:text-navy underline ml-2 shrink-0">보기</button>
                                 </div>
                             </label>
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full bg-navy text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-navy-dark transition shadow-md mt-8 flex items-center justify-center gap-2 group" vid="160">
-                        다음 단계 <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1" vid="161"></i>
+                    <button type="submit"
+                        class="w-full bg-navy text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-navy-dark transition shadow-md mt-8 flex items-center justify-center gap-2 group"
+                        vid="160">
+                        다음 단계 <i data-lucide="arrow-right"
+                            class="w-5 h-5 transition-transform group-hover:translate-x-1" vid="161"></i>
                     </button>
                 </div>
 
-                
+
                 <div id="step-2" class="hidden" vid="162">
                     <div class="mb-8 text-center" vid="163">
                         <img src="images/logo.png" alt="로고" class="h-10 mx-auto mb-4 object-contain" vid="165">
-                        <span class="text-teal font-bold text-sm tracking-widest uppercase mb-1 block" vid="166">Step 2 of 2</span>
+                        <span class="text-teal font-bold text-sm tracking-widest uppercase mb-1 block" vid="166">Step 2
+                            of 2</span>
                         <h3 class="text-2xl font-extrabold text-navy break-keep" vid="167">입력 정보 확인</h3>
                         <p class="text-slate-500 text-sm mt-2 break-keep" vid="168">예약 확정 전 입력하신 정보를 다시 한 번 확인해 주세요.</p>
                     </div>
@@ -406,15 +535,18 @@
                     <div class="bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden mb-8" vid="169">
                         <ul class="divide-y divide-slate-200/60 text-sm" vid="170">
                             <li class="flex p-4" vid="171">
-                                <span class="w-28 text-slate-400 font-bold tracking-wide shrink-0" vid="172">상담 유형</span>
+                                <span class="w-28 text-slate-400 font-bold tracking-wide shrink-0" vid="172">상담
+                                    유형</span>
                                 <span class="font-medium text-slate-800" id="summary-type" vid="173"></span>
                             </li>
                             <li class="flex p-4" vid="174">
-                                <span class="w-28 text-slate-400 font-bold tracking-wide shrink-0" vid="175">희망 요일</span>
+                                <span class="w-28 text-slate-400 font-bold tracking-wide shrink-0" vid="175">희망
+                                    요일</span>
                                 <span class="font-medium text-slate-800" id="summary-days" vid="176"></span>
                             </li>
                             <li class="flex p-4" vid="177">
-                                <span class="w-28 text-slate-400 font-bold tracking-wide shrink-0" vid="178">희망 시간대</span>
+                                <span class="w-28 text-slate-400 font-bold tracking-wide shrink-0" vid="178">희망
+                                    시간대</span>
                                 <span class="font-medium text-slate-800" id="summary-time" vid="179"></span>
                             </li>
                             <li class="flex p-4 bg-white" vid="180">
@@ -422,31 +554,38 @@
                                 <span class="font-medium text-slate-800" id="summary-name" vid="182"></span>
                             </li>
                             <li class="flex p-4 bg-white" vid="183">
-                                <span class="w-28 text-slate-400 font-bold tracking-wide shrink-0" vid="184">연령 / 연락처</span>
+                                <span class="w-28 text-slate-400 font-bold tracking-wide shrink-0" vid="184">연령 /
+                                    연락처</span>
                                 <span class="font-medium text-slate-800" id="summary-contact" vid="185"></span>
                             </li>
                         </ul>
                     </div>
 
                     <div class="flex gap-3" vid="186">
-                        <button type="button" onclick="goToStep(1)" class="w-1/3 bg-white text-slate-600 border-2 border-slate-200 px-4 py-4 rounded-xl font-bold hover:bg-slate-50 hover:text-navy transition text-center" vid="187">
+                        <button type="button" onclick="goToStep(1)"
+                            class="w-1/3 bg-white text-slate-600 border-2 border-slate-200 px-4 py-4 rounded-xl font-bold hover:bg-slate-50 hover:text-navy transition text-center"
+                            vid="187">
                             수정하기
                         </button>
-                        <button type="button" onclick="nextStep(2)" class="w-2/3 bg-teal text-white px-4 py-4 rounded-xl font-bold hover:bg-teal-dark transition shadow-md text-center flex items-center justify-center gap-2" vid="188">
+                        <button type="button" onclick="nextStep(2)"
+                            class="w-2/3 bg-teal text-white px-4 py-4 rounded-xl font-bold hover:bg-teal-dark transition shadow-md text-center flex items-center justify-center gap-2"
+                            vid="188">
                             <i data-lucide="check-circle-2" class="w-5 h-5" vid="189"></i> 예약 확정하기
                         </button>
                     </div>
                 </div>
 
-                
+
                 <div id="step-3" class="hidden text-center py-8" vid="190">
                     <img src="images/logo.png" alt="로고" class="h-16 mx-auto mb-6 object-contain" vid="191">
                     <h3 class="text-3xl font-extrabold text-navy mb-4 break-keep" vid="193">상담 예약이 접수되었습니다</h3>
                     <p class="text-slate-600 text-lg mb-8 break-keep leading-relaxed" vid="194">
                         담당자가 일정을 확인한 후,<br vid="195">입력해주신 연락처로 <strong vid="196">빠른 시일 내로 연락 드리겠습니다.</strong>
                     </p>
-                    
-                    <button type="button" onclick="closeModal()" class="bg-navy text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-navy-dark transition shadow-md" vid="197">
+
+                    <button type="button" onclick="closeModal()"
+                        class="bg-navy text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-navy-dark transition shadow-md"
+                        vid="197">
                         확인 및 닫기
                     </button>
                 </div>
@@ -456,30 +595,41 @@
     </div>
 
     <!-- 이용약관 팝업 모달 -->
-    <div id="tos-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] hidden items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0">
-        <div id="tos-modal-card" class="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl relative transition-all duration-300 ease-out transform scale-95 opacity-0">
-            <button onclick="closeTOSModal()" class="absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10">
+    <div id="tos-modal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] hidden items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0">
+        <div id="tos-modal-card"
+            class="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl relative transition-all duration-300 ease-out transform scale-95 opacity-0">
+            <button onclick="closeTOSModal()"
+                class="absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             <div class="p-6 border-b border-slate-100">
                 <h3 class="text-xl font-bold text-navy">이용약관</h3>
             </div>
             <div class="p-6 overflow-y-auto text-sm text-slate-600 space-y-4 leading-relaxed break-keep">
-                <p><strong>제 1 조 (목적)</strong><br>본 약관은 한국자기이해교육원(이하 "기관")이 제공하는 교육 프로그램 및 상담 서비스(이하 "서비스")의 이용조건 및 절차에 관한 사항을 규정함을 목적으로 합니다.</p>
-                <p><strong>제 2 조 (용어의 정의)</strong><br>1. "이용자"란 기관의 사이트에 접속하여 본 약관에 따라 기관이 제공하는 서비스를 받는 회원 및 비회원을 말합니다.<br>2. "서비스"란 기관이 온/오프라인을 통해 제공하는 자기이해 검사, 개인 상담, 전문가 양성 과정 등의 교육 및 상담 서비스를 의미합니다.</p>
-                <p><strong>제 3 조 (약관의 효력 및 변경)</strong><br>본 약관은 서비스 화면에 게시하거나 기타의 방법으로 이용자에게 공지함으로써 효력이 발생합니다. 기관은 관련 법령을 위배하지 않는 범위 내에서 본 약관을 개정할 수 있습니다.</p>
-                <p><strong>제 4 조 (서비스 이용 및 제한)</strong><br>서비스 이용은 기관의 업무상 또는 기술상 특별한 지장이 없는 한 연중무휴, 1일 24시간 운영을 원칙으로 합니다. 다만, 정기점검 등의 필요로 기관이 정한 날 또는 시간은 예외로 합니다.</p>
+                <p><strong>제 1 조 (목적)</strong><br>본 약관은 한국자기이해교육원(이하 "기관")이 제공하는 교육 프로그램 및 상담 서비스(이하 "서비스")의 이용조건 및 절차에
+                    관한 사항을 규정함을 목적으로 합니다.</p>
+                <p><strong>제 2 조 (용어의 정의)</strong><br>1. "이용자"란 기관의 사이트에 접속하여 본 약관에 따라 기관이 제공하는 서비스를 받는 회원 및 비회원을
+                    말합니다.<br>2. "서비스"란 기관이 온/오프라인을 통해 제공하는 자기이해 검사, 개인 상담, 전문가 양성 과정 등의 교육 및 상담 서비스를 의미합니다.</p>
+                <p><strong>제 3 조 (약관의 효력 및 변경)</strong><br>본 약관은 서비스 화면에 게시하거나 기타의 방법으로 이용자에게 공지함으로써 효력이 발생합니다. 기관은 관련
+                    법령을 위배하지 않는 범위 내에서 본 약관을 개정할 수 있습니다.</p>
+                <p><strong>제 4 조 (서비스 이용 및 제한)</strong><br>서비스 이용은 기관의 업무상 또는 기술상 특별한 지장이 없는 한 연중무휴, 1일 24시간 운영을 원칙으로
+                    합니다. 다만, 정기점검 등의 필요로 기관이 정한 날 또는 시간은 예외로 합니다.</p>
             </div>
             <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end rounded-b-2xl">
-                <button onclick="closeTOSModal()" class="bg-navy text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-navy-dark transition-colors">확인</button>
+                <button onclick="closeTOSModal()"
+                    class="bg-navy text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-navy-dark transition-colors">확인</button>
             </div>
         </div>
     </div>
 
     <!-- 개인정보 처리방침 팝업 모달 -->
-    <div id="privacy-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] hidden items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0">
-        <div id="privacy-modal-card" class="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl relative transition-all duration-300 ease-out transform scale-95 opacity-0">
-            <button onclick="closePrivacyModal()" class="absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10">
+    <div id="privacy-modal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] hidden items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0">
+        <div id="privacy-modal-card"
+            class="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl relative transition-all duration-300 ease-out transform scale-95 opacity-0">
+            <button onclick="closePrivacyModal()"
+                class="absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             <div class="p-6 border-b border-slate-100">
@@ -487,20 +637,27 @@
             </div>
             <div class="p-6 overflow-y-auto text-sm text-slate-600 space-y-4 leading-relaxed break-keep">
                 <p>한국자기이해교육원은 이용자의 개인정보를 중요시하며, "개인정보 보호법" 등 관련 법령을 준수하고 있습니다.</p>
-                <p><strong>1. 수집하는 개인정보 항목</strong><br>기관은 상담 예약 및 서비스 신청을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>- 필수항목: 이름, 연령, 연락처, 희망 상담유형, 희망 요일 및 시간대</p>
-                <p><strong>2. 개인정보의 수집 및 이용 목적</strong><br>수집된 개인정보는 상담 예약 관리, 본인 확인, 상담 일정 조율, 교육 프로그램 안내 및 서비스 제공을 위한 목적으로만 이용됩니다.</p>
-                <p><strong>3. 개인정보의 보유 및 이용 기간</strong><br>원칙적으로 개인정보의 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 관계법령의 규정에 의하여 보존할 필요가 있는 경우 일정 기간 보존합니다.</p>
-                <p><strong>4. 동의 거부 권리 및 불이익</strong><br>귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다. 다만, 동의를 거부할 경우 상담 예약 신청 및 서비스 이용이 제한될 수 있습니다.</p>
+                <p><strong>1. 수집하는 개인정보 항목</strong><br>기관은 상담 예약 및 서비스 신청을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>- 필수항목: 이름, 연령,
+                    연락처, 희망 상담유형, 희망 요일 및 시간대</p>
+                <p><strong>2. 개인정보의 수집 및 이용 목적</strong><br>수집된 개인정보는 상담 예약 관리, 본인 확인, 상담 일정 조율, 교육 프로그램 안내 및 서비스 제공을 위한
+                    목적으로만 이용됩니다.</p>
+                <p><strong>3. 개인정보의 보유 및 이용 기간</strong><br>원칙적으로 개인정보의 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 관계법령의
+                    규정에 의하여 보존할 필요가 있는 경우 일정 기간 보존합니다.</p>
+                <p><strong>4. 동의 거부 권리 및 불이익</strong><br>귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다. 다만, 동의를 거부할 경우 상담 예약 신청
+                    및 서비스 이용이 제한될 수 있습니다.</p>
             </div>
             <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end rounded-b-2xl">
-                <button onclick="closePrivacyModal()" class="bg-navy text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-navy-dark transition-colors">확인</button>
+                <button onclick="closePrivacyModal()"
+                    class="bg-navy text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-navy-dark transition-colors">확인</button>
             </div>
         </div>
     </div>
 
-    
+
     <footer class="bg-[#0F172A] pt-16 pb-8 border-t-4 border-teal relative overflow-hidden" vid="198">
-        <i data-lucide="book-open-check" class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none" vid="199"></i>
+        <i data-lucide="book-open-check"
+            class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none"
+            vid="199"></i>
         <div class="max-w-7xl mx-auto px-6 relative z-10" vid="200">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12" vid="201">
                 <div class="lg:col-span-1" vid="202">
@@ -514,17 +671,25 @@
                 </div>
                 <div class="col-span-1 lg:col-span-2 text-sm text-slate-400 flex flex-col lg:items-end" vid="208">
                     <div class="w-full max-w-lg" vid="209">
-                        <h4 class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block" vid="210">INSTITUTE INFO</h4>
+                        <h4 class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block"
+                            vid="210">INSTITUTE INFO</h4>
                         <ul class="space-y-3 font-light" vid="211">
-                            <li class="flex gap-4" vid="212"><span class="w-24 text-slate-500 font-medium shrink-0" vid="213">대표자</span> <span vid="214">김대표</span></li>
-                            <li class="flex gap-4" vid="215"><span class="w-24 text-slate-500 font-medium shrink-0" vid="216">사업자등록번호</span> <span class="font-mono" vid="217">123-45-67890</span></li>
-                            <li class="flex gap-4" vid="218"><span class="w-24 text-slate-500 font-medium shrink-0" vid="219">민간자격등록</span> <span class="font-mono" vid="220">제 2026-001234 호</span></li>
-                            <li class="flex gap-4" vid="221"><span class="w-24 text-slate-500 font-medium shrink-0" vid="222">소재지</span> <span class="break-keep" vid="223">서울특별시 강남구 테헤란로 123, 지식산업센터 15층</span></li>
+                            <li class="flex gap-4" vid="212"><span class="w-24 text-slate-500 font-medium shrink-0"
+                                    vid="213">대표자</span> <span vid="214">김대표</span></li>
+                            <li class="flex gap-4" vid="215"><span class="w-24 text-slate-500 font-medium shrink-0"
+                                    vid="216">사업자등록번호</span> <span class="font-mono" vid="217">123-45-67890</span></li>
+                            <li class="flex gap-4" vid="218"><span class="w-24 text-slate-500 font-medium shrink-0"
+                                    vid="219">민간자격등록</span> <span class="font-mono" vid="220">제 2026-001234 호</span>
+                            </li>
+                            <li class="flex gap-4" vid="221"><span class="w-24 text-slate-500 font-medium shrink-0"
+                                    vid="222">소재지</span> <span class="break-keep" vid="223">서울특별시 강남구 테헤란로 123, 지식산업센터
+                                    15층</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500" vid="224">
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500"
+                vid="224">
                 <p vid="225">© 2026 KSUI. All rights reserved.</p>
                 <div class="flex gap-6" vid="226">
                     <a href="#" class="hover:text-white transition-colors" vid="227">이용약관</a>
@@ -534,34 +699,108 @@
         </div>
     </footer>
 
+    <!-- Firebase SDK core (v9 호환 모드) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
     <script vid="229">
-        
+
         lucide.createIcons();
 
-        
+        // ⚠️ [필수] 본인의 Firebase 설정 정보로 알맞게 채워넣어 주세요!
+        const firebaseConfig = {
+            apiKey: "AIzaSy...",
+            authDomain: "...",
+            databaseURL: "https://prototype-ksui-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "...",
+            storageBucket: "...",
+            messagingSenderId: "...",
+            appId: "..."
+        };
+
+        // Firebase 초기화
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // 💡 핵심: 페이지가 열리자마자 주소창의 파라미터(?code=6자리)를 분석해서 자동 조회 실행
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const codeParam = urlParams.get('code');
+
+            if (codeParam && codeParam.length === 6) {
+                // 주소창에 정상 코드가 붙어서 넘어온 경우 자동 로드 실행
+                loadExpertProfile(codeParam);
+            } else {
+                // 예외 처리: 코드가 안 붙어있으면 수동 입력창을 보여주거나 안내 메시지 출력
+                const entrySection = document.getElementById('code-entry-section');
+                if (entrySection) entrySection.classList.remove('hidden');
+            }
+        });
+
+        // 💡 핵심: Firebase에서 특정 코드로 전문가 데이터를 가져와 화면에 뿌려주는 함수
+        function loadExpertProfile(code) {
+            if (!code) return;
+
+            database.ref('approved_users/' + code).once('value')
+                .then((snapshot) => {
+                    const data = snapshot.val();
+
+                    if (data) {
+                        // Firebase에서 가져온 리얼 데이터를 기존 HTML 그릇에 바인딩
+                        if (document.getElementById('dynamic-name')) document.getElementById('dynamic-name').innerText = data.name;
+                        if (document.getElementById('dynamic-specialty')) document.getElementById('dynamic-specialty').innerText = data.specialty;
+                        if (document.getElementById('dynamic-experience')) document.getElementById('dynamic-experience').innerText = data.experience;
+                        if (document.getElementById('dynamic-introduce')) document.getElementById('dynamic-introduce').innerText = `"${data.introduce}"`;
+
+                        if (data.imageUrl && document.getElementById('dynamic-img')) {
+                            document.getElementById('dynamic-img').src = data.imageUrl;
+                        }
+                        if (data.position && document.getElementById('dynamic-position')) {
+                            document.getElementById('dynamic-position').innerText = data.position;
+                        }
+
+                        // 프로필 레이아웃 전면 노출 및 상단 '예약하기' 버튼들 활성화
+                        if (document.getElementById('code-entry-section')) document.getElementById('code-entry-section').classList.add('hidden');
+                        if (document.getElementById('profile-display-section')) document.getElementById('profile-display-section').classList.remove('hidden');
+                        if (document.getElementById('nav-booking-btn')) document.getElementById('nav-booking-btn').classList.remove('hidden');
+                        if (document.getElementById('mobile-booking-btn')) document.getElementById('mobile-booking-btn').classList.remove('hidden');
+
+                        // 테일윈드 애니메이션 요소들 깨우기
+                        document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+                    } else {
+                        alert('유효하지 않은 코드이거나 존재하지 않는 전문가 페이지입니다.');
+                        if (document.getElementById('code-entry-section')) document.getElementById('code-entry-section').classList.remove('hidden');
+                    }
+                })
+                .catch((err) => {
+                    console.error("Profile load fail: ", err);
+                    if (document.getElementById('code-entry-section')) document.getElementById('code-entry-section').classList.remove('hidden');
+                });
+        }
+
         const splash = document.getElementById('splash-screen');
         const progressBar = document.getElementById('splash-progress-bar');
         const progressText = document.getElementById('splash-percentage');
         const carouselItems = document.querySelectorAll('.splash-text-item');
-        
+
         let startTime = Date.now();
         const totalDuration = 5000;
         let carouselIndex = 0;
 
-        
+
         setInterval(() => {
-            if(carouselIndex < carouselItems.length - 1) {
+            if (carouselIndex < carouselItems.length - 1) {
                 carouselItems[carouselIndex].classList.remove('active');
                 carouselItems[carouselIndex].classList.add('exit');
-                
+
                 carouselIndex++;
-                
-                carouselItems[carouselIndex].classList.remove('exit'); 
+
+                carouselItems[carouselIndex].classList.remove('exit');
                 carouselItems[carouselIndex].classList.add('active');
             }
         }, 1250);
 
-        
+
         function updateProgress() {
             const elapsed = Date.now() - startTime;
             if (elapsed >= totalDuration) {
@@ -571,20 +810,20 @@
                 return;
             }
 
-            
+
             const t = elapsed / totalDuration;
             let rawProgress = (1 - Math.pow(1 - t, 3)) * 100;
-            
-            
+
+
             let jitter = (Math.random() * 3 - 1.5);
             let displayProgress = Math.min(99, Math.max(0, rawProgress + jitter));
-            
+
             progressBar.style.width = displayProgress + '%';
             progressText.innerText = Math.floor(displayProgress) + '%';
-            
+
             requestAnimationFrame(updateProgress);
         }
-        
+
         requestAnimationFrame(updateProgress);
 
         function finishSplash() {
@@ -593,21 +832,21 @@
                 setTimeout(() => {
                     splash.style.display = 'none';
                     document.body.classList.remove('overflow-hidden');
-                    
-                    
+
+
                     const h1 = document.getElementById('hero-line1');
                     const h2 = document.getElementById('hero-line2');
-                    if(h1) h1.classList.add('animate-reveal');
-                    if(h2) {
+                    if (h1) h1.classList.add('animate-reveal');
+                    if (h2) {
                         setTimeout(() => {
                             h2.classList.add('animate-reveal');
-                        }, 1200); 
+                        }, 1200);
                     }
                 }, 600);
             }, 200);
         }
 
-        
+
         const navbar = document.getElementById('navbar');
         const navBrand = document.getElementById('nav-brand');
         const navLogoBox = document.getElementById('nav-logo-box');
@@ -648,10 +887,10 @@
         });
 
         function closeMobileMenu() {
-            if(isMobileMenuOpen) mobileMenuBtn.click();
+            if (isMobileMenuOpen) mobileMenuBtn.click();
         }
 
-        
+
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -667,42 +906,42 @@
         }, observerOptions);
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        
+
         const modal = document.getElementById('consultation-modal');
         const form = document.getElementById('consultation-form');
-        
+
         function openModal() {
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            
+
             // Force repaint to allow transition to occur
             modal.offsetHeight;
-            
+
             modal.classList.remove('opacity-0');
             modal.classList.add('opacity-100');
-            
+
             const card = document.getElementById('consultation-modal-card');
             if (card) {
                 card.classList.remove('scale-95', 'opacity-0');
                 card.classList.add('scale-100', 'opacity-100');
             }
-            
+
             document.body.classList.add('overflow-hidden');
-            goToStep(1); 
+            goToStep(1);
         }
 
         function closeModal() {
             modal.classList.remove('opacity-100');
             modal.classList.add('opacity-0');
-            
+
             const card = document.getElementById('consultation-modal-card');
             if (card) {
                 card.classList.remove('scale-100', 'opacity-100');
                 card.classList.add('scale-95', 'opacity-0');
             }
-            
+
             document.body.classList.remove('overflow-hidden');
-            
+
             setTimeout(() => {
                 modal.classList.remove('flex');
                 modal.classList.add('hidden');
@@ -710,7 +949,7 @@
             }, 300);
         }
 
-        
+
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
@@ -781,31 +1020,31 @@
                 document.getElementById('step-2'),
                 document.getElementById('step-3')
             ];
-            
+
             const currentStepEl = steps.find(el => el && !el.classList.contains('hidden'));
-            
+
             if (currentStepEl && currentStepEl.id !== `step-${step}`) {
                 currentStepEl.style.transition = 'opacity 0.2s ease-in-out, transform 0.2s ease-in-out';
                 currentStepEl.style.opacity = '0';
                 currentStepEl.style.transform = 'translateY(-10px)';
-                
+
                 setTimeout(() => {
                     currentStepEl.classList.add('hidden');
                     currentStepEl.style.opacity = '';
                     currentStepEl.style.transform = '';
-                    
+
                     const nextStepEl = document.getElementById(`step-${step}`);
                     if (nextStepEl) {
                         nextStepEl.classList.remove('hidden');
                         nextStepEl.style.opacity = '0';
                         nextStepEl.style.transform = 'translateY(10px)';
                         nextStepEl.style.transition = 'opacity 0.25s ease-out, transform 0.25s ease-out';
-                        
+
                         nextStepEl.offsetHeight;
-                        
+
                         nextStepEl.style.opacity = '1';
                         nextStepEl.style.transform = 'translateY(0)';
-                        
+
                         setTimeout(() => {
                             nextStepEl.style.opacity = '';
                             nextStepEl.style.transform = '';
@@ -826,20 +1065,20 @@
 
         function nextStep(currentStep) {
             if (currentStep === 1) {
-                
+
                 if (!form.checkValidity()) {
                     form.reportValidity();
                     return;
                 }
 
-                
+
                 const days = Array.from(document.querySelectorAll('input[name="consDays"]:checked')).map(el => el.value);
                 if (days.length === 0) {
                     alert('최소 하나의 희망 요일을 선택해 주세요.');
                     return;
                 }
 
-                
+
                 document.getElementById('summary-type').textContent = document.querySelector('input[name="consType"]:checked').value;
                 document.getElementById('summary-days').textContent = days.join(', ') + '요일';
                 document.getElementById('summary-time').textContent = document.querySelector('input[name="consTime"]:checked').value;
@@ -847,12 +1086,14 @@
                 document.getElementById('summary-contact').textContent = `${document.getElementById('userAge').value}세 / ${document.getElementById('userPhone').value}`;
 
                 goToStep(2);
-            } 
+            }
             else if (currentStep === 2) {
-                
+
                 goToStep(3);
             }
         }
     </script>
 
-</body></html>
+</body>
+
+</html>
