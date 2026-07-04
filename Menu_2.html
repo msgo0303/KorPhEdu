@@ -88,7 +88,7 @@
                     vid="21">문의하기</button>
             </div>
 
-            <button onclick="toggleMobileMenu()" class="block md:hidden text-white focus:outline-none transition-colors" id="mobile-menu-btn">
+            <button class="block md:hidden text-white focus:outline-none transition-colors" id="mobile-menu-btn">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
@@ -350,7 +350,7 @@
                 navLinks.forEach(el => {
                     el.className = "nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors";
                 });
-                logoBg.className = "bg-teal rounded-md p-1.5 shadow-sm transition-colors";
+                if (logoBg) logoBg.className = "bg-teal rounded-md p-1.5 shadow-sm transition-colors";
 
             } else {
                 navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-transparent py-4";
@@ -361,12 +361,20 @@
                 navLinks.forEach(el => {
                     el.className = "nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm";
                 });
-                logoBg.className = "bg-navy rounded-md p-1.5 shadow-sm transition-colors";
+                if (logoBg) logoBg.className = "bg-navy rounded-md p-1.5 shadow-sm transition-colors";
             }
-            lucide.createIcons();
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
         window.addEventListener('scroll', refreshNavSkin);
+
+        // 2. 모바일 메뉴 addEventListener 방식 (personal.html 통일)
+        if (mobileBtn) {
+            mobileBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMobileMenu();
+            });
+        }
 
         function toggleMobileMenu() {
             const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
@@ -485,15 +493,12 @@
             window.dispatchEvent(new Event('scroll'));
         });
 
-        // 🎯 [개선] 이벤트 위임 방식으로 모바일 드로어 닫기 및 모달 제어 통합 처리
+        // [통합] 모바일 드로어 바깥 클릭 시 닫기 & 모달 제어
         document.addEventListener('click', (e) => {
-            // 1. 모바일 내비게이션 바 드로어 외곽 클릭 시 닫기
-            const drawer = document.getElementById('mobile-drawer');
-            if (drawer) {
-                const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
-                if (isMenuOpen && !e.target.closest('nav')) {
-                    toggleMobileMenu();
-                }
+            // 1. 모바일 드로어 닫기 (nav 바깥 클릭 시)
+            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
+            if (isMenuOpen && !e.target.closest('nav')) {
+                toggleMobileMenu();
             }
 
             // 2. 모달 열기 (modal-trigger 클릭 시)
@@ -511,7 +516,7 @@
                 return;
             }
 
-            // 3. 모달 닫기 (X 버튼 및 닫기 액션 클릭 시)
+            // 3. 모달 닫기 (X 버튼 클릭 시)
             const closeBtn = e.target.closest('.modal-close, .modal-close-action');
             if (closeBtn) {
                 e.preventDefault();
