@@ -1,4 +1,4 @@
-<html lang="ko" class="scroll-smooth" vid="0">
+<html lang="ko" vid="0">
 
 <head vid="1">
     <meta charset="UTF-8" vid="2">
@@ -1529,6 +1529,7 @@
             const proudSection = document.getElementById('proud-section');
             if (proudSection && window.gsap && window.ScrollTrigger) {
                 gsap.registerPlugin(ScrollTrigger);
+                ScrollTrigger.config({ ignoreMobileResize: true });
 
                 gsap.fromTo('#proud-section',
                     {
