@@ -476,7 +476,7 @@
             id="nav-container" vid="18">
 
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'" vid="19">
-                <img src="images/logo.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" vid="nav-logo-img">
+                <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" id="nav-logo-box" vid="nav-logo-img">
                 <span class="text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors"
                     id="nav-brand" vid="22">한국자기이해교육원</span>
             </div>
@@ -1306,6 +1306,7 @@
         // [완벽 통합본] 스크롤 위치 및 모바일 메뉴 오픈 상태 실시간 스킨 동기화 엔진
         const navbar = document.getElementById('navbar');
         const navBrand = document.getElementById('nav-brand');
+        const navLogoBox = document.getElementById('nav-logo-box');
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const drawer = document.getElementById('mobile-drawer');
         const drawerContent = document.getElementById('mobile-drawer-content');
@@ -1341,6 +1342,7 @@
                 document.querySelectorAll('nav a:not(.bg-teal)').forEach(el => {
                     el.className = "text-slate-600 hover:text-navy text-sm font-medium transition-colors";
                 });
+                if (navLogoBox) navLogoBox.src = 'images/logo.png';
 
             } else {
                 // ==========================================
@@ -1359,6 +1361,7 @@
 
                     // ★ 버그 해결: 투명 영역에서 메뉴가 열려있을 때 타이틀 텍스트 흰색 강제 사수!
                     navBrand.className = "text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors";
+                    if (navLogoBox) navLogoBox.src = 'images/logo_w.png';
                 } else {
                     // 메뉴가 닫혀있다면: 원래의 완전 투명 깨끗한 오리지널 스킨으로 초기화
                     navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-transparent";
@@ -1367,6 +1370,7 @@
 
                     // 타이틀 원본 화이트 복구
                     navBrand.className = "text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors";
+                    if (navLogoBox) navLogoBox.src = 'images/logo_w.png';
                 }
 
                 // PC용 상단 링크 원본 화이트 복구
@@ -1378,6 +1382,9 @@
                 lucide.createIcons();
             }
         }
+
+        // 초기 실행을 통해 현재 스크롤 상태에 맞는 디자인 반영
+        refreshNavSkin();
 
         // 1. 실시간 스크롤 감지 인터랙션 무한 루프 엔진 (메뉴가 오픈된 상태에서도 상시 연동 스위칭)
         window.addEventListener('scroll', refreshNavSkin);

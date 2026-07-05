@@ -69,7 +69,7 @@
             vid="12">
 
             <a href="index.html" class="flex items-center gap-3">
-                <img src="images/logo.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" vid="nav-logo-img">
+                <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" id="nav-logo-box" vid="nav-logo-img">
                 <span class="text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors"
                     id="nav-brand" vid="16">한국자기이해교육원</span>
             </a>
@@ -502,6 +502,7 @@
         // =========================================================================
         const navbar = document.getElementById('navbar');
         const navBrand = document.getElementById('nav-brand');
+        const navLogoBox = document.getElementById('nav-logo-box');
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const drawer = document.getElementById('mobile-drawer');
         const drawerContent = document.getElementById('mobile-drawer-content');
@@ -541,6 +542,7 @@
                     el.className = "nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors";
                 });
                 if (logoBg) logoBg.className = "bg-teal rounded-md p-1.5 shadow-sm transition-colors";
+                if (navLogoBox) navLogoBox.src = 'images/logo.png';
 
             } else {
                 // ==========================================
@@ -556,9 +558,13 @@
                     el.className = "nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm";
                 });
                 if (logoBg) logoBg.className = "bg-navy rounded-md p-1.5 shadow-sm transition-colors";
+                if (navLogoBox) navLogoBox.src = 'images/logo_w.png';
             }
             if (typeof lucide !== 'undefined') lucide.createIcons();
         }
+
+        // 초기 실행을 통해 현재 스크롤 상태에 맞는 디자인 반영
+        refreshNavSkin();
 
         // 1. 실시간 스크롤 감지 인터랙션 실행
         window.addEventListener('scroll', refreshNavSkin);

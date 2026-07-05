@@ -142,7 +142,7 @@
     <nav class="fixed w-full z-40 top-0 transition-all duration-300 bg-transparent py-3" id="navbar" vid="21">
         <div class="max-w-7xl mx-auto px-6 py-1 flex justify-between items-center relative" vid="22">
             <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='#'" vid="23">
-                <img src="images/logo.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" id="nav-logo-box" vid="24">
+                <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" id="nav-logo-box" vid="24">
                 <span class="text-navy font-semibold tracking-tight text-lg transition-colors" id="nav-brand"
                     vid="26">한국자기이해교육원</span>
             </div>
@@ -743,8 +743,9 @@
                 }
                 
                 if (fileId) {
-                    // lh3.googleusercontent.com 주소는 구글의 CDN 엔드포인트로 대용량 스캔 대기화면을 우회하여 즉시 이미지를 표시합니다.
-                    return `https://lh3.googleusercontent.com/d/${fileId}`;
+                    // lh3.googleusercontent.com 주소는 타사 쿠키 차단 및 구글 비로그인 환경(일반 PC 등)에서 403 Forbidden 에러를 유발합니다.
+                    // drive.google.com/thumbnail?id=...&sz=w1000 캐시 방식을 사용하면 비로그인 환경에서도 가장 안정적으로 이미지가 출력됩니다.
+                    return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
                 }
             }
             return url;
@@ -907,15 +908,18 @@
                 navbar.classList.add('bg-white', 'shadow-sm', 'py-1');
                 navBrand.classList.remove('text-navy');
                 navBrand.classList.add('text-slate-900');
+                if (navLogoBox) navLogoBox.src = 'images/logo.png';
             } else {
                 navbar.classList.remove('bg-white', 'shadow-sm', 'py-1');
                 navbar.classList.add('bg-transparent', 'py-3');
                 navBrand.classList.remove('text-slate-900');
                 navBrand.classList.add('text-navy');
+                if (navLogoBox) navLogoBox.src = 'images/logo_w.png';
             }
         }
 
         window.addEventListener('scroll', refreshNavSkin, { passive: true });
+        refreshNavSkin();
 
         mobileMenuBtn.addEventListener('click', () => {
             isMobileMenuOpen = !isMobileMenuOpen;
