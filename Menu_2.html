@@ -341,10 +341,9 @@
                     links.forEach(link => {
                         link.className = "mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1";
                     });
-                    mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6" style="color: #0f172a;"></i>';
+                    mobileBtn.style.color = '#0f172a';
                 } else {
                     mobileBtn.style.color = '#475569';
-                    mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
                 }
 
                 navBrand.className = "text-navy font-semibold tracking-tight text-lg transition-colors";
@@ -357,7 +356,6 @@
             } else {
                 navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-transparent py-4";
                 mobileBtn.style.color = '#ffffff';
-                mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
                 
                 navBrand.className = "text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors";
                 navLinks.forEach(el => {
@@ -366,7 +364,6 @@
                 if (logoBg) logoBg.className = "bg-navy rounded-md p-1.5 shadow-sm transition-colors";
                 if (navLogoBox) navLogoBox.src = 'images/logo_w.png';
             }
-            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
         // 초기 실행을 통해 현재 스크롤 상태에 맞는 디자인 반영
@@ -388,6 +385,7 @@
             if (isMenuOpen) {
                 drawer.style.height = '0px';
                 drawer.style.opacity = '0';
+                mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
                 setTimeout(() => {
                     refreshNavSkin();
                 }, 10);
@@ -398,9 +396,11 @@
                 
                 drawer.style.height = autoHeight;
                 drawer.style.opacity = '1';
+                mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
                 
                 refreshNavSkin();
             }
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
 
