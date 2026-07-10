@@ -1,0 +1,231 @@
+{
+  "intro": {
+    "logoSrc": "images/logo.png",
+    "logoAlt": "KSUI 로고",
+    "text": "KSUI",
+    "subText": "KOREA SELF-UNDERSTANDING INSTITUTE"
+  },
+  "nav": {
+    "logoSrc": "images/logo_w.png",
+    "logoAlt": "한국자기이해교육원 로고",
+    "brand": "한국자기이해교육원",
+    "menu": [
+      { "text": "기관소개", "href": "Menu_1.html" },
+      { "text": "비즈니스", "href": "Menu_2.html" },
+      { "text": "연구진", "href": "Menu_3.html" }
+    ],
+    "contactBtn": "문의하기"
+  },
+  "hero": {
+    "bgImg": "images/hero_0.jpg",
+    "badge": "PUBLIC EDUCATION HUB",
+    "title": "한국자기이해교육원",
+    "subtitle": "과학적 성향 검사를 통한 자기 정체성 확립,<br class=\"hidden md:block\">전문가 양성 및 공공 교육의 표준을 제시합니다.",
+    "scrollText": "스크롤하여 더 알아보기"
+  },
+  "proudSection": {
+    "title": "세계를 이끄는 KSUI의 자랑스러운 이야기",
+    "slides": [
+      {
+        "logo": "https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo03.png",
+        "logoAlt": "QS WORLD UNIVERSITY RANKINGS",
+        "title": "2026 QS 세계대학평가",
+        "highlight": "국내 11위, 세계392위"
+      },
+      {
+        "logo": "https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo05.png",
+        "logoAlt": "대학혁신 지원사업",
+        "title": "2025 대학혁신지원사업",
+        "highlight": "성과평가 3년연속 최우수 S등급"
+      },
+      {
+        "logo": "https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo06.png",
+        "logoAlt": "CWTS Meaningful metrics",
+        "title": "2025 라이덴 랭킹<br> 개정판(Open Edition)",
+        "highlight": "국내 1위"
+      },
+      {
+        "logo": "https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo01.png",
+        "logoAlt": "U.S.News",
+        "title": "2025-2026 US News<br> 세계대학평가 2년 연속",
+        "highlight": "국내 3위, 세계 238위"
+      },
+      {
+        "logo": "https://www.sejong.ac.kr/_res/sejong/_share/img/sj-content/img-proud-logo02.png",
+        "logoAlt": "THE WORLD UNIVERSITY RANKINGS",
+        "title": "2026 THE 세계대학평가",
+        "highlight": "국내8위, 세계251-300위"
+      }
+    ]
+  },
+  "aboutSection": {
+    "badge": "ABOUT OUR INSTITUTE",
+    "title": "자기이해 전문가를 양성하는<br>공공 교육의 허브",
+    "paragraphs": [
+      "한국자기이해교육원은 학술적 연구와 임상 데이터를 기반으로 한 공공 교육 기관입니다. 개인의 본질적 성향을 과학적으로 분석하고, 이를 바탕으로 한 맞춤형 교육 솔루션을 제공합니다.",
+      "단순한 진단을 넘어, 지속 가능한 교육 환경을 위한 체계적인 그리드 프레임워크를 구축하여 사회 전반의 자기이해도를 높이고 건강한 공동체 형성에 기여합니다."
+    ],
+    "stats": [
+      { "value": "10k+", "label": "배출된 전문가" },
+      { "value": "95%", "label": "B2G 교육 만족도" }
+    ],
+    "images": [
+      { "src": "images/hero_1.jpg", "alt": "Academic Research" },
+      { "src": "images/hero_2.jpg", "alt": "Corporate Training" },
+      { "src": "images/hero_3.jpg", "alt": "Workshop" }
+    ]
+  },
+  "businessSection": {
+    "badge": "CORE BUSINESS",
+    "title": "핵심 사업 영역",
+    "tabs": [
+      {
+        "id": "tab1",
+        "tabTitle": "기관 맞춤형 단체 교육",
+        "img": "images/hero_4.jpg",
+        "imgAlt": "B2B Education",
+        "badge": "B2B / B2G",
+        "badgeIcon": "building",
+        "badgeClass": "bg-navy/5 text-navy",
+        "title": "기관 맞춤형 단체 교육",
+        "desc": "대학, 기업, 지자체의 특성과 목표에 맞춘 최적화된 교육 프로그램을 설계하고 운영합니다. 조직 구성원의 자기이해를 통한 소통 강화와 성과 향상을 목표로 합니다.",
+        "tags": ["#대학생진로워크숍", "#기업임직원커뮤니케이션", "#성향검사라이선스제공", "#B2G지자체협약"]
+      },
+      {
+        "id": "tab2",
+        "tabTitle": "민간 자격증 및 강사 과정",
+        "img": "images/hero_5.jpg",
+        "imgAlt": "Certification",
+        "badge": "B2C → B2B",
+        "badgeIcon": "award",
+        "badgeClass": "bg-teal/10 text-teal-700",
+        "title": "민간 자격증 및 강사 과정",
+        "desc": "체계적인 커리큘럼을 통해 공신력 있는 자기이해 전문가를 양성합니다. 자격 취득 후 파트너 강사로서의 활동 기회와 지속적인 역량 강화 프로그램을 제공합니다.",
+        "tags": ["#자기이해지도사_2급_1급", "#직능원정식등록", "#파트너강사출강권한", "#강사수익화코스"]
+      },
+      {
+        "id": "tab3",
+        "tabTitle": "검사지 및 교구재",
+        "img": "images/hero_6.jpg",
+        "imgAlt": "Tools and Assessments",
+        "badge": "Scalable Product",
+        "badgeIcon": "package",
+        "badgeClass": "bg-slate-100 text-slate-600 border border-slate-200",
+        "title": "검사지 및 교구재 비즈니스",
+        "desc": "연구소에서 자체 개발한 과학적 성향 검사지와 오프라인 워크숍용 힐링 교구재를 유통합니다. 디지털 라이선스 기반으로 강사 및 기관에 대량 공급 구조를 확립했습니다.",
+        "tags": ["#자체개발검사지", "#힐링교구재세트", "#디지털라이선스", "#강사몰대량공급"]
+      }
+    ]
+  },
+  "partnersSection": {
+    "badge": "FACULTY & RESEARCHERS",
+    "title": "전문 연구진",
+    "partners": [
+      {
+        "role": "상임 연구위원",
+        "name": "홍길동 박사",
+        "img": "images/menu3/menu_3_1.jpg",
+        "history": [
+          { "icon": "graduation-cap", "text": "서울대학교 교육학 박사" },
+          { "icon": "briefcase", "text": "前 한국청소년정책연구원 자문위원" },
+          { "icon": "microscope", "text": "KSUT 자체 성향검사 개발 총괄" }
+        ]
+      },
+      {
+        "role": "수석 강사 / 이사",
+        "name": "김지영 연구원",
+        "img": "images/menu3/menu_3_2.jpg",
+        "history": [
+          { "icon": "graduation-cap", "text": "연세대학교 심리학 석사" },
+          { "icon": "briefcase", "text": "삼성, 현대차 등 기업 출강 500회+" },
+          { "icon": "award", "text": "자기이해지도사 양성과정 전담" }
+        ]
+      },
+      {
+        "role": "데이터 분석 센터장",
+        "name": "이진우 박사",
+        "img": "images/menu3/menu_3_3.jpg",
+        "history": [
+          { "icon": "graduation-cap", "text": "KAIST 산업공학 박사" },
+          { "icon": "database", "text": "성향 데이터베이스 아키텍처 설계" },
+          { "icon": "line-chart", "text": "AI 기반 진단 알고리즘 연구" }
+        ]
+      }
+    ],
+    "partnerInvite": {
+      "title": "파트너 강사진",
+      "desc": "전국 50여 명의 정식 인증 강사가<br>함께하고 있습니다.",
+      "linkText": "전체 보기"
+    }
+  },
+  "visionSection": {
+    "badge": "VISION & GOALS",
+    "title": "기관 핵심 목표",
+    "subtitle": "KSUT가 만들어가는 교육의 내일",
+    "cards": [
+      {
+        "num": "01",
+        "icon": "users",
+        "title": "공공성 중심의<br>청년 정체성 확립 지원",
+        "desc": "지자체 및 대학 연계를 통해 청년들이 자신의 본질을 이해하고 사회적 가치를 창출할 수 있도록 돕습니다.",
+        "borderColor": "border-navy",
+        "delay": "md:delay-100"
+      },
+      {
+        "num": "02",
+        "icon": "book-open",
+        "title": "신뢰도 높은 민간 자격<br>전문가 10,000명 양성",
+        "desc": "엄격한 검증을 통과한 지도사를 양성하여 전국구 교육 인프라의 질적 수준을 상향 표준화합니다.",
+        "borderColor": "border-teal",
+        "delay": "md:delay-200"
+      },
+      {
+        "num": "03",
+        "icon": "package",
+        "title": "자체 빅데이터 기반<br>성향 분석 솔루션 고도화",
+        "desc": "수만 건의 임상 데이터를 바탕으로 진단 도구의 타당도를 높이고 디지털 솔루션으로 확장합니다.",
+        "borderColor": "border-navy",
+        "delay": "md:delay-300"
+      },
+      {
+        "num": "04",
+        "icon": "map-pin",
+        "title": "전국 대학교 및 지자체<br>협약 교육 거점 확대",
+        "desc": "수도권을 넘어 전국 단위의 지역 거점 파트너십을 체결하여 교육의 지역 격차를 해소합니다.",
+        "borderColor": "border-teal",
+        "delay": "md:delay-100",
+        "span": "md:col-span-3 md:col-start-1 lg:col-span-2 lg:col-start-2"
+      },
+      {
+        "num": "05",
+        "icon": "layers",
+        "title": "지속 가능한 교육 교구재<br>인프라 자동화 및 상생",
+        "desc": "강사들이 강의에만 집중할 수 있도록 교구재 유통 및 행정 시스템을 디지털로 자동화합니다.",
+        "borderColor": "border-navy",
+        "delay": "md:delay-200",
+        "span": "md:col-span-3 lg:col-span-2"
+      }
+    ]
+  },
+  "footer": {
+    "logoSrc": "images/logo_w.png",
+    "logoAlt": "한국자기이해교육원 로고",
+    "brandName": "한국자기이해교육원",
+    "desc": "과학적 성향 검사를 통한 자기 정체성 확립, 전문가 양성 및 공공 교육의 표준을 제시합니다.",
+    "info": {
+      "representative": "김대표",
+      "businessNum": "123-45-67890",
+      "licenseNum": "제2026-001234호",
+      "address": "서울특별시 강남구 테헤란로 KSUT 빌딩 7층",
+      "phone": "02-1234-5678",
+      "workHours": "평일 10:00 - 17:00"
+    },
+    "copyright": "© 2026 한국자기이해교육원 KSUT. All rights reserved.",
+    "termsLink": "#",
+    "privacyLink": "#"
+  },
+  "contactModal": {
+    "title": "문의 접수",
+    "desc": "기관명, 이름, 이메일, 상담 의뢰 내용을 작성해 주세요."
+  }
+}

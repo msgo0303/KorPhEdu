@@ -1,28 +1,30 @@
-﻿<html lang="ko" vid="0">
+<!DOCTYPE html>
+<html lang="ko">
 
-<head vid="1">
-    <meta charset="UTF-8" vid="2">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
-    <title vid="4">한국자기이해교육원 | KSUT</title>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국자기이해교육원 | KSUT</title>
 
     <link rel="stylesheet" as="style" crossorigin=""
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" vid="5">
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-    <script src="https://cdn.tailwindcss.com" vid="6"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Swiper JS & GSAP & ScrollTrigger -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <script src="https://unpkg.com/lucide@latest" vid="7"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-
-    <script vid="8">
+    <!-- Tailwind Config -->
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -53,408 +55,16 @@
         }
     </script>
 
-    <style vid="9">
-        body {
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-
-        .curtain-exit {
-            transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.8s ease;
-        }
-
-        .curtain-hidden {
-            transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .card-reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-        }
-
-        .card-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 🎯 transition-delay 브라우저 강제 주입 클래스 (Tailwind 기본값 누락 해결) */
-        .delay-100 {
-            transition-delay: 100ms !important;
-        }
-
-        .delay-200 {
-            transition-delay: 200ms !important;
-        }
-
-        .delay-300 {
-            transition-delay: 300ms !important;
-        }
-
-        .delay-400 {
-            transition-delay: 400ms !important;
-        }
-
-        .delay-500 {
-            transition-delay: 500ms !important;
-        }
-
-        @media (min-width: 768px) {
-            .md\:delay-100 {
-                transition-delay: 100ms !important;
-            }
-
-            .md\:delay-200 {
-                transition-delay: 200ms !important;
-            }
-
-            .md\:delay-300 {
-                transition-delay: 300ms !important;
-            }
-        }
-
-
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-
-        .aspect-4-6 {
-            aspect-ratio: 4 / 6;
-        }
-
-        /* 인트로 커튼 애니메이션 제어 */
-        #intro-curtain {
-            transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1);
-        }
-
-        #intro-curtain.slide-up {
-            transform: translateY(-100%);
-        }
-
-        /* 구조 프레임 그리드 */
-        .structural-grid {
-            background-image:
-                linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-
-        /* 🎯 [최종 수리] KSUI의 자랑스러운 이야기 섹션 컴포넌트 전체 슬림화 */
-        .main-proud-box {
-            padding: 48px 24px 32px;
-            /* 하단 패딩을 32px로 다이어트 */
-            background-color: #ffffff;
-            text-align: center;
-            overflow: hidden;
-            border-bottom: 1px solid #F1F5F9;
-            width: 100%;
-        }
-
-        .proud-txt {
-            font-size: 1.5rem;
-            /* 🎯 [수정] 텍스트 크기 축소 (1.75rem -> 1.5rem) */
-            font-weight: 800;
-            color: #1E3A8A;
-            margin-bottom: 2rem;
-            /* 🎯 [수정] 줄바꿈 유령 공백 축소 (3.5rem -> 2rem) */
-            letter-spacing: -0.025em;
-            word-break: keep-all;
-        }
-
-        .main-proud-swiper {
-            max-width: 1280px;
-            margin: 0 auto;
-            overflow: visible !important;
-            padding-bottom: 0px !important;
-            height: 180px !important;
-            /* Swiper 컨테이너의 높이를 카드의 max-height와 일치시켜 여백 제거 */
-        }
-
-        .main-proud-swiper .swiper-slide {
-            background: #F8FAFC;
-            border-radius: 1.25rem;
-            padding: 1.25rem;
-            /* 🎯 내부 패딩을 콤팩트하게 변경 */
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.02), 0 2px 4px -2px rgb(0 0 0 / 0.02);
-            border: 1px solid #E2E8F0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            width: 280px;
-            margin: 0 8px !important;
-            /* 🎯 좌우 대칭 마진으로 정중앙 배치 정렬 쏠림 해결 */
-            /* 🎯 [핵심] Swiper 내부 강제 스케일링 엔진을 무력화하는 절대 3종 안전장치 */
-            height: auto !important;
-            min-height: 0px !important;
-            max-height: 180px !important;
-            /* 🎯 [추가] 아무리 화면을 축소해서 줄바꿈이 일어나도 180px을 절대 넘지 못하도록 고정 */
-            box-sizing: border-box;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0.4;
-            transform: scale(0.92);
-        }
-
-        .main-proud-swiper .swiper-slide-active,
-        .main-proud-swiper .swiper-slide-next,
-        .main-proud-swiper .swiper-slide-prev {
-            opacity: 0.85;
-        }
-
-        .main-proud-swiper .swiper-slide-active {
-            opacity: 1 !important;
-            transform: scale(1);
-            background: #ffffff;
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
-            border-color: #CBD5E1;
-            height: auto !important;
-            /* 🎯 [수정] 활성화된 카드도 자율 높이 사수 */
-        }
-
-        .proud-logo-box {
-            height: 32px;
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.25rem;
-        }
-
-        .proud-logo-box img {
-            max-height: 100%;
-            object-fit: contain;
-            filter: grayscale(1);
-            opacity: 0.7;
-            transition: all 0.3s ease;
-        }
-
-        .main-proud-swiper .swiper-slide-active .proud-logo-box img {
-            filter: grayscale(0);
-            opacity: 1;
-        }
-
-        .proud-con-box {
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            /* 🎯 [수정] 내부 링크 버튼 등이 세로로 늘어나는 버그 방어 */
-            gap: 0.625rem;
-            flex-grow: 0;
-            width: 100%;
-            /* 🎯 [추가] 가로 너비는 꽉 채워서 글자 배치 안정화 */
-        }
-
-        .proud-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.4;
-            margin-bottom: 0px;
-            /* 마진을 없애고 gap으로 조정 */
-            word-break: keep-all;
-        }
-
-        .proud-title span {
-            color: #0F766E;
-            /* teal */
-            font-size: 1.05rem;
-            display: block;
-            margin-top: 0.25rem;
-            font-weight: 800;
-        }
-
-        .proud-more {
-            align-self: flex-start;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #0F766E;
-            /* teal */
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .proud-more:hover {
-            color: #1E3A8A;
-            /* navy */
-            border-bottom-color: #1E3A8A;
-        }
-
-        /* 🎯 태블릿 및 데스크톱을 위한 고정 가로폭 및 대칭 마진 추가 */
-        @media (min-width: 768px) {
-            .main-proud-swiper .swiper-slide {
-                width: 320px !important;
-                margin: 0 12px !important;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .main-proud-swiper .swiper-slide {
-                width: 320px !important;
-                margin: 0 15px !important;
-            }
-        }
-
-        /* 슬라이드 네비게이션 제어부 */
-        .proud-control-wrap {
-            max-width: 1280px;
-            margin: 0.25rem auto 0.75rem;
-            /* 🎯 마진 탑을 2rem에서 0.25rem으로 대폭 축소 */
-            display: flex;
-            justify-content: flex-end;
-            padding: 0 1rem;
-        }
-
-        .main-proud-prev,
-        .main-proud-next {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            background-color: #ffffff;
-            border: 1px solid #E2E8F0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-        }
-
-        .main-proud-prev:hover,
-        .main-proud-next:hover {
-            background-color: #1E3A8A;
-            border-color: #1E3A8A;
-            color: #ffffff;
-        }
-
-        .main-proud-prev::before,
-        .main-proud-next::before {
-            font-size: 1.25rem;
-            color: #475569;
-            transition: color 0.3s ease;
-        }
-
-        .main-proud-prev:hover::before,
-        .main-proud-next:hover::before {
-            color: #ffffff;
-        }
-
-        .main-proud-prev::before {
-            content: '←';
-        }
-
-        .main-proud-next::before {
-            content: '→';
-        }
-
-        .main-proud-prev span,
-        .main-proud-next span {
-            display: none;
-        }
-
-        /* 페이징 및 자동재생 프로그레스바 */
-        .pagination-wrap {
-            max-width: 480px;
-            margin: 0.25rem auto 0;
-            /* 🎯 콤팩트한 마진 탑 지정 */
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 0 1rem;
-        }
-
-        .proud-pagination.bar {
-            position: relative;
-            flex-grow: 1;
-            height: 3px;
-            background-color: #E2E8F0;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .proud-pagination.bar .swiper-pagination-progressbar-fill {
-            background-color: #0F766E !important;
-            /* teal */
-        }
-
-        .proud-autoplay {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .proud-autoplay button {
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            background-color: #ffffff;
-            border: 1px solid #CBD5E1;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.05);
-        }
-
-        .proud-autoplay button:hover {
-            background-color: #F1F5F9;
-            border-color: #94A3B8;
-        }
-
-        .proud-autoplay button::before {
-            font-size: 0.75rem;
-            color: #475569;
-        }
-
-        .proud-autoplay button.start::before {
-            content: '▶';
-        }
-
-        .proud-autoplay button.pause::before {
-            content: '❚❚';
-            font-weight: bold;
-        }
-
-        .proud-autoplay button span {
-            display: none;
-        }
-    </style>
+    <!-- 외부 분리 CSS 파일 연결 -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- 외부 분리 JavaScript 파일 연결 (defer) -->
+    <script src="script.js" defer></script>
 </head>
 
-<body class="bg-slatebg text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-teal selection:text-white"
-    vid="10">
+<body class="bg-slatebg text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-teal selection:text-white">
 
-
+    <!-- 인트로 curtain 영역 -->
     <div id="intro-curtain" class="fixed inset-0 z-50 bg-white flex items-center justify-center origin-top">
         <div class="relative flex flex-col items-center">
             <div id="intro-logo" class="opacity-0 transition-opacity duration-700 ease-in-out relative w-16 h-16 mb-6">
@@ -470,37 +80,31 @@
         </div>
     </div>
 
-
-    <nav class="fixed w-full z-40 top-0 transition-all duration-300" id="navbar" vid="17">
+    <!-- 상단 네비게이션바 -->
+    <nav class="fixed w-full z-40 top-0 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-50 bg-transparent"
-            id="nav-container" vid="18">
+            id="nav-container">
 
-            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'" vid="19">
-                <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" id="nav-logo-box" vid="nav-logo-img">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
+                <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" id="nav-logo-box">
                 <span class="text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors"
-                    id="nav-brand" vid="22">한국자기이해교육원</span>
+                    id="nav-brand">한국자기이해교육원</span>
             </div>
 
-            <!-- index.html 우측 PC 버전 메뉴 구역 예시 -->
-            <div class="hidden md:flex gap-8 items-center" vid="23">
+            <!-- PC 버전 메뉴 구역 -->
+            <div class="hidden md:flex gap-8 items-center">
                 <a href="Menu_1.html"
-                    class="text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm"
-                    vid="24">기관소개</a>
-                <!-- 🎯 href 주소를 앵커(#business)에서 서브 파일인 Menu_2.html로 전격 변경 -->
+                    class="text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm">기관소개</a>
                 <a href="Menu_2.html"
-                    class="text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm"
-                    vid="25">비즈니스</a>
+                    class="text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm">비즈니스</a>
                 <a href="Menu_3.html"
-                    class="text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm"
-                    vid="26">연구진</a>
+                    class="text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm">연구진</a>
                 <button
                     class="modal-trigger bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm cursor-pointer"
-                    data-target="modal-contact"
-                    vid="27">문의하기</button>
+                    data-target="modal-contact">문의하기</button>
             </div>
 
-            <button class="block md:hidden text-white focus:outline-none transition-colors"
-                id="mobile-menu-btn">
+            <button class="block md:hidden text-white focus:outline-none transition-colors" id="mobile-menu-btn">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
@@ -517,59 +121,47 @@
                     class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">연구진</a>
                 <button
                     class="modal-trigger mt-2 text-center bg-teal text-white px-5 py-3 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm cursor-pointer"
-                    data-target="modal-contact"
-                    onclick="toggleMobileMenu()">문의하기</button>
+                    data-target="modal-contact" onclick="toggleMobileMenu()">문의하기</button>
             </div>
         </div>
     </nav>
 
-
-    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden" vid="28">
-
-        <div class="absolute inset-0 z-0" vid="29">
-            <img src="images/hero_0.jpg" alt="University Architecture" class="w-full h-full object-cover object-center"
-                vid="30">
-            <div class="absolute inset-0 bg-navy/85 mix-blend-multiply" vid="31"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/50 to-transparent" vid="32"></div>
+    <!-- 히어로 섹션 -->
+    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="images/hero_0.jpg" alt="Hero Image" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-navy/85 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/50 to-transparent"></div>
         </div>
 
-
-        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20" vid="33">
-            <div class="hero-item opacity-0 translate-y-8 transition-all duration-1000 delay-300 mb-6 flex justify-center"
-                vid="34">
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20">
+            <div class="hero-item opacity-0 translate-y-8 transition-all duration-1000 delay-300 mb-6 flex justify-center">
                 <span
-                    class="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-semibold tracking-widest backdrop-blur-sm"
-                    vid="35">PUBLIC EDUCATION HUB</span>
+                    class="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-semibold tracking-widest backdrop-blur-sm">PUBLIC EDUCATION HUB</span>
             </div>
 
-            <h1 class="hero-item opacity-0 translate-y-8 transition-all duration-1000 delay-500 text-5xl md:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-8 break-keep"
-                vid="36">
+            <h1 class="hero-item opacity-0 translate-y-8 transition-all duration-1000 delay-500 text-5xl md:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-8 break-keep">
                 한국자기이해교육원
             </h1>
 
-            <p class="hero-item opacity-0 translate-y-8 transition-all duration-1000 delay-700 text-lg md:text-2xl text-slate-200 font-light leading-relaxed break-keep max-w-3xl mx-auto"
-                vid="37">
-                과학적 성향 검사를 통한 자기 정체성 확립,<br class="hidden md:block" vid="38">
+            <p class="hero-item opacity-0 translate-y-8 transition-all duration-1000 delay-700 text-lg md:text-2xl text-slate-200 font-light leading-relaxed break-keep max-w-3xl mx-auto">
+                과학적 성향 검사를 통한 자기 정체성 확립,<br class="hidden md:block">
                 전문가 양성 및 공공 교육의 표준을 제시합니다.
             </p>
         </div>
 
-
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 opacity-70 hover:opacity-100 transition-opacity"
-            vid="39">
-            <span class="text-white/80 text-xs font-medium tracking-widest" vid="40">스크롤하여 더 알아보기</span>
-            <i data-lucide="arrow-down" class="text-teal w-5 h-5 animate-bounce-soft" vid="41"></i>
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 opacity-70 hover:opacity-100 transition-opacity">
+            <span class="text-white/80 text-xs font-medium tracking-widest">스크롤하여 더 알아보기</span>
+            <i data-lucide="arrow-down" class="text-teal w-5 h-5 animate-bounce-soft"></i>
         </div>
     </section>
 
-
-    <!-- 🎯 [신설] 세종대학교 자랑스러운 이야기 (real_intro_sub.txt) 성과 Swiper 섹션 -->
-    <div class="main-proud-box" id="proud-section" vid="proud-stories-sec">
+    <!-- 자랑스러운 이야기 Swiper 섹션 -->
+    <div class="main-proud-box" id="proud-section">
         <p class="proud-txt">세계를 이끄는 KSUI의 자랑스러운 이야기</p>
 
         <div class="swiper main-proud-swiper">
             <div class="swiper-wrapper">
-
                 <!-- 슬라이드 1: QS 세계대학평가 -->
                 <div class="swiper-slide">
                     <div class="proud-logo-box">
@@ -699,21 +291,19 @@
                         </p>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <!-- 슬라이드 컨트롤러 -->
-        <div class="proud-control-wrap" vid="proud-stories-control">
+        <div class="proud-control-wrap">
             <div class="flex gap-2">
-                <div class="main-proud-prev" tabindex="0" role="button" aria-label="Previous slide"><span>Prev</span>
-                </div>
+                <div class="main-proud-prev" tabindex="0" role="button" aria-label="Previous slide"><span>Prev</span></div>
                 <div class="main-proud-next" tabindex="0" role="button" aria-label="Next slide"><span>Next</span></div>
             </div>
         </div>
 
         <!-- 페이징 및 자동재생 컨트롤러 -->
-        <div class="pagination-wrap" vid="proud-stories-pagination">
+        <div class="pagination-wrap">
             <div class="proud-pagination bar">
                 <span class="swiper-pagination-progressbar-fill"></span>
             </div>
@@ -724,25 +314,24 @@
         </div>
     </div>
 
+    <!-- 소개 섹션 (About) -->
+    <section id="about" class="py-24 md:py-32 bg-slatebg relative">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
-    <section id="about" class="py-24 md:py-32 bg-slatebg relative" vid="42">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center" vid="43">
-
-            <div class="reveal" vid="44">
-                <div class="flex items-center gap-4 mb-6" vid="45">
-                    <div class="h-[1px] w-12 bg-teal" vid="46"></div>
-                    <span class="text-teal font-bold text-sm tracking-widest" vid="47">ABOUT OUR INSTITUTE</span>
+            <div class="reveal">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="h-[1px] w-12 bg-teal"></div>
+                    <span class="text-teal font-bold text-sm tracking-widest">ABOUT OUR INSTITUTE</span>
                 </div>
 
-                <h2 class="text-3xl md:text-4xl font-bold text-navy leading-tight mb-8 break-keep tracking-tight"
-                    vid="48">
-                    자기이해 전문가를 양성하는<br vid="49">공공 교육의 허브
+                <h2 class="text-3xl md:text-4xl font-bold text-navy leading-tight mb-8 break-keep tracking-tight">
+                    자기이해 전문가를 양성하는<br>공공 교육의 허브
                 </h2>
 
+                <!-- 모바일 전용 이미지 그리드 -->
                 <div class="block md:hidden grid grid-cols-3 gap-3 mb-8 reveal delay-100">
                     <div class="aspect-[4/5] rounded-md overflow-hidden shadow-sm">
-                        <img src="images/hero_1.jpg" class="w-full h-full object-cover grayscale"
-                            alt="Academic Research">
+                        <img src="images/hero_1.jpg" class="w-full h-full object-cover grayscale" alt="Academic Research">
                     </div>
                     <div class="aspect-[4/5] rounded-md overflow-hidden shadow-sm">
                         <img src="images/hero_2.jpg" class="w-full h-full object-cover" alt="Corporate Training">
@@ -752,815 +341,375 @@
                     </div>
                 </div>
 
-                <div class="space-y-6 text-slate-600 text-lg leading-relaxed break-keep font-light" vid="50">
-                    <p vid="51">
-                        한국자기이해교육원은 학술적 연구와 임상 데이터를 기반으로 한 공공 교육 기관입니다. 개인의 본질적 성향을 과학적으로 분석하고, 이를 바탕으로 한 맞춤형 교육 솔루션을
-                        제공합니다.
+                <!-- 소개 본문 텍스트 -->
+                <div class="space-y-6 text-slate-600 text-lg leading-relaxed break-keep font-light">
+                    <p>
+                        한국자기이해교육원은 학술적 연구와 임상 데이터를 기반으로 한 공공 교육 기관입니다. 개인의 본질적 성향을 과학적으로 분석하고, 이를 바탕으로 한 맞춤형 교육 솔루션을 제공합니다.
                     </p>
-                    <p vid="52">
+                    <p>
                         단순한 진단을 넘어, 지속 가능한 교육 환경을 위한 체계적인 그리드 프레임워크를 구축하여 사회 전반의 자기이해도를 높이고 건강한 공동체 형성에 기여합니다.
                     </p>
                 </div>
 
-                <div class="mt-12 grid grid-cols-2 gap-6" vid="53">
-                    <div class="border-l-2 border-slate-200 pl-4" vid="54">
-                        <p class="text-3xl font-bold text-navy mb-1" vid="55">10k<span class="text-teal text-xl"
-                                vid="56">+</span></p>
-                        <p class="text-sm text-slate-500 font-medium" vid="57">배출된 전문가</p>
+                <!-- 통계 수치 지표 -->
+                <div class="mt-12 grid grid-cols-2 gap-6">
+                    <div class="border-l-2 border-slate-200 pl-4">
+                        <p class="text-3xl font-bold text-navy mb-1">10k<span class="text-teal text-xl">+</span></p>
+                        <p class="text-sm text-slate-500 font-medium">배출된 전문가</p>
                     </div>
-                    <div class="border-l-2 border-slate-200 pl-4" vid="58">
-                        <p class="text-3xl font-bold text-navy mb-1" vid="59">95<span class="text-teal text-xl"
-                                vid="60">%</span></p>
-                        <p class="text-sm text-slate-500 font-medium" vid="61">B2G 교육 만족도</p>
+                    <div class="border-l-2 border-slate-200 pl-4">
+                        <p class="text-3xl font-bold text-navy mb-1">95<span class="text-teal text-xl">%</span></p>
+                        <p class="text-sm text-slate-500 font-medium">B2G 교육 만족도</p>
                     </div>
                 </div>
             </div>
 
-            <div class="relative h-[500px] md:h-[600px] w-full reveal delay-200 hidden md:block" vid="62">
-                <div class="absolute top-0 left-0 w-3/5 h-64 rounded-lg overflow-hidden shadow-lg z-10 transition-transform duration-700 hover:-translate-y-2"
-                    vid="63">
-                    <img src="images/hero_1.jpg" class="w-full h-full object-cover" alt="Academic Research" vid="64">
-                    <div class="absolute inset-0 bg-navy/10 mix-blend-multiply" vid="65"></div>
+            <!-- 데스크톱 버전 이미지 레이아웃 -->
+            <div class="relative h-[500px] md:h-[600px] w-full reveal delay-200 hidden md:block">
+                <div class="absolute top-0 left-0 w-3/5 h-64 rounded-lg overflow-hidden shadow-lg z-10 transition-transform duration-700 hover:-translate-y-2">
+                    <img src="images/hero_1.jpg" class="w-full h-full object-cover" alt="About Image 1">
+                    <div class="absolute inset-0 bg-navy/10 mix-blend-multiply"></div>
                 </div>
-                <div class="absolute top-32 right-0 w-3/5 h-72 rounded-lg overflow-hidden shadow-xl z-20 border-4 border-slatebg transition-transform duration-700 hover:-translate-y-2"
-                    vid="66">
-                    <img src="images/hero_2.jpg" class="w-full h-full object-cover" alt="Corporate Training" vid="67">
-                    <div class="absolute inset-0 bg-teal/10 mix-blend-multiply" vid="68"></div>
+                <div class="absolute top-32 right-0 w-3/5 h-72 rounded-lg overflow-hidden shadow-xl z-20 border-4 border-slatebg transition-transform duration-700 hover:-translate-y-2">
+                    <img src="images/hero_2.jpg" class="w-full h-full object-cover" alt="About Image 2">
+                    <div class="absolute inset-0 bg-teal/10 mix-blend-multiply"></div>
                 </div>
-                <div class="absolute bottom-10 left-12 w-2/4 h-60 rounded-lg overflow-hidden shadow-2xl z-30 border-4 border-slatebg transition-transform duration-700 hover:-translate-y-2"
-                    vid="69">
-                    <img src="images/hero_3.jpg" class="w-full h-full object-cover" alt="Workshop" vid="70">
+                <div class="absolute bottom-10 left-12 w-2/4 h-60 rounded-lg overflow-hidden shadow-2xl z-30 border-4 border-slatebg transition-transform duration-700 hover:-translate-y-2">
+                    <img src="images/hero_3.jpg" class="w-full h-full object-cover" alt="About Image 3">
                 </div>
             </div>
 
         </div>
     </section>
 
-
-    <section id="business" class="py-24 md:py-32 bg-white" vid="71">
-        <div class="max-w-7xl mx-auto px-6" vid="72">
-            <div class="text-center mb-12 reveal" vid="73">
-                <span class="text-teal font-bold text-sm tracking-widest block mb-3" vid="74">CORE BUSINESS</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-navy tracking-tight" vid="75">핵심 사업 영역</h2>
+    <!-- 핵심 사업 영역 (Business) -->
+    <section id="business" class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12 reveal">
+                <span class="text-teal font-bold text-sm tracking-widest block mb-3">CORE BUSINESS</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy tracking-tight">핵심 사업 영역</h2>
             </div>
 
-            <div class="flex overflow-x-auto no-scrollbar border-b border-slate-200 mb-4 reveal" role="tablist"
-                vid="76">
-                <button
-                    class="tab-btn active px-8 py-4 text-sm md:text-base font-semibold whitespace-nowrap border-b-2 border-navy text-navy transition-colors"
-                    data-target="tab1" vid="77">
+            <!-- 탭 버튼 목록 -->
+            <div class="flex overflow-x-auto no-scrollbar border-b border-slate-200 mb-4 reveal" role="tablist">
+                <button class="tab-btn active border-navy text-navy font-semibold px-8 py-4 text-sm md:text-base font-medium whitespace-nowrap border-b-2 transition-colors" data-target="tab1">
                     기관 맞춤형 단체 교육
                 </button>
-                <button
-                    class="tab-btn px-8 py-4 text-sm md:text-base font-medium whitespace-nowrap border-b-2 border-transparent text-slate-500 hover:text-navy transition-colors"
-                    data-target="tab2" vid="78">
+                <button class="tab-btn border-transparent text-slate-500 hover:text-navy px-8 py-4 text-sm md:text-base font-medium whitespace-nowrap border-b-2 transition-colors" data-target="tab2">
                     민간 자격증 및 강사 과정
                 </button>
-                <button
-                    class="tab-btn px-8 py-4 text-sm md:text-base font-medium whitespace-nowrap border-b-2 border-transparent text-slate-500 hover:text-navy transition-colors"
-                    data-target="tab3" vid="79">
+                <button class="tab-btn border-transparent text-slate-500 hover:text-navy px-8 py-4 text-sm md:text-base font-medium whitespace-nowrap border-b-2 transition-colors" data-target="tab3">
                     검사지 및 교구재
                 </button>
             </div>
 
-            <div
-                class="flex md:hidden items-center justify-center gap-1.5 mb-8 text-slate-400 opacity-80 animate-[pulse_2s_infinite] text-[11px] font-medium tracking-widest">
+            <div class="flex md:hidden items-center justify-center gap-1.5 mb-8 text-slate-400 opacity-80 animate-[pulse_2s_infinite] text-[11px] font-medium tracking-widest">
                 <i data-lucide="arrow-left" class="w-3 h-3"></i>
                 <span>좌우로 밀어서 메뉴 보기</span>
                 <i data-lucide="arrow-right" class="w-3 h-3"></i>
             </div>
 
-            <div class="relative min-h-[400px]" vid="80">
-
-                <div id="tab1" class="tab-content grid grid-cols-1 md:grid-cols-2 gap-12 items-start animate-slide-up"
-                    vid="81">
-                    <div class="rounded-lg overflow-hidden bg-slate-100 aspect-video shadow-md border border-slate-100"
-                        vid="82">
-                        <img src="images/hero_4.jpg" class="w-full h-full object-cover" alt="B2B Education" vid="83">
+            <!-- 탭 콘텐츠 영역 -->
+            <div class="relative min-h-[400px]">
+                
+                <!-- 탭 1 -->
+                <div id="tab1" class="tab-content grid grid-cols-1 md:grid-cols-2 gap-12 items-start animate-slide-up">
+                    <div class="rounded-lg overflow-hidden bg-slate-100 aspect-video shadow-md border border-slate-100">
+                        <img src="images/hero_4.jpg" class="w-full h-full object-cover" alt="B2B Education">
                     </div>
-                    <div class="flex flex-col justify-center h-full" vid="84">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-navy/5 text-navy rounded-md text-xs font-bold mb-4 w-fit"
-                            vid="85">
-                            <i data-lucide="building" class="w-3.5 h-3.5" vid="86"></i> B2B / B2G
+                    <div class="flex flex-col justify-center h-full">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-navy/5 text-navy rounded-md text-xs font-bold mb-4 w-fit">
+                            <i data-lucide="building" class="w-3.5 h-3.5"></i> B2B / B2G
                         </div>
-                        <h3 class="text-2xl font-bold text-navy mb-4" vid="87">기관 맞춤형 단체 교육</h3>
-                        <p class="text-slate-600 mb-8 leading-relaxed break-keep" vid="88">
+                        <h3 class="text-2xl font-bold text-navy mb-4">기관 맞춤형 단체 교육</h3>
+                        <p class="text-slate-600 mb-8 leading-relaxed break-keep">
                             대학, 기업, 지자체의 특성과 목표에 맞춘 최적화된 교육 프로그램을 설계하고 운영합니다. 조직 구성원의 자기이해를 통한 소통 강화와 성과 향상을 목표로 합니다.
                         </p>
-                        <div class="flex flex-wrap gap-2" vid="89">
-                            <span
-                                class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-medium rounded-md"
-                                vid="90">#대학생진로워크숍</span>
-                            <span
-                                class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-medium rounded-md"
-                                vid="91">#기업임직원커뮤니케이션</span>
-                            <span
-                                class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-medium rounded-md"
-                                vid="92">#성향검사라이선스제공</span>
-                            <span
-                                class="px-3 py-1.5 bg-teal/10 border border-teal/20 text-teal-700 text-xs font-medium rounded-md"
-                                vid="93">#B2G지자체협약</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 border text-xs font-medium rounded-md bg-slate-50 border-slate-200 text-slate-600">#대학생진로워크숍</span>
+                            <span class="px-3 py-1.5 border text-xs font-medium rounded-md bg-slate-50 border-slate-200 text-slate-600">#기업임직원커뮤니케이션</span>
+                            <span class="px-3 py-1.5 border text-xs font-medium rounded-md bg-slate-50 border-slate-200 text-slate-600">#성향검사라이선스제공</span>
+                            <span class="px-3 py-1.5 border text-xs font-medium rounded-md bg-teal/10 border-teal/20 text-teal-700">#B2G지자체협약</span>
                         </div>
                     </div>
                 </div>
 
-
-                <div id="tab2" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 gap-12 items-start" vid="94">
-                    <div class="rounded-lg overflow-hidden bg-slate-100 aspect-video shadow-md border border-slate-100"
-                        vid="95">
-                        <img src="images/hero_5.jpg" class="w-full h-full object-cover" alt="Certification" vid="96">
+                <!-- 탭 2 -->
+                <div id="tab2" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                    <div class="rounded-lg overflow-hidden bg-slate-100 aspect-video shadow-md border border-slate-100">
+                        <img src="images/hero_5.jpg" class="w-full h-full object-cover" alt="Certification">
                     </div>
-                    <div class="flex flex-col justify-center h-full" vid="97">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-teal/10 text-teal-700 rounded-md text-xs font-bold mb-4 w-fit"
-                            vid="98">
-                            <i data-lucide="award" class="w-3.5 h-3.5" vid="99"></i> B2C → B2B
+                    <div class="flex flex-col justify-center h-full">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-teal/10 text-teal-700 rounded-md text-xs font-bold mb-4 w-fit">
+                            <i data-lucide="award" class="w-3.5 h-3.5"></i> B2C → B2B
                         </div>
-                        <h3 class="text-2xl font-bold text-navy mb-4" vid="100">민간 자격증 및 강사 과정</h3>
-                        <p class="text-slate-600 mb-8 leading-relaxed break-keep" vid="101">
+                        <h3 class="text-2xl font-bold text-navy mb-4">민간 자격증 및 강사 과정</h3>
+                        <p class="text-slate-600 mb-8 leading-relaxed break-keep">
                             체계적인 커리큘럼을 통해 공신력 있는 자기이해 전문가를 양성합니다. 자격 취득 후 파트너 강사로서의 활동 기회와 지속적인 역량 강화 프로그램을 제공합니다.
                         </p>
-                        <div class="flex flex-wrap gap-2" vid="102">
-                            <span
-                                class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-medium rounded-md"
-                                vid="103">#자기이해지도사_2급_1급</span>
-                            <span
-                                class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-medium rounded-md"
-                                vid="104">#직능원정식등록</span>
-                            <span
-                                class="px-3 py-1.5 bg-navy/5 border border-navy/10 text-navy text-xs font-medium rounded-md"
-                                vid="105">#파트너강사출강권한</span>
-                            <span
-                                class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-medium rounded-md"
-                                vid="106">#강사수익화코스</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 border text-xs font-medium rounded-md bg-slate-50 border-slate-200 text-slate-600">#자기이해지도사_2급_1급</span>
+                            <span class="px-3 py-1.5 border text-xs font-medium rounded-md bg-slate-50 border-slate-200 text-slate-600">#직능원정식등록</span>
+                            <span class="px-3 py-1.5 border text-xs font-medium rounded-md bg-navy/5 border-navy/10 text-navy">#파트너강사출강권한</span>
+                            <span class="px-3 py-1.5 border text-xs font-medium rounded-md bg-slate-50 border-slate-200 text-slate-600">#강사수익화코스</span>
                         </div>
                     </div>
                 </div>
 
-
-                <div id="tab3" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 gap-12 items-start" vid="107">
-                    <div class="rounded-lg overflow-hidden bg-slate-100 aspect-video shadow-md border border-slate-100"
-                        vid="108">
-                        <img src="images/hero_6.jpg" class="w-full h-full object-cover" alt="Tools and Assessments"
-                            vid="109">
+                <!-- 탭 3 -->
+                <div id="tab3" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                    <div class="rounded-lg overflow-hidden bg-slate-100 aspect-video shadow-md border border-slate-100">
+                        <img src="images/hero_6.jpg" class="w-full h-full object-cover" alt="Tools and Assessments">
                     </div>
-                    <div class="flex flex-col justify-center h-full" vid="110">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold mb-4 w-fit border border-slate-200"
-                            vid="111">
-                            <i data-lucide="package" class="w-3.5 h-3.5" vid="112"></i> Scalable Product
+                    <div class="flex flex-col justify-center h-full">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold mb-4 w-fit border border-slate-200">
+                            <i data-lucide="package" class="w-3.5 h-3.5"></i> Scalable Product
                         </div>
-                        <h3 class="text-2xl font-bold text-navy mb-4" vid="113">검사지 및 교구재 비즈니스</h3>
-                        <p class="text-slate-600 mb-8 leading-relaxed break-keep" vid="114">
+                        <h3 class="text-2xl font-bold text-navy mb-4">검사지 및 교구재 비즈니스</h3>
+                        <p class="text-slate-600 mb-8 leading-relaxed break-keep">
                             연구소에서 자체 개발한 과학적 성향 검사지와 오프라인 워크숍용 힐링 교구재를 유통합니다. 디지털 라이선스 기반으로 강사 및 기관에 대량 공급 구조를 확립했습니다.
                         </p>
-                        <div class="flex flex-wrap gap-2" vid="115">
-                            <span
-                                class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-medium rounded-md"
-                                vid="116">#자체개발검사지</span>
-                            <span
-                                class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-medium rounded-md"
-                                vid="117">#힐링교구재세트</span>
-                            <span
-                                class="px-3 py-1.5 bg-teal/10 border border-teal/20 text-teal-700 text-xs font-medium rounded-md"
-                                vid="118">#디지털라이선스</span>
-                            <span
-                                class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-600 text-xs font-medium rounded-md"
-                                vid="119">#강사몰대량공급</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 border text-xs font-medium rounded-md bg-slate-50 border-slate-200 text-slate-600">#자체개발검사지</span>
+                            <span class="px-3 py-1.5 border text-xs font-medium rounded-md bg-slate-50 border-slate-200 text-slate-600">#힐링교구재세트</span>
+                            <span class="px-3 py-1.5 border text-xs font-medium rounded-md bg-teal/10 border-teal/20 text-teal-700">#디지털라이선스</span>
+                            <span class="px-3 py-1.5 border text-xs font-medium rounded-md bg-slate-50 border-slate-200 text-slate-600">#강사몰대량공급</span>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-
-    <section id="partners" class="py-24 md:py-32 bg-slatebg border-y border-slate-200" vid="120">
-        <div class="max-w-7xl mx-auto px-6 mb-12 flex justify-between items-end reveal" vid="121">
-            <div vid="122">
-                <span class="text-teal font-bold text-sm tracking-widest block mb-3" vid="123">FACULTY &amp;
-                    RESEARCHERS</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-navy tracking-tight" vid="124">전문 연구진</h2>
+    <!-- 전문 연구진 (Partners) -->
+    <section id="partners" class="py-24 md:py-32 bg-slatebg border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 mb-12 flex justify-between items-end reveal">
+            <div>
+                <span class="text-teal font-bold text-sm tracking-widest block mb-3">FACULTY &amp; RESEARCHERS</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy tracking-tight">전문 연구진</h2>
             </div>
-            <div class="hidden md:flex gap-2" vid="125">
+            <div class="hidden md:flex gap-2">
                 <button onclick="scrollCarousel(-1)"
-                    class="w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center text-slate-500 hover:bg-white hover:text-navy transition-colors bg-transparent"
-                    vid="126"><i data-lucide="chevron-left" class="w-5 h-5" vid="127"></i></button>
+                    class="w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center text-slate-500 hover:bg-white hover:text-navy transition-colors bg-transparent"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
                 <button onclick="scrollCarousel(1)"
-                    class="w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center text-slate-500 hover:bg-white hover:text-navy transition-colors bg-transparent"
-                    vid="128"><i data-lucide="chevron-right" class="w-5 h-5" vid="129"></i></button>
+                    class="w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center text-slate-500 hover:bg-white hover:text-navy transition-colors bg-transparent"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
             </div>
         </div>
 
-
-        <div class="px-6 md:px-0 max-w-7xl mx-auto reveal delay-100" vid="130">
+        <!-- 캐러셀 그리드 -->
+        <div class="px-6 md:px-0 max-w-7xl mx-auto reveal delay-100">
             <div id="partner-carousel"
-                class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 no-scrollbar pl-6 md:pl-0 pr-6" vid="131">
-
-
-                <article
-                    class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[440px] group transition-shadow hover:shadow-md"
-                    vid="132">
-
-                    <div class="h-[50%] relative overflow-hidden bg-slate-100" vid="133">
-                        <img src="images/menu3/menu_3_1.jpg"
-                            alt="Profile"
-                            class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
-                            vid="134">
-                        <div class="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors" vid="135">
-                        </div>
+                class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 no-scrollbar pl-6 md:pl-0 pr-6">
+                
+                <!-- 카드 1 -->
+                <article class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[440px] group transition-shadow hover:shadow-md">
+                    <div class="h-[50%] relative overflow-hidden bg-slate-100">
+                        <img src="images/menu3/menu_3_1.jpg" alt="Profile" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500">
+                        <div class="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors"></div>
                     </div>
-
-                    <div class="h-[50%] p-6 flex flex-col" vid="136">
-                        <span class="text-xs font-bold text-teal tracking-wider mb-2" vid="137">상임 연구위원</span>
-                        <h3 class="text-xl font-bold text-navy mb-4" vid="138">홍길동 박사</h3>
-                        <ul class="space-y-2 text-sm text-slate-600 flex-grow" vid="139">
-                            <li class="flex items-start gap-2" vid="140"><i data-lucide="graduation-cap"
-                                    class="w-4 h-4 text-slate-400 mt-0.5 shrink-0" vid="141"></i> <span vid="142">서울대학교
-                                    교육학 박사</span></li>
-                            <li class="flex items-start gap-2" vid="143"><i data-lucide="briefcase"
-                                    class="w-4 h-4 text-slate-400 mt-0.5 shrink-0" vid="144"></i> <span
-                                    class="line-clamp-2" vid="145">前 한국청소년정책연구원 자문위원</span></li>
-                            <li class="flex items-start gap-2" vid="146"><i data-lucide="microscope"
-                                    class="w-4 h-4 text-slate-400 mt-0.5 shrink-0" vid="147"></i> <span vid="148">KSUT
-                                    자체 성향검사 개발 총괄</span></li>
+                    <div class="h-[50%] p-6 flex flex-col">
+                        <span class="text-xs font-bold text-teal tracking-wider mb-2">상임 연구위원</span>
+                        <h3 class="text-xl font-bold text-navy mb-4">홍길동 박사</h3>
+                        <ul class="space-y-2 text-sm text-slate-600 flex-grow">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
+                                <span class="line-clamp-2">서울대학교 교육학 박사</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="briefcase" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
+                                <span class="line-clamp-2">前 한국청소년정책연구원 자문위원</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="microscope" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
+                                <span class="line-clamp-2">KSUT 자체 성향검사 개발 총괄</span>
+                            </li>
                         </ul>
                     </div>
                 </article>
 
-
-                <article
-                    class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[440px] group transition-shadow hover:shadow-md"
-                    vid="149">
-                    <div class="h-[50%] relative overflow-hidden bg-slate-100" vid="150">
-                        <img src="images/menu3/menu_3_2.jpg"
-                            alt="Profile"
-                            class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
-                            vid="151">
-                        <div class="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors" vid="152">
-                        </div>
+                <!-- 카드 2 -->
+                <article class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[440px] group transition-shadow hover:shadow-md">
+                    <div class="h-[50%] relative overflow-hidden bg-slate-100">
+                        <img src="images/menu3/menu_3_2.jpg" alt="Profile" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500">
+                        <div class="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors"></div>
                     </div>
-                    <div class="h-[50%] p-6 flex flex-col" vid="153">
-                        <span class="text-xs font-bold text-teal tracking-wider mb-2" vid="154">수석 강사 / 이사</span>
-                        <h3 class="text-xl font-bold text-navy mb-4" vid="155">김지영 연구원</h3>
-                        <ul class="space-y-2 text-sm text-slate-600 flex-grow" vid="156">
-                            <li class="flex items-start gap-2" vid="157"><i data-lucide="graduation-cap"
-                                    class="w-4 h-4 text-slate-400 mt-0.5 shrink-0" vid="158"></i> <span vid="159">연세대학교
-                                    심리학 석사</span></li>
-                            <li class="flex items-start gap-2" vid="160"><i data-lucide="briefcase"
-                                    class="w-4 h-4 text-slate-400 mt-0.5 shrink-0" vid="161"></i> <span
-                                    class="line-clamp-2" vid="162">삼성, 현대차 등 기업 출강 500회+</span></li>
-                            <li class="flex items-start gap-2" vid="163"><i data-lucide="award"
-                                    class="w-4 h-4 text-slate-400 mt-0.5 shrink-0" vid="164"></i> <span
-                                    vid="165">자기이해지도사 양성과정 전담</span></li>
+                    <div class="h-[50%] p-6 flex flex-col">
+                        <span class="text-xs font-bold text-teal tracking-wider mb-2">수석 강사 / 이사</span>
+                        <h3 class="text-xl font-bold text-navy mb-4">김지영 연구원</h3>
+                        <ul class="space-y-2 text-sm text-slate-600 flex-grow">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
+                                <span class="line-clamp-2">연세대학교 심리학 석사</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="briefcase" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
+                                <span class="line-clamp-2">삼성, 현대차 등 기업 출강 500회+</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="award" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
+                                <span class="line-clamp-2">자기이해지도사 양성과정 전담</span>
+                            </li>
                         </ul>
                     </div>
                 </article>
 
-
-                <article
-                    class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[440px] group transition-shadow hover:shadow-md"
-                    vid="166">
-                    <div class="h-[50%] relative overflow-hidden bg-slate-100" vid="167">
-                        <img src="images/menu3/menu_3_3.jpg"
-                            alt="Profile"
-                            class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
-                            vid="168">
-                        <div class="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors" vid="169">
-                        </div>
+                <!-- 카드 3 -->
+                <article class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[440px] group transition-shadow hover:shadow-md">
+                    <div class="h-[50%] relative overflow-hidden bg-slate-100">
+                        <img src="images/menu3/menu_3_3.jpg" alt="Profile" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500">
+                        <div class="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors"></div>
                     </div>
-                    <div class="h-[50%] p-6 flex flex-col" vid="170">
-                        <span class="text-xs font-bold text-teal tracking-wider mb-2" vid="171">데이터 분석 센터장</span>
-                        <h3 class="text-xl font-bold text-navy mb-4" vid="172">이진우 박사</h3>
-                        <ul class="space-y-2 text-sm text-slate-600 flex-grow" vid="173">
-                            <li class="flex items-start gap-2" vid="174"><i data-lucide="graduation-cap"
-                                    class="w-4 h-4 text-slate-400 mt-0.5 shrink-0" vid="175"></i> <span vid="176">KAIST
-                                    산업공학 박사</span></li>
-                            <li class="flex items-start gap-2" vid="177"><i data-lucide="database"
-                                    class="w-4 h-4 text-slate-400 mt-0.5 shrink-0" vid="178"></i> <span
-                                    class="line-clamp-2" vid="179">성향 데이터베이스 아키텍처 설계</span></li>
-                            <li class="flex items-start gap-2" vid="180"><i data-lucide="line-chart"
-                                    class="w-4 h-4 text-slate-400 mt-0.5 shrink-0" vid="181"></i> <span vid="182">AI 기반
-                                    진단 알고리즘 연구</span></li>
+                    <div class="h-[50%] p-6 flex flex-col">
+                        <span class="text-xs font-bold text-teal tracking-wider mb-2">데이터 분석 센터장</span>
+                        <h3 class="text-xl font-bold text-navy mb-4">이진우 박사</h3>
+                        <ul class="space-y-2 text-sm text-slate-600 flex-grow">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
+                                <span class="line-clamp-2">KAIST 산업공학 박사</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="database" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
+                                <span class="line-clamp-2">성향 데이터베이스 아키텍처 설계</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="line-chart" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
+                                <span class="line-clamp-2">AI 기반 진단 알고리즘 연구</span>
+                            </li>
                         </ul>
                     </div>
                 </article>
 
-
-                <!-- 파트너 강사진 카드 끝 -->
-                <article
-                    class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[440px] group transition-shadow hover:shadow-md cursor-pointer"
-                    onclick="location.href='Menu_3.html'" vid="183">
-                    <div class="h-[50%] relative overflow-hidden bg-slate-100 flex items-center justify-center"
-                        vid="184">
-                        <i data-lucide="users" class="w-16 h-16 text-slate-300" vid="185"></i>
+                <!-- 카드 4 -->
+                <article class="min-w-[280px] md:min-w-[320px] snap-center bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[440px] group transition-shadow hover:shadow-md cursor-pointer" onclick="location.href='Menu_3.html'">
+                    <div class="h-[50%] relative overflow-hidden bg-slate-100 flex items-center justify-center">
+                        <i data-lucide="users" class="w-16 h-16 text-slate-300"></i>
                     </div>
-                    <div class="h-[50%] p-6 flex flex-col items-center justify-center text-center" vid="186">
-                        <h3 class="text-lg font-bold text-navy mb-2" vid="187">파트너 강사진</h3>
-                        <p class="text-sm text-slate-500 mb-6" vid="188">전국 50여 명의 정식 인증 강사가<br vid="189">함께하고 있습니다.</p>
-                        <button
-                            class="text-teal font-medium text-sm flex items-center gap-1 hover:text-navy transition-colors"
-                            vid="190">전체 보기 <i data-lucide="arrow-right" class="w-4 h-4" vid="191"></i></button>
+                    <div class="h-[50%] p-6 flex flex-col items-center justify-center text-center">
+                        <h3 class="text-lg font-bold text-navy mb-2">파트너 강사진</h3>
+                        <p class="text-sm text-slate-500 mb-6">전국 50여 명의 정식 인증 강사가<br>함께하고 있습니다.</p>
+                        <button class="text-teal font-medium text-sm flex items-center gap-1 hover:text-navy transition-colors">
+                            전체 보기 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
                     </div>
                 </article>
 
-            </div> <!-- #partner-carousel 끝나는 디브 태그 -->
-        </div> <!-- max-w-7xl 감싸는 디브 태그 -->
+            </div>
+        </div>
 
-        <!-- [신설] 모바일 전용 슬라이드 우측 스크롤 안내 바 (스타일 통일, 오른쪽 화살표만 배치) -->
-        <div
-            class="flex md:hidden items-center justify-center gap-1 mt-2 text-slate-400 opacity-80 animate-[pulse_2s_infinite] text-[11px] font-medium tracking-widest">
+        <div class="flex md:hidden items-center justify-center gap-1 mt-2 text-slate-400 opacity-80 animate-[pulse_2s_infinite] text-[11px] font-medium tracking-widest">
             <span>옆으로 밀어서 더 보기</span>
             <i data-lucide="arrow-right" class="w-3 h-3"></i>
         </div>
+    </section>
 
-    </section> <!-- #partners 섹션 끝나는 태그 -->
-
-
-    <section class="py-24 md:py-32 bg-white" vid="192">
-        <div class="max-w-7xl mx-auto px-6" vid="193">
-            <div class="mb-16 reveal" vid="194">
-                <span class="text-teal font-bold text-sm tracking-widest block mb-3" vid="195">VISION &amp; GOALS</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-navy tracking-tight mb-6" vid="196">기관 핵심 목표</h2>
-                <p class="text-slate-600 text-lg" vid="197">KSUT가 만들어가는 교육의 내일</p>
+    <!-- 기관 핵심 목표 (Vision) -->
+    <section class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-16 reveal">
+                <span class="text-teal font-bold text-sm tracking-widest block mb-3">VISION &amp; GOALS</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy tracking-tight mb-6">기관 핵심 목표</h2>
+                <p class="text-slate-600 text-lg">KSUT가 만들어가는 교육의 내일</p>
             </div>
 
-
-            <div class="grid grid-cols-1 md:grid-cols-6 gap-6" vid="198">
-
-                <div class="md:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-navy hover:shadow-md card-reveal md:delay-100"
-                    vid="199">
+            <!-- 목표 카드 그리드 -->
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
+                
+                <!-- 카드 1 -->
+                <div class="md:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-navy hover:shadow-md card-reveal md:delay-100">
                     <div class="flex justify-between items-start mb-4">
-                        <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter" vid="200">01</div>
-                        <i data-lucide="users" class="text-navy w-6 h-6 opacity-50" vid="217"></i>
+                        <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter">01</div>
+                        <i data-lucide="users" class="text-navy w-6 h-6 opacity-50"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-navy mb-3 break-keep" vid="201">공공성 중심의<br vid="202">청년 정체성 확립 지원
-                    </h3>
-                    <p class="text-slate-600 text-sm leading-relaxed" vid="203">지자체 및 대학 연계를 통해 청년들이 자신의 본질을 이해하고 사회적
-                        가치를 창출할 수 있도록 돕습니다.</p>
+                    <h3 class="text-xl font-bold text-navy mb-3 break-keep">공공성 중심의<br>청년 정체성 확립 지원</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">지자체 및 대학 연계를 통해 청년들이 자신의 본질을 이해하고 사회적 가치를 창출할 수 있도록 돕습니다.</p>
                 </div>
 
-                <div class="md:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-teal hover:shadow-md card-reveal md:delay-200"
-                    vid="204">
+                <!-- 카드 2 -->
+                <div class="md:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-teal hover:shadow-md card-reveal md:delay-200">
                     <div class="flex justify-between items-start mb-4">
-                        <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter" vid="205">02</div>
-                        <i data-lucide="book-open" class="text-teal w-6 h-6 opacity-50" vid="217"></i>
+                        <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter">02</div>
+                        <i data-lucide="book-open" class="text-teal w-6 h-6 opacity-50"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-navy mb-3 break-keep" vid="206">신뢰도 높은 민간 자격<br vid="207">전문가
-                        10,000명 양성</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed" vid="208">엄격한 검증을 통과한 지도사를 양성하여 전국구 교육 인프라의 질적 수준을
-                        상향 표준화합니다.</p>
+                    <h3 class="text-xl font-bold text-navy mb-3 break-keep">신뢰도 높은 민간 자격<br>전문가 10,000명 양성</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">엄격한 검증을 통과한 지도사를 양성하여 전국구 교육 인프라의 질적 수준을 상향 표준화합니다.</p>
                 </div>
 
-                <div class="md:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-navy hover:shadow-md card-reveal md:delay-300"
-                    vid="209">
+                <!-- 카드 3 -->
+                <div class="md:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-navy hover:shadow-md card-reveal md:delay-300">
                     <div class="flex justify-between items-start mb-4">
-                        <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter" vid="210">03</div>
-                        <i data-lucide="package" class="text-navy w-6 h-6 opacity-50" vid="217"></i>
+                        <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter">03</div>
+                        <i data-lucide="package" class="text-navy w-6 h-6 opacity-50"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-navy mb-3 break-keep" vid="211">자체 빅데이터 기반<br vid="212">성향 분석 솔루션
-                        고도화</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed" vid="213">수만 건의 임상 데이터를 바탕으로 진단 도구의 타당도를 높이고 디지털
-                        솔루션으로 확장합니다.</p>
+                    <h3 class="text-xl font-bold text-navy mb-3 break-keep">자체 빅데이터 기반<br>성향 분석 솔루션 고도화</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">수만 건의 임상 데이터를 바탕으로 진단 도구의 타당도를 높이고 디지털 솔루션으로 확장합니다.</p>
                 </div>
 
-                <div class="md:col-span-3 md:col-start-1 lg:col-span-2 lg:col-start-2 bg-slatebg p-8 rounded-lg border-t-4 border-teal hover:shadow-md card-reveal md:delay-100"
-                    vid="214">
-                    <div class="flex justify-between items-start mb-4" vid="215">
-                        <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter" vid="216">04</div>
-                        <i data-lucide="map-pin" class="text-teal w-6 h-6 opacity-50" vid="217"></i>
+                <!-- 카드 4 -->
+                <div class="md:col-span-3 md:col-start-1 lg:col-span-2 lg:col-start-2 bg-slatebg p-8 rounded-lg border-t-4 border-teal hover:shadow-md card-reveal md:delay-100">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter">04</div>
+                        <i data-lucide="map-pin" class="text-teal w-6 h-6 opacity-50"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-navy mb-3 break-keep" vid="218">전국 대학교 및 지자체<br vid="219">협약 교육 거점
-                        확대</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed" vid="220">수도권을 넘어 전국 단위의 지역 거점 파트너십을 체결하여 교육의 지역
-                        격차를 해소합니다.</p>
+                    <h3 class="text-xl font-bold text-navy mb-3 break-keep">전국 대학교 및 지자체<br>협약 교육 거점 확대</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">수도권을 넘어 전국 단위의 지역 거점 파트너십을 체결하여 교육의 지역 격차를 해소합니다.</p>
                 </div>
 
-                <div class="md:col-span-3 lg:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-navy hover:shadow-md card-reveal md:delay-200"
-                    vid="221">
-                    <div class="flex justify-between items-start mb-4" vid="222">
-                        <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter" vid="223">05</div>
-                        <i data-lucide="layers" class="text-navy w-6 h-6 opacity-50" vid="224"></i>
+                <!-- 카드 5 -->
+                <div class="md:col-span-3 lg:col-span-2 bg-slatebg p-8 rounded-lg border-t-4 border-navy hover:shadow-md card-reveal md:delay-200">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="text-3xl font-bold text-slate-200 font-mono tracking-tighter">05</div>
+                        <i data-lucide="layers" class="text-navy w-6 h-6 opacity-50"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-navy mb-3 break-keep" vid="225">지속 가능한 교육 교구재<br vid="226">인프라 자동화
-                        및 상생</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed" vid="227">강사들이 강의에만 집중할 수 있도록 교구재 유통 및 행정 시스템을
-                        디지털로 자동화합니다.</p>
+                    <h3 class="text-xl font-bold text-navy mb-3 break-keep">지속 가능한 교육 교구재<br>인프라 자동화 및 상생</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">강사들이 강의에만 집중할 수 있도록 교구재 유통 및 행정 시스템을 디지털로 자동화합니다.</p>
                 </div>
+
             </div>
         </div>
     </section>
 
-
-    <footer class="bg-[#0F172A] pt-16 pb-8 border-t-4 border-teal relative overflow-hidden" vid="228">
-
+    <!-- 푸터 영역 -->
+    <footer class="bg-[#0F172A] pt-16 pb-8 border-t-4 border-teal relative overflow-hidden">
         <i data-lucide="book-open-check"
-            class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none"
-            vid="229"></i>
+            class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none"></i>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-10" vid="230">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12" vid="231">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
 
-
-                <div class="lg:col-span-2" vid="232">
-                    <div class="flex items-center gap-2 mb-6" vid="233">
-                        <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" vid="footer-logo-img">
-                        <span class="text-white font-bold text-xl tracking-tight" vid="236">한국자기이해교육원</span>
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain">
+                        <span class="text-white font-bold text-xl tracking-tight">한국자기이해교육원</span>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm" vid="237">
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">
                         과학적 성향 검사를 통한 자기 정체성 확립, 전문가 양성 및 공공 교육의 표준을 제시합니다.
                     </p>
                 </div>
 
-
-                <div class="col-span-1 lg:col-span-2 text-sm text-slate-400" vid="238">
-                    <h4 class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block"
-                        vid="239">INSTITUTE INFO</h4>
-                    <ul class="space-y-3 font-light" vid="240">
-                        <li class="flex gap-4" vid="241"><span class="w-24 text-slate-500 font-medium shrink-0"
-                                vid="242">대표자</span> <span vid="243">김대표</span></li>
-                        <li class="flex gap-4" vid="244"><span class="w-24 text-slate-500 font-medium shrink-0"
-                                vid="245">사업자등록번호</span> <span class="font-mono" vid="246">123-45-67890</span></li>
-                        <li class="flex gap-4" vid="247"><span class="w-24 text-slate-500 font-medium shrink-0"
-                                vid="248">민간자격등록</span> <span class="font-mono" vid="249">제2026-001234호</span></li>
-                        <li class="flex gap-4" vid="250"><span class="w-24 text-slate-500 font-medium shrink-0"
-                                vid="251">소재지</span> <span class="break-keep" vid="252">서울특별시 강남구 테헤란로 KSUT 빌딩 7층</span>
-                        </li>
-                        <li class="flex gap-4" vid="253"><span class="w-24 text-slate-500 font-medium shrink-0"
-                                vid="254">고객센터</span> <span class="text-white font-medium" vid="255">02-1234-5678</span>
-                            <span class="text-xs" vid="256">(평일 10:00 - 17:00)</span>
-                        </li>
+                <div class="col-span-1 lg:col-span-2 text-sm text-slate-400">
+                    <h4 class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block">INSTITUTE INFO</h4>
+                    <ul class="space-y-3 font-light">
+                        <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">대표자</span> <span>김대표</span></li>
+                        <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">사업자등록번호</span> <span class="font-mono">123-45-67890</span></li>
+                        <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">민간자격등록</span> <span class="font-mono">제2026-001234호</span></li>
+                        <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">소재지</span> <span class="break-keep">서울특별시 강남구 테헤란로 KSUT 빌딩 7층</span></li>
+                        <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">고객센터</span> <span class="text-white font-medium">02-1234-5678</span> <span class="text-xs">(평일 10:00 - 17:00)</span></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500"
-                vid="257">
-                <p vid="258">© 2026 한국자기이해교육원 KSUT. All rights reserved.</p>
-                <div class="flex gap-6" vid="259">
-                    <a href="#" class="hover:text-white transition-colors" vid="260">이용약관</a>
-                    <a href="#" class="hover:text-white transition-colors font-semibold" vid="261">개인정보처리방침</a>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                <p>© 2026 한국자기이해교육원 KSUT. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">이용약관</a>
+                    <a href="#" class="hover:text-white transition-colors font-semibold">개인정보처리방침</a>
                 </div>
             </div>
         </div>
     </footer>
 
-
-    <script vid="262">
-
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-
-
-        // 자바스크립트 인트로 3단 인터랙션 타이밍 엔진
-        document.addEventListener('DOMContentLoaded', () => {
-            const curtain = document.getElementById('intro-curtain');
-            const logo = document.getElementById('intro-logo');
-            const line = document.getElementById('intro-line');
-            const text = document.getElementById('intro-text');
-            const sub = document.getElementById('intro-sub');
-
-            if (curtain && logo && line && text && sub) {
-                // 1단계: 로고 선명하게 등장 (100ms 지점)
-                setTimeout(() => {
-                    logo.classList.remove('opacity-0');
-                }, 100);
-
-                // 2단계: 누락되었던 가로줄 트랙 확장 이펙트 강제 주입 (600ms 지점)
-                setTimeout(() => {
-                    line.style.transition = 'width 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-                    line.style.width = '80px';
-                }, 600);
-
-                // 3단계: 타이틀 및 영문 카피 순차 팝업 (900ms ~ 1200ms 지점)
-                setTimeout(() => { text.classList.remove('opacity-0'); }, 900);
-                setTimeout(() => { sub.classList.remove('opacity-0'); }, 1200);
-
-                // 4단계: 버티컬 커튼 밀어 올리기 및 화면 잠금 해제 (2500ms 지점)
-                setTimeout(() => {
-                    curtain.classList.add('slide-up');
-
-                    // 뒤에 가만히 숨어있던 메인 히어로 섹션 요소들을 부드럽게 팝업
-                    setTimeout(() => {
-                        document.querySelectorAll('.hero-item').forEach(el => {
-                            el.classList.remove('opacity-0', 'translate-y-8');
-                        });
-                    }, 500);
-                }, 2500);
-
-                // 5단계: 애니메이션 완료 후 리소스 최적화를 위해 display 제거
-                setTimeout(() => {
-                    curtain.style.display = 'none';
-                }, 3700);
-            }
-        });
-
-
-        // [완벽 통합본] 스크롤 위치 및 모바일 메뉴 오픈 상태 실시간 스킨 동기화 엔진
-        const navbar = document.getElementById('navbar');
-        const navBrand = document.getElementById('nav-brand');
-        const navLogoBox = document.getElementById('nav-logo-box');
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const drawer = document.getElementById('mobile-drawer');
-        const drawerContent = document.getElementById('mobile-drawer-content');
-        const links = document.querySelectorAll('.mobile-link');
-
-        // 헬퍼 함수: 스크롤 위치 및 메뉴 열림 여부에 따라 상단바와 드롭다운의 UI 디자인을 강제로 판정/새로고침
-        function refreshNavSkin() {
-            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
-
-            if (window.scrollY > 50) {
-                // ==========================================
-                // [CASE A] 스크롤이 50px 이상 내려간 상태 (불투명 흰색 테마)
-                // ==========================================
-                if (isMenuOpen) {
-                    // 메뉴가 열려있다면: 상단바 흰색 + 드롭다운 메뉴도 정갈한 흰색 배경 연동
-                    navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-white shadow-sm";
-                    drawer.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-                    drawerContent.style.borderColor = '#f1f5f9';
-
-                    links.forEach(link => {
-                        link.className = "mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1";
-                    });
-                    mobileBtn.style.color = '#0f172a';
-                } else {
-                    // 메뉴가 닫혀있다면: 일반적인 흰색 상단바 규칙 복구
-                    navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-white shadow-sm";
-                    mobileBtn.style.color = '#475569';
-                }
-
-                // 타이틀 로고 명칭 및 PC 링크 색상 (어두운 네이비 및 슬레이트 색상 고정)
-                navBrand.className = "text-navy font-semibold tracking-tight text-lg transition-colors";
-                document.querySelectorAll('nav a:not(.bg-teal)').forEach(el => {
-                    el.className = "text-slate-600 hover:text-navy text-sm font-medium transition-colors";
-                });
-                if (navLogoBox) navLogoBox.src = 'images/logo.png';
-
-            } else {
-                // ==========================================
-                // [CASE B] 최상단 영역 (배경 이미지가 비치는 투명 테마 구간)
-                // ==========================================
-                if (isMenuOpen) {
-                    // 메뉴가 열려있다면: 상단바 + 메뉴창이 완벽히 일체화된 반투명 네이비 유리 무드로 일제 전환
-                    navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-navy/80 backdrop-blur-md shadow-xl";
-                    drawer.style.backgroundColor = 'transparent'; // 메뉴 자체는 투명하게 하여 상단바와 이어지게 처리
-                    drawerContent.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-
-                    links.forEach(link => {
-                        link.className = "mobile-link text-white/80 hover:text-white text-base font-medium transition-colors py-1";
-                    });
-                    mobileBtn.style.color = '#ffffff';
-
-                    // ★ 버그 해결: 투명 영역에서 메뉴가 열려있을 때 타이틀 텍스트 흰색 강제 사수!
-                    navBrand.className = "text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors";
-                    if (navLogoBox) navLogoBox.src = 'images/logo_w.png';
-                } else {
-                    // 메뉴가 닫혀있다면: 원래의 완전 투명 깨끗한 오리지널 스킨으로 초기화
-                    navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-transparent";
-                    mobileBtn.style.color = '#ffffff';
-
-                    // 타이틀 원본 화이트 복구
-                    navBrand.className = "text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors";
-                    if (navLogoBox) navLogoBox.src = 'images/logo_w.png';
-                }
-
-                // PC용 상단 링크 원본 화이트 복구
-                document.querySelectorAll('nav a:not(.bg-teal)').forEach(el => {
-                    el.className = "text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm";
-                });
-            }
-        }
-
-        // 초기 실행을 통해 현재 스크롤 상태에 맞는 디자인 반영
-        refreshNavSkin();
-
-        // 1. 실시간 스크롤 감지 인터랙션 무한 루프 엔진 (메뉴가 오픈된 상태에서도 상시 연동 스위칭)
-        window.addEventListener('scroll', refreshNavSkin);
-
-        // 2. 모바일 메뉴 수직 드롭다운 트리거 엔진
-        // 버튼에 직접 addEventListener를 붙여 stopPropagation 처리 (personal.html 방식)
-        if (mobileBtn) {
-            mobileBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleMobileMenu();
-            });
-        }
-
-        function toggleMobileMenu() {
-            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
-
-            if (isMenuOpen) {
-                // [닫기 모션] 
-                drawer.style.height = '0px';
-                drawer.style.opacity = '0';
-                mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-
-                // 애니메이션 렌더링 스케일 타이밍 꼬임 방지를 위해 즉시 스킨 리프레시 호출
-                setTimeout(() => {
-                    refreshNavSkin();
-                }, 10);
-            } else {
-                // [열기 모션] 자바스크립트 정밀 오토 하이트 모션 가동
-                drawer.style.height = 'auto';
-                const autoHeight = drawer.scrollHeight + 'px';
-                drawer.style.height = '0px';
-
-                drawer.style.height = autoHeight;
-                drawer.style.opacity = '1';
-                mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
-
-                // 열리는 순간 즉시 현재 스크롤 위치를 계산해서 디자인 실시간 매칭
-                refreshNavSkin();
-            }
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        }
-
-
-
-        // 3. 인터랙션 무옵션 IntersectionObserver 애니메이션 (기존 로직 유지)
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.reveal, .card-reveal').forEach(el => { observer.observe(el); });
-
-        // 4. 비즈니스 탭 메뉴 스위칭 (기존 로직 유지)
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabBtns.forEach(b => {
-                    b.classList.remove('border-navy', 'text-navy', 'active');
-                    b.classList.add('border-transparent', 'text-slate-500');
-                });
-                tabContents.forEach(c => {
-                    c.classList.add('hidden');
-                    c.classList.remove('animate-slide-up');
-                });
-                btn.classList.add('border-navy', 'text-navy', 'active');
-                btn.classList.remove('border-transparent', 'text-slate-500');
-                const targetId = btn.getAttribute('data-target');
-                const targetContent = document.getElementById(targetId);
-                targetContent.classList.remove('hidden');
-                void targetContent.offsetWidth;
-                targetContent.classList.add('animate-slide-up');
-            });
-        });
-
-        // 5. 연구진 캐러셀 제어 (기존 로직 유지)
-        function scrollCarousel(direction) {
-            const carousel = document.getElementById('partner-carousel');
-            const scrollAmount = carousel.offsetWidth * 0.8;
-            carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-        }
-
-        // 🎯 [신설] 자랑스러운 세종대 이야기 Swiper & GSAP 초기화 코드
-        document.addEventListener('DOMContentLoaded', () => {
-            const swiperContainer = document.querySelector('.main-proud-swiper');
-            if (swiperContainer && typeof Swiper !== 'undefined') {
-                // Swiper 초기화
-                const proudSwiper = new Swiper('.main-proud-swiper', {
-                    loop: true, // 🎯 슬라이드가 10개로 2배 확장되어 표준 루프 설정으로도 완벽하게 작용함
-                    autoplay: {
-                        delay: 4000,
-                        disableOnInteraction: false,
-                    },
-                    slidesPerView: 'auto', // 🎯 화면 비율 분할 대신 CSS의 고정 가로폭 적용
-                    spaceBetween: 0, // 🎯 CSS 대칭 마진을 사용하여 쏠림 현상을 차단하므로 JS 마진은 0으로 세팅
-                    centeredSlides: true,
-                    navigation: {
-                        nextEl: '.main-proud-next',
-                        prevEl: '.main-proud-prev',
-                    },
-                    pagination: {
-                        el: '.proud-pagination.bar',
-                        type: 'progressbar',
-                    },
-                    breakpoints: {
-                        768: {
-                            spaceBetween: 0,
-                            centeredSlides: true,
-                        },
-                        1024: {
-                            spaceBetween: 0,
-                            centeredSlides: true,
-                        }
-                    }
-                });
-
-                // 자동재생 토글 컨트롤
-                const playBtn = document.querySelector('.proud-autoplay .start');
-                const pauseBtn = document.querySelector('.proud-autoplay .pause');
-
-                if (playBtn && pauseBtn) {
-                    // 초기 상태 세팅 (자동재생 실행 중이므로 재생 버튼 숨김, 정지 버튼 활성화)
-                    playBtn.style.display = 'none';
-                    pauseBtn.style.display = 'flex';
-
-                    playBtn.addEventListener('click', () => {
-                        proudSwiper.autoplay.start();
-                        playBtn.style.display = 'none';
-                        pauseBtn.style.display = 'flex';
-                    });
-
-                    pauseBtn.addEventListener('click', () => {
-                        proudSwiper.autoplay.stop();
-                        pauseBtn.style.display = 'none';
-                        playBtn.style.display = 'flex';
-                    });
-                }
-            }
-
-            // GSAP ScrollTrigger를 활용하여 스크롤 시 페이드인 애니메이션 (스크립트 연결 효과 재현)
-            const proudSection = document.getElementById('proud-section');
-            if (proudSection && window.gsap && window.ScrollTrigger) {
-                gsap.registerPlugin(ScrollTrigger);
-                ScrollTrigger.config({ ignoreMobileResize: true });
-
-                gsap.fromTo('#proud-section',
-                    {
-                        opacity: 0,
-                        y: 60
-                    },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 1.2,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: '#proud-section',
-                            start: 'top 82%', // 뷰포트 하단 82% 지점에 오면 실행
-                            toggleActions: 'play none none none'
-                        }
-                    }
-                );
-            } else {
-                // GSAP이 제대로 동작하지 않을 경우 대비해 Fallback 처리 (스크롤 감지 reveal 로직 활용)
-                const fallbackSection = document.getElementById('proud-section');
-                if (fallbackSection) {
-                    fallbackSection.style.opacity = '1';
-                    fallbackSection.style.transform = 'none';
-                    fallbackSection.classList.add('reveal');
-                    observer.observe(fallbackSection);
-                }
-            }
-        });
-
-        // [통합] 모바일 드로어 바깥 클릭 시 닫기 & 모달 제어
-        document.addEventListener('click', (e) => {
-            // 1. 모바일 드로어 닫기 (nav 바깥 클릭 시)
-            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
-            if (isMenuOpen && !e.target.closest('nav')) {
-                toggleMobileMenu();
-            }
-
-            // 2. 모달 열기 (modal-trigger 클릭 시)
-            const trigger = e.target.closest('.modal-trigger');
-            if (trigger) {
-                e.preventDefault();
-                const targetId = trigger.getAttribute('data-target');
-                const modal = document.getElementById(targetId);
-                if (modal) {
-                    modal.classList.add('show');
-                    modal.style.opacity = '1';
-                    modal.style.visibility = 'visible';
-                    document.body.style.overflow = 'hidden';
-                }
-                return;
-            }
-
-            // 3. 모달 닫기 (X 버튼 클릭 시)
-            const closeBtn = e.target.closest('.modal-close, .modal-close-action');
-            if (closeBtn) {
-                e.preventDefault();
-                const modal = closeBtn.closest('.modal-overlay');
-                if (modal) {
-                    modal.classList.remove('show');
-                    modal.style.opacity = '0';
-                    modal.style.visibility = 'hidden';
-                    document.body.style.overflow = '';
-                }
-                return;
-            }
-
-            // 4. 모달 닫기 (바깥 배경 overlay 클릭 시)
-            const overlay = e.target;
-            if (overlay && overlay.classList.contains('modal-overlay')) {
-                overlay.classList.remove('show');
-                overlay.style.opacity = '0';
-                overlay.style.visibility = 'hidden';
-                document.body.style.overflow = '';
-            }
-        });
-    </script>
-
-    <!-- 🎯 [신설] 문의하기 팝업 모달 (Menu_3.html 연동) -->
+    <!-- 문의하기 팝업 모달 -->
     <div id="modal-contact"
         class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
         style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;">

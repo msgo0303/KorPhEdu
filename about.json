@@ -1,0 +1,140 @@
+{
+  "nav": {
+    "logoSrc": "images/logo_w.png",
+    "logoAlt": "한국자기이해교육원 로고",
+    "brand": "한국자기이해교육원",
+    "menu": [
+      { "text": "기관소개", "href": "Menu_1.html" },
+      { "text": "비즈니스", "href": "Menu_2.html" },
+      { "text": "연구진", "href": "Menu_3.html" }
+    ],
+    "contactBtn": "문의하기"
+  },
+  "hero": {
+    "bgImg": "images/menu1/menu_1_0.jpg",
+    "bgAlt": "Academic Background",
+    "title": "한국자기이해교육원",
+    "subtitle": "기관소개"
+  },
+  "brandSection": {
+    "logoSrc": "images/logo_w.png",
+    "logoAlt": "한국자기이해교육원 로고",
+    "title": "한국자기이해교육원",
+    "sub": "KSUI",
+    "desc": "과학적 분석과 체계적인 교육 인프라로 <br> 개인의 고유한 가치를 발견하고 증명합니다."
+  },
+  "introSection": {
+    "title": "\"객관적 지표로 고유함을 증명하고,<br class=\"hidden md:block\"> 체계적 시스템으로 성장을 디자인합니다.\"",
+    "desc": "한국자기이해교육원은 공공성과 공익적 가치를 최우선으로 두며, 단순한 이론에 그치지 않고 시장에서 자립할 수 있는 강력한 비즈니스 툴킷과 자격 과정 인프라를 증명해 나갑니다.",
+    "metrics": [
+      {
+        "icon": "building-2",
+        "label": "협업한 기관",
+        "target": 150,
+        "suffix": "+",
+        "desc": "대학교, 대기업, 공공기관 산학협력 누적"
+      },
+      {
+        "icon": "users",
+        "label": "민간 자격증 합격",
+        "target": 10250,
+        "suffix": "+",
+        "desc": "정식 등록 지도사 배출 규모"
+      },
+      {
+        "icon": "package",
+        "label": "개발한 교구재",
+        "target": 45,
+        "suffix": "+",
+        "desc": "자체 특허 평가 진단지 및 감정 툴킷 카드 세트"
+      }
+    ]
+  },
+  "strengthsSection": {
+    "badge": "Structural Strengths",
+    "title": "KSUI 경쟁력",
+    "items": [
+      {
+        "img": "images/menu1/menu_1_1.jpg",
+        "imgAlt": "Academic Research",
+        "num": "01.",
+        "title": "공인된 학술적 신뢰도",
+        "desc": "특허청 기질 분석 특허 및 직능원 정식 등록 자격증 보유로 검증된 공공 교육을 제공합니다.",
+        "align": "left"
+      },
+      {
+        "img": "images/menu1/menu_1_2.jpg",
+        "imgAlt": "Corporate Workshop",
+        "num": "02.",
+        "title": "확실한 비즈니스 유틸리티",
+        "desc": "교육 수료 후 파트너 출강 연계 및 교구재 다량 위탁 공급망 구축으로 확실한 ROI를 보장합니다.",
+        "align": "right"
+      },
+      {
+        "img": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+        "imgAlt": "Data Analytics",
+        "num": "03.",
+        "title": "자체 빅데이터 분석 솔루션",
+        "desc": "수만 명의 누적 임상 데이터 알고리즘을 기반으로 한 오차 없는 다면적 기질 검사 시스템을 운영합니다.",
+        "align": "left"
+      },
+      {
+        "img": "images/menu1/menu_1_4.jpg",
+        "imgAlt": "Partnership Ecosystem",
+        "num": "04.",
+        "title": "강력한 파트너 상생 생태계",
+        "desc": "전국 대학교 거점 확보 및 자격 소지 강사 전용 스마트 몰 인프라를 통한 동반 성장을 도모합니다.",
+        "align": "right"
+      }
+    ]
+  },
+  "wayToComeSection": {
+    "badge": "Contact & Access",
+    "title": "오시는 길",
+    "iframeSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.631433890137!2d127.0253457!3d37.4983422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca14ad3ef5b9d%3A0x6b80307963d76295!2z7ISc7Jq47m56rec6rWsIO2Gte2VqOuhnCAxMjM!5e0!3m2!1sko!2skr!4v1680000000000",
+    "info": {
+      "address": {
+        "title": "주소",
+        "icon": "map-pin",
+        "text": "서울특별시 강남구 테헤란로 123,<br>지식산업센터 15층 (KSU빌딩)"
+      },
+      "hours": {
+        "title": "운영 시간",
+        "icon": "clock",
+        "items": [
+          "평일 09:00 - 18:00",
+          "(점심시간 12:00 - 13:00)",
+          "주말 및 공휴일 휴무"
+        ]
+      },
+      "contact": {
+        "title": "연락처",
+        "icon": "phone",
+        "tel": "02-1234-5678",
+        "email": "contact@ksui.ac.kr"
+      }
+    }
+  },
+  "footer": {
+    "logoSrc": "images/logo_w.png",
+    "logoAlt": "한국자기이해교육원 로고",
+    "brandName": "한국자기이해교육원",
+    "desc": "과학적 성향 검사를 통한 자기 정체성 확립, 전문가 양성 및 공공 교육의 표준을 제시합니다.",
+    "info": {
+      "name": "한국자기이해교육원 (Korea Self-Understanding Education Institute)",
+      "representative": "김대표",
+      "businessNum": "123-45-67890",
+      "licenseNum": "제 2026-001234 호",
+      "address": "서울특별시 강남구 테헤란로 123, 지식산업센터 15층",
+      "phone": "02-1234-5678",
+      "workHours": "평일 09:00 - 18:00"
+    },
+    "copyright": "© 2026 KSUI. All rights reserved.",
+    "termsLink": "#",
+    "privacyLink": "#"
+  },
+  "contactModal": {
+    "title": "문의 접수",
+    "desc": "기관명, 이름, 이메일, 상담 의뢰 내용을 작성해 주세요."
+  }
+}
