@@ -408,3 +408,177 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ==========================================================================
+   Menu_2.html (비즈니스) 특화 스타일
+   ========================================================================== */
+.perspective-runway {
+    perspective: 80vh;
+    perspective-origin: 50% 15%;
+}
+
+@keyframes slideDown {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(200%); }
+}
+
+/* ==========================================================================
+   Menu_2_1, 2_2, 2_3.html (비즈니스 서브페이지) 특화 스타일
+   ========================================================================== */
+
+/* 텍스트 채우기 애니메이션 */
+.text-fill-anim {
+    background-image: linear-gradient(to right, #0F172A 50%, #94A3B8 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-position 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.text-fill-anim.filled {
+    background-position: 0 0;
+}
+
+/* 좌우 슬라이딩 애니메이션 */
+.tw-slide-left {
+    transform: translateX(-60px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tw-slide-right {
+    transform: translateX(60px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tw-row.tw-active .tw-slide-left,
+.tw-row.tw-active .tw-slide-right {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* 워크플로우 카드 애니메이션 */
+.wf-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.6s ease;
+    background-color: #F8FAFC; 
+}
+.wf-card.wf-enter {
+    opacity: 1;
+    transform: translateY(0);
+}
+.wf-card.painted {
+    background-color: #E0F2FE !important; 
+    border-color: #BAE6FD !important;
+}
+
+/* FAQ 아코디언 라인 아이콘 */
+.acc-icon-wrap { 
+    position: relative; 
+    width: 20px; 
+    height: 20px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+.acc-line-h, .acc-line-v {
+    position: absolute;
+    background-color: #94A3B8; 
+    transition: all 0.4s ease;
+}
+.acc-line-h { width: 16px; height: 2px; }
+.acc-line-v { width: 2px; height: 16px; }
+
+.faq-item.active .acc-line-v { transform: rotate(90deg); background-color: #0F766E; }
+.faq-item.active .acc-line-h { background-color: #0F766E; }
+
+/* 강사 양성 과정 카드 펼침 효과 */
+.unroll-card {
+    transform-origin: top center;
+    transform: scaleY(0);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+.unroll-card.active {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+/* 드롭다운 메뉴 */
+.dropdown-menu {
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+.dropdown-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 블러 해제 효과 */
+.clear-blur {
+    opacity: 1 !important;
+    filter: blur(0px) !important;
+}
+
+/* 단계별 활성화 효과 */
+.row-phase {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.row-phase.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 팝업 모달 트랜지션 */
+#success-modal, #privacy-modal, #card-detail-modal {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+#success-modal.show, #privacy-modal.show, #card-detail-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+#modal-card, #privacy-modal-card, #card-detail-card {
+    transform: scale(0.95) translateY(10px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#success-modal.show #modal-card, 
+#privacy-modal.show #privacy-modal-card, 
+#card-detail-modal.show #card-detail-card {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* 연구진 페이지 히어로 텍스트 모션 */
+.hero-text {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 공통 모달 오버레이 및 카드 모션 제어 */
+.modal-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-card {
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+.modal-overlay.show .modal-card {
+    transform: scale(1);
+    opacity: 1;
+}

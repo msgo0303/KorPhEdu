@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "logoSrc": "images/logo_w.png",
+    "logoAlt": "한국자기이해교육원 로고",
+    "brand": "한국자기이해교육원",
+    "menu": [
+      { "text": "기관소개", "href": "Menu_1.html" },
+      { "text": "비즈니스", "href": "Menu_2.html" },
+      { "text": "연구진", "href": "Menu_3.html" }
+    ],
+    "contactBtn": "문의하기"
+  },
+  "hero": {
+    "bgImg": "images/menu2/menu_2_0.jpg",
+    "bgAlt": "Business Analytics Networking",
+    "title": "한국자기이해교육원",
+    "subtitle": "비즈니스"
+  },
+  "runwaySection": {
+    "badge": "Our Core Engine",
+    "slogan": "성장하는 <br class=\"inline md:hidden\"> 비즈니스 <br class=\"inline md:hidden\"> 모델"
+  },
+  "portfolioSection": {
+    "badge": "Strategic Ecosystem",
+    "title": "핵심 비즈니스 포트폴리오",
+    "cards": [
+      {
+        "id": "01",
+        "title": "01. 기관 맞춤형 단체 교육",
+        "desc": "대학교 취업지원센터 및 대기업·공공기관 임직원 역량 강화 솔루션 (자체 성향검사 라이선스 패키지 대량 공급)",
+        "img": "images/menu2/menu_2_1.jpg",
+        "imgAlt": "기관 맞춤형 단체 교육",
+        "link": "Menu_2_1.html",
+        "delay": "delay-100"
+      },
+      {
+        "id": "02",
+        "title": "02. 민간 자격증 및 강사 과정",
+        "desc": "한국직업능력연구원 정식 등록 '자기이해지도사' 자격 과정 운영 (파트너 강사 양성 및 전국 출강 권한 인프라 연계)",
+        "img": "images/menu2/menu_2_2.jpg",
+        "imgAlt": "민간 자격증 및 강사 과정",
+        "link": "Menu_2_2.html",
+        "delay": "delay-200"
+      },
+      {
+        "id": "03",
+        "title": "03. 검사지 및 교구재 비즈니스",
+        "desc": "자체 특허 진단 검사지 및 정서 힐링 카드 툴킷 패키지 유통 (소속 강사 대량 위탁 공급 및 자동화 시스템 수익 구축)",
+        "img": "images/menu2/menu_2_3.jpg",
+        "imgAlt": "검사지 및 교구재 비즈니스",
+        "link": "Menu_2_3.html",
+        "delay": "delay-300"
+      }
+    ]
+  },
+  "footer": {
+    "logoSrc": "images/logo_w.png",
+    "logoAlt": "한국자기이해교육원 로고",
+    "brandName": "한국자기이해교육원",
+    "desc": "Korea Self-Understanding Education Institute",
+    "info": {
+      "name": "한국자기이해교육원",
+      "representative": "김대표",
+      "businessNum": "123-45-67890",
+      "licenseNum": "제 2026-001234 호",
+      "address": "서울특별시 강남구 테헤란로 123, 지식산업센터 15층"
+    },
+    "copyright": "© 2026 KSUI. All rights reserved.",
+    "termsLink": "#",
+    "privacyLink": "#"
+  },
+  "contactModal": {
+    "title": "문의 접수",
+    "desc": "기관명, 이름, 이메일, 상담 의뢰 내용을 작성해 주세요."
+  }
+}

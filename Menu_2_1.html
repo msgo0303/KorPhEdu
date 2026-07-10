@@ -1,19 +1,23 @@
-<html lang="ko" class="scroll-smooth" vid="0"><head vid="1">
-    <meta charset="UTF-8" vid="2">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
-    <title vid="4">단체 교육 상세 | 한국자기이해교육원</title>
-    
-    
-    <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" vid="5">
-    
-    
-    <script src="https://cdn.tailwindcss.com/3.4.17" vid="6"></script>
-    
-    
-    <script src="https://unpkg.com/lucide@latest" vid="7"></script>
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
 
-    
-    <script vid="8">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단체 교육 상세 | 한국자기이해교육원</title>
+
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin=""
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config -->
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -35,158 +39,42 @@
         }
     </script>
 
-    <style vid="9">
-        body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
-        
-        .keep-all { word-break: keep-all; }
-        
-        
-        .text-fill-anim {
-            background-image: linear-gradient(to right, #0F172A 50%, #94A3B8 50%);
-            background-size: 200% 100%;
-            background-position: 100% 0;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transition: background-position 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .text-fill-anim.filled {
-            background-position: 0 0;
-        }
-
-        
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-up.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        
-        .tw-slide-left {
-            transform: translateX(-60px);
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .tw-slide-right {
-            transform: translateX(60px);
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .tw-row.tw-active .tw-slide-left,
-        .tw-row.tw-active .tw-slide-right {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        
-        .wf-card {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.6s ease;
-            background-color: #F8FAFC; 
-        }
-        .wf-card.wf-enter {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .wf-card.painted {
-            background-color: #E0F2FE !important; 
-            border-color: #BAE6FD !important;
-        }
-
-        
-        .acc-icon-wrap { position: relative; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; }
-        .acc-line-h, .acc-line-v {
-            position: absolute;
-            background-color: #94A3B8; 
-            transition: all 0.4s ease;
-        }
-        .acc-line-h { width: 16px; height: 2px; }
-        .acc-line-v { width: 2px; height: 16px; }
-        
-        .faq-item.active .acc-line-v { transform: rotate(90deg); background-color: #0F766E; }
-        .faq-item.active .acc-line-h { background-color: #0F766E; }
-
-        
-        .dropdown-menu {
-            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-        }
-        .dropdown-menu.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        .clear-blur {
-            opacity: 1 !important;
-            filter: blur(0px) !important;
-        }
-        
-        #success-modal {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        #success-modal.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        #modal-card {
-            transform: scale(0.95) translateY(10px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        #success-modal.show #modal-card {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-        }
-        
-        #privacy-modal {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        #privacy-modal.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        #privacy-modal-card {
-            transform: scale(0.95) translateY(10px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        #privacy-modal.show #privacy-modal-card {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-        }
-    </style>
-</head>
-<body class="bg-white text-slate-900 font-sans overflow-x-hidden selection:bg-teal selection:text-white" vid="10">
-
+    <!-- 외부 분리 CSS 파일 연결 -->
+    <link rel="stylesheet" href="style.css">
     
-    <nav class="fixed w-full z-50 top-0 bg-white shadow-sm py-4 transition-all duration-300" vid="11">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center relative z-50" id="nav-container" vid="12">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'" vid="13">
-                <img src="images/logo.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" vid="nav-logo-img">
-                <span class="text-navy font-bold tracking-tight text-lg" vid="16">한국자기이해교육원</span>
-            </div>
-            <div class="hidden md:flex gap-8 items-center" vid="17">
-                <a href="Menu_1.html" class="text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="18">기관소개</a>
-                <a href="Menu_2.html" class="text-navy font-bold text-sm transition-colors border-b-2 border-navy pb-0.5" vid="19">비즈니스</a>
-                <a href="Menu_3.html" class="text-slate-600 hover:text-navy text-sm font-medium transition-colors" vid="20">연구진</a>
-                <button
-                    class="modal-trigger bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm cursor-pointer"
-                    data-target="modal-contact"
-                    vid="21">문의하기</button>
+    <!-- 외부 분리 JavaScript 파일 연결 (defer) -->
+    <script src="script.js" defer></script>
+</head>
+
+<body class="bg-white text-slate-900 font-sans overflow-x-hidden selection:bg-teal selection:text-white">
+
+    <!-- 상단 반응형 통합 내비게이션 바 -->
+    <nav class="fixed w-full z-50 top-0 bg-white shadow-sm py-4 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-50" id="nav-container">
+            
+            <!-- 좌측 로고 영역 (div 구조 변경 적용) -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
+                <img src="images/logo.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" id="nav-logo-box">
+                <span class="text-navy font-semibold tracking-tight text-lg transition-colors" id="nav-brand">한국자기이해교육원</span>
             </div>
             
+            <!-- 우측 PC 버전 링크 -->
+            <div class="hidden md:flex gap-8 items-center">
+                <a href="Menu_1.html" class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors">기관소개</a>
+                <a href="Menu_2.html" class="nav-link text-navy font-bold text-sm transition-colors border-b-2 border-navy pb-0.5">비즈니스</a>
+                <a href="Menu_3.html" class="nav-link text-slate-600 hover:text-navy text-sm font-medium transition-colors">연구진</a>
+                <button
+                    class="modal-trigger bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm cursor-pointer"
+                    data-target="modal-contact">문의하기</button>
+            </div>
+
+            <!-- 모바일 햄버거 메뉴 버튼 -->
             <button class="block md:hidden text-slate-600 hover:text-navy focus:outline-none transition-colors" id="mobile-menu-btn">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
 
+        <!-- 모바일 드로어 영역 -->
         <div id="mobile-drawer" class="absolute top-full left-0 w-full bg-white shadow-md overflow-hidden transition-all duration-300 ease-in-out flex flex-col md:hidden" style="height: 0px; opacity: 0;">
             <div class="py-6 px-6 flex flex-col gap-5 border-t border-slate-100" id="mobile-drawer-content">
                 <a href="Menu_1.html" class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">기관소개</a>
@@ -200,129 +88,122 @@
         </div>
     </nav>
 
-    
-    <section class="pt-32 pb-24 px-6 bg-white relative overflow-hidden min-h-[60vh] flex flex-col justify-center border-b border-slate-100" vid="22">
-        <div class="max-w-7xl mx-auto w-full relative z-10" vid="23">
+    <!-- 히어로 섹션 (Breadcrumbs 포함) -->
+    <section class="pt-32 pb-24 px-6 bg-white relative overflow-hidden min-h-[60vh] flex flex-col justify-center border-b border-slate-100">
+        <div class="max-w-7xl mx-auto w-full relative z-10">
             
-            
-            <div class="text-xs md:text-sm font-medium text-slate-500 mb-8 flex items-center gap-2 relative z-50" vid="24">
-                
-                
-                <div class="relative group" id="dd1-wrap" vid="25">
-                    <button class="flex items-center gap-1 hover:text-navy transition-colors focus:outline-none" id="btn-dd1" vid="26">
-                        비즈니스 <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" id="icon-dd1" vid="27"></i>
+            <!-- Breadcrumbs -->
+            <div class="text-xs md:text-sm font-medium text-slate-500 mb-8 flex items-center gap-2 relative z-50">
+                <div class="relative group" id="dd1-wrap">
+                    <button class="flex items-center gap-1 hover:text-navy transition-colors focus:outline-none" id="btn-dd1">
+                        비즈니스 <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" id="icon-dd1"></i>
                     </button>
-                    <div class="dropdown-menu absolute left-0 top-full mt-2 w-32 bg-white border border-slate-200 rounded-lg shadow-lg opacity-0 invisible transform -translate-y-2 py-1" id="menu-dd1" vid="28">
-                        <a href="index.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors" vid="29">홈</a>
-                        <a href="Menu_1.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors" vid="30">기관소개</a>
-                        <a href="Menu_2.html" class="block px-4 py-2 text-navy font-semibold bg-slate-50 transition-colors" vid="31">비즈니스</a>
-                        <a href="Menu_3.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors" vid="32">연구진</a>
+                    <div class="dropdown-menu absolute left-0 top-full mt-2 w-32 bg-white border border-slate-200 rounded-lg shadow-lg opacity-0 invisible transform -translate-y-2 py-1" id="menu-dd1">
+                        <a href="index.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors">홈</a>
+                        <a href="Menu_1.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors">기관소개</a>
+                        <a href="Menu_2.html" class="block px-4 py-2 text-navy font-semibold bg-slate-50 transition-colors">비즈니스</a>
+                        <a href="Menu_3.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors">연구진</a>
                     </div>
                 </div>
                 
-                <span class="text-slate-300" vid="33">/</span>
+                <span class="text-slate-300">/</span>
                 
-                
-                <div class="relative group" id="dd2-wrap" vid="34">
-                    <button class="flex items-center gap-1 hover:text-navy transition-colors text-navy font-semibold focus:outline-none" id="btn-dd2" vid="35">
-                        단체교육 <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" id="icon-dd2" vid="36"></i>
+                <div class="relative group" id="dd2-wrap">
+                    <button class="flex items-center gap-1 hover:text-navy transition-colors text-navy font-semibold focus:outline-none" id="btn-dd2">
+                        단체교육 <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" id="icon-dd2"></i>
                     </button>
-                    <div class="dropdown-menu absolute left-0 top-full mt-2 w-44 bg-white border border-slate-200 rounded-lg shadow-lg opacity-0 invisible transform -translate-y-2 py-1" id="menu-dd2" vid="37">
-                        <a href="#" class="block px-4 py-2 text-navy font-semibold bg-slate-50 transition-colors" vid="38">단체교육 상세</a>
-                        <a href="Menu_2_2.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors" vid="39">자격증 및 강사과정</a>
-                        <a href="Menu_2_3.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors" vid="40">검사지 및 교구재</a>
+                    <div class="dropdown-menu absolute left-0 top-full mt-2 w-44 bg-white border border-slate-200 rounded-lg shadow-lg opacity-0 invisible transform -translate-y-2 py-1" id="menu-dd2">
+                        <a href="#" class="block px-4 py-2 text-navy font-semibold bg-slate-50 transition-colors">단체교육 상세</a>
+                        <a href="Menu_2_2.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors">자격증 및 강사과정</a>
+                        <a href="Menu_2_3.html" class="block px-4 py-2 text-slate-600 hover:bg-slate-50 hover:text-navy transition-colors">검사지 및 교구재</a>
                     </div>
                 </div>
             </div>
 
-            
-            <div class="max-w-4xl relative z-10" vid="41">
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.2] mb-8 keep-all" vid="42">
-                    <span class="block text-fill-anim line-1 pb-2" vid="43">기관 및 기업 맞춤형 단체 교육</span>
-                    <span class="block text-fill-anim line-2" vid="44">조직 성장과 체질개선의 교두보</span>
+            <!-- Hero 타이틀 -->
+            <div class="max-w-4xl relative z-10">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.2] mb-8 break-keep">
+                    <span class="block text-fill-anim line-1 pb-2">기관 및 기업 맞춤형 단체 교육</span>
+                    <span class="block text-fill-anim line-2">조직 성장과 체질개선의 교두보</span>
                 </h2>
                 
-                <div id="hero-subtext" class="opacity-0 translate-y-4 text-lg md:text-xl text-slate-600 font-light leading-relaxed keep-all max-w-2xl border-l-2 border-teal pl-4" vid="45">
+                <div id="hero-subtext" class="opacity-0 translate-y-4 text-lg md:text-xl text-slate-600 font-light leading-relaxed break-keep max-w-2xl border-l-2 border-teal pl-4">
                     대학생 취업 역량 강화부터 대기업 HR 임직원 커뮤니케이션 워크숍까지, 데이터로 증명되는 최적의 맞춤형 솔루션을 제안합니다.
                 </div>
             </div>
         </div>
         
-        
-        <div class="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-slate-50 to-transparent pointer-events-none" vid="46"></div>
+        <div class="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-slate-50 to-transparent pointer-events-none"></div>
     </section>
 
-    
-    <!-- 100px padding added: originally py-24 (96px) + 100px = 196px -->
-    <section class="px-6 bg-slatebg relative text-center" style="padding-top: 196px; padding-bottom: 196px;" vid="47">
-        <div class="max-w-7xl mx-auto flex flex-col items-center" vid="48">
+    <!-- 맞춤형 교육이란? 섹션 -->
+    <section class="px-6 bg-slatebg relative text-center" style="padding-top: 196px; padding-bottom: 196px;">
+        <div class="max-w-7xl mx-auto flex flex-col items-center">
             
-            
-            <div class="mb-16 md:mb-24" vid="49">
-                <h1 id="blur-heading" class="scroll-blur-text text-3xl md:text-4xl font-bold text-navy tracking-tight opacity-20 blur-sm transition-all duration-1000 ease-out keep-all" vid="50">
+            <div class="mb-16 md:mb-24">
+                <h1 id="blur-heading" class="scroll-blur-text text-3xl md:text-4xl font-bold text-navy tracking-tight opacity-20 blur-sm transition-all duration-1000 ease-out break-keep">
                     맞춤형 교육이란?
                 </h1>
             </div>
 
-            
-            <div class="max-w-4xl reveal-up mx-auto" vid="51">
-                <h3 class="scroll-blur-text text-2xl md:text-3xl font-bold text-navy mb-6 leading-tight keep-all opacity-20 blur-sm transition-all duration-1000 ease-out" vid="52">
-                    조직의 고유한 도면을 분석하여,<br class="hidden md:block" vid="53"> 단 하나의 커리큘럼을 디자인합니다.
+            <div class="max-w-4xl reveal-up mx-auto">
+                <h3 class="scroll-blur-text text-2xl md:text-3xl font-bold text-navy mb-6 leading-tight break-keep opacity-20 blur-sm transition-all duration-1000 ease-out">
+                    조직의 고유한 도면을 분석하여,<br class="hidden md:block"> 단 하나의 커리큘럼을 디자인합니다.
                 </h3>
-                <p class="scroll-blur-text text-slate-600 text-lg leading-relaxed keep-all opacity-20 blur-sm transition-all duration-1000 ease-out" vid="54">
+                <p class="scroll-blur-text text-slate-600 text-lg leading-relaxed break-keep opacity-20 blur-sm transition-all duration-1000 ease-out">
                     한국자기이해교육원의 단체 교육은 획일화된 강의를 지양합니다. 피교육자 전원의 다면적 성향 진단 데이터를 기반으로, 집단 역동을 최적화할 수 있는 과학적 맞춤형 솔루션을 제공합니다.
                 </p>
             </div>
         </div>
     </section>
 
-    
-    <section class="py-24 md:py-32 bg-white relative overflow-hidden" vid="55">
-        <div class="max-w-7xl mx-auto px-6 space-y-24 md:space-y-32" vid="56">
+    <!-- 프로그램 유형 리스트 -->
+    <section class="py-24 md:py-32 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 space-y-24 md:space-y-32">
             
-            
-            <div class="tw-row flex flex-col md:flex-row items-center gap-10 md:gap-16" vid="57">
-                <div class="w-full md:w-1/2 md:order-1 order-1 tw-slide-left" vid="58">
-                    <div class="aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 relative" vid="59">
-                        <img src="images/menu2_1/menu_2_1_1.jpg" alt="Corporate Seminar" class="w-full h-full object-cover" vid="60">
+            <!-- Card 01 -->
+            <div class="tw-row flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 md:order-1 order-1 tw-slide-left">
+                    <div class="aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 relative">
+                        <img src="images/menu2_1/menu_2_1_1.jpg" alt="Corporate Seminar" class="w-full h-full object-cover">
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 md:order-2 order-2 tw-slide-right" vid="61">
-                    <div class="inline-block px-3 py-1 bg-navy text-white text-sm font-bold rounded mb-4" vid="62">01</div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-navy mb-4 keep-all" vid="63">대기업 및 중소기업 HR 워크숍</h3>
-                    <p class="text-slate-600 text-lg leading-relaxed keep-all" vid="64">
+                <div class="w-full md:w-1/2 md:order-2 order-2 tw-slide-right">
+                    <div class="inline-block px-3 py-1 bg-navy text-white text-sm font-bold rounded mb-4">01</div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-navy mb-4 break-keep">대기업 및 중소기업 HR 워크숍</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed break-keep">
                         조직 내 소통 벽을 허물고 갈등을 관리하기 위한 임직원 성향 기반 커뮤니케이션 설계 솔루션입니다.
                     </p>
                 </div>
             </div>
 
-            
-            <div class="tw-row flex flex-col md:flex-row items-center gap-10 md:gap-16" vid="65">
-                <div class="w-full md:w-1/2 md:order-2 order-1 tw-slide-right" vid="66">
-                    <div class="aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 relative" vid="67">
-                        <img src="images/menu2_1/menu_2_1_2.jpg" alt="University Lecture" class="w-full h-full object-cover" vid="68">
+            <!-- Card 02 -->
+            <div class="tw-row flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 md:order-2 order-1 tw-slide-right">
+                    <div class="aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 relative">
+                        <img src="images/menu2_1/menu_2_1_2.jpg" alt="University Lecture" class="w-full h-full object-cover">
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 md:order-1 order-2 tw-slide-left" vid="69">
-                    <div class="inline-block px-3 py-1 bg-navy text-white text-sm font-bold rounded mb-4" vid="70">02</div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-navy mb-4 keep-all" vid="71">대학교 취업지원센터 진로 캠프</h3>
-                    <p class="text-slate-600 text-lg leading-relaxed keep-all" vid="72">
+                <div class="w-full md:w-1/2 md:order-1 order-2 tw-slide-left">
+                    <div class="inline-block px-3 py-1 bg-navy text-white text-sm font-bold rounded mb-4">02</div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-navy mb-4 break-keep">대학교 취업지원센터 진로 캠프</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed break-keep">
                         사회 진출을 앞둔 대학생 및 청년들이 객관적인 자기 정체성을 확립하고 최적의 직무 적성을 탐색하는 과정입니다.
                     </p>
                 </div>
             </div>
 
-            
-            <div class="tw-row flex flex-col md:flex-row items-center gap-10 md:gap-16" vid="73">
-                <div class="w-full md:w-1/2 md:order-1 order-1 tw-slide-left" vid="74">
-                    <div class="aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 relative" vid="75">
-                        <img src="images/menu2_1/menu_2_1_3.jpg" alt="Public Institution Meeting" class="w-full h-full object-cover" vid="76">
+            <!-- Card 03 -->
+            <div class="tw-row flex flex-col md:flex-row items-center gap-10 md:gap-16">
+                <div class="w-full md:w-1/2 md:order-1 order-1 tw-slide-left">
+                    <div class="aspect-video rounded-xl overflow-hidden shadow-lg border border-slate-200 relative">
+                        <img src="images/menu2_1/menu_2_1_3.jpg" alt="Public Institution Meeting" class="w-full h-full object-cover">
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 md:order-2 order-2 tw-slide-right" vid="77">
-                    <div class="inline-block px-3 py-1 bg-navy text-white text-sm font-bold rounded mb-4" vid="78">03</div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-navy mb-4 keep-all" vid="79">공공기관 및 지자체 역량강화</h3>
-                    <p class="text-slate-600 text-lg leading-relaxed keep-all" vid="80">
+                <div class="w-full md:w-1/2 md:order-2 order-2 tw-slide-right">
+                    <div class="inline-block px-3 py-1 bg-navy text-white text-sm font-bold rounded mb-4">03</div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-navy mb-4 break-keep">공공기관 및 지자체 역량강화</h3>
+                    <p class="text-slate-600 text-lg leading-relaxed break-keep">
                         공익적 가치를 다루는 공공 조직원의 스트레스 리커버리 및 기질 분석 맞춤형 융합 워크숍 프로그램입니다.
                     </p>
                 </div>
@@ -331,74 +212,66 @@
         </div>
     </section>
 
-    
-    <section class="py-24 md:py-32 bg-slatebg border-t border-slate-200 overflow-hidden relative" vid="81">
-        <div class="max-w-5xl mx-auto px-6" vid="82">
+    <!-- 워크플로우 전략 섹션 -->
+    <section class="py-24 md:py-32 bg-slatebg border-t border-slate-200 overflow-hidden relative">
+        <div class="max-w-5xl mx-auto px-6">
             
-            
-            <div class="text-center mb-16 md:mb-24 reveal-up" vid="83">
-                <h4 class="text-teal font-bold tracking-widest text-sm mb-4" vid="84">교육의 질이 조직 잠재력을 키웁니다.</h4>
-                <h3 class="text-3xl md:text-4xl font-bold text-navy keep-all" vid="85">복잡한 교육 설계와 커리큘럼,<br class="hidden md:block" vid="86">KSUI가 맞춤형 전략을 제시합니다.</h3>
+            <div class="text-center mb-16 md:mb-24 reveal-up">
+                <h4 class="text-teal font-bold tracking-widest text-sm mb-4">교육의 질이 조직 잠재력을 키웁니다.</h4>
+                <h3 class="text-3xl md:text-4xl font-bold text-navy break-keep">복잡한 교육 설계와 커리큘럼,<br class="hidden md:block">KSUI가 맞춤형 전략을 제시합니다.</h3>
             </div>
 
-            
-            <div id="workflow-container" class="relative max-w-4xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-10" vid="87">
+            <div id="workflow-container" class="relative max-w-4xl mx-auto flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-10">
                 
-                
-                <div class="hidden md:block absolute top-[25%] left-1/2 -translate-x-1/2 text-teal opacity-50 z-0" vid="88">
-                    <i data-lucide="arrow-right" class="w-8 h-8" vid="89"></i>
+                <!-- PC 연결 화살표 데코레이션 -->
+                <div class="hidden md:block absolute top-[25%] left-1/2 -translate-x-1/2 text-teal opacity-50 z-0">
+                    <i data-lucide="arrow-right" class="w-8 h-8"></i>
                 </div>
-                
-                <div class="hidden md:block absolute top-1/2 right-[25%] -translate-y-1/2 translate-x-1/2 text-teal opacity-50 z-0" vid="90">
-                    <i data-lucide="arrow-down" class="w-8 h-8" vid="91"></i>
+                <div class="hidden md:block absolute top-1/2 right-[25%] -translate-y-1/2 translate-x-1/2 text-teal opacity-50 z-0">
+                    <i data-lucide="arrow-down" class="w-8 h-8"></i>
                 </div>
-                <div class="hidden md:block absolute bottom-[25%] left-1/2 -translate-x-1/2 text-teal opacity-50 z-0" vid="92">
-                    <i data-lucide="arrow-left" class="w-8 h-8" vid="93"></i>
+                <div class="hidden md:block absolute bottom-[25%] left-1/2 -translate-x-1/2 text-teal opacity-50 z-0">
+                    <i data-lucide="arrow-left" class="w-8 h-8"></i>
                 </div>
 
-                
-                <div id="wf-card-1" class="wf-card rounded-xl p-8 border shadow-sm relative z-10 order-1 md:col-start-1 md:row-start-1" vid="94">
-                    <div class="w-12 h-12 rounded-full bg-teal flex items-center justify-center text-white font-bold text-lg mb-6 shadow-sm" vid="95">01</div>
-                    <h5 class="text-xl font-bold text-navy mb-3 keep-all" vid="96">사전 요구도 분석</h5>
-                    <p class="text-slate-600 text-sm leading-relaxed keep-all" vid="97">
+                <!-- Step 01 -->
+                <div id="wf-card-1" class="wf-card rounded-xl p-8 border shadow-sm relative z-10 order-1 md:col-start-1 md:row-start-1">
+                    <div class="w-12 h-12 rounded-full bg-teal flex items-center justify-center text-white font-bold text-lg mb-6 shadow-sm">01</div>
+                    <h5 class="text-xl font-bold text-navy mb-3 break-keep">사전 요구도 분석</h5>
+                    <p class="text-slate-600 text-sm leading-relaxed break-keep">
                         의뢰 기관의 교육 목적, 타겟 인원수, 조직 내 핵심 문제점 파악을 위한 서면 인터뷰 및 매칭 진단을 준비합니다.
                     </p>
                 </div>
 
-                
-                <div class="md:hidden flex justify-center order-2 text-teal py-2 opacity-50 wf-arrow-mob" vid="98"><i data-lucide="arrow-down" vid="99"></i></div>
+                <div class="md:hidden flex justify-center order-2 text-teal py-2 opacity-50"><i data-lucide="arrow-down"></i></div>
 
-                
-                <div id="wf-card-2" class="wf-card rounded-xl p-8 border shadow-sm relative z-10 order-3 md:col-start-2 md:row-start-1 border-slate-100" vid="100">
-                    <div class="w-12 h-12 rounded-full bg-white border border-navy flex items-center justify-center text-navy font-bold text-lg mb-6 shadow-sm" vid="101">02</div>
-                    <h5 class="text-xl font-bold text-navy mb-3 keep-all" vid="102">맞춤형 모듈 매칭</h5>
-                    <p class="text-slate-600 text-sm leading-relaxed keep-all" vid="103">
+                <!-- Step 02 -->
+                <div id="wf-card-2" class="wf-card rounded-xl p-8 border shadow-sm relative z-10 order-3 md:col-start-2 md:row-start-1 border-slate-100">
+                    <div class="w-12 h-12 rounded-full bg-white border border-navy flex items-center justify-center text-navy font-bold text-lg mb-6 shadow-sm">02</div>
+                    <h5 class="text-xl font-bold text-navy mb-3 break-keep">맞춤형 모듈 매칭</h5>
+                    <p class="text-slate-600 text-sm leading-relaxed break-keep">
                         자체 특허 보유 성향 분석 알고리즘과 연계하여 최적화된 강의 교안 및 실물 교구재 워크북 툴킷 구성을 커스텀 설계합니다.
                     </p>
                 </div>
 
-                
-                <div class="md:hidden flex justify-center order-4 text-teal py-2 opacity-50 wf-arrow-mob" vid="104"><i data-lucide="arrow-down" vid="105"></i></div>
+                <div class="md:hidden flex justify-center order-4 text-teal py-2 opacity-50"><i data-lucide="arrow-down"></i></div>
 
-                
-                
-                <div id="wf-card-3" class="wf-card rounded-xl p-8 border shadow-sm relative z-10 order-5 md:col-start-2 md:row-start-2 border-slate-100" vid="106">
-                    <div class="w-12 h-12 rounded-full bg-white border border-navy flex items-center justify-center text-navy font-bold text-lg mb-6 shadow-sm" vid="107">03</div>
-                    <h5 class="text-xl font-bold text-navy mb-3 keep-all" vid="108">실전 퍼실리테이션 출강</h5>
-                    <p class="text-slate-600 text-sm leading-relaxed keep-all" vid="109">
+                <!-- Step 03 -->
+                <div id="wf-card-3" class="wf-card rounded-xl p-8 border shadow-sm relative z-10 order-5 md:col-start-2 md:row-start-2 border-slate-100">
+                    <div class="w-12 h-12 rounded-full bg-white border border-navy flex items-center justify-center text-navy font-bold text-lg mb-6 shadow-sm">03</div>
+                    <h5 class="text-xl font-bold text-navy mb-3 break-keep">실전 퍼실리테이션 출강</h5>
+                    <p class="text-slate-600 text-sm leading-relaxed break-keep">
                         교육원 소속의 검증된 전문 지도사 및 상임 연구진이 직접 출강하여 현장 밀착 참여형 워크숍을 밀도 있게 집행합니다.
                     </p>
                 </div>
 
-                
-                <div class="md:hidden flex justify-center order-6 text-teal py-2 opacity-50 wf-arrow-mob" vid="110"><i data-lucide="arrow-down" vid="111"></i></div>
+                <div class="md:hidden flex justify-center order-6 text-teal py-2 opacity-50"><i data-lucide="arrow-down"></i></div>
 
-                
-                
-                <div id="wf-card-4" class="wf-card rounded-xl p-8 border shadow-sm relative z-10 order-7 md:col-start-1 md:row-start-2 border-slate-100" vid="112">
-                    <div class="w-12 h-12 rounded-full bg-white border border-navy flex items-center justify-center text-navy font-bold text-lg mb-6 shadow-sm" vid="113">04</div>
-                    <h5 class="text-xl font-bold text-navy mb-3 keep-all" vid="114">종합 분석 보고서 발행</h5>
-                    <p class="text-slate-600 text-sm leading-relaxed keep-all" vid="115">
+                <!-- Step 04 -->
+                <div id="wf-card-4" class="wf-card rounded-xl p-8 border shadow-sm relative z-10 order-7 md:col-start-1 md:row-start-2 border-slate-100">
+                    <div class="w-12 h-12 rounded-full bg-white border border-navy flex items-center justify-center text-navy font-bold text-lg mb-6 shadow-sm">04</div>
+                    <h5 class="text-xl font-bold text-navy mb-3 break-keep">종합 분석 보고서 발행</h5>
+                    <p class="text-slate-600 text-sm leading-relaxed break-keep">
                         수료자 성향 통계 데이터 및 조직 융합 가이드라인 계획서를 최종 제공하며 교육 과정을 성공적으로 마감합니다.
                     </p>
                 </div>
@@ -407,98 +280,98 @@
         </div>
     </section>
 
-    
-    <section class="bg-white py-24 md:py-32 px-6 border-t border-slate-200" vid="118">
-        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-start" vid="119">
+    <!-- FAQ 섹션 -->
+    <section class="bg-white py-24 md:py-32 px-6 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-start">
             
-            <div class="md:col-span-4 md:sticky md:top-32 reveal-up" vid="120">
-                <span class="text-teal font-bold text-sm tracking-widest block mb-4" vid="121">FAQ VERIFICATION</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-navy leading-tight keep-all" vid="122">
-                    의뢰 전,<br vid="123">확인해보세요
+            <div class="md:col-span-4 md:sticky md:top-32 reveal-up">
+                <span class="text-teal font-bold text-sm tracking-widest block mb-4">FAQ VERIFICATION</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy leading-tight break-keep">
+                    의뢰 전,<br>확인해보세요
                 </h2>
-                <div class="mt-6 w-12 h-1 bg-navy" vid="124"></div>
-                <p class="mt-6 text-slate-500 text-sm keep-all pr-4 leading-relaxed" vid="125">
+                <div class="mt-6 w-12 h-1 bg-navy"></div>
+                <p class="mt-6 text-slate-500 text-sm break-keep pr-4 leading-relaxed">
                     KSUI 단체 교육 및 워크숍 진행과 관련하여 기관 담당자분들이 자주 묻는 질문들을 모았습니다.
                 </p>
             </div>
 
-            <div class="md:col-span-8 space-y-4 reveal-up" style="transition-delay: 200ms;" vid="126">
+            <div class="md:col-span-8 space-y-4 reveal-up" style="transition-delay: 200ms;">
                 
-                
-                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md" vid="127">
-                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none" vid="128">
-                        <span class="font-bold text-navy text-base md:text-lg pr-8 keep-all" vid="129">기업 워크숍 최소/최대 인원 제한이 따로 있나요?</span>
-                        <div class="acc-icon-wrap shrink-0" vid="130">
-                            <div class="acc-line-h" vid="131"></div>
-                            <div class="acc-line-v" vid="132"></div>
+                <!-- FAQ Item 01 -->
+                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md">
+                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none">
+                        <span class="font-bold text-navy text-base md:text-lg pr-8 break-keep">기업 워크숍 최소/최대 인원 제한이 따로 있나요?</span>
+                        <div class="acc-icon-wrap shrink-0">
+                            <div class="acc-line-h"></div>
+                            <div class="acc-line-v"></div>
                         </div>
                     </button>
-                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50" vid="133">
-                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 keep-all" vid="134">
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50">
+                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 break-keep">
                             최소 10명부터 최대 500명 이상의 대규모 연수까지 분반 매칭을 통해 유연하게 대응 가능합니다. 인원수별 맞춤 퍼실리테이터 강사진이 배치됩니다.
                         </div>
                     </div>
                 </div>
 
-                
-                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md" vid="135">
-                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none" vid="136">
-                        <span class="font-bold text-navy text-base md:text-lg pr-8 keep-all" vid="137">대학교 취업지원센터 예산 한도에 맞춰 조율이 가능한가요?</span>
-                        <div class="acc-icon-wrap shrink-0" vid="138">
-                            <div class="acc-line-h" vid="139"></div>
-                            <div class="acc-line-v" vid="140"></div>
+                <!-- FAQ Item 02 -->
+                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md">
+                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none">
+                        <span class="font-bold text-navy text-base md:text-lg pr-8 break-keep">대학교 취업지원센터 예산 한도에 맞춰 조율이 가능한가요?</span>
+                        <div class="acc-icon-wrap shrink-0">
+                            <div class="acc-line-h"></div>
+                            <div class="acc-line-v"></div>
                         </div>
                     </button>
-                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50" vid="141">
-                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 keep-all" vid="142">
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50">
+                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 break-keep">
                             네, 가능합니다. 대학 혁신지원사업 등 정부 지원금 예산 규격 항목에 맞춰 검사지 라이선스 비용과 강사료 산정 방식을 유연하게 가이드 제안해 드립니다.
                         </div>
                     </div>
                 </div>
 
-                
-                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md" vid="143">
-                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none" vid="144">
-                        <span class="font-bold text-navy text-base md:text-lg pr-8 keep-all" vid="145">자체 성향 검사지는 정식 특허나 공인 등록이 되어 있나요?</span>
-                        <div class="acc-icon-wrap shrink-0" vid="146">
-                            <div class="acc-line-h" vid="147"></div>
-                            <div class="acc-line-v" vid="148"></div>
+                <!-- FAQ Item 03 -->
+                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md">
+                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none">
+                        <span class="font-bold text-navy text-base md:text-lg pr-8 break-keep">자체 성향 검사지는 정식 특허나 공인 등록이 되어 있나요?</span>
+                        <div class="acc-icon-wrap shrink-0">
+                            <div class="acc-line-h"></div>
+                            <div class="acc-line-v"></div>
                         </div>
                     </button>
-                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50" vid="149">
-                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 keep-all" vid="150">
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50">
+                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 break-keep">
                             교육원이 보유한 다면적 기질 특성론 분석 도구는 특허청 정식 기술 특허 출원 및 한국직업능력연구원 민간자격 관리 기준에 의거하여 엄격한 타당도 신뢰도 검증을 마쳤습니다.
                         </div>
                     </div>
                 </div>
 
-                
-                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md" vid="151">
-                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none" vid="152">
-                        <span class="font-bold text-navy text-base md:text-lg pr-8 keep-all" vid="153">1회성 특강 형태로도 진행이 가능한가요?</span>
-                        <div class="acc-icon-wrap shrink-0" vid="154">
-                            <div class="acc-line-h" vid="155"></div>
-                            <div class="acc-line-v" vid="156"></div>
+                <!-- FAQ Item 04 -->
+                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md">
+                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none">
+                        <span class="font-bold text-navy text-base md:text-lg pr-8 break-keep">1회성 특강 형태로도 진행이 가능한가요?</span>
+                        <div class="acc-icon-wrap shrink-0">
+                            <div class="acc-line-h"></div>
+                            <div class="acc-line-v"></div>
                         </div>
                     </button>
-                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50" vid="157">
-                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 keep-all" vid="158">
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50">
+                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 break-keep">
                             특강 형태도 가능하나, 교육 효과성과 성과 측면에서 자체 검사지 진단과 워크북 툴킷 실습이 포함된 최소 3시간~6시간 단위의 모듈형 단체 워크숍을 강력히 추천해 드립니다.
                         </div>
                     </div>
                 </div>
 
-                
-                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md" vid="159">
-                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none" vid="160">
-                        <span class="font-bold text-navy text-base md:text-lg pr-8 keep-all" vid="161">제안서나 상세 커리큘럼 자료는 어떻게 받아볼 수 있나요?</span>
-                        <div class="acc-icon-wrap shrink-0" vid="162">
-                            <div class="acc-line-h" vid="163"></div>
-                            <div class="acc-line-v" vid="164"></div>
+                <!-- FAQ Item 05 -->
+                <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm transition-shadow hover:shadow-md">
+                    <button class="w-full px-6 py-6 text-left flex justify-between items-center bg-white z-10 relative focus:outline-none">
+                        <span class="font-bold text-navy text-base md:text-lg pr-8 break-keep">제안서나 상세 커리큘럼 자료는 어떻게 받아볼 수 있나요?</span>
+                        <div class="acc-icon-wrap shrink-0">
+                            <div class="acc-line-h"></div>
+                            <div class="acc-line-v"></div>
                         </div>
                     </button>
-                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50" vid="165">
-                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 keep-all" vid="166">
+                    <div class="faq-content max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out bg-slate-50">
+                        <div class="px-6 pb-6 text-slate-600 text-sm md:text-base leading-relaxed border-t border-slate-100 pt-4 break-keep">
                             상단 내비게이션 바의 '문의하기' 또는 고객 센터 이메일을 통하여 소속 기관명과 타겟층을 남겨주시면 24시간 이내에 맞춤형 제안서와 견적 사양서를 송부해 드립니다.
                         </div>
                     </div>
@@ -508,51 +381,47 @@
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-slatebg relative border-t border-slate-200/50" vid="254">
-        <div class="max-w-4xl mx-auto" vid="255">
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200/60 p-8 md:p-12 reveal-up" vid="256">
+    <!-- 하단 이메일 문의 접수 폼 -->
+    <section class="py-24 px-6 bg-slatebg relative border-t border-slate-200/50">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200/60 p-8 md:p-12 reveal-up">
                 
-                <div class="text-center mb-10" vid="257">
-                    <h3 class="text-2xl md:text-3xl font-bold text-navy keep-all" vid="258">연락처를 남겨주시면 빠른 시일 내로 확인 후 연락드리겠습니다.</h3>
+                <div class="text-center mb-10">
+                    <h3 class="text-2xl md:text-3xl font-bold text-navy break-keep">연락처를 남겨주시면 빠른 시일 내로 확인 후 연락드리겠습니다.</h3>
                 </div>
 
-                <form id="consultation-form" class="space-y-6" vid="259">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" vid="260">
+                <form id="consultation-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         
-                        
-                        <div class="col-span-1" vid="261">
-                            <label for="frm-name" class="block text-sm font-medium text-slate-500 mb-2" vid="262">이름</label>
-                            <input type="text" id="frm-name" required="" class="w-full bg-slatebg border border-slate-200 text-slate-900 rounded-lg focus:ring-4 focus:ring-teal/20 focus:border-teal block p-3.5 transition-colors outline-none" placeholder="홍길동" vid="263">
+                        <div class="col-span-1">
+                            <label for="frm-name" class="block text-sm font-medium text-slate-500 mb-2">이름</label>
+                            <input type="text" id="frm-name" required class="w-full bg-slatebg border border-slate-200 text-slate-900 rounded-lg focus:ring-4 focus:ring-teal/20 focus:border-teal block p-3.5 transition-colors outline-none" placeholder="홍길동">
                         </div>
 
-                        
-                        <div class="col-span-1" vid="264">
-                            <label for="frm-phone" class="block text-sm font-medium text-slate-500 mb-2" vid="265">연락처</label>
-                            <input type="tel" id="frm-phone" required="" class="w-full bg-slatebg border border-slate-200 text-slate-900 rounded-lg focus:ring-4 focus:ring-teal/20 focus:border-teal block p-3.5 transition-colors outline-none" placeholder="010-1234-5678" vid="266">
+                        <div class="col-span-1">
+                            <label for="frm-phone" class="block text-sm font-medium text-slate-500 mb-2">연락처</label>
+                            <input type="tel" id="frm-phone" required class="w-full bg-slatebg border border-slate-200 text-slate-900 rounded-lg focus:ring-4 focus:ring-teal/20 focus:border-teal block p-3.5 transition-colors outline-none" placeholder="010-1234-5678">
                         </div>
 
-                        
-                        <div class="col-span-1 md:col-span-2" vid="267">
-                            <label for="frm-email" class="block text-sm font-medium text-slate-500 mb-2" vid="268">이메일</label>
-                            <input type="email" id="frm-email" required="" class="w-full bg-slatebg border border-slate-200 text-slate-900 rounded-lg focus:ring-4 focus:ring-teal/20 focus:border-teal block p-3.5 transition-colors outline-none" placeholder="example@ksui.co.kr" vid="269">
+                        <div class="col-span-1 md:col-span-2">
+                            <label for="frm-email" class="block text-sm font-medium text-slate-500 mb-2">이메일</label>
+                            <input type="email" id="frm-email" required class="w-full bg-slatebg border border-slate-200 text-slate-900 rounded-lg focus:ring-4 focus:ring-teal/20 focus:border-teal block p-3.5 transition-colors outline-none" placeholder="example@ksui.co.kr">
                         </div>
 
-                        
-                        <div class="col-span-1 md:col-span-2" vid="270">
-                            <label for="frm-message" class="block text-sm font-medium text-slate-500 mb-2" vid="271">문의내용</label>
-                            <textarea id="frm-message" rows="5" required="" class="w-full bg-slatebg border border-slate-200 text-slate-900 rounded-lg focus:ring-4 focus:ring-teal/20 focus:border-teal block p-3.5 transition-colors outline-none resize-none" placeholder="문의하실 내용을 상세히 적어주세요." vid="272"></textarea>
+                        <div class="col-span-1 md:col-span-2">
+                            <label for="frm-message" class="block text-sm font-medium text-slate-500 mb-2">문의내용</label>
+                            <textarea id="frm-message" rows="5" required class="w-full bg-slatebg border border-slate-200 text-slate-900 rounded-lg focus:ring-4 focus:ring-teal/20 focus:border-teal block p-3.5 transition-colors outline-none resize-none" placeholder="문의하실 내용을 상세히 적어주세요."></textarea>
                         </div>
                     </div>
 
-                    
-                    <div class="flex flex-col md:flex-row justify-between items-center gap-6 mt-8 pt-6 border-t border-slate-100" vid="273">
-                        <div class="flex items-center w-full md:w-auto" vid="274">
-                            <input id="frm-consent" type="checkbox" required="" class="w-4 h-4 text-teal bg-slatebg border-slate-300 rounded focus:ring-teal focus:ring-2 cursor-pointer" vid="275">
-                            <label for="frm-consent" class="ml-2 text-sm font-medium text-slate-600 cursor-pointer" vid="276">개인정보 수집 및 이용에 동의합니다.</label>
-                            <button type="button" id="btn-privacy-detail" class="ml-2 text-sm text-teal hover:text-teal-600 underline underline-offset-2 shrink-0 focus:outline-none" vid="277">[자세히보기]</button>
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-6 mt-8 pt-6 border-t border-slate-100">
+                        <div class="flex items-center w-full md:w-auto">
+                            <input id="frm-consent" type="checkbox" required class="w-4 h-4 text-teal bg-slatebg border-slate-300 rounded focus:ring-teal focus:ring-2 cursor-pointer">
+                            <label for="frm-consent" class="ml-2 text-sm font-medium text-slate-600 cursor-pointer">개인정보 수집 및 이용에 동의합니다.</label>
+                            <button type="button" id="btn-privacy-detail" class="ml-2 text-sm text-teal hover:text-teal-600 underline underline-offset-2 shrink-0 focus:outline-none">[자세히보기]</button>
                         </div>
                         
-                        <button type="submit" class="w-full md:w-auto text-white bg-navy hover:bg-navy-dark focus:ring-4 focus:ring-navy/30 font-medium rounded-lg text-base px-8 py-3.5 text-center transition-colors shadow-sm focus:outline-none" vid="278">
+                        <button type="submit" class="w-full md:w-auto text-white bg-navy hover:bg-navy-dark focus:ring-4 focus:ring-navy/30 font-medium rounded-lg text-base px-8 py-3.5 text-center transition-colors shadow-sm focus:outline-none">
                             문의 접수하기
                         </button>
                     </div>
@@ -563,423 +432,84 @@
     </section>
 
     <!-- 개인정보 처리방침 모달 -->
-    <div id="privacy-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" vid="privacy-modal-wrap">
-        <div id="privacy-modal-card" class="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-xl w-full relative" vid="privacy-modal-inner">
-            <!-- X Close Button -->
-            <button type="button" id="close-privacy-btn" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 focus:outline-none" vid="privacy-close-x">
+    <div id="privacy-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div id="privacy-modal-card" class="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-xl w-full relative">
+            <button type="button" id="close-privacy-btn" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 focus:outline-none">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
             
-            <h3 class="text-xl font-bold text-navy mb-4" vid="privacy-title">개인정보 수집 및 이용 동의</h3>
+            <h3 class="text-xl font-bold text-navy mb-4">개인정보 수집 및 이용 동의</h3>
             
-            <div class="text-slate-600 text-sm leading-relaxed overflow-y-auto max-h-[50vh] pr-2 space-y-4 text-left border-y border-slate-100 py-4" vid="privacy-body">
+            <div class="text-slate-600 text-sm leading-relaxed overflow-y-auto max-h-[50vh] pr-2 space-y-4 text-left border-y border-slate-100 py-4">
                 <p>한국자기이해교육원(이하 '교육원')은 고객 문의 응대 및 서비스 제공을 위해 아래와 같이 개인정보를 수집 및 이용합니다.</p>
-                
                 <div>
                     <h4 class="font-bold text-slate-800 mb-1">1. 수집하는 개인정보 항목</h4>
                     <p>수집 항목: 성명, 연락처(전화번호), 이메일 주소, 소속 기관명, 문의 내용</p>
                 </div>
-                
                 <div>
                     <h4 class="font-bold text-slate-800 mb-1">2. 개인정보의 수집 및 이용 목적</h4>
                     <p>목적: 문의 사항 확인, 답변 전달 및 상담 진행을 위한 의사소통 경로 확보</p>
                 </div>
-                
                 <div>
                     <h4 class="font-bold text-slate-800 mb-1">3. 개인정보의 보유 및 이용 기간</h4>
                     <p>보유 기간: 법령에 따른 보존 기간 또는 목적 달성 후 지체 없이 파기 (최대 1년 보존)</p>
                 </div>
-                
                 <div>
                     <h4 class="font-bold text-slate-800 mb-1">4. 동의 거부 권리 및 불이익</h4>
                     <p>고객님은 개인정보 수집 및 이용 동의를 거부할 권리가 있습니다. 단, 동의하지 않으실 경우 상담 서비스 접수 및 이용이 제한됩니다.</p>
                 </div>
             </div>
             
-            <div class="mt-6 flex justify-end" vid="privacy-footer">
-                <button type="button" id="confirm-privacy-btn" class="w-full sm:w-auto bg-teal hover:bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-sm focus:outline-none" vid="privacy-confirm-btn">
+            <div class="mt-6 flex justify-end">
+                <button type="button" id="confirm-privacy-btn" class="w-full sm:w-auto bg-teal hover:bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors shadow-sm focus:outline-none">
                     확인
                 </button>
             </div>
         </div>
     </div>
 
-    <div id="success-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4" vid="279">
-        <div id="modal-card" class="bg-white rounded-2xl shadow-2xl p-8 md:p-10 max-w-md w-full text-center relative" vid="280">
-            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-teal/10 mb-6" vid="281">
-                <i data-lucide="check-circle" class="w-8 h-8 text-teal" vid="282"></i>
+    <!-- 문의 접수 완료 성공 모달 -->
+    <div id="success-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div id="modal-card" class="bg-white rounded-2xl shadow-2xl p-8 md:p-10 max-w-md w-full text-center relative">
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-teal/10 mb-6">
+                <i data-lucide="check-circle" class="w-8 h-8 text-teal"></i>
             </div>
-            <h4 class="text-xl font-bold text-navy mb-3 keep-all" vid="283">접수 완료</h4>
-            <p class="text-slate-600 leading-relaxed text-sm md:text-base keep-all mb-8" vid="284">
-                문의 접수가 완료되었습니다.<br vid="285">담당 연구원이 확인 후 신속하게 답변드리겠습니다. 감사합니다.
+            <h4 class="text-xl font-bold text-navy mb-3 break-keep">접수 완료</h4>
+            <p class="text-slate-600 leading-relaxed text-sm md:text-base break-keep mb-8">
+                문의 접수가 완료되었습니다.<br>담당 연구원이 확인 후 신속하게 답변드리겠습니다. 감사합니다.
             </p>
-            <button id="close-modal-btn" type="button" class="w-full text-white bg-navy hover:bg-navy-dark focus:ring-4 focus:ring-navy/30 font-medium rounded-lg text-base px-5 py-3 transition-colors focus:outline-none" vid="286">
+            <button id="close-modal-btn" type="button" class="w-full text-white bg-navy hover:bg-navy-dark focus:ring-4 focus:ring-navy/30 font-medium rounded-lg text-base px-5 py-3 transition-colors focus:outline-none">
                 확인
             </button>
         </div>
     </div>
 
-    <footer class="bg-[#0F172A] py-16 border-t border-white/5 relative overflow-hidden" vid="162">
-        <div class="max-w-7xl mx-auto px-6 relative z-10" vid="163">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-slate-800 pb-12 mb-8" vid="164">
-                <div vid="165">
-                    <div class="flex items-center gap-2 mb-6" vid="166">
-                        <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" vid="footer-logo-img">
-                        <span class="text-white font-bold text-xl tracking-tight" vid="169">한국자기이해교육원</span>
+    <!-- 푸터 -->
+    <footer class="bg-[#0F172A] py-16 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 border-b border-slate-800 pb-12 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain">
+                        <span class="text-white font-bold text-xl tracking-tight">한국자기이해교육원</span>
                     </div>
-                    <ul class="space-y-2 text-sm text-slate-400 font-light keep-all" vid="170">
-                        <li vid="171"><span class="text-slate-500 font-medium mr-2" vid="172">대표자</span> 김대표</li>
-                        <li vid="173"><span class="text-slate-500 font-medium mr-2" vid="174">사업자등록번호</span> <span class="font-mono" vid="175">123-45-67890</span></li>
-                        <li vid="176"><span class="text-slate-500 font-medium mr-2" vid="177">민간자격등록번호</span> <span class="font-mono" vid="178">제 2026-001234 호</span></li>
-                        <li vid="179"><span class="text-slate-500 font-medium mr-2" vid="180">소재지</span> 서울특별시 강남구 테헤란로 123, 지식산업센터 15층</li>
+                    <ul class="space-y-2 text-sm text-slate-400 font-light break-keep">
+                        <li><span class="text-slate-500 font-medium mr-2">대표자</span> 김대표</li>
+                        <li><span class="text-slate-500 font-medium mr-2">사업자등록번호</span> <span class="font-mono">123-45-67890</span></li>
+                        <li><span class="text-slate-500 font-medium mr-2">민간자격등록번호</span> <span class="font-mono">제 2026-001234 호</span></li>
+                        <li><span class="text-slate-500 font-medium mr-2">소재지</span> 서울특별시 강남구 테헤란로 123, 지식산업센터 15층</li>
                     </ul>
                 </div>
-                <div class="flex gap-4" vid="181">
-                    <a href="#" class="text-slate-400 hover:text-white transition-colors text-sm" vid="182">이용약관</a>
-                    <a href="#" class="text-slate-400 hover:text-white transition-colors font-semibold text-sm" vid="183">개인정보처리방침</a>
+                <div class="flex gap-4">
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors text-sm">이용약관</a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors font-semibold text-sm">개인정보처리방침</a>
                 </div>
             </div>
-            <p class="text-slate-500 text-xs" vid="184">© 2026 KSUI. All rights reserved.</p>
+            <p class="text-slate-500 text-xs">© 2026 KSUI. All rights reserved.</p>
         </div>
     </footer>
 
-    
-    <script vid="185">
-        
-        lucide.createIcons();
-
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            
-            const d1Wrap = document.getElementById('dd1-wrap');
-            const btn1 = document.getElementById('btn-dd1');
-            const menu1 = document.getElementById('menu-dd1');
-            const icon1 = document.getElementById('icon-dd1');
-
-            const d2Wrap = document.getElementById('dd2-wrap');
-            const btn2 = document.getElementById('btn-dd2');
-            const menu2 = document.getElementById('menu-dd2');
-            const icon2 = document.getElementById('icon-dd2');
-
-            let d1Open = false;
-            let d2Open = false;
-
-            const close1 = () => {
-                d1Open = false;
-                menu1.classList.remove('active');
-                icon1.style.transform = 'rotate(0deg)';
-            };
-            const open1 = () => {
-                d1Open = true;
-                menu1.classList.add('active');
-                icon1.style.transform = 'rotate(180deg)';
-            };
-
-            const close2 = () => {
-                d2Open = false;
-                menu2.classList.remove('active');
-                icon2.style.transform = 'rotate(0deg)';
-            };
-            const open2 = () => {
-                d2Open = true;
-                menu2.classList.add('active');
-                icon2.style.transform = 'rotate(180deg)';
-            };
-
-            btn1.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (d1Open) {
-                    close1();
-                } else {
-                    open1();
-                    if (d2Open) close2();
-                }
-            });
-
-            btn2.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (d2Open) {
-                    close2();
-                } else {
-                    open2();
-                    if (d1Open) close1();
-                }
-            });
-
-            document.addEventListener('click', (e) => {
-                if (d1Open && !d1Wrap.contains(e.target)) close1();
-                if (d2Open && !d2Wrap.contains(e.target)) close2();
-            });
-
-
-            
-            setTimeout(() => {
-                document.querySelector('.text-fill-anim.line-1').classList.add('filled');
-                
-                setTimeout(() => {
-                    document.querySelector('.text-fill-anim.line-2').classList.add('filled');
-                    
-                    
-                    setTimeout(() => {
-                        const subtext = document.getElementById('hero-subtext');
-                        subtext.classList.remove('opacity-0', 'translate-y-4');
-                        subtext.classList.add('opacity-100', 'translate-y-0');
-                        subtext.style.transition = 'all 1s cubic-bezier(0.16, 1, 0.3, 1)';
-                    }, 1000);
-                }, 1200);
-            }, 300);
-
-
-            
-            const blurElements = document.querySelectorAll('.scroll-blur-text');
-            const targetSection = document.querySelector('section.bg-slatebg');
-            if (targetSection) {
-                const sectionObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            setTimeout(() => {
-                                blurElements.forEach(el => {
-                                    el.classList.add('clear-blur');
-                                });
-                            }, 1500);
-                            sectionObserver.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.15 });
-                sectionObserver.observe(targetSection);
-            }
-
-
-            
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        revealObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
-
-            document.querySelectorAll('.reveal-up').forEach(el => {
-                revealObserver.observe(el);
-            });
-
-
-            
-            const twObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        entry.target.classList.add('tw-active');
-                    } else {
-                        entry.target.classList.remove('tw-active');
-                    }
-                });
-            }, { threshold: 0.25 });
-            
-            document.querySelectorAll('.tw-row').forEach(el => {
-                twObserver.observe(el);
-            });
-
-
-            
-            const wfContainer = document.getElementById('workflow-container');
-            const wfObserver = new IntersectionObserver((entries) => {
-                if(entries[0].isIntersecting) {
-                    const cards = [
-                        document.getElementById('wf-card-1'),
-                        document.getElementById('wf-card-2'),
-                        document.getElementById('wf-card-3'),
-                        document.getElementById('wf-card-4')
-                    ];
-                    
-                    let enterDelay = 0;
-                    cards.forEach((card) => {
-                        setTimeout(() => {
-                            card.classList.add('wf-enter');
-                        }, enterDelay);
-                        enterDelay += 300;
-                    });
-                    
-                    
-                    
-                    setTimeout(() => {
-                        let paintDelay = 0;
-                        cards.forEach(card => {
-                            setTimeout(() => {
-                                card.classList.add('painted');
-                            }, paintDelay);
-                            paintDelay += 400; 
-                        });
-                    }, enterDelay + 400);
-
-                    wfObserver.unobserve(entries[0].target);
-                }
-            }, { threshold: 0.2 });
-            
-            if(wfContainer) wfObserver.observe(wfContainer);
-
-
-            
-            const accordions = document.querySelectorAll('.faq-item');
-            accordions.forEach(acc => {
-                const btn = acc.querySelector('button');
-                const content = acc.querySelector('.faq-content');
-
-                btn.addEventListener('click', () => {
-                    const isOpen = acc.classList.contains('active');
-
-                    
-                    accordions.forEach(a => {
-                        a.classList.remove('active');
-                        const c = a.querySelector('.faq-content');
-                        c.style.maxHeight = '0px';
-                        c.style.opacity = '0';
-                    });
-
-                    
-                    if (!isOpen) {
-                        acc.classList.add('active');
-                        content.style.maxHeight = content.scrollHeight + 'px';
-                        content.style.opacity = '1';
-                    }
-                });
-            });
-
-            // Inquiry Form & Success Modal logic
-            const form = document.getElementById('consultation-form');
-            const modal = document.getElementById('success-modal');
-            const closeBtn = document.getElementById('close-modal-btn');
-
-            if(form && modal && closeBtn) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault(); 
-                    modal.classList.add('show');
-                    form.reset();
-                });
-
-                closeBtn.addEventListener('click', () => {
-                    modal.classList.remove('show');
-                });
-
-                modal.addEventListener('click', (e) => {
-                    if(e.target === modal) {
-                        modal.classList.remove('show');
-                    }
-                });
-            }
-
-            // Privacy Modal logic
-            const privacyBtn = document.getElementById('btn-privacy-detail');
-            const privacyModal = document.getElementById('privacy-modal');
-            const closePrivacyBtn = document.getElementById('close-privacy-btn');
-            const confirmPrivacyBtn = document.getElementById('confirm-privacy-btn');
-
-            if (privacyBtn && privacyModal) {
-                privacyBtn.addEventListener('click', () => {
-                    privacyModal.classList.add('show');
-                });
-
-                const hidePrivacy = () => {
-                    privacyModal.classList.remove('show');
-                };
-
-                if (closePrivacyBtn) closePrivacyBtn.addEventListener('click', hidePrivacy);
-                if (confirmPrivacyBtn) confirmPrivacyBtn.addEventListener('click', hidePrivacy);
-
-                // Hide when clicking outside the modal card
-                privacyModal.addEventListener('click', (e) => {
-                    if (e.target === privacyModal) {
-                        hidePrivacy();
-                    }
-                });
-            }
-
-            // [통합] 모바일 드로어 바깥 클릭 시 닫기 & 모달 제어
-            document.addEventListener('click', (e) => {
-                // 1. 모바일 드로어 닫기 (nav 바깥 클릭 시)
-                const drawerEl = document.getElementById('mobile-drawer');
-                if (drawerEl) {
-                    const isMenuOpen = drawerEl.style.height !== '0px' && drawerEl.style.height !== '';
-                    if (isMenuOpen && !e.target.closest('nav')) {
-                        toggleMobileMenu();
-                    }
-                }
-
-                // 2. 모달 열기 (modal-trigger 클릭 시)
-                const trigger = e.target.closest('.modal-trigger');
-                if (trigger) {
-                    e.preventDefault();
-                    const targetId = trigger.getAttribute('data-target');
-                    const modal = document.getElementById(targetId);
-                    if (modal) {
-                        modal.classList.add('show');
-                        modal.style.opacity = '1';
-                        modal.style.visibility = 'visible';
-                        document.body.style.overflow = 'hidden';
-                    }
-                    return;
-                }
-
-                // 3. 모달 닫기 (X 버튼 클릭 시)
-                const closeBtn = e.target.closest('.modal-close, .modal-close-action');
-                if (closeBtn) {
-                    e.preventDefault();
-                    const modal = closeBtn.closest('.modal-overlay');
-                    if (modal) {
-                        modal.classList.remove('show');
-                        modal.style.opacity = '0';
-                        modal.style.visibility = 'hidden';
-                        document.body.style.overflow = '';
-                    }
-                    return;
-                }
-
-                // 4. 모달 닫기 (바깥 배경 overlay 클릭 시)
-                const overlay = e.target;
-                if (overlay && overlay.classList.contains('modal-overlay')) {
-                    overlay.classList.remove('show');
-                    overlay.style.opacity = '0';
-                    overlay.style.visibility = 'hidden';
-                    document.body.style.overflow = '';
-                }
-            });
-        });
-
-        // 모바일 메뉴 addEventListener 방식 (personal.html 통일)
-        const _mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        if (_mobileMenuBtn) {
-            _mobileMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleMobileMenu();
-            });
-        }
-
-        function toggleMobileMenu() {
-            const drawer = document.getElementById('mobile-drawer');
-            const mobileBtn = document.getElementById('mobile-menu-btn');
-            if (!drawer) return;
-            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
-
-            if (isMenuOpen) {
-                drawer.style.height = '0px';
-                drawer.style.opacity = '0';
-                if (mobileBtn) mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-            } else {
-                drawer.style.height = 'auto';
-                const autoHeight = drawer.scrollHeight + 'px';
-                drawer.style.height = '0px';
-                
-                drawer.style.height = autoHeight;
-                drawer.style.opacity = '1';
-                if (mobileBtn) mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6" style="color: #0f172a;"></i>';
-            }
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        }
-
-
-    </script>
-
-    <!-- 🎯 [신설] 문의하기 팝업 모달 (Menu_3.html 연동) -->
+    <!-- 문의하기 팝업 모달 -->
     <div id="modal-contact"
         class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
         style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;">
@@ -996,22 +526,22 @@
                 onsubmit="event.preventDefault(); this.closest('.modal-overlay').classList.remove('show'); document.body.style.overflow = ''; alert('문의가 성공적으로 접수되었습니다.');">
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1">기관명</label>
-                    <input type="text" required=""
+                    <input type="text" required
                         class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1">이름</label>
-                    <input type="text" required=""
+                    <input type="text" required
                         class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1">이메일</label>
-                    <input type="email" required=""
+                    <input type="email" required
                         class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1">상담 의뢰 내용</label>
-                    <textarea required="" rows="4"
+                    <textarea required rows="4"
                         class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm resize-none"></textarea>
                 </div>
                 <button type="submit"
@@ -1022,4 +552,6 @@
         </div>
     </div>
 
-</body></html>
+</body>
+
+</html>

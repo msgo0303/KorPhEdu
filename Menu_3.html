@@ -36,70 +36,11 @@
         }
     </script>
 
-    <style vid="9">
-        body {
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .break-keep {
-            word-break: keep-all;
-        }
-
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-
-        .hero-text {
-            opacity: 0;
-            transform: translateY(2rem);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .hero-text.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-
-        .modal-overlay {
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .modal-overlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-card {
-            transform: scale(0.95);
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .modal-overlay.show .modal-card {
-            transform: scale(1);
-        }
-    </style>
+    <!-- 외부 분리 CSS 파일 연결 -->
+    <link rel="stylesheet" href="style.css?v=1.0.2">
+    
+    <!-- 외부 분리 JavaScript 파일 연결 (defer) -->
+    <script src="script.js?v=1.0.2" defer></script>
 </head>
 
 <body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-teal selection:text-white"
@@ -107,10 +48,10 @@
 
 
     <nav class="fixed w-full z-50 top-0 bg-white shadow-sm py-4 transition-all duration-300" id="navbar" vid="11">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center relative z-50" id="nav-container" vid="12">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-50" id="nav-container" vid="12">
             <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'" vid="13">
-                <img src="images/logo.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" vid="nav-logo-img">
-                <span class="text-navy font-bold tracking-tight text-lg" vid="16">한국자기이해교육원</span>
+                <img src="images/logo.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" id="nav-logo-box" vid="nav-logo-img">
+                <span class="text-navy font-bold tracking-tight text-lg" id="nav-brand" vid="16">한국자기이해교육원</span>
             </div>
             <div class="hidden md:flex gap-8 items-center" vid="17">
                 <a href="Menu_1.html"
@@ -392,6 +333,7 @@
 
         <div id="modal-member-1"
             class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+            style="display: none; opacity: 0; visibility: hidden;"
             vid="138">
             <div class="modal-card bg-white rounded-2xl max-w-2xl w-full shadow-2xl relative overflow-visible"
                 vid="139">
@@ -434,6 +376,7 @@
 
         <div id="modal-member-2"
             class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+            style="display: none; opacity: 0; visibility: hidden;"
             vid="159">
             <div class="modal-card bg-white rounded-2xl max-w-2xl w-full shadow-2xl relative overflow-visible"
                 vid="160">
@@ -476,6 +419,7 @@
 
         <div id="modal-member-3"
             class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+            style="display: none; opacity: 0; visibility: hidden;"
             vid="180">
             <div class="modal-card bg-white rounded-2xl max-w-2xl w-full shadow-2xl relative overflow-visible"
                 vid="181">
@@ -518,6 +462,7 @@
 
         <div id="modal-member-4"
             class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+            style="display: none; opacity: 0; visibility: hidden;"
             vid="201">
             <div class="modal-card bg-white rounded-2xl max-w-2xl w-full shadow-2xl relative overflow-visible"
                 vid="202">
@@ -560,6 +505,7 @@
 
         <div id="modal-search"
             class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+            style="display: none; opacity: 0; visibility: hidden;"
             vid="222">
             <div class="modal-card bg-white rounded-2xl max-w-md w-full shadow-2xl p-8 text-center relative overflow-visible" vid="223">
                 <button
@@ -590,6 +536,7 @@
 
         <div id="modal-contact"
             class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-6"
+            style="display: none; opacity: 0; visibility: hidden;"
             vid="232">
             <div class="modal-card bg-white rounded-2xl max-w-lg w-full shadow-2xl relative overflow-visible"
                 vid="233">
@@ -646,9 +593,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
     <script vid="253">
-
-        lucide.createIcons();
-        // ⚠️ [필수] 본인의 Firebase 설정 정보로 알맞게 채워넣어 주세요!
+        // Firebase 설정 정보
         const firebaseConfig = {
             apiKey: "AIzaSy...",
             authDomain: "...",
@@ -659,172 +604,10 @@
             appId: "..."
         };
 
-        // Firebase 활성화
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-
-        // 코드를 확인하고 personal.html로 다이렉트 리다이렉트 시키는 함수
-        function searchAndRedirectExpert() {
-            const codeInput = document.getElementById('expert-search-input').value.trim();
-
-            if (!codeInput || codeInput.length !== 6) {
-                alert('올바른 6자리 인증 코드를 입력해 주세요.');
-                return;
-            }
-
-            // Firebase 데이터베이스 'approved_users/입력코드' 경로 체크
-            database.ref('approved_users/' + codeInput).once('value')
-                .then((snapshot) => {
-                    const data = snapshot.val();
-
-                    if (data) {
-                        // 검증 완료 시 주소창 뒤에 파라미터를 붙여 personal.html 페이지로 즉시 유저를 보냄
-                        location.href = 'personal.html?code=' + codeInput;
-                    } else {
-                        alert('유효하지 않은 코드이거나 아직 관리자 승인이 완료되지 않은 상태입니다.');
-                    }
-                })
-                .catch((error) => {
-                    console.error("서버 연결 실패: ", error);
-                    alert("서버 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.");
-                });
+        // Firebase 초기화 진행
+        if (typeof firebase !== 'undefined') {
+            firebase.initializeApp(firebaseConfig);
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-
-            setTimeout(() => {
-                const title = document.getElementById('hero-title');
-                const subtitle = document.getElementById('hero-subtitle');
-                const windowImg = document.getElementById('hero-window');
-
-                if (title) title.classList.add('show');
-                setTimeout(() => { if (subtitle) subtitle.classList.add('show'); }, 200);
-                setTimeout(() => { if (windowImg) windowImg.classList.add('show'); }, 400);
-            }, 100);
-
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.reveal').forEach(el => {
-                observer.observe(el);
-            });
-        });
-
-
-        const parallaxImg = document.getElementById('parallax-img');
-        let ticking = false;
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrolled = window.scrollY;
-
-                    if (scrolled < window.innerHeight && parallaxImg) {
-                        // 🎯 scale(1.25)로 패럴랙스 공간을 늘리고 스크롤 계수를 0.06으로 줄여서 하단 잘림을 완벽 방지
-                        parallaxImg.style.transform = `translateY(${-scrolled * 0.06}px) scale(1.25)`;
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
-
-
-        // [통합] 모바일 드로어 바깥 클릭 시 닫기 & 모달 제어
-        document.addEventListener('click', (e) => {
-            // 1. 모바일 드로어 닫기 (nav 바깥 클릭 시)
-            const drawerEl = document.getElementById('mobile-drawer');
-            if (drawerEl) {
-                const isMenuOpen = drawerEl.style.height !== '0px' && drawerEl.style.height !== '';
-                if (isMenuOpen && !e.target.closest('nav')) {
-                    toggleMobileMenu();
-                }
-            }
-
-            // 2. 모달 열기 (modal-trigger 클릭 시)
-            const trigger = e.target.closest('.modal-trigger');
-            if (trigger) {
-                e.preventDefault();
-                const targetId = trigger.getAttribute('data-target');
-                const modal = document.getElementById(targetId);
-                if (modal) {
-                    modal.classList.add('show');
-                    modal.style.opacity = '1';
-                    modal.style.visibility = 'visible';
-                    document.body.style.overflow = 'hidden';
-                }
-                return;
-            }
-
-            // 3. 모달 닫기 (X 버튼 클릭 시)
-            const closeBtn = e.target.closest('.modal-close, .modal-close-action');
-            if (closeBtn) {
-                e.preventDefault();
-                const modal = closeBtn.closest('.modal-overlay');
-                if (modal) {
-                    modal.classList.remove('show');
-                    modal.style.opacity = '0';
-                    modal.style.visibility = 'hidden';
-                    document.body.style.overflow = '';
-                }
-                return;
-            }
-
-            // 4. 모달 닫기 (바깥 배경 overlay 클릭 시)
-            const overlay = e.target;
-            if (overlay && overlay.classList.contains('modal-overlay')) {
-                overlay.classList.remove('show');
-                overlay.style.opacity = '0';
-                overlay.style.visibility = 'hidden';
-                document.body.style.overflow = '';
-            }
-        });
-
-        // 모바일 메뉴 addEventListener 방식 (personal.html 통일)
-        const _mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        if (_mobileMenuBtn) {
-            _mobileMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleMobileMenu();
-            });
-        }
-
-        function toggleMobileMenu() {
-            const drawer = document.getElementById('mobile-drawer');
-            const mobileBtn = document.getElementById('mobile-menu-btn');
-            if (!drawer) return;
-            const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
-
-            if (isMenuOpen) {
-                drawer.style.height = '0px';
-                drawer.style.opacity = '0';
-                if (mobileBtn) mobileBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
-            } else {
-                drawer.style.height = 'auto';
-                const autoHeight = drawer.scrollHeight + 'px';
-                drawer.style.height = '0px';
-
-                drawer.style.height = autoHeight;
-                drawer.style.opacity = '1';
-                if (mobileBtn) mobileBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6" style="color: #0f172a;"></i>';
-            }
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        }
-
-
     </script>
 
 </body>
