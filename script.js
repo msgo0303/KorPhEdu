@@ -554,6 +554,7 @@ function refreshNavSkin() {
     if (!drawer) return;
     const isMenuOpen = drawer.style.height !== '0px' && drawer.style.height !== '';
     const links = document.querySelectorAll('.mobile-link');
+    const mobTriggerBtn = document.querySelector('#mobile-drawer button.modal-trigger');
 
     const path = window.location.pathname;
     
@@ -592,6 +593,10 @@ function refreshNavSkin() {
             }
         });
 
+        if (mobTriggerBtn) {
+            mobTriggerBtn.className = "modal-trigger text-slate-600 hover:text-navy text-base font-medium transition-colors py-1 text-left w-full cursor-pointer";
+        }
+
         if (navLogoBox) navLogoBox.src = 'images/logo.png';
         if (mobileBtn) mobileBtn.style.color = '#475569';
         return;
@@ -613,6 +618,10 @@ function refreshNavSkin() {
                     el.className = "mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1 w-fit";
                 }
             });
+            
+            if (mobTriggerBtn) {
+                mobTriggerBtn.className = "modal-trigger text-slate-600 hover:text-navy text-base font-medium transition-colors py-1 text-left w-full cursor-pointer";
+            }
             
             if (mobileBtn) mobileBtn.style.color = '#0f172a';
         } else {
@@ -637,8 +646,8 @@ function refreshNavSkin() {
 
     } else {
         if (isMenuOpen) {
-            navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-navy/80 backdrop-blur-md shadow-xl";
-            drawer.style.backgroundColor = 'transparent';
+            navbar.className = "fixed w-full z-40 top-0 transition-all duration-300 bg-navy/95 backdrop-blur-md shadow-xl";
+            drawer.style.backgroundColor = 'rgba(30, 58, 138, 0.75)';
             drawerContent.style.borderColor = 'rgba(255, 255, 255, 0.1)';
             
             // 모바일 드로어 활성/비활성 클래스 (어두운 투명 배경)
@@ -651,6 +660,10 @@ function refreshNavSkin() {
                     el.className = "mobile-link text-white/80 hover:text-white text-base font-medium transition-colors py-1 w-fit";
                 }
             });
+
+            if (mobTriggerBtn) {
+                mobTriggerBtn.className = "modal-trigger text-white/80 hover:text-white text-base font-medium transition-colors py-1 text-left w-full cursor-pointer";
+            }
             
             if (mobileBtn) mobileBtn.style.color = '#ffffff';
             if (navBrand) navBrand.className = "text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors";
