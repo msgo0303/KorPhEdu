@@ -1885,7 +1885,7 @@ function initBusinessSub3() {
         },
         {
             title: "우수 강사 인증 배지",
-            image: "https://images.unsplash.com/photo-1521791136364-7286472b5899?q=80&w=1000&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop",
             desc: "우수 강사 인증 배지는 최우수 교육 만족도를 달성하거나 강사 프로필에 지속적인 기여를 약속하는 파트너들을 위한 교육원의 연간 우수 등급 라이선스 공식 표식입니다. 이 인증 마크는 개인 비즈니스 마케팅 및 강의 위임 시 교육원이 공식 품질을 보증하는 징표 역할을 하여 신뢰를 공고히 합니다."
         }
     ];

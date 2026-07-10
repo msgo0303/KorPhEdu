@@ -6,6 +6,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 통합 대시보드</title>
     <style>
+        /* ── 로그인 오버레이 ── */
+        #login-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #0f766e 100%);
+            font-family: 'Segoe UI', sans-serif;
+        }
+        #login-box {
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 20px;
+            padding: 48px 40px 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+            text-align: center;
+            color: white;
+        }
+        #login-box .login-logo {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+        #login-box h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0 0 4px;
+            letter-spacing: -0.3px;
+        }
+        #login-box .login-sub {
+            font-size: 12px;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 32px;
+        }
+        #login-box input {
+            width: 100%;
+            padding: 13px 16px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        #login-box input::placeholder { color: rgba(255,255,255,0.4); }
+        #login-box input:focus { border-color: rgba(255,255,255,0.6); }
+        #login-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(90deg, #0f766e, #1e3a8a);
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 4px;
+            transition: opacity 0.2s, transform 0.15s;
+            letter-spacing: 0.5px;
+        }
+        #login-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        #login-btn:active { transform: translateY(0); }
+        #login-error {
+            color: #fca5a5;
+            font-size: 13px;
+            margin-top: 12px;
+            min-height: 18px;
+        }
+        #login-loading {
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            margin-top: 12px;
+            display: none;
+        }
+        /* ── 대시보드 헤더 바 ── */
+        #dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #1e3a8a;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+        }
+        #dashboard-header h1 {
+            color: white;
+            margin: 0;
+            font-size: 18px;
+        }
+        #logout-btn {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #logout-btn:hover { background: rgba(255,255,255,0.25); }
+        /* 대시보드는 기본적으로 숨김 */
+        #dashboard-wrap { display: none; }
         body {
             font-family: sans-serif;
             padding: 20px;
@@ -185,7 +297,27 @@
 
 <body>
 
-    <h1>📋 한국자기이해교육원 전문가/예약 통합 관리자 대시보드</h1>
+    <!-- ── 로그인 오버레이 ── -->
+    <div id="login-overlay">
+        <div id="login-box">
+            <div class="login-logo">🔐</div>
+            <h2>관리자 전용 페이지</h2>
+            <p class="login-sub">한국자기이해교육원 내부 관리자만 접근 가능합니다</p>
+            <input type="email" id="login-email" placeholder="이메일 주소" autocomplete="username">
+            <input type="password" id="login-password" placeholder="비밀번호" autocomplete="current-password">
+            <button id="login-btn" onclick="doLogin()">로그인</button>
+            <div id="login-error"></div>
+            <div id="login-loading">인증 확인 중...</div>
+        </div>
+    </div>
+
+    <!-- ── 대시보드 전체 래퍼 (인증 후 표시) ── -->
+    <div id="dashboard-wrap">
+
+    <div id="dashboard-header">
+        <h1>📋 한국자기이해교육원 전문가/예약 통합 관리자 대시보드</h1>
+        <button id="logout-btn" onclick="doLogout()">🚪 로그아웃</button>
+    </div>
     
     <!-- 대분류 탭 바 -->
     <div class="main-tabs-container" id="main-tabs-container">
@@ -220,72 +352,118 @@
         <div id="approved-user-list">등록된 회원 데이터를 불러오는 중...</div>
     </div>
 
+    </div><!-- /dashboard-wrap -->
+
     <!-- Firebase SDK (v9 호환 모드 라이브러리) -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 
     <script>
         // Firebase 설정 정보
         const firebaseConfig = {
+            apiKey: "AIzaSyA5iIQlsBoXxi5yrZUqfblEz9jZOUtBPm8",
             authDomain: "prototype-ksui.firebaseapp.com",
             databaseURL: "https://prototype-ksui-default-rtdb.asia-southeast1.firebasedatabase.app",
             storageBucket: "prototype-ksui.firebasestorage.app",
         };
 
-        // Firebase 초기화
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
+        const auth = firebase.auth();
 
-        const userListDiv = document.getElementById('user-list');
-        const bookingListDiv = document.getElementById('booking-list');
-        const approvedUserListDiv = document.getElementById('approved-user-list');
-
-        // 지원하는 지역 목록 정의
+        // ── 전역 상태 변수 ──
         const locations = [
-            "사당", "안양", "신림", "신사", "금천", 
-            "군포", "인덕원", "잠실", "양재", "약수", 
+            "사당", "안양", "신림", "신사", "금천",
+            "군포", "인덕원", "잠실", "양재", "약수",
             "서울시흥", "서울역", "새신자", "대학"
         ];
-        
-        let currentMainTab = 'pending'; // 'pending' | 'approved'
+        let currentMainTab = 'pending';
         let currentTab = '전체';
-        let bookingSearchQuery = ''; // 예약 이름 검색어
-
-        // 데이터 보관소
+        let bookingSearchQuery = '';
         let pendingUsers = {};
         let bookings = {};
         let approvedUsers = {};
+        let dbListenersStarted = false;
 
-        // 대분류 탭 전환 로직
-        function switchMainTab(tab) {
-            currentMainTab = tab;
-            
-            const btnPending = document.getElementById('main-tab-pending');
-            const btnApproved = document.getElementById('main-tab-approved');
-            const pendingSection = document.getElementById('pending-section');
-            const approvedSection = document.getElementById('approved-section');
+        // ── DOM 참조 ──
+        const userListDiv       = document.getElementById('user-list');
+        const bookingListDiv    = document.getElementById('booking-list');
+        const approvedUserListDiv = document.getElementById('approved-user-list');
 
-            if (tab === 'pending') {
-                btnPending.classList.add('active');
-                btnApproved.classList.remove('active');
-                pendingSection.style.display = 'block';
-                approvedSection.style.display = 'none';
-                renderPendingUsers();
-                renderBookings();
-            } else {
-                btnPending.classList.remove('active');
-                btnApproved.classList.add('active');
-                pendingSection.style.display = 'none';
-                approvedSection.style.display = 'block';
-                renderApprovedUsers();
-            }
+        // ── 로그인 / 로그아웃 ──
+        function doLogin() {
+            const email  = document.getElementById('login-email').value.trim();
+            const pw     = document.getElementById('login-password').value;
+            const errEl  = document.getElementById('login-error');
+            const loadEl = document.getElementById('login-loading');
+            errEl.textContent = '';
+            if (!email || !pw) { errEl.textContent = '이메일과 비밀번호를 모두 입력해 주세요.'; return; }
+            loadEl.style.display = 'block';
+            auth.signInWithEmailAndPassword(email, pw)
+                .catch(err => {
+                    loadEl.style.display = 'none';
+                    const msg = {
+                        'auth/user-not-found':   '등록되지 않은 이메일입니다.',
+                        'auth/wrong-password':   '비밀번호가 올바르지 않습니다.',
+                        'auth/invalid-email':    '이메일 형식이 올바르지 않습니다.',
+                        'auth/too-many-requests':'시도 횟수 초과. 잠시 후 다시 시도해 주세요.',
+                        'auth/invalid-credential':'이메일 또는 비밀번호가 올바르지 않습니다.',
+                    };
+                    errEl.textContent = msg[err.code] || ('오류: ' + err.message);
+                });
         }
 
-        // 탭 초기화 및 이벤트 리스너 설정
+        function doLogout() {
+            if (confirm('로그아웃 하시겠습니까?')) auth.signOut();
+        }
+
+        // 엔터키 지원
+        document.getElementById('login-password').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+        document.getElementById('login-email').addEventListener('keydown',    e => { if (e.key === 'Enter') document.getElementById('login-password').focus(); });
+
+        // ── 인증 상태 감시 ──
+        auth.onAuthStateChanged(user => {
+            const overlay = document.getElementById('login-overlay');
+            const dash    = document.getElementById('dashboard-wrap');
+            const loadEl  = document.getElementById('login-loading');
+            if (user) {
+                overlay.style.display = 'none';
+                dash.style.display    = 'block';
+                loadEl.style.display  = 'none';
+                if (!dbListenersStarted) {
+                    startDatabaseListeners();
+                    dbListenersStarted = true;
+                }
+                initTabs();
+            } else {
+                overlay.style.display = 'flex';
+                dash.style.display    = 'none';
+                loadEl.style.display  = 'none';
+            }
+        });
+
+        // ── DB 리스너 등록 (최초 1회) ──
+        function startDatabaseListeners() {
+            database.ref('pending_users').on('value', snapshot => {
+                pendingUsers = snapshot.val() || {};
+                if (currentMainTab === 'pending') renderPendingUsers();
+            });
+            database.ref('bookings').on('value', snapshot => {
+                bookings = snapshot.val() || {};
+                if (currentMainTab === 'pending') renderBookings();
+            });
+            database.ref('approved_users').on('value', snapshot => {
+                approvedUsers = snapshot.val() || {};
+                if (currentMainTab === 'pending') { renderPendingUsers(); renderBookings(); }
+                else { renderApprovedUsers(); }
+            });
+        }
+
+        // ── 탭 초기화 ──
         function initTabs() {
             const tabsContainer = document.getElementById('tabs-container');
             tabsContainer.innerHTML = '';
-
             const allTabs = ['전체', ...locations, '기타/미분류'];
             allTabs.forEach(loc => {
                 const btn = document.createElement('button');
@@ -295,99 +473,69 @@
                     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     currentTab = loc;
-                    
-                    if (currentMainTab === 'pending') {
-                        renderPendingUsers();
-                        renderBookings();
-                    } else {
-                        renderApprovedUsers();
-                    }
+                    if (currentMainTab === 'pending') { renderPendingUsers(); renderBookings(); }
+                    else { renderApprovedUsers(); }
                 };
                 tabsContainer.appendChild(btn);
             });
         }
 
-        // 💡 구글 드라이브 이미지 공유 URL 최적화 헬퍼 함수
+        // ── 대분류 탭 전환 ──
+        window.switchMainTab = function(tab) {
+            currentMainTab = tab;
+            const btnPending   = document.getElementById('main-tab-pending');
+            const btnApproved  = document.getElementById('main-tab-approved');
+            const pendingSection  = document.getElementById('pending-section');
+            const approvedSection = document.getElementById('approved-section');
+            if (tab === 'pending') {
+                btnPending.classList.add('active');
+                btnApproved.classList.remove('active');
+                pendingSection.style.display  = 'block';
+                approvedSection.style.display = 'none';
+                renderPendingUsers();
+                renderBookings();
+            } else {
+                btnPending.classList.remove('active');
+                btnApproved.classList.add('active');
+                pendingSection.style.display  = 'none';
+                approvedSection.style.display = 'block';
+                renderApprovedUsers();
+            }
+        };
+
+        // ── 구글 드라이브 이미지 URL 최적화 ──
         function optimizeImageUrl(url) {
             if (!url) return '';
             if (url.includes('drive.google.com')) {
-                let fileId = '';
-                const fileDMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+                const fileDMatch  = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
                 const idParamMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-                
-                if (fileDMatch && fileDMatch[1]) {
-                    fileId = fileDMatch[1];
-                } else if (idParamMatch && idParamMatch[1]) {
-                    fileId = idParamMatch[1];
-                }
-                
-                if (fileId) {
-                    return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
-                }
+                const fileId = (fileDMatch && fileDMatch[1]) || (idParamMatch && idParamMatch[1]);
+                if (fileId) return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
             }
             return url;
         }
 
-        // 예약 이름 검색 입력 처리
-        function filterBookingsByName() {
+        // ── 예약 이름 검색 ──
+        window.filterBookingsByName = function() {
             const input = document.getElementById('booking-search-input');
-            if (input) {
-                bookingSearchQuery = input.value.trim().toLowerCase();
-                renderBookings();
-            }
-        }
-
-        // 예약 이름 검색 초기화
-        function clearBookingSearch() {
+            if (input) { bookingSearchQuery = input.value.trim().toLowerCase(); renderBookings(); }
+        };
+        window.clearBookingSearch = function() {
             const input = document.getElementById('booking-search-input');
-            if (input) {
-                input.value = '';
-                bookingSearchQuery = '';
-                renderBookings();
-            }
-        }
+            if (input) { input.value = ''; bookingSearchQuery = ''; renderBookings(); }
+        };
 
-        // 1. Firebase pending_users 리스너
-        database.ref('pending_users').on('value', (snapshot) => {
-            pendingUsers = snapshot.val() || {};
-            if (currentMainTab === 'pending') renderPendingUsers();
-        });
-
-        // 2. Firebase bookings 리스너
-        database.ref('bookings').on('value', (snapshot) => {
-            bookings = snapshot.val() || {};
-            if (currentMainTab === 'pending') renderBookings();
-        });
-
-        // 3. Firebase approved_users 리스너
-        database.ref('approved_users').on('value', (snapshot) => {
-            approvedUsers = snapshot.val() || {};
-            if (currentMainTab === 'pending') {
-                renderPendingUsers();
-                renderBookings();
-            } else {
-                renderApprovedUsers();
-            }
-        });
-
-        // 대기 회원 목록 렌더링
+        // ── 대기 회원 렌더링 ──
         function renderPendingUsers() {
             userListDiv.innerHTML = '';
             let count = 0;
-
             for (let id in pendingUsers) {
                 const user = pendingUsers[id];
                 const userLoc = (user.location || '').trim();
-
-                // 지역 필터 적용
                 if (currentTab !== '전체') {
-                    if (currentTab === '기타/미분류') {
-                        if (locations.includes(userLoc)) continue;
-                    } else {
-                        if (userLoc !== currentTab) continue;
-                    }
+                    if (currentTab === '기타/미분류') { if (locations.includes(userLoc)) continue; }
+                    else { if (userLoc !== currentTab) continue; }
                 }
-
                 count++;
                 const card = document.createElement('div');
                 card.className = 'user-card';
@@ -395,155 +543,109 @@
                     <div style="padding: 20px;">
                         <h3>👤 ${user.name} 님의 데이터 수정/승인</h3>
                         <p style="font-size:12px; color:#888;">[내부보관] 지역: ${user.location || '미지정'} | 직책: ${user.position || '미지정'}</p>
-                        
                         <label>특정 코드 (생년월일)</label>
                         <input type="text" id="code-${id}" value="${user.code || ''}">
-     
                         <label>전문분야 (specialty)</label>
                         <input type="text" id="specialty-${id}" value="${user.specialty || ''}">
-     
                         <label>경력 (experience)</label>
                         <textarea id="experience-${id}" rows="3">${user.experience || ''}</textarea>
-     
                         <label>자기소개 (introduce)</label>
                         <textarea id="introduce-${id}" rows="4">${user.introduce || ''}</textarea>
-     
                         <label>제출된 이미지 주소 (imageUrl)</label>
                         <input type="text" id="image-${id}" value="${user.imageUrl || ''}">
                         ${user.imageUrl ? `<img src="${optimizeImageUrl(user.imageUrl)}" class="user-image" alt="미리보기">` : ''}
-     
                         <div class="btn-group">
-                            <button class="btn-save" onclick="updateUser('${id}')">✏️ 내용 수정 보관</button>
+                            <button class="btn-save"    onclick="updateUser('${id}')">✏️ 내용 수정 보관</button>
                             <button class="btn-approve" onclick="approveUser('${id}')">✅ 최종 승인 (사이트 반영)</button>
-                            <button class="btn-reject" onclick="rejectUser('${id}')">❌ 제외 (삭제)</button>
+                            <button class="btn-reject"  onclick="rejectUser('${id}')">❌ 제외 (삭제)</button>
                         </div>
                     </div>
                 `;
                 userListDiv.appendChild(card);
             }
-
-            if (count === 0) {
-                userListDiv.innerHTML = `<p>현재 '${currentTab}' 지역의 승인 대기 회원이 없습니다. 😎</p>`;
-            }
+            if (count === 0) userListDiv.innerHTML = `<p>현재 '${currentTab}' 지역의 승인 대기 회원이 없습니다. 😎</p>`;
         }
 
-        // 등록 완료 전문가 회원 목록 렌더링
+        // ── 등록 완료 회원 렌더링 ──
         function renderApprovedUsers() {
             approvedUserListDiv.innerHTML = '';
             let count = 0;
-
             for (let code in approvedUsers) {
                 const user = approvedUsers[code];
                 const userLoc = (user.location || '').trim();
-
-                // 지역 필터 적용
                 if (currentTab !== '전체') {
-                    if (currentTab === '기타/미분류') {
-                        if (locations.includes(userLoc)) continue;
-                    } else {
-                        if (userLoc !== currentTab) continue;
-                    }
+                    if (currentTab === '기타/미분류') { if (locations.includes(userLoc)) continue; }
+                    else { if (userLoc !== currentTab) continue; }
                 }
-
                 count++;
                 const card = document.createElement('div');
                 card.className = 'user-card';
-                card.style.borderLeft = '5px solid #1E3A8A';
-                card.style.padding = '0';
-                card.style.overflow = 'hidden';
+                card.style.cssText = 'border-left:5px solid #1E3A8A; padding:0; overflow:hidden;';
                 card.innerHTML = `
-                    <div onclick="toggleUserBody('${code}')" style="cursor: pointer; padding: 15px 20px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; user-select: none;">
-                        <span style="font-weight: bold; color: #1E3A8A; font-size: 16px;">
+                    <div onclick="toggleUserBody('${code}')" style="cursor:pointer; padding:15px 20px; background:#f8fafc; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; user-select:none;">
+                        <span style="font-weight:bold; color:#1E3A8A; font-size:16px;">
                             👥 [등록 회원] ${user.name || '이름 없음'} (코드: ${code}) | [소속: ${user.location || '미지정'} - ${user.position || '미지정'}]
                         </span>
-                        <span id="app-arrow-${code}" style="font-size: 16px; color: #64748b; font-weight: bold;">▼</span>
+                        <span id="app-arrow-${code}" style="font-size:16px; color:#64748b; font-weight:bold;">▼</span>
                     </div>
-                    
-                    <div class="user-card-body" id="app-body-${code}" style="display: none; padding: 20px;">
+                    <div class="user-card-body" id="app-body-${code}" style="display:none; padding:20px;">
                         <label>이름</label>
                         <input type="text" id="app-name-${code}" value="${user.name || ''}">
-
                         <label>소속 지역</label>
                         <input type="text" id="app-loc-${code}" value="${user.location || ''}">
-
                         <label>직책</label>
                         <input type="text" id="app-pos-${code}" value="${user.position || ''}">
-
                         <label>전문분야 (specialty)</label>
                         <input type="text" id="app-specialty-${code}" value="${user.specialty || ''}">
-
                         <label>경력 (experience)</label>
                         <textarea id="app-experience-${code}" rows="3">${user.experience || ''}</textarea>
-
                         <label>자기소개 (introduce)</label>
                         <textarea id="app-introduce-${code}" rows="4">${user.introduce || ''}</textarea>
-
                         <label>이미지 주소 (imageUrl)</label>
                         <input type="text" id="app-image-${code}" value="${user.imageUrl || ''}">
                         ${user.imageUrl ? `<img src="${optimizeImageUrl(user.imageUrl)}" class="user-image" alt="프로필 미리보기">` : ''}
-
                         <div class="btn-group">
-                            <button class="btn-save" onclick="updateApprovedUser('${code}')">💾 정보 수정 저장</button>
+                            <button class="btn-save"   onclick="updateApprovedUser('${code}')">💾 정보 수정 저장</button>
                             <button class="btn-reject" onclick="deleteApprovedUser('${code}')">🗑️ 등록 삭제 (제외)</button>
                         </div>
                     </div>
                 `;
                 approvedUserListDiv.appendChild(card);
             }
-
-            if (count === 0) {
-                approvedUserListDiv.innerHTML = `<p>현재 '${currentTab}' 지역에 등록된 전문가 회원이 없습니다. 👥</p>`;
-            }
+            if (count === 0) approvedUserListDiv.innerHTML = `<p>현재 '${currentTab}' 지역에 등록된 전문가 회원이 없습니다. 👥</p>`;
         }
 
-        // 등록된 회원 정보 펼치기/접기 토글
-        function toggleUserBody(code) {
-            const body = document.getElementById(`app-body-${code}`);
+        // ── 접기/펼치기 ──
+        window.toggleUserBody = function(code) {
+            const body  = document.getElementById(`app-body-${code}`);
             const arrow = document.getElementById(`app-arrow-${code}`);
             if (body && arrow) {
-                if (body.style.display === 'none') {
-                    body.style.display = 'block';
-                    arrow.innerText = '▲';
-                    arrow.style.color = '#1E3A8A';
-                } else {
-                    body.style.display = 'none';
-                    arrow.innerText = '▼';
-                    arrow.style.color = '#64748b';
-                }
+                const isHidden = body.style.display === 'none';
+                body.style.display = isHidden ? 'block' : 'none';
+                arrow.innerText    = isHidden ? '▲' : '▼';
+                arrow.style.color  = isHidden ? '#1E3A8A' : '#64748b';
             }
-        }
+        };
 
-        // 상담 예약 신청 목록 렌더링
+        // ── 예약 렌더링 ──
         function renderBookings() {
             bookingListDiv.innerHTML = '';
             const keys = Object.keys(bookings).reverse();
             let count = 0;
-
             for (let id of keys) {
                 const booking = bookings[id];
-                
-                // 이름 검색어 필터링
                 const bookingName = (booking.userName || '').toLowerCase();
                 if (bookingSearchQuery && !bookingName.includes(bookingSearchQuery)) continue;
-
-                // 예약의 강사 코드로 소속 지역 조회
                 const expertCode = booking.expertCode;
                 const expertInfo = approvedUsers[expertCode];
-                const expertLoc = expertInfo ? (expertInfo.location || '').trim() : '';
-
-                // 지역 필터 적용
+                const expertLoc  = expertInfo ? (expertInfo.location || '').trim() : '';
                 if (currentTab !== '전체') {
-                    if (currentTab === '기타/미분류') {
-                        if (locations.includes(expertLoc)) continue;
-                    } else {
-                        if (expertLoc !== currentTab) continue;
-                    }
+                    if (currentTab === '기타/미분류') { if (locations.includes(expertLoc)) continue; }
+                    else { if (expertLoc !== currentTab) continue; }
                 }
-
                 count++;
                 const date = new Date(booking.submittedAt).toLocaleString('ko-KR');
                 const days = Array.isArray(booking.consDays) ? booking.consDays.join(', ') : booking.consDays;
-
                 const card = document.createElement('div');
                 card.className = 'booking-card';
                 card.innerHTML = `
@@ -559,104 +661,82 @@
                 `;
                 bookingListDiv.appendChild(card);
             }
-
-            if (count === 0) {
-                bookingListDiv.innerHTML = `<p>검색 조건에 부합하는 상담 예약 신청 내역이 없습니다. 😎</p>`;
-            }
+            if (count === 0) bookingListDiv.innerHTML = `<p>검색 조건에 부합하는 상담 예약 신청 내역이 없습니다. 😎</p>`;
         }
 
-        // 대기 회원 내용 수정 보관
-        function updateUser(id) {
-            const updatedData = {
-                code: document.getElementById(`code-${id}`).value,
-                specialty: document.getElementById(`specialty-${id}`).value,
+        // ── DB 쓰기 함수들 ──
+        window.updateUser = function(id) {
+            const data = {
+                code:       document.getElementById(`code-${id}`).value,
+                specialty:  document.getElementById(`specialty-${id}`).value,
                 experience: document.getElementById(`experience-${id}`).value,
-                introduce: document.getElementById(`introduce-${id}`).value,
-                imageUrl: document.getElementById(`image-${id}`).value
+                introduce:  document.getElementById(`introduce-${id}`).value,
+                imageUrl:   document.getElementById(`image-${id}`).value,
             };
-
-            database.ref('pending_users/' + id).update(updatedData)
+            database.ref('pending_users/' + id).update(data)
                 .then(() => alert('수정 내용이 임시 저장되었습니다.'))
-                .catch((err) => alert('오류 발생: ' + err));
-        }
+                .catch(err => alert('오류 발생: ' + err));
+        };
 
-        // 등록 회원 수정 저장
-        function updateApprovedUser(code) {
-            const updatedData = {
-                name: document.getElementById(`app-name-${code}`).value,
-                location: document.getElementById(`app-loc-${code}`).value,
-                position: document.getElementById(`app-pos-${code}`).value,
-                specialty: document.getElementById(`app-specialty-${code}`).value,
+        window.updateApprovedUser = function(code) {
+            const data = {
+                name:       document.getElementById(`app-name-${code}`).value,
+                location:   document.getElementById(`app-loc-${code}`).value,
+                position:   document.getElementById(`app-pos-${code}`).value,
+                specialty:  document.getElementById(`app-specialty-${code}`).value,
                 experience: document.getElementById(`app-experience-${code}`).value,
-                introduce: document.getElementById(`app-introduce-${code}`).value,
-                imageUrl: document.getElementById(`app-image-${code}`).value
+                introduce:  document.getElementById(`app-introduce-${code}`).value,
+                imageUrl:   document.getElementById(`app-image-${code}`).value,
             };
-
-            database.ref('approved_users/' + code).update(updatedData)
+            database.ref('approved_users/' + code).update(data)
                 .then(() => alert('전문가 정보 수정이 완료되었습니다.'))
-                .catch((err) => alert('오류 발생: ' + err));
-        }
+                .catch(err => alert('오류 발생: ' + err));
+        };
 
-        // 최종 승인 (pending -> approved로 복사 후 pending 삭제)
-        function approveUser(id) {
+        window.approveUser = function(id) {
             const code = document.getElementById(`code-${id}`).value;
-
-            if (!code || code.trim() === "") {
-                alert("특정 코드(생년월일)는 비워둘 수 없습니다.");
-                return;
-            }
-
-            database.ref('pending_users/' + id).once('value', (snapshot) => {
+            if (!code || code.trim() === '') { alert('특정 코드(생년월일)는 비워둘 수 없습니다.'); return; }
+            database.ref('pending_users/' + id).once('value', snapshot => {
                 const user = snapshot.val();
-
                 const approvedData = {
-                    name: user.name,
-                    location: user.location || '',
-                    position: user.position || '',
-                    specialty: document.getElementById(`specialty-${id}`).value,
+                    name:       user.name,
+                    location:   user.location   || '',
+                    position:   user.position   || '',
+                    specialty:  document.getElementById(`specialty-${id}`).value,
                     experience: document.getElementById(`experience-${id}`).value,
-                    introduce: document.getElementById(`introduce-${id}`).value,
-                    imageUrl: document.getElementById(`image-${id}`).value
+                    introduce:  document.getElementById(`introduce-${id}`).value,
+                    imageUrl:   document.getElementById(`image-${id}`).value,
                 };
-
                 database.ref('approved_users/' + code).set(approvedData)
-                    .then(() => {
-                        return database.ref('pending_users/' + id).remove();
-                    })
+                    .then(() => database.ref('pending_users/' + id).remove())
                     .then(() => alert('최종 승인되어 사이트에 반영되었습니다!'))
-                    .catch((err) => alert('승인 오류: ' + err));
+                    .catch(err => alert('승인 오류: ' + err));
             });
-        }
+        };
 
-        // 대기 회원 삭제
-        function rejectUser(id) {
+        window.rejectUser = function(id) {
             if (confirm('정말로 이 신청을 대기 목록에서 제외(삭제)하시겠습니까?')) {
                 database.ref('pending_users/' + id).remove()
                     .then(() => alert('제외 처리되었습니다.'))
-                    .catch((err) => alert('제외 오류: ' + err));
+                    .catch(err => alert('제외 오류: ' + err));
             }
-        }
+        };
 
-        // 등록 회원 삭제
-        function deleteApprovedUser(code) {
+        window.deleteApprovedUser = function(code) {
             if (confirm(`정말로 이 전문가 회원(코드: ${code})을 데이터베이스에서 영구 삭제하시겠습니까?`)) {
                 database.ref('approved_users/' + code).remove()
                     .then(() => alert('등록 정보가 삭제되었습니다.'))
-                    .catch((err) => alert('삭제 오류: ' + err));
+                    .catch(err => alert('삭제 오류: ' + err));
             }
-        }
+        };
 
-        // 예약 취소/삭제
-        function deleteBooking(id) {
+        window.deleteBooking = function(id) {
             if (confirm('정말로 이 예약 신청 기록을 삭제하시겠습니까?')) {
                 database.ref('bookings/' + id).remove()
                     .then(() => alert('예약 내역이 취소/삭제되었습니다.'))
-                    .catch((err) => alert('삭제 오류: ' + err));
+                    .catch(err => alert('삭제 오류: ' + err));
             }
-        }
-
-        // 초기화 호출
-        initTabs();
+        };
     </script>
 </body>
 
