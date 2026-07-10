@@ -568,7 +568,7 @@ function refreshNavSkin() {
     const isSubPage = path.includes('Menu_2_1.html') || path.includes('Menu_2_2.html') || path.includes('Menu_2_3.html') || path.includes('Menu_3.html') || path.includes('personal.html');
 
     if (isSubPage) {
-        navbar.className = "fixed w-full z-50 top-0 transition-all duration-300 bg-white shadow-sm";
+        navbar.className = "fixed w-full z-50 top-0 transition-all duration-300 bg-white shadow-sm py-1";
         if (navBrand) navBrand.className = "text-navy font-semibold tracking-tight text-lg transition-colors";
         
         // PC 네비게이션 링크들만
@@ -2466,8 +2466,8 @@ function bindDynamicProfile(data, code) {
     if (data.introduce && document.getElementById('dynamic-introduce')) {
         document.getElementById('dynamic-introduce').innerText = `"${data.introduce}"`;
     }
-    if (data.position && document.getElementById('dynamic-position')) {
-        document.getElementById('dynamic-position').innerText = data.position;
+    if (document.getElementById('dynamic-position')) {
+        document.getElementById('dynamic-position').innerText = "파트너 강사";
     }
 
     // 주소창에 파라미터 업데이트 (새로고침/복사 시 상태 유지)
