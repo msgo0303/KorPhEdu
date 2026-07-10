@@ -7,6 +7,7 @@ $files = @(
     "c:\Users\gmdoh\Desktop\korPh\Menu_2_2.html",
     "c:\Users\gmdoh\Desktop\korPh\Menu_2_3.html",
     "c:\Users\gmdoh\Desktop\korPh\personal.html",
+    "c:\Users\gmdoh\Desktop\korPh\admin.html",
     "c:\Users\gmdoh\Desktop\korPh\script.js",
     "c:\Users\gmdoh\Desktop\korPh\style.css"
 )
