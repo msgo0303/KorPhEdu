@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isMenu2_2 = path.includes('Menu_2_2.html');
         const isMenu2_3 = path.includes('Menu_2_3.html');
         const isMenu3 = path.includes('Menu_3.html');
+        const isPersonal = path.includes('personal.html');
         
         let jsonFile = 'data.json';
         if (isMenu1) jsonFile = 'about.json';
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (isMenu2_2) jsonFile = 'business_2.json';
         else if (isMenu2_3) jsonFile = 'business_3.json';
         else if (isMenu3) jsonFile = 'research.json';
+        else if (isPersonal) jsonFile = 'personal.json';
 
         fetch(jsonFile)
             .then(response => {
@@ -50,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         renderBusiness3Page(data);
                     } else if (isMenu3) {
                         renderResearchPage(data);
+                    } else if (isPersonal) {
+                        renderPersonalPage(data);
                     } else {
                         renderPage(data);
                     }
@@ -64,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .finally(() => {
                 // 데이터 로드 성공/실패 여부와 관계없이 UI 인터랙션 엔진은 반드시 가동
                 try {
-                    initUIEngine(isMenu1, isMenu2, isMenu2_1, isMenu2_2, isMenu2_3, isMenu3);
+                    initUIEngine(isMenu1, isMenu2, isMenu2_1, isMenu2_2, isMenu2_3, isMenu3, isPersonal);
                 } catch (uiError) {
                     console.error("UI 엔진 초기화 중 오류 발생:", uiError);
                     alert("UI 초기화 오류: " + uiError.message);
@@ -448,7 +452,7 @@ function renderModal(modalData) {
 
 let proudSwiper = null;
 
-function initUIEngine(isMenu1 = false, isMenu2 = false, isMenu2_1 = false, isMenu2_2 = false, isMenu2_3 = false, isMenu3 = false) {
+function initUIEngine(isMenu1 = false, isMenu2 = false, isMenu2_1 = false, isMenu2_2 = false, isMenu2_3 = false, isMenu3 = false, isPersonal = false) {
     initLucide();
     initIntroAnimation(isMenu1, isMenu2);
     initNavbarSkinAndToggle();
@@ -466,6 +470,8 @@ function initUIEngine(isMenu1 = false, isMenu2 = false, isMenu2_1 = false, isMen
         initBusinessSub3();
     } else if (isMenu3) {
         initResearchPage();
+    } else if (isPersonal) {
+        initPersonalPage();
     } else {
         initProudSwiper();
         initIntersectionObserver();
@@ -555,10 +561,10 @@ function refreshNavSkin() {
     let activeMainHref = 'index.html';
     if (path.includes('Menu_1.html')) activeMainHref = 'Menu_1.html';
     else if (path.includes('Menu_2.html') || path.includes('Menu_2_1.html') || path.includes('Menu_2_2.html') || path.includes('Menu_2_3.html')) activeMainHref = 'Menu_2.html';
-    else if (path.includes('Menu_3.html')) activeMainHref = 'Menu_3.html';
+    else if (path.includes('Menu_3.html') || path.includes('personal.html')) activeMainHref = 'Menu_3.html';
 
-    // 상시 흰색 고정 스킨을 적용할 서브페이지 리스트 (Menu_3.html 포함)
-    const isSubPage = path.includes('Menu_2_1.html') || path.includes('Menu_2_2.html') || path.includes('Menu_2_3.html') || path.includes('Menu_3.html');
+    // 상시 흰색 고정 스킨을 적용할 서브페이지 리스트 (Menu_3.html 및 personal.html 포함)
+    const isSubPage = path.includes('Menu_2_1.html') || path.includes('Menu_2_2.html') || path.includes('Menu_2_3.html') || path.includes('Menu_3.html') || path.includes('personal.html');
 
     if (isSubPage) {
         navbar.className = "fixed w-full z-50 top-0 transition-all duration-300 bg-white shadow-sm";
@@ -2224,4 +2230,358 @@ window.searchAndRedirectExpert = function() {
             alert('로컬 테스트 코드는 123456 입니다.');
         }
     }
+};
+
+// --------------------------------------------------------------------------
+// 5. 전문가 상세 페이지 (personal.html) 데이터 바인딩 및 예약 프로세스 모듈
+// --------------------------------------------------------------------------
+
+let currentCode = '';
+
+function renderPersonalPage(data) {
+    if (data.nav) {
+        renderNav(data.nav);
+        const navBookingBtn = document.getElementById('nav-booking-btn');
+        if (navBookingBtn) navBookingBtn.textContent = data.nav.bookingBtn || "예약하기";
+        const mobileBookingBtn = document.getElementById('mobile-booking-btn');
+        if (mobileBookingBtn) mobileBookingBtn.textContent = data.nav.bookingBtn || "예약하기";
+    }
+    if (data.hero) {
+        const line1 = document.getElementById('hero-line1');
+        if (line1) line1.textContent = data.hero.line1;
+        const line2 = document.getElementById('hero-line2');
+        if (line2) line2.textContent = data.hero.line2;
+        const desc = document.querySelector('main p');
+        if (desc) desc.textContent = data.hero.desc;
+    }
+    if (data.codeEntry) {
+        const title = document.querySelector('#code-entry-section h2');
+        if (title) title.textContent = data.codeEntry.title;
+        const desc = document.querySelector('#code-entry-section p');
+        if (desc) desc.textContent = data.codeEntry.desc;
+        const input = document.getElementById('expert-code-input');
+        if (input) input.placeholder = data.codeEntry.placeholder;
+        const btn = document.querySelector('#code-entry-section button');
+        if (btn) btn.textContent = data.codeEntry.btnText;
+    }
 }
+
+// 구글 드라이브 이미지 공유 URL 최적화 헬퍼 함수
+function optimizeImageUrl(url) {
+    if (!url) return '';
+    if (url.includes('drive.google.com')) {
+        let fileId = '';
+        const fileDMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+        const idParamMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+        
+        if (fileDMatch && fileDMatch[1]) {
+            fileId = fileDMatch[1];
+        } else if (idParamMatch && idParamMatch[1]) {
+            fileId = idParamMatch[1];
+        }
+        
+        if (fileId) {
+            return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
+        }
+    }
+    return url;
+}
+
+function initPersonalPage() {
+    initDropdowns();
+    initFAQAccordions();
+
+    // 1. 스플래시 화면 제어 및 상태 진행 표시
+    const splash = document.getElementById('splash-screen');
+    const progressBar = document.getElementById('splash-progress-bar');
+    const progressText = document.getElementById('splash-percentage');
+    const carouselItems = document.querySelectorAll('.splash-text-item');
+
+    let startTime = Date.now();
+    const totalDuration = 5000;
+    let carouselIndex = 0;
+
+    const splashInterval = setInterval(() => {
+        if (carouselIndex < carouselItems.length - 1) {
+            carouselItems[carouselIndex].classList.remove('active');
+            carouselItems[carouselIndex].classList.add('exit');
+            carouselIndex++;
+            carouselItems[carouselIndex].classList.remove('exit');
+            carouselItems[carouselIndex].classList.add('active');
+        }
+    }, 1250);
+
+    function updateProgress() {
+        const elapsed = Date.now() - startTime;
+        if (elapsed >= totalDuration) {
+            if (progressBar) progressBar.style.width = '100%';
+            if (progressText) progressText.innerText = '100%';
+            clearInterval(splashInterval);
+            finishSplash();
+            return;
+        }
+
+        const t = elapsed / totalDuration;
+        let rawProgress = (1 - Math.pow(1 - t, 3)) * 100;
+        let jitter = (Math.random() * 3 - 1.5);
+        let displayProgress = Math.min(99, Math.max(0, rawProgress + jitter));
+
+        if (progressBar) progressBar.style.width = displayProgress + '%';
+        if (progressText) progressText.innerText = Math.floor(displayProgress) + '%';
+
+        requestAnimationFrame(updateProgress);
+    }
+
+    requestAnimationFrame(updateProgress);
+
+    function finishSplash() {
+        setTimeout(() => {
+            if (splash) {
+                splash.classList.add('opacity-0', '-translate-y-4');
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                    document.body.classList.remove('overflow-hidden');
+
+                    const h1 = document.getElementById('hero-line1');
+                    const h2 = document.getElementById('hero-line2');
+                    if (h1) h1.classList.add('animate-reveal');
+                    if (h2) {
+                        setTimeout(() => {
+                            h2.classList.add('animate-reveal');
+                        }, 1200);
+                    }
+                }, 600);
+            }
+        }, 200);
+    }
+
+    // 2. URL 파라미터에서 코드 분석하여 프로필 자동 로드
+    const urlParams = new URLSearchParams(window.location.search);
+    const codeParam = urlParams.get('code');
+    if (codeParam && codeParam.length === 6) {
+        loadExpertProfile(codeParam);
+    } else {
+        const entrySec = document.getElementById('code-entry-section');
+        if (entrySec) entrySec.classList.remove('hidden');
+    }
+
+    // 3. reveal 애니메이션 감지
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+// 4. 전문가 코드 체크 및 상세 로드 실시간 비즈니스 함수 전역 바인딩
+window.checkExpertCode = function() {
+    const input = document.getElementById('expert-code-input');
+    const code = input ? input.value.trim() : '';
+    if (!code || code.length !== 6) {
+        alert('올바른 6자리 코드를 입력해 주세요.');
+        return;
+    }
+    loadExpertProfile(code);
+};
+
+window.loadExpertProfile = function(code) {
+    if (typeof firebase !== 'undefined' && firebase.apps.length > 0) {
+        const database = firebase.database();
+        database.ref('approved_users/' + code).once('value')
+            .then((snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    currentCode = code;
+                    bindDynamicProfile(data, code);
+                } else {
+                    alert('유효하지 않은 코드이거나 존재하지 않는 전문가 페이지입니다.');
+                    const entrySec = document.getElementById('code-entry-section');
+                    if (entrySec) entrySec.classList.remove('hidden');
+                }
+            })
+            .catch((err) => {
+                console.error("Profile load fail: ", err);
+                const entrySec = document.getElementById('code-entry-section');
+                if (entrySec) entrySec.classList.remove('hidden');
+            });
+    } else {
+        // 로컬 테스트 폴백
+        console.warn("Firebase SDK 미로드. 폴백 프로필을 불러옵니다.");
+        if (code === '123456') {
+            currentCode = code;
+            const mockData = {
+                name: "홍길동 박사",
+                role: "상임 연구위원",
+                position: "상임 연구위원",
+                imageUrl: "images/menu3/menu_3_1.jpg",
+                experience: "서울대학교 교육심리학 박사\n前 한국청소년정책연구원 자문위원\n자기이해지도사 1급 마스터",
+                specialty: "다면적 기질 특성론 연구, 대기업 HR 리더십 그룹 코칭 설계",
+                introduce: "15년간 인간 기질 데이터 분석 알고리즘을 설계해 온 대한민국 교육 표준의 선두주자입니다."
+            };
+            bindDynamicProfile(mockData, code);
+        } else {
+            alert('로컬 테스트 코드는 123456 입니다.');
+            const entrySec = document.getElementById('code-entry-section');
+            if (entrySec) entrySec.classList.remove('hidden');
+        }
+    }
+};
+
+function bindDynamicProfile(data, code) {
+    if (data.imageUrl && document.getElementById('dynamic-img')) {
+        document.getElementById('dynamic-img').src = optimizeImageUrl(data.imageUrl);
+        document.getElementById('dynamic-img').alt = data.name + ' 프로필';
+    }
+    if (data.name && document.getElementById('dynamic-name')) {
+        document.getElementById('dynamic-name').innerText = data.name;
+    }
+    if (data.experience && document.getElementById('dynamic-experience')) {
+        document.getElementById('dynamic-experience').innerText = data.experience;
+    }
+    if (data.specialty && document.getElementById('dynamic-specialty')) {
+        document.getElementById('dynamic-specialty').innerText = data.specialty;
+    }
+    if (data.introduce && document.getElementById('dynamic-introduce')) {
+        document.getElementById('dynamic-introduce').innerText = `"${data.introduce}"`;
+    }
+    if (data.position && document.getElementById('dynamic-position')) {
+        document.getElementById('dynamic-position').innerText = data.position;
+    }
+
+    // 주소창에 파라미터 업데이트 (새로고침/복사 시 상태 유지)
+    const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?code=' + code;
+    window.history.replaceState({ path: newUrl }, '', newUrl);
+
+    // 프로필 레이아웃 전면 노출 및 상단 '예약하기' 버튼들 활성화
+    const entrySec = document.getElementById('code-entry-section');
+    if (entrySec) entrySec.classList.add('hidden');
+    const profileSec = document.getElementById('profile-display-section');
+    if (profileSec) profileSec.classList.remove('hidden');
+    const navBtn = document.getElementById('nav-booking-btn');
+    if (navBtn) navBtn.classList.remove('hidden');
+    const mobBtn = document.getElementById('mobile-booking-btn');
+    if (mobBtn) mobBtn.classList.remove('hidden');
+
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+}
+
+// 5. 단계별 예약 폼 처리 로직
+window.goToStep = function(step) {
+    const steps = [
+        document.getElementById('step-1'),
+        document.getElementById('step-2'),
+        document.getElementById('step-3')
+    ];
+
+    const currentStepEl = steps.find(el => el && !el.classList.contains('hidden'));
+
+    if (currentStepEl && currentStepEl.id !== `step-${step}`) {
+        currentStepEl.style.transition = 'opacity 0.2s ease-in-out, transform 0.2s ease-in-out';
+        currentStepEl.style.opacity = '0';
+        currentStepEl.style.transform = 'translateY(-10px)';
+
+        setTimeout(() => {
+            currentStepEl.classList.add('hidden');
+            currentStepEl.style.opacity = '';
+            currentStepEl.style.transform = '';
+
+            const nextStepEl = document.getElementById(`step-${step}`);
+            if (nextStepEl) {
+                nextStepEl.classList.remove('hidden');
+                nextStepEl.style.opacity = '0';
+                nextStepEl.style.transform = 'translateY(10px)';
+                nextStepEl.style.transition = 'opacity 0.25s ease-out, transform 0.25s ease-out';
+
+                nextStepEl.offsetHeight;
+
+                nextStepEl.style.opacity = '1';
+                nextStepEl.style.transform = 'translateY(0)';
+
+                setTimeout(() => {
+                    nextStepEl.style.opacity = '';
+                    nextStepEl.style.transform = '';
+                    nextStepEl.style.transition = '';
+                }, 250);
+            }
+        }, 200);
+    } else {
+        steps.forEach(el => {
+            if (el) el.classList.add('hidden');
+        });
+        const nextStepEl = document.getElementById(`step-${step}`);
+        if (nextStepEl) {
+            nextStepEl.classList.remove('hidden');
+        }
+    }
+};
+
+window.nextStep = function(currentStep) {
+    const form = document.getElementById('consultation-form');
+    if (currentStep === 1) {
+        if (form && !form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        const days = Array.from(document.querySelectorAll('input[name="consDays"]:checked')).map(el => el.value);
+        if (days.length === 0) {
+            alert('최소 하나의 희망 요일을 선택해 주세요.');
+            return;
+        }
+
+        const typeEl = document.querySelector('input[name="consType"]:checked');
+        const timeEl = document.querySelector('input[name="consTime"]:checked');
+        const nameEl = document.getElementById('userName');
+        const ageEl = document.getElementById('userAge');
+        const phoneEl = document.getElementById('userPhone');
+
+        if (document.getElementById('summary-type')) document.getElementById('summary-type').textContent = typeEl ? typeEl.value : '';
+        if (document.getElementById('summary-days')) document.getElementById('summary-days').textContent = days.join(', ') + '요일';
+        if (document.getElementById('summary-time')) document.getElementById('summary-time').textContent = timeEl ? timeEl.value : '';
+        if (document.getElementById('summary-name')) document.getElementById('summary-name').textContent = nameEl ? nameEl.value : '';
+        if (document.getElementById('summary-contact')) document.getElementById('summary-contact').textContent = `${ageEl ? ageEl.value : ''}세 / ${phoneEl ? phoneEl.value : ''}`;
+
+        goToStep(2);
+    }
+    else if (currentStep === 2) {
+        const days = Array.from(document.querySelectorAll('input[name="consDays"]:checked')).map(el => el.value);
+        const expertNameEl = document.getElementById('dynamic-name');
+        const expertName = expertNameEl ? expertNameEl.innerText.trim() : '';
+
+        const bookingData = {
+            expertCode: currentCode || '',
+            expertName: expertName,
+            consType: document.querySelector('input[name="consType"]:checked').value,
+            consDays: days,
+            consTime: document.querySelector('input[name="consTime"]:checked').value,
+            userName: document.getElementById('userName').value.trim(),
+            userAge: parseInt(document.getElementById('userAge').value, 10),
+            userPhone: document.getElementById('userPhone').value.trim(),
+            submittedAt: new Date().toISOString()
+        };
+
+        if (typeof firebase !== 'undefined' && firebase.apps.length > 0) {
+            const database = firebase.database();
+            database.ref('bookings').push(bookingData)
+                .then(() => {
+                    goToStep(3);
+                })
+                .catch((error) => {
+                    console.error("Booking reservation database push failed: ", error);
+                    alert("예약 신청에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+                });
+        } else {
+            console.warn("Firebase SDK 미로드. 로컬 가상 예약 처리 완료.");
+            goToStep(3);
+        }
+    }
+};

@@ -39,76 +39,8 @@
         }
     </script>
 
-    <style vid="9">
-        body {
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .break-keep {
-            word-break: keep-all;
-        }
-
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-
-        .gradient-reveal-text {
-            background: linear-gradient(to right, #0F172A 50%, #94A3B8 50%);
-            background-size: 200% 100%;
-            background-position: 100% 0;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-        }
-
-        .gradient-reveal-text.animate-reveal {
-            animation: fillText 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes fillText {
-            to {
-                background-position: 0 0;
-            }
-        }
-
-
-        .splash-text-item {
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .splash-text-item.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .splash-text-item.exit {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-
-
-        .custom-checkbox:checked+div {
-            background-color: #1E3A8A;
-            border-color: #1E3A8A;
-            color: white;
-        }
-    </style>
+    <!-- 외부 분리 CSS 파일 연결 -->
+    <link rel="stylesheet" href="style.css?v=1.0.2">
 </head>
 
 <body
@@ -140,8 +72,8 @@
 
 
     <nav class="fixed w-full z-40 top-0 transition-all duration-300 bg-transparent py-3" id="navbar" vid="21">
-        <div class="max-w-7xl mx-auto px-6 py-1 flex justify-between items-center relative" vid="22">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='#'" vid="23">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative" id="nav-container" vid="22">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'" vid="23">
                 <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" id="nav-logo-box" vid="24">
                 <span class="text-navy font-semibold tracking-tight text-lg transition-colors" id="nav-brand"
                     vid="26">한국자기이해교육원</span>
@@ -158,9 +90,9 @@
                 <a href="Menu_3.html"
                     class="nav-link text-teal font-bold text-sm transition-colors border-b-2 border-teal pb-0.5"
                     vid="30">연구진</a>
-                <button id="nav-booking-btn" onclick="openModal()"
-                    class="hidden bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors shadow-sm"
-                    vid="31">예약하기</button>
+                <button id="nav-booking-btn"
+                    class="hidden modal-trigger bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors shadow-sm"
+                    data-target="consultation-modal" vid="31">예약하기</button>
             </div>
 
 
@@ -171,15 +103,16 @@
 
 
         <div id="mobile-drawer"
-            class="md:hidden overflow-hidden transition-all duration-300 max-h-0 bg-white border-t border-slate-100 shadow-lg absolute w-full left-0 top-full opacity-0"
+            class="absolute top-full left-0 w-full bg-white shadow-md overflow-hidden transition-all duration-300 ease-in-out flex flex-col md:hidden"
+            style="height: 0px; opacity: 0;"
             vid="34">
-            <div class="px-6 py-4 flex flex-col gap-4" vid="35">
-                <a href="Menu_1.html" class="text-slate-600 font-medium py-2" vid="36">기관소개</a>
-                <a href="Menu_2.html" class="text-slate-600 font-medium py-2" vid="37">비즈니스</a>
-                <a href="Menu_3.html" class="text-teal font-bold py-2" vid="38">연구진</a>
-                <button id="mobile-booking-btn" onclick="openModal(); closeMobileMenu();"
-                    class="hidden bg-teal text-white px-4 py-3 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors mt-2 text-center w-full"
-                    vid="39">예약하기</button>
+            <div class="px-6 py-4 flex flex-col gap-4" id="mobile-drawer-content" vid="35">
+                <a href="Menu_1.html" class="mobile-link text-slate-600 font-medium py-2" vid="36">기관소개</a>
+                <a href="Menu_2.html" class="mobile-link text-slate-600 font-medium py-2" vid="37">비즈니스</a>
+                <a href="Menu_3.html" class="mobile-link text-teal font-bold py-2" vid="38">연구진</a>
+                <button id="mobile-booking-btn"
+                    class="hidden modal-trigger bg-teal text-white px-4 py-3 rounded-md text-sm font-medium hover:bg-teal-dark transition-colors mt-2 text-center w-full"
+                    data-target="consultation-modal" vid="39">예약하기</button>
             </div>
         </div>
     </nav>
@@ -246,8 +179,9 @@
                 </div>
 
                 <div class="flex justify-center mt-16 reveal" style="transition-delay: 500ms;" vid="67">
-                    <button onclick="openModal()"
-                        class="group relative overflow-hidden bg-navy text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-navy-dark transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 w-full max-w-md justify-center"
+                    <button
+                        class="modal-trigger group relative overflow-hidden bg-navy text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-navy-dark transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 w-full max-w-md justify-center"
+                        data-target="consultation-modal"
                         vid="68">
                         <div class="absolute inset-0 bg-white/10 w-0 group-hover:w-full transition-all duration-500 ease-out z-0"
                             vid="69"></div>
@@ -262,15 +196,16 @@
 
 
     <div id="consultation-modal"
-        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0"
+        class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        style="display: none; opacity: 0; visibility: hidden;"
         vid="72">
         <div id="consultation-modal-card"
-            class="bg-white rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative transition-all duration-300 ease-out transform scale-95 opacity-0"
+            class="modal-card bg-white rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative"
             vid="73">
 
 
-            <button onclick="closeModal()"
-                class="absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10"
+            <button
+                class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10"
                 vid="74">
                 <i data-lucide="x" class="w-5 h-5" vid="75"></i>
             </button>
@@ -497,8 +432,9 @@
                                     <span class="text-sm text-slate-600 font-medium group-hover:text-slate-800"
                                         vid="152"><span class="text-navy font-bold" vid="153">[필수]</span> 이용약관에
                                         동의합니다</span>
-                                    <button type="button" onclick="event.preventDefault(); openTOSModal();"
-                                        class="text-xs text-slate-400 hover:text-navy underline ml-2 shrink-0">보기</button>
+                                    <button type="button"
+                                        class="modal-trigger text-xs text-slate-400 hover:text-navy underline ml-2 shrink-0"
+                                        data-target="tos-modal">보기</button>
                                 </div>
                             </label>
                             <label class="flex items-start gap-3 cursor-pointer group" vid="154">
@@ -514,8 +450,9 @@
                                     <span class="text-sm text-slate-600 font-medium group-hover:text-slate-800"
                                         vid="158"><span class="text-navy font-bold" vid="159">[필수]</span> 개인정보처리방침에
                                         동의합니다</span>
-                                    <button type="button" onclick="event.preventDefault(); openPrivacyModal();"
-                                        class="text-xs text-slate-400 hover:text-navy underline ml-2 shrink-0">보기</button>
+                                    <button type="button"
+                                        class="modal-trigger text-xs text-slate-400 hover:text-navy underline ml-2 shrink-0"
+                                        data-target="privacy-modal">보기</button>
                                 </div>
                             </label>
                         </div>
@@ -590,8 +527,8 @@
                         담당자가 일정을 확인한 후,<br vid="195">입력해주신 연락처로 <strong vid="196">빠른 시일 내로 연락 드리겠습니다.</strong>
                     </p>
 
-                    <button type="button" onclick="closeModal()"
-                        class="bg-navy text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-navy-dark transition shadow-md"
+                    <button type="button"
+                        class="modal-close bg-navy text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-navy-dark transition shadow-md"
                         vid="197">
                         확인 및 닫기
                     </button>
@@ -600,14 +537,14 @@
             </form>
         </div>
     </div>
-
     <!-- 이용약관 팝업 모달 -->
     <div id="tos-modal"
-        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] hidden items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0">
+        class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+        style="display: none; opacity: 0; visibility: hidden;">
         <div id="tos-modal-card"
-            class="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl relative transition-all duration-300 ease-out transform scale-95 opacity-0">
-            <button onclick="closeTOSModal()"
-                class="absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10">
+            class="modal-card bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl relative">
+            <button
+                class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             <div class="p-6 border-b border-slate-100">
@@ -624,19 +561,20 @@
                     합니다. 다만, 정기점검 등의 필요로 기관이 정한 날 또는 시간은 예외로 합니다.</p>
             </div>
             <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end rounded-b-2xl">
-                <button onclick="closeTOSModal()"
-                    class="bg-navy text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-navy-dark transition-colors">확인</button>
+                <button
+                    class="modal-close bg-navy text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-navy-dark transition-colors">확인</button>
             </div>
         </div>
     </div>
 
     <!-- 개인정보 처리방침 팝업 모달 -->
     <div id="privacy-modal"
-        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] hidden items-center justify-center p-4 transition-opacity duration-300 ease-out opacity-0">
+        class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+        style="display: none; opacity: 0; visibility: hidden;">
         <div id="privacy-modal-card"
-            class="bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl relative transition-all duration-300 ease-out transform scale-95 opacity-0">
-            <button onclick="closePrivacyModal()"
-                class="absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10">
+            class="modal-card bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl relative">
+            <button
+                class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             <div class="p-6 border-b border-slate-100">
@@ -654,14 +592,14 @@
                     및 서비스 이용이 제한될 수 있습니다.</p>
             </div>
             <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end rounded-b-2xl">
-                <button onclick="closePrivacyModal()"
-                    class="bg-navy text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-navy-dark transition-colors">확인</button>
+                <button
+                    class="modal-close bg-navy text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-navy-dark transition-colors">확인</button>
             </div>
         </div>
     </div>
 
 
-    <footer class="bg-[#0F172A] pt-16 pb-8 border-t-4 border-teal relative overflow-hidden" vid="198">
+    <footer class="bg-[#0F172A] pt-16 pb-8 relative overflow-hidden" vid="198">
         <i data-lucide="book-open-check"
             class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none"
             vid="199"></i>
@@ -711,462 +649,21 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 
     <script vid="229">
-
-        lucide.createIcons();
-
-        // ⚠️ [필수] 본인의 Firebase 설정 정보로 알맞게 채워넣어 주세요!
+        // Firebase 설정 정보
         const firebaseConfig = {
             authDomain: "prototype-ksui.firebaseapp.com",
             databaseURL: "https://prototype-ksui-default-rtdb.asia-southeast1.firebasedatabase.app",
             storageBucket: "prototype-ksui.firebasestorage.app",
         };
-
-        // Firebase 초기화
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-
-        // 글로벌 변수로 현재 로드된 전문가 코드 관리
-        let currentCode = '';
-
-        // 💡 구글 드라이브 이미지 공유 URL을 직접 스트리밍 가능한 주소로 최적화하는 함수
-        function optimizeImageUrl(url) {
-            if (!url) return '';
-            if (url.includes('drive.google.com')) {
-                let fileId = '';
-                const fileDMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-                const idParamMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-                
-                if (fileDMatch && fileDMatch[1]) {
-                    fileId = fileDMatch[1];
-                } else if (idParamMatch && idParamMatch[1]) {
-                    fileId = idParamMatch[1];
-                }
-                
-                if (fileId) {
-                    // lh3.googleusercontent.com 주소는 타사 쿠키 차단 및 구글 비로그인 환경(일반 PC 등)에서 403 Forbidden 에러를 유발합니다.
-                    // drive.google.com/thumbnail?id=...&sz=w1000 캐시 방식을 사용하면 비로그인 환경에서도 가장 안정적으로 이미지가 출력됩니다.
-                    return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
-                }
-            }
-            return url;
-        }
-
-        // 💡 핵심: 페이지가 열리자마자 주소창의 파라미터(?code=6자리)를 분석해서 자동 조회 실행
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const codeParam = urlParams.get('code');
-
-            if (codeParam && codeParam.length === 6) {
-                // 주소창에 정상 코드가 붙어서 넘어온 경우 자동 로드 실행
-                loadExpertProfile(codeParam);
-            } else {
-                // 예외 처리: 코드가 안 붙어있으면 수동 입력창을 보여줌
-                const entrySection = document.getElementById('code-entry-section');
-                if (entrySection) entrySection.classList.remove('hidden');
-            }
-        });
-
-        // 🔍 수동 입력한 코드를 검증하고 로드하는 함수
-        function checkExpertCode() {
-            const codeInput = document.getElementById('expert-code-input').value.trim();
-
-            if (!codeInput || codeInput.length !== 6) {
-                alert('올바른 6자리 코드를 입력해 주세요.');
-                return;
-            }
-
-            loadExpertProfile(codeInput);
-        }
-
-        // 💡 핵심: Firebase에서 특정 코드로 전문가 데이터를 가져와 화면에 뿌려주는 함수
-        function loadExpertProfile(code) {
-            if (!code) return;
-
-            database.ref('approved_users/' + code).once('value')
-                .then((snapshot) => {
-                    const data = snapshot.val();
-
-                    if (data) {
-                        currentCode = code;
-
-                        // Firebase에서 가져온 리얼 데이터를 기존 HTML 그릇에 바인딩
-                        if (document.getElementById('dynamic-name')) document.getElementById('dynamic-name').innerText = data.name;
-                        if (document.getElementById('dynamic-specialty')) document.getElementById('dynamic-specialty').innerText = data.specialty;
-                        if (document.getElementById('dynamic-experience')) document.getElementById('dynamic-experience').innerText = data.experience;
-                        if (document.getElementById('dynamic-introduce')) document.getElementById('dynamic-introduce').innerText = `"${data.introduce}"`;
-
-                        if (data.imageUrl && document.getElementById('dynamic-img')) {
-                            document.getElementById('dynamic-img').src = optimizeImageUrl(data.imageUrl);
-                        }
-                        if (data.position && document.getElementById('dynamic-position')) {
-                            document.getElementById('dynamic-position').innerText = data.position;
-                        }
-
-                        // 주소창에 파라미터 업데이트 (새로고침/복사 시 상태 유지)
-                        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?code=' + code;
-                        window.history.replaceState({ path: newUrl }, '', newUrl);
-
-                        // 프로필 레이아웃 전면 노출 및 상단 '예약하기' 버튼들 활성화
-                        if (document.getElementById('code-entry-section')) document.getElementById('code-entry-section').classList.add('hidden');
-                        if (document.getElementById('profile-display-section')) document.getElementById('profile-display-section').classList.remove('hidden');
-                        if (document.getElementById('nav-booking-btn')) document.getElementById('nav-booking-btn').classList.remove('hidden');
-                        if (document.getElementById('mobile-booking-btn')) document.getElementById('mobile-booking-btn').classList.remove('hidden');
-
-                        // 테일윈드 애니메이션 요소들 깨우기
-                        document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
-                    } else {
-                        alert('유효하지 않은 코드이거나 존재하지 않는 전문가 페이지입니다.');
-                        if (document.getElementById('code-entry-section')) document.getElementById('code-entry-section').classList.remove('hidden');
-                    }
-                })
-                .catch((err) => {
-                    console.error("Profile load fail: ", err);
-                    if (document.getElementById('code-entry-section')) document.getElementById('code-entry-section').classList.remove('hidden');
-                });
-        }
-
-        const splash = document.getElementById('splash-screen');
-        const progressBar = document.getElementById('splash-progress-bar');
-        const progressText = document.getElementById('splash-percentage');
-        const carouselItems = document.querySelectorAll('.splash-text-item');
-
-        let startTime = Date.now();
-        const totalDuration = 5000;
-        let carouselIndex = 0;
-
-
-        setInterval(() => {
-            if (carouselIndex < carouselItems.length - 1) {
-                carouselItems[carouselIndex].classList.remove('active');
-                carouselItems[carouselIndex].classList.add('exit');
-
-                carouselIndex++;
-
-                carouselItems[carouselIndex].classList.remove('exit');
-                carouselItems[carouselIndex].classList.add('active');
-            }
-        }, 1250);
-
-
-        function updateProgress() {
-            const elapsed = Date.now() - startTime;
-            if (elapsed >= totalDuration) {
-                progressBar.style.width = '100%';
-                progressText.innerText = '100%';
-                finishSplash();
-                return;
-            }
-
-
-            const t = elapsed / totalDuration;
-            let rawProgress = (1 - Math.pow(1 - t, 3)) * 100;
-
-
-            let jitter = (Math.random() * 3 - 1.5);
-            let displayProgress = Math.min(99, Math.max(0, rawProgress + jitter));
-
-            progressBar.style.width = displayProgress + '%';
-            progressText.innerText = Math.floor(displayProgress) + '%';
-
-            requestAnimationFrame(updateProgress);
-        }
-
-        requestAnimationFrame(updateProgress);
-
-        function finishSplash() {
-            setTimeout(() => {
-                splash.classList.add('opacity-0', '-translate-y-4');
-                setTimeout(() => {
-                    splash.style.display = 'none';
-                    document.body.classList.remove('overflow-hidden');
-
-
-                    const h1 = document.getElementById('hero-line1');
-                    const h2 = document.getElementById('hero-line2');
-                    if (h1) h1.classList.add('animate-reveal');
-                    if (h2) {
-                        setTimeout(() => {
-                            h2.classList.add('animate-reveal');
-                        }, 1200);
-                    }
-                }, 600);
-            }, 200);
-        }
-
-
-        const navbar = document.getElementById('navbar');
-        const navBrand = document.getElementById('nav-brand');
-        const navLogoBox = document.getElementById('nav-logo-box');
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const menuIcon = document.getElementById('menu-icon');
-        let isMobileMenuOpen = false;
-
-        function refreshNavSkin() {
-            if (window.scrollY > 50 || isMobileMenuOpen) {
-                navbar.classList.remove('bg-transparent', 'py-3');
-                navbar.classList.add('bg-white', 'shadow-sm', 'py-1');
-                navBrand.classList.remove('text-navy');
-                navBrand.classList.add('text-slate-900');
-                if (navLogoBox) navLogoBox.src = 'images/logo.png';
-            } else {
-                navbar.classList.remove('bg-white', 'shadow-sm', 'py-1');
-                navbar.classList.add('bg-transparent', 'py-3');
-                navBrand.classList.remove('text-slate-900');
-                navBrand.classList.add('text-navy');
-                if (navLogoBox) navLogoBox.src = 'images/logo_w.png';
-            }
-        }
-
-        window.addEventListener('scroll', refreshNavSkin, { passive: true });
-        refreshNavSkin();
-
-        mobileMenuBtn.addEventListener('click', () => {
-            isMobileMenuOpen = !isMobileMenuOpen;
-            if (isMobileMenuOpen) {
-                mobileDrawer.classList.remove('max-h-0', 'opacity-0');
-                mobileDrawer.classList.add('max-h-96', 'opacity-100');
-                menuIcon.setAttribute('data-lucide', 'x');
-            } else {
-                mobileDrawer.classList.remove('max-h-96', 'opacity-100');
-                mobileDrawer.classList.add('max-h-0', 'opacity-0');
-                menuIcon.setAttribute('data-lucide', 'menu');
-            }
-            lucide.createIcons();
-            refreshNavSkin();
-        });
-
-        function closeMobileMenu() {
-            if (isMobileMenuOpen) mobileMenuBtn.click();
-        }
-
-
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-
-        const modal = document.getElementById('consultation-modal');
-        const form = document.getElementById('consultation-form');
-
-        function openModal() {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-
-            // Force repaint to allow transition to occur
-            modal.offsetHeight;
-
-            modal.classList.remove('opacity-0');
-            modal.classList.add('opacity-100');
-
-            const card = document.getElementById('consultation-modal-card');
-            if (card) {
-                card.classList.remove('scale-95', 'opacity-0');
-                card.classList.add('scale-100', 'opacity-100');
-            }
-
-            document.body.classList.add('overflow-hidden');
-            goToStep(1);
-        }
-
-        function closeModal() {
-            modal.classList.remove('opacity-100');
-            modal.classList.add('opacity-0');
-
-            const card = document.getElementById('consultation-modal-card');
-            if (card) {
-                card.classList.remove('scale-100', 'opacity-100');
-                card.classList.add('scale-95', 'opacity-0');
-            }
-
-            document.body.classList.remove('overflow-hidden');
-
-            setTimeout(() => {
-                modal.classList.remove('flex');
-                modal.classList.add('hidden');
-                form.reset();
-            }, 300);
-        }
-
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-
-        // TOS & Privacy Modal Handlers
-        const tosModal = document.getElementById('tos-modal');
-        const tosCard = document.getElementById('tos-modal-card');
-        function openTOSModal() {
-            tosModal.classList.remove('hidden');
-            tosModal.classList.add('flex');
-            tosModal.offsetHeight;
-            tosModal.classList.remove('opacity-0');
-            tosModal.classList.add('opacity-100');
-            if (tosCard) {
-                tosCard.classList.remove('scale-95', 'opacity-0');
-                tosCard.classList.add('scale-100', 'opacity-100');
-            }
-        }
-        function closeTOSModal() {
-            tosModal.classList.remove('opacity-100');
-            tosModal.classList.add('opacity-0');
-            if (tosCard) {
-                tosCard.classList.remove('scale-100', 'opacity-100');
-                tosCard.classList.add('scale-95', 'opacity-0');
-            }
-            setTimeout(() => {
-                tosModal.classList.remove('flex');
-                tosModal.classList.add('hidden');
-            }, 300);
-        }
-
-        const privacyModal = document.getElementById('privacy-modal');
-        const privacyCard = document.getElementById('privacy-modal-card');
-        function openPrivacyModal() {
-            privacyModal.classList.remove('hidden');
-            privacyModal.classList.add('flex');
-            privacyModal.offsetHeight;
-            privacyModal.classList.remove('opacity-0');
-            privacyModal.classList.add('opacity-100');
-            if (privacyCard) {
-                privacyCard.classList.remove('scale-95', 'opacity-0');
-                privacyCard.classList.add('scale-100', 'opacity-100');
-            }
-        }
-        function closePrivacyModal() {
-            privacyModal.classList.remove('opacity-100');
-            privacyModal.classList.add('opacity-0');
-            if (privacyCard) {
-                privacyCard.classList.remove('scale-100', 'opacity-100');
-                privacyCard.classList.add('scale-95', 'opacity-0');
-            }
-            setTimeout(() => {
-                privacyModal.classList.remove('flex');
-                privacyModal.classList.add('hidden');
-            }, 300);
-        }
-
-        tosModal.addEventListener('click', (e) => {
-            if (e.target === tosModal) closeTOSModal();
-        });
-        privacyModal.addEventListener('click', (e) => {
-            if (e.target === privacyModal) closePrivacyModal();
-        });
-
-        function goToStep(step) {
-            const steps = [
-                document.getElementById('step-1'),
-                document.getElementById('step-2'),
-                document.getElementById('step-3')
-            ];
-
-            const currentStepEl = steps.find(el => el && !el.classList.contains('hidden'));
-
-            if (currentStepEl && currentStepEl.id !== `step-${step}`) {
-                currentStepEl.style.transition = 'opacity 0.2s ease-in-out, transform 0.2s ease-in-out';
-                currentStepEl.style.opacity = '0';
-                currentStepEl.style.transform = 'translateY(-10px)';
-
-                setTimeout(() => {
-                    currentStepEl.classList.add('hidden');
-                    currentStepEl.style.opacity = '';
-                    currentStepEl.style.transform = '';
-
-                    const nextStepEl = document.getElementById(`step-${step}`);
-                    if (nextStepEl) {
-                        nextStepEl.classList.remove('hidden');
-                        nextStepEl.style.opacity = '0';
-                        nextStepEl.style.transform = 'translateY(10px)';
-                        nextStepEl.style.transition = 'opacity 0.25s ease-out, transform 0.25s ease-out';
-
-                        nextStepEl.offsetHeight;
-
-                        nextStepEl.style.opacity = '1';
-                        nextStepEl.style.transform = 'translateY(0)';
-
-                        setTimeout(() => {
-                            nextStepEl.style.opacity = '';
-                            nextStepEl.style.transform = '';
-                            nextStepEl.style.transition = '';
-                        }, 250);
-                    }
-                }, 200);
-            } else {
-                steps.forEach(el => {
-                    if (el) el.classList.add('hidden');
-                });
-                const nextStepEl = document.getElementById(`step-${step}`);
-                if (nextStepEl) {
-                    nextStepEl.classList.remove('hidden');
-                }
-            }
-        }
-
-        function nextStep(currentStep) {
-            if (currentStep === 1) {
-
-                if (!form.checkValidity()) {
-                    form.reportValidity();
-                    return;
-                }
-
-
-                const days = Array.from(document.querySelectorAll('input[name="consDays"]:checked')).map(el => el.value);
-                if (days.length === 0) {
-                    alert('최소 하나의 희망 요일을 선택해 주세요.');
-                    return;
-                }
-
-
-                document.getElementById('summary-type').textContent = document.querySelector('input[name="consType"]:checked').value;
-                document.getElementById('summary-days').textContent = days.join(', ') + '요일';
-                document.getElementById('summary-time').textContent = document.querySelector('input[name="consTime"]:checked').value;
-                document.getElementById('summary-name').textContent = document.getElementById('userName').value;
-                document.getElementById('summary-contact').textContent = `${document.getElementById('userAge').value}세 / ${document.getElementById('userPhone').value}`;
-
-                goToStep(2);
-            }
-            else if (currentStep === 2) {
-                // Firebase Realtime Database '/bookings' 경로에 예약 내역 저장
-                const days = Array.from(document.querySelectorAll('input[name="consDays"]:checked')).map(el => el.value);
-                const expertNameEl = document.getElementById('dynamic-name');
-                const expertName = expertNameEl ? expertNameEl.innerText.trim() : '';
-
-                const bookingData = {
-                    expertCode: currentCode || '',
-                    expertName: expertName,
-                    consType: document.querySelector('input[name="consType"]:checked').value,
-                    consDays: days,
-                    consTime: document.querySelector('input[name="consTime"]:checked').value,
-                    userName: document.getElementById('userName').value.trim(),
-                    userAge: parseInt(document.getElementById('userAge').value, 10),
-                    userPhone: document.getElementById('userPhone').value.trim(),
-                    submittedAt: new Date().toISOString()
-                };
-
-                database.ref('bookings').push(bookingData)
-                    .then(() => {
-                        goToStep(3);
-                    })
-                    .catch((error) => {
-                        console.error("Booking reservation database push failed: ", error);
-                        alert("예약 신청에 실패했습니다. 잠시 후 다시 시도해 주세요.");
-                    });
-            }
+        // Firebase 초기화 진행
+        if (typeof firebase !== 'undefined') {
+            firebase.initializeApp(firebaseConfig);
+            // script.js 에서 참조 가능하도록 global database 참조 등록
+            window.database = firebase.database();
         }
     </script>
 
+    <!-- 외부 분리 JavaScript 파일 연결 (defer) -->
+    <script src="script.js?v=1.0.2" defer></script>
 </body>
-
 </html>

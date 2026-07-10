@@ -582,3 +582,51 @@ body {
     transform: scale(1);
     opacity: 1;
 }
+
+/* ==========================================================================
+   전문가 예약 상세 페이지 (personal.html) 전용 스플래시 & 애니메이션 스타일
+   ========================================================================== */
+.gradient-reveal-text {
+    background: linear-gradient(to right, #0F172A 50%, #94A3B8 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.gradient-reveal-text.animate-reveal {
+    animation: fillText 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fillText {
+    to {
+        background-position: 0 0;
+    }
+}
+
+.splash-text-item {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.splash-text-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.splash-text-item.exit {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.custom-checkbox:checked+div {
+    background-color: #1E3A8A;
+    border-color: #1E3A8A;
+    color: white;
+}
