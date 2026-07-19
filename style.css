@@ -42,6 +42,18 @@ body {
     transform: translateY(0);
 }
 
+/* 스크롤 감지 애니메이션 클래스 (reveal-up) - Menu_1.html 특화 */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .card-reveal {
     opacity: 0;
     transform: translateY(40px);
