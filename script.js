@@ -2212,10 +2212,6 @@ function renderResearchPage(data) {
             img.src = data.hero.img;
             img.alt = data.hero.imgAlt || data.hero.title;
         }
-        const blurredBg = document.querySelector('.blurred-bg');
-        if (blurredBg) {
-            blurredBg.style.backgroundImage = `url('${data.hero.img}')`;
-        }
     }
     if (data.facultySection) {
         const title = document.querySelector('#faculty h2');
@@ -2298,7 +2294,7 @@ function initResearchPage() {
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // 3. 패럴랙스 스크롤 모션 (데스크톱 전용)
+    // 3. 패럴랙스 스크롤 모션
     const parallaxImg = document.getElementById('parallax-img');
     let ticking = false;
 
@@ -2307,11 +2303,7 @@ function initResearchPage() {
             window.requestAnimationFrame(() => {
                 const scrolled = window.scrollY;
                 if (scrolled < window.innerHeight && parallaxImg) {
-                    if (window.innerWidth >= 768) {
-                        parallaxImg.style.transform = `translateY(${-scrolled * 0.06}px) scale(1.25)`;
-                    } else {
-                        parallaxImg.style.transform = 'none';
-                    }
+                    parallaxImg.style.transform = `translateY(${-scrolled * 0.06}px) scale(1.25)`;
                 }
                 ticking = false;
             });
