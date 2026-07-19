@@ -5,9 +5,18 @@
     "logoAlt": "한국자기이해교육원 로고",
     "brand": "한국자기이해교육원",
     "menu": [
-      { "text": "기관소개", "href": "Menu_1.html" },
-      { "text": "비즈니스", "href": "Menu_2.html" },
-      { "text": "연구진", "href": "Menu_3.html" }
+      {
+        "text": "기관소개",
+        "href": "Menu_1.html"
+      },
+      {
+        "text": "비즈니스",
+        "href": "Menu_2.html"
+      },
+      {
+        "text": "연구진",
+        "href": "Menu_3.html"
+      }
     ],
     "contactBtn": "문의하기"
   },
@@ -31,21 +40,21 @@
       {
         "icon": "building-2",
         "label": "협업한 기관",
-        "target": 150,
+        "target": 35,
         "suffix": "+",
         "desc": "대학교, 대기업, 공공기관 산학협력 누적"
       },
       {
         "icon": "users",
         "label": "민간 자격증 합격",
-        "target": 10250,
+        "target": 3400,
         "suffix": "+",
         "desc": "정식 등록 지도사 배출 규모"
       },
       {
         "icon": "package",
         "label": "개발한 교구재",
-        "target": 45,
+        "target": 11,
         "suffix": "+",
         "desc": "자체 특허 평가 진단지 및 감정 툴킷 카드 세트"
       }
