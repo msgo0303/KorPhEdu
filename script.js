@@ -497,8 +497,8 @@ function renderFooter(footerData) {
         const brand = footer.querySelector('.text-white.font-bold');
         if (brand) brand.textContent = footerData.brandName;
 
-        const desc = footer.querySelector('.text-slate-400.text-sm');
-        if (desc) desc.textContent = footerData.desc;
+        const desc = footer.querySelector('p.text-slate-400');
+        if (desc && footerData.desc) desc.textContent = footerData.desc;
 
         const infoList = footer.querySelector('ul');
         if (infoList) {
@@ -1390,8 +1390,8 @@ function renderBusinessFooter(footerData) {
         const brand = footer.querySelector('.text-white.font-bold');
         if (brand) brand.textContent = footerData.brandName;
 
-        const desc = footer.querySelector('.text-slate-400.text-sm');
-        if (desc) desc.textContent = footerData.desc;
+        const desc = footer.querySelector('p.text-slate-400');
+        if (desc && footerData.desc) desc.textContent = footerData.desc;
 
         const infoList = footer.querySelector('ul');
         if (infoList && footerData.info) {
