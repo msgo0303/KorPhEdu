@@ -31,39 +31,67 @@ body {
 }
 
 /* 스크롤 감지 애니메이션 클래스 (reveal) */
+@keyframes revealUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardRevealUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 스크롤 감지 애니메이션 클래스 (reveal) */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+    animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* 스크롤 감지 애니메이션 클래스 (reveal-up) - Menu_1.html 특화 */
 .reveal-up {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-up.active {
-    opacity: 1;
-    transform: translateY(0);
+    animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .card-reveal {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 .card-reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+    animation: cardRevealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* 애니메이션 딜레이 연동 유틸리티 */
+.delay-75 { animation-delay: 75ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-1000 { animation-delay: 1000ms; }
 
 /* transition-delay 유틸리티 (Tailwind 기본값 보정) */
 .delay-100 {
@@ -410,16 +438,7 @@ body {
     word-break: keep-all;
 }
 
-.reveal-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-up.active {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* reveal-up은 상단에 정의된 키프레임 애니메이션으로 전역 처리됨 */
 
 /* ==========================================================================
    Menu_2.html (비즈니스) 특화 스타일
