@@ -1511,6 +1511,13 @@ function renderBusiness2Page(data) {
                 }
                 const curriculum = card.querySelector('.course-expand p');
                 if (curriculum) curriculum.textContent = course.curriculum;
+
+                const countrySpans = card.querySelectorAll('.country-badge');
+                countrySpans.forEach(span => {
+                    if (course.country) {
+                        span.textContent = course.country;
+                    }
+                });
             }
         });
     }
