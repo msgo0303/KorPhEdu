@@ -1535,6 +1535,13 @@ function renderBusiness2Page(data) {
                 }
                 const detail = card.querySelector('.course-expand p');
                 if (detail) detail.textContent = lic.detail;
+
+                const countrySpans = card.querySelectorAll('.country-badge');
+                countrySpans.forEach(span => {
+                    if (lic.country) {
+                        span.textContent = lic.country;
+                    }
+                });
             }
         });
     }
