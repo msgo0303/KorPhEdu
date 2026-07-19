@@ -376,7 +376,7 @@ function renderBusiness(businessData) {
                 }).join('');
 
                 return `
-                    <div id="${tab.id}" class="tab-content ${isHidden ? 'hidden' : 'grid animate-slide-up'} grid-cols-1 md:grid-cols-2 gap-12 items-start" vid="${tab.id}">
+                    <div id="${tab.id}" class="tab-content grid ${isHidden ? 'hidden' : 'animate-slide-up'} grid-cols-1 md:grid-cols-2 gap-12 items-start" vid="${tab.id}">
                         <div class="rounded-lg overflow-hidden bg-slate-100 aspect-video shadow-md border border-slate-100">
                             <img src="${tab.img}" class="w-full h-full object-cover" alt="${tab.imgAlt}">
                         </div>
