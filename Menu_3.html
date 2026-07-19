@@ -98,13 +98,17 @@
                 신뢰할 수 있는 경험과 노하우</p>
 
 
-            <div class="w-full h-[300px] md:h-[450px] relative overflow-hidden rounded-2xl shadow-sm mt-8 hero-text delay-300"
+            <div class="w-full h-[300px] md:h-[450px] relative overflow-hidden rounded-2xl shadow-sm mt-8 hero-text delay-300 bg-slate-950"
                 id="hero-window"
                 style="-webkit-mask-image: -webkit-radial-gradient(white, black); transform: translateZ(0);" vid="26">
+                <!-- Blurred background for mobile/tablet -->
+                <div class="blurred-bg absolute inset-0 w-full h-full bg-cover bg-center blur-lg opacity-40 scale-110 pointer-events-none md:hidden" 
+                     style="background-image: url('images/menu3/menu_3_0.jpg');"></div>
+                <!-- Main image -->
                 <img src="images/menu3/menu_3_0.jpg" alt="Research Center" id="parallax-img"
-                    class="absolute inset-0 w-full h-full object-cover object-top scale-125 will-change-transform"
+                    class="absolute inset-0 w-full h-full object-contain md:object-cover object-center md:object-top md:scale-125 will-change-transform"
                     vid="27">
-                <div class="absolute inset-0 bg-navy/20 mix-blend-multiply" vid="28"></div>
+                <div class="absolute inset-0 bg-navy/10 mix-blend-multiply pointer-events-none" vid="28"></div>
             </div>
         </div>
     </header>
