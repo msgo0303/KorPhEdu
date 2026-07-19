@@ -9,8 +9,95 @@
  * UI 모션 및 인터랙션 엔진은 동일하게 활성화됩니다.
  */
 
+function injectCommonModals() {
+    if (!document.getElementById('tos-modal')) {
+        const tosHtml = `
+    <!-- 이용약관 팝업 모달 -->
+    <div id="tos-modal"
+        class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+        style="display: none; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;">
+        <div id="tos-modal-card"
+            class="modal-card bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl relative">
+            <button
+                class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="p-6 border-b border-slate-100">
+                <h3 class="text-xl font-bold text-navy">이용약관</h3>
+            </div>
+            <div class="p-6 overflow-y-auto text-sm text-slate-600 space-y-4 leading-relaxed break-keep">
+                <p><strong>제 1 조 (목적)</strong><br>본 약관은 한국자기이해교육원(이하 "기관")이 제공하는 교육 프로그램 및 상담 서비스(이하 "서비스")의 이용조건 및 절차에
+                    관한 사항을 규정함을 목적으로 합니다.</p>
+                <p><strong>제 2 조 (용어의 정의)</strong><br>1. "이용자"란 기관의 사이트에 접속하여 본 약관에 따라 기관이 제공하는 서비스를 받는 회원 및 비회원을
+                    말합니다.<br>2. "서비스"란 기관이 온/오프라인을 통해 제공하는 자기이해 검사, 개인 상담, 전문가 양성 과정 등의 교육 및 상담 서비스를 의미합니다.</p>
+                <p><strong>제 3 조 (약관의 효력 및 변경)</strong><br>본 약관은 서비스 화면에 게시하거나 기타의 방법으로 이용자에게 공지함으로써 효력이 발생합니다. 기관은 관련
+                    법령을 위배하지 않는 범위 내에서 본 약관을 개정할 수 있습니다.</p>
+                <p><strong>제 4 조 (서비스 이용 및 제한)</strong><br>서비스 이용은 기관의 업무상 또는 기술상 특별한 지장이 없는 한 연중무휴, 1일 24시간 운영을 원칙으로
+                    합니다. 다만, 정기점검 등의 필요로 기관이 정한 날 또는 시간은 예외로 합니다.</p>
+            </div>
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end rounded-b-2xl">
+                <button
+                    class="modal-close bg-navy text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-navy-dark transition-colors">확인</button>
+            </div>
+        </div>
+    </div>`;
+        document.body.insertAdjacentHTML('beforeend', tosHtml);
+    }
+
+    if (!document.getElementById('privacy-modal')) {
+        const privacyHtml = `
+    <!-- 개인정보 처리방침 팝업 모달 -->
+    <div id="privacy-modal"
+        class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+        style="display: none; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;">
+        <div id="privacy-modal-card"
+            class="modal-card bg-white rounded-2xl max-w-lg w-full max-h-[80vh] flex flex-col shadow-2xl relative">
+            <button
+                class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-200 flex items-center justify-center text-slate-400 hover:text-navy transition z-10">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="p-6 border-b border-slate-100">
+                <h3 class="text-xl font-bold text-navy">개인정보 처리방침</h3>
+            </div>
+            <div class="p-6 overflow-y-auto text-sm text-slate-600 space-y-4 leading-relaxed break-keep">
+                <p>한국자기이해교육원은 이용자의 개인정보를 중요시하며, "개인정보 보호법" 등 관련 법령을 준수하고 있습니다.</p>
+                <p><strong>1. 수집하는 개인정보 항목</strong><br>기관은 상담 예약 및 서비스 신청을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>- 필수항목: 이름, 연령,
+                    연락처, 희망 상담유형, 희망 요일 및 시간대</p>
+                <p><strong>2. 개인정보의 수집 및 이용 목적</strong><br>수집된 개인정보는 상담 예약 관리, 본인 확인, 상담 일정 조율, 교육 프로그램 안내 및 서비스 제공을 위한
+                    목적으로만 이용됩니다.</p>
+                <p><strong>3. 개인정보의 보유 및 이용 기간</strong><br>원칙적으로 개인정보의 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 관계법령의
+                    규정에 의하여 보존할 필요가 있는 경우 일정 기간 보존합니다.</p>
+                <p><strong>4. 동의 거부 권리 및 불이익</strong><br>귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있습니다. 다만, 동의를 거부할 경우 상담 예약 신청
+                    및 서비스 이용이 제한될 수 있습니다.</p>
+            </div>
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end rounded-b-2xl">
+                <button
+                    class="modal-close bg-navy text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-navy-dark transition-colors">확인</button>
+            </div>
+        </div>
+    </div>`;
+        document.body.insertAdjacentHTML('beforeend', privacyHtml);
+    }
+
+    // 모든 이용약관, 개인정보처리방침 링크에 modal-trigger 및 data-target 자동 바인딩
+    document.querySelectorAll('a').forEach(link => {
+        const text = link.textContent.trim();
+        if (text === '이용약관') {
+            link.classList.add('modal-trigger');
+            link.setAttribute('data-target', 'tos-modal');
+            link.setAttribute('href', '#');
+        } else if (text === '개인정보처리방침') {
+            link.classList.add('modal-trigger');
+            link.setAttribute('data-target', 'privacy-modal');
+            link.setAttribute('href', '#');
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     try {
+        injectCommonModals();
+
         // 1. 현재 실행 중인 페이지를 판별하여 로드할 JSON 파일 선택
         const path = window.location.pathname.toLowerCase();
         const isMenu1 = path.includes('menu_1');
