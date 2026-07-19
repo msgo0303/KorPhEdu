@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         // 1. 현재 실행 중인 페이지를 판별하여 로드할 JSON 파일 선택
         const path = window.location.pathname.toLowerCase();
-        const isMenu1 = path.includes('menu_1.html');
-        const isMenu2 = path.endsWith('menu_2.html') || path.endsWith('menu_2');
-        const isMenu2_1 = path.includes('menu_2_1.html');
-        const isMenu2_2 = path.includes('menu_2_2.html');
-        const isMenu2_3 = path.includes('menu_2_3.html');
-        const isMenu3 = path.includes('menu_3.html');
-        const isPersonal = path.includes('personal.html');
+        const isMenu1 = path.includes('menu_1');
+        const isMenu2 = (path.includes('menu_2.html') || path.endsWith('menu_2') || path.endsWith('menu_2/')) && !path.includes('menu_2_');
+        const isMenu2_1 = path.includes('menu_2_1');
+        const isMenu2_2 = path.includes('menu_2_2');
+        const isMenu2_3 = path.includes('menu_2_3');
+        const isMenu3 = path.includes('menu_3');
+        const isPersonal = path.includes('personal');
         
         let jsonFile = 'data.json';
         if (isMenu1) jsonFile = 'about.json';
@@ -121,7 +121,7 @@ function renderNav(navData) {
     if (navBrand) navBrand.textContent = navData.brand;
 
     const path = window.location.pathname.toLowerCase();
-    const isSubPage = path.includes('menu_2_1.html') || path.includes('menu_2_2.html') || path.includes('menu_2_3.html') || path.includes('menu_3.html');
+    const isSubPage = path.includes('menu_2_1') || path.includes('menu_2_2') || path.includes('menu_2_3') || path.includes('menu_3') || path.includes('personal');
 
     // PC 메뉴 렌더링
     const pcMenuContainer = document.querySelector('nav .hidden.md\\:flex');
@@ -560,12 +560,12 @@ function refreshNavSkin() {
     
     // 현재 활성화된 주 메뉴 파일명 판별
     let activeMainHref = 'index.html';
-    if (path.includes('menu_1.html')) activeMainHref = 'Menu_1.html';
-    else if (path.includes('menu_2.html') || path.includes('menu_2_1.html') || path.includes('menu_2_2.html') || path.includes('menu_2_3.html')) activeMainHref = 'Menu_2.html';
-    else if (path.includes('menu_3.html') || path.includes('personal.html')) activeMainHref = 'Menu_3.html';
+    if (path.includes('menu_1')) activeMainHref = 'Menu_1.html';
+    else if (path.includes('menu_2_1') || path.includes('menu_2_2') || path.includes('menu_2_3') || (path.includes('menu_2.html') || path.endsWith('menu_2') || path.endsWith('menu_2/'))) activeMainHref = 'Menu_2.html';
+    else if (path.includes('menu_3') || path.includes('personal')) activeMainHref = 'Menu_3.html';
 
     // 상시 흰색 고정 스킨을 적용할 서브페이지 리스트 (Menu_3.html 및 personal.html 포함)
-    const isSubPage = path.includes('menu_2_1.html') || path.includes('menu_2_2.html') || path.includes('menu_2_3.html') || path.includes('menu_3.html') || path.includes('personal.html');
+    const isSubPage = path.includes('menu_2_1') || path.includes('menu_2_2') || path.includes('menu_2_3') || path.includes('menu_3') || path.includes('personal');
 
     if (isSubPage) {
         navbar.className = "fixed w-full z-50 top-0 transition-all duration-300 bg-white shadow-sm py-1";
