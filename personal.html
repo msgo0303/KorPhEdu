@@ -663,6 +663,128 @@
         }
     </script>
 
+    <!-- 전문가 코드 조회 및 프로필 동적 바인딩 -->
+    <script>
+        // Google Drive 공유 링크 → 직접 표시 가능한 이미지 URL 변환
+        function convertDriveUrl(url) {
+            if (!url) return '';
+            // open?id=FILE_ID 형식
+            const openMatch = url.match(/open\?id=([a-zA-Z0-9_-]+)/);
+            if (openMatch) return `https://drive.google.com/uc?export=view&id=${openMatch[1]}`;
+            // /d/FILE_ID/view 형식
+            const dMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+            if (dMatch) return `https://drive.google.com/uc?export=view&id=${dMatch[1]}`;
+            return url;
+        }
+
+        function showExpertProfile(data) {
+            // 이미지
+            const imgEl = document.getElementById('dynamic-img');
+            if (imgEl) imgEl.src = convertDriveUrl(data.imageUrl || '');
+
+            // 이름
+            const nameEl = document.getElementById('dynamic-name');
+            if (nameEl) nameEl.textContent = (data.name || '').trim();
+
+            // 직책/직위
+            const posEl = document.getElementById('dynamic-position');
+            if (posEl) posEl.textContent = (data.position || '').trim();
+
+            // 학력 및 경력
+            const expEl = document.getElementById('dynamic-experience');
+            if (expEl) expEl.textContent = (data.experience || '').trim();
+
+            // 전문 분야
+            const specEl = document.getElementById('dynamic-specialty');
+            if (specEl) specEl.textContent = (data.specialty || '').trim();
+
+            // 자기소개
+            const introEl = document.getElementById('dynamic-introduce');
+            if (introEl) introEl.textContent = (data.introduce || '').trim();
+
+            // 프로필 섹션 노출, 코드 입력 섹션 숨김
+            const profileSection = document.getElementById('profile-display-section');
+            const codeSection = document.getElementById('code-entry-section');
+            if (profileSection) profileSection.classList.remove('hidden');
+            if (codeSection) codeSection.classList.add('hidden');
+
+            // 네비게이션 예약하기 버튼 표시
+            const navBookingBtn = document.getElementById('nav-booking-btn');
+            const mobileBookingBtn = document.getElementById('mobile-booking-btn');
+            if (navBookingBtn) navBookingBtn.classList.remove('hidden');
+            if (mobileBookingBtn) mobileBookingBtn.classList.remove('hidden');
+        }
+
+        function showCodeEntry(errorMsg) {
+            const codeSection = document.getElementById('code-entry-section');
+            if (codeSection) codeSection.classList.remove('hidden');
+            if (errorMsg) {
+                const input = document.getElementById('expert-code-input');
+                if (input) {
+                    input.classList.add('border-red-400', 'bg-red-50');
+                    input.placeholder = errorMsg;
+                    input.value = '';
+                }
+            }
+        }
+
+        function loadExpertByCode(code) {
+            if (!code || code.length !== 6) {
+                showCodeEntry('유효한 6자리 코드를 입력해 주세요.');
+                return;
+            }
+
+            if (!window.database) {
+                showCodeEntry('데이터베이스 연결에 실패했습니다.');
+                return;
+            }
+
+            window.database.ref('experts/' + code).once('value')
+                .then(snapshot => {
+                    const data = snapshot.val();
+                    if (data) {
+                        showExpertProfile(data);
+                    } else {
+                        showCodeEntry('해당 코드의 전문가를 찾을 수 없습니다.');
+                    }
+                })
+                .catch(err => {
+                    console.error('Firebase 조회 오류:', err);
+                    showCodeEntry('데이터 조회 중 오류가 발생했습니다.');
+                });
+        }
+
+        // 수동 코드 입력 조회 함수 (personal.html 내부 코드 입력 폼용)
+        function checkExpertCode() {
+            const input = document.getElementById('expert-code-input');
+            if (!input) return;
+            const code = input.value.trim();
+            loadExpertByCode(code);
+        }
+
+        // 페이지 로드 시 URL 파라미터에서 코드 자동 읽기
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+            if (code) {
+                // Firebase가 준비될 때까지 약간 대기 후 조회
+                const tryLoad = (retries) => {
+                    if (window.database) {
+                        loadExpertByCode(code);
+                    } else if (retries > 0) {
+                        setTimeout(() => tryLoad(retries - 1), 300);
+                    } else {
+                        showCodeEntry('데이터베이스 연결에 실패했습니다.');
+                    }
+                };
+                tryLoad(10);
+            } else {
+                // 코드가 없으면 수동 입력 섹션 노출
+                showCodeEntry(null);
+            }
+        });
+    </script>
+
     <!-- 외부 분리 JavaScript 파일 연결 (defer) -->
     <script src="script.js?v=1.0.2" defer></script>
 </body>
