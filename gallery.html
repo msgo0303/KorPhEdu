@@ -451,9 +451,19 @@
         let visibleCards = [];
         let allGalleryData = [];
 
+        // 스크롤 시 화면에 감지되면 순차 등장 애니메이션 실행 (Scroll-Triggered Staggered Animation)
+        const scrollObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('card-anim-appear');
+              scrollObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
         function createCardElement(item, idx, customAspect) {
           const article = document.createElement('article');
-          article.className = 'gallery-card card-anim-appear group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high w-full';
+          article.className = 'gallery-card opacity-0 group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high w-full';
           article.style.animationDelay = `${Math.min(idx * 35, 350)}ms`;
           article.setAttribute('data-badge', item.badge || '갤러리');
           article.setAttribute('data-category', item.category || 'lecture');
@@ -554,6 +564,7 @@
           cardNodes = Array.from(document.querySelectorAll('.gallery-card'));
           visibleCards = [...cardNodes];
           cardNodes.forEach(card => {
+            scrollObserver.observe(card);
             card.onclick = () => {
               const vIdx = visibleCards.indexOf(card);
               if (vIdx !== -1) openLightbox(vIdx);
