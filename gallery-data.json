@@ -1,0 +1,462 @@
+[
+  {
+    "id": "lecture-1",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 1",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 1 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_1.webp"
+  },
+  {
+    "id": "lecture-2",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 10",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 10 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_10.jpg"
+  },
+  {
+    "id": "lecture-3",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 11",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 11 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_11.jpg"
+  },
+  {
+    "id": "lecture-4",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 12",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 12 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_12.jpg"
+  },
+  {
+    "id": "lecture-5",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 13",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 13 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_13.jpg"
+  },
+  {
+    "id": "lecture-6",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 14",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 14 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_14.jpg"
+  },
+  {
+    "id": "lecture-7",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 15",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 15 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_15.jpg"
+  },
+  {
+    "id": "lecture-8",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 2",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 2 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_2.webp"
+  },
+  {
+    "id": "lecture-9",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 3",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 3 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_3.webp"
+  },
+  {
+    "id": "lecture-10",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 4",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 4 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_4.webp"
+  },
+  {
+    "id": "lecture-11",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 5",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 5 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_5.webp"
+  },
+  {
+    "id": "lecture-12",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 6",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 6 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_6.webp"
+  },
+  {
+    "id": "lecture-13",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 7",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 7 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_7.webp"
+  },
+  {
+    "id": "lecture-14",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 8.JPG",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 8.JPG 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_8.JPG"
+  },
+  {
+    "id": "lecture-15",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "25 트랜드 9",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 트랜드 9 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/25_트랜드_9.webp"
+  },
+  {
+    "id": "lecture-16",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "411205요과김현영 트렌드프리뷰0407.JPG",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "411205요과김현영 트렌드프리뷰0407.JPG 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/411205요과김현영_트렌드프리뷰0407.JPG"
+  },
+  {
+    "id": "lecture-17",
+    "category": "lecture",
+    "badge": "강의",
+    "title": "411205요과김현영 트렌드프리뷰0407 2",
+    "cohort": "강의 세션",
+    "date": "2026. 09. 09",
+    "desc": "411205요과김현영 트렌드프리뷰0407 2 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/lecture/411205요과김현영_트렌드프리뷰0407_2.webp"
+  },
+  {
+    "id": "workshop-1",
+    "category": "workshop",
+    "badge": "워크숍",
+    "title": "24 계획 1",
+    "cohort": "워크숍 세션",
+    "date": "2026. 09. 09",
+    "desc": "24 계획 1 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/workshop/24_계획_1.webp"
+  },
+  {
+    "id": "workshop-2",
+    "category": "workshop",
+    "badge": "워크숍",
+    "title": "24 계획 2",
+    "cohort": "워크숍 세션",
+    "date": "2026. 09. 09",
+    "desc": "24 계획 2 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/workshop/24_계획_2.webp"
+  },
+  {
+    "id": "workshop-3",
+    "category": "workshop",
+    "badge": "워크숍",
+    "title": "24 계획 3",
+    "cohort": "워크숍 세션",
+    "date": "2026. 09. 09",
+    "desc": "24 계획 3 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/workshop/24_계획_3.webp"
+  },
+  {
+    "id": "workshop-4",
+    "category": "workshop",
+    "badge": "워크숍",
+    "title": "24 계획 4",
+    "cohort": "워크숍 세션",
+    "date": "2026. 09. 09",
+    "desc": "24 계획 4 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/workshop/24_계획_4.webp"
+  },
+  {
+    "id": "workshop-5",
+    "category": "workshop",
+    "badge": "워크숍",
+    "title": "24 계획 5",
+    "cohort": "워크숍 세션",
+    "date": "2026. 09. 09",
+    "desc": "24 계획 5 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/workshop/24_계획_5.webp"
+  },
+  {
+    "id": "workshop-6",
+    "category": "workshop",
+    "badge": "워크숍",
+    "title": "26 도파민 1",
+    "cohort": "워크숍 세션",
+    "date": "2026. 09. 09",
+    "desc": "26 도파민 1 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/workshop/26_도파민_1.webp"
+  },
+  {
+    "id": "workshop-7",
+    "category": "workshop",
+    "badge": "워크숍",
+    "title": "26 도파민 2",
+    "cohort": "워크숍 세션",
+    "date": "2026. 09. 09",
+    "desc": "26 도파민 2 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/workshop/26_도파민_2.webp"
+  },
+  {
+    "id": "workshop-8",
+    "category": "workshop",
+    "badge": "워크숍",
+    "title": "26 도파민 3",
+    "cohort": "워크숍 세션",
+    "date": "2026. 09. 09",
+    "desc": "26 도파민 3 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/workshop/26_도파민_3.webp"
+  },
+  {
+    "id": "event-1",
+    "category": "event",
+    "badge": "행사",
+    "title": "24 강연 1",
+    "cohort": "행사 세션",
+    "date": "2026. 09. 09",
+    "desc": "24 강연 1 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/event/24_강연_1.jpg"
+  },
+  {
+    "id": "event-2",
+    "category": "event",
+    "badge": "행사",
+    "title": "24 강연 2",
+    "cohort": "행사 세션",
+    "date": "2026. 09. 09",
+    "desc": "24 강연 2 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/event/24_강연_2.jpg"
+  },
+  {
+    "id": "event-3",
+    "category": "event",
+    "badge": "행사",
+    "title": "24 강연 4",
+    "cohort": "행사 세션",
+    "date": "2026. 09. 09",
+    "desc": "24 강연 4 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/event/24_강연_4.jpg"
+  },
+  {
+    "id": "event-4",
+    "category": "event",
+    "badge": "행사",
+    "title": "24 강연 5",
+    "cohort": "행사 세션",
+    "date": "2026. 09. 09",
+    "desc": "24 강연 5 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/event/24_강연_5.jpg"
+  },
+  {
+    "id": "event-5",
+    "category": "event",
+    "badge": "행사",
+    "title": "24 강연 6",
+    "cohort": "행사 세션",
+    "date": "2026. 09. 09",
+    "desc": "24 강연 6 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/event/24_강연_6.jpg"
+  },
+  {
+    "id": "event-6",
+    "category": "event",
+    "badge": "행사",
+    "title": "24 강연 7",
+    "cohort": "행사 세션",
+    "date": "2026. 09. 09",
+    "desc": "24 강연 7 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/event/24_강연_7.jpg"
+  },
+  {
+    "id": "event-7",
+    "category": "event",
+    "badge": "행사",
+    "title": "25 금 1",
+    "cohort": "행사 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 금 1 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/event/25_금_1.webp"
+  },
+  {
+    "id": "event-8",
+    "category": "event",
+    "badge": "행사",
+    "title": "25 금 2",
+    "cohort": "행사 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 금 2 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/event/25_금_2.webp"
+  },
+  {
+    "id": "event-9",
+    "category": "event",
+    "badge": "행사",
+    "title": "25 금 3",
+    "cohort": "행사 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 금 3 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/event/25_금_3.webp"
+  },
+  {
+    "id": "event-10",
+    "category": "event",
+    "badge": "행사",
+    "title": "25 금 4",
+    "cohort": "행사 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 금 4 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/event/25_금_4.webp"
+  },
+  {
+    "id": "event-11",
+    "category": "event",
+    "badge": "행사",
+    "title": "25 금 5",
+    "cohort": "행사 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 금 5 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/event/25_금_5.webp"
+  },
+  {
+    "id": "project-1",
+    "category": "project",
+    "badge": "프로젝트",
+    "title": "25 멘탈 1",
+    "cohort": "프로젝트 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 멘탈 1 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/project/25_멘탈_1.webp"
+  },
+  {
+    "id": "project-2",
+    "category": "project",
+    "badge": "프로젝트",
+    "title": "25 멘탈 2",
+    "cohort": "프로젝트 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 멘탈 2 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/project/25_멘탈_2.webp"
+  },
+  {
+    "id": "project-3",
+    "category": "project",
+    "badge": "프로젝트",
+    "title": "25 멘탈 3",
+    "cohort": "프로젝트 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 멘탈 3 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/project/25_멘탈_3.webp"
+  },
+  {
+    "id": "project-4",
+    "category": "project",
+    "badge": "프로젝트",
+    "title": "25 멘탈 4",
+    "cohort": "프로젝트 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 멘탈 4 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/project/25_멘탈_4.webp"
+  },
+  {
+    "id": "project-5",
+    "category": "project",
+    "badge": "프로젝트",
+    "title": "25 멘탈 5",
+    "cohort": "프로젝트 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 멘탈 5 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/project/25_멘탈_5.webp"
+  },
+  {
+    "id": "project-6",
+    "category": "project",
+    "badge": "프로젝트",
+    "title": "25 멘탈 6",
+    "cohort": "프로젝트 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 멘탈 6 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/project/25_멘탈_6.webp"
+  },
+  {
+    "id": "project-7",
+    "category": "project",
+    "badge": "프로젝트",
+    "title": "25 멘탈 7",
+    "cohort": "프로젝트 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 멘탈 7 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/project/25_멘탈_7.webp"
+  },
+  {
+    "id": "project-8",
+    "category": "project",
+    "badge": "프로젝트",
+    "title": "25 멘탈 8",
+    "cohort": "프로젝트 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 멘탈 8 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/project/25_멘탈_8.webp"
+  },
+  {
+    "id": "project-9",
+    "category": "project",
+    "badge": "프로젝트",
+    "title": "25 멘탈 9",
+    "cohort": "프로젝트 세션",
+    "date": "2026. 09. 09",
+    "desc": "25 멘탈 9 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/project/25_멘탈_9.webp"
+  },
+  {
+    "id": "project-10",
+    "category": "project",
+    "badge": "프로젝트",
+    "title": "26 라이트 1",
+    "cohort": "프로젝트 세션",
+    "date": "2026. 09. 09",
+    "desc": "26 라이트 1 관련 현장 기록 및 교육 수련 장면입니다.",
+    "src": "images/gallery/project/26_라이트_1.jpg"
+  }
+]
