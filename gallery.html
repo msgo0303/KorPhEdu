@@ -188,16 +188,102 @@
 </article>
 </div>
 </div>
-<!-- End-of-Archive Editorial Tag / Footer Section -->
-<div class="px-space-base mt-space-2xl pb-space-lg text-center flex flex-col items-center">
-<div class="w-12 h-0.5 bg-outline-variant mb-space-sm"></div>
-<span class="font-label-caps text-label-caps text-outline tracking-widest uppercase">ARCHIVE PLATE INDEX COMPLETE</span>
-<p class="font-label-caption text-label-caption text-outline mt-space-2xs">한국자기이해교육원 아카이브는 연중 지속 업데이트됩니다.</p>
-<button class="mt-space-base px-space-xl py-3 rounded-lg bg-surface-container text-primary font-body-compact text-body-compact font-semibold hover:bg-surface-container-high transition-colors flex items-center gap-space-xs shadow-xs" type="button">
-<span class="material-symbols-outlined text-[18px]">history_edu</span>
-<span class="">지난 기수 아카이브 요청</span>
-</button>
 </div>
+
+<!-- 푸터 영역 (index.html 동일) -->
+<footer class="bg-[#0F172A] pt-16 pb-8 border-t-4 border-teal relative overflow-hidden mt-16">
+    <i data-lucide="book-open-check"
+        class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none"></i>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+
+            <div class="lg:col-span-2">
+                <div class="flex items-center gap-2 mb-6">
+                    <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain">
+                    <span class="text-white font-bold text-xl tracking-tight">한국자기이해교육원</span>
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">
+                    과학적 성향 검사를 통한 자기 정체성 확립, 전문가 양성 및 공공 교육의 표준을 제시합니다.
+                </p>
+            </div>
+
+            <div class="col-span-1 lg:col-span-2 text-sm text-slate-400">
+                <h4
+                    class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block">
+                    INSTITUTE INFO</h4>
+                <ul class="space-y-3 font-light">
+                    <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">대표자</span>
+                        <span>김대표</span>
+                    </li>
+                    <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">사업자등록번호</span>
+                        <span class="font-mono">123-45-67890</span>
+                    </li>
+                    <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">민간자격등록</span>
+                        <span class="font-mono">제2026-001234호</span>
+                    </li>
+                    <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">소재지</span> <span
+                            class="break-keep">서울특별시 강남구 테헤란로 KSUT 빌딩 7층</span></li>
+                    <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">고객센터</span> <span
+                            class="text-white font-medium">02-1234-5678</span> <span class="text-xs">(평일 10:00 -
+                            17:00)</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div
+            class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+            <p>© 2026 한국자기이해교육원 KSUT. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition-colors">이용약관</a>
+                <a href="#" class="hover:text-white transition-colors font-semibold">개인정보처리방침</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- 문의하기 팝업 모달 (index.html 동일) -->
+<div id="modal-contact"
+    class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+    style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;">
+    <div
+        class="modal-card bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl p-8 relative">
+        <button
+            class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition font-bold text-xl">
+            &times;
+        </button>
+        <div class="mb-8">
+            <h3 class="text-2xl font-bold text-navy mb-2">문의 접수</h3>
+            <p class="text-slate-500 text-sm break-keep">기관명, 이름, 이메일, 상담 의뢰 내용을 작성해 주세요.</p>
+        </div>
+        <form class="space-y-4 text-left"
+            onsubmit="event.preventDefault(); this.closest('.modal-overlay').classList.remove('show'); document.body.style.overflow = ''; alert('문의가 성공적으로 접수되었습니다.');">
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">기관명</label>
+                <input type="text" required=""
+                    class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">이름</label>
+                <input type="text" required=""
+                    class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">이메일</label>
+                <input type="email" required=""
+                    class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">상담 의뢰 내용</label>
+                <textarea required="" rows="4"
+                    class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm resize-none"></textarea>
+            </div>
+            <button type="submit"
+                class="w-full bg-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-navy-dark transition shadow-sm mt-4">
+                제출하기
+            </button>
+        </form>
+    </div>
 </div>
 <!-- Full-Screen Interactive Lightbox Overlay (Hidden by Default) -->
 <aside aria-modal="true" class="fixed inset-0 z-[100] hidden flex flex-col justify-between bg-black/90 backdrop-blur-md transition-all duration-300" id="lightboxModal" role="dialog">
