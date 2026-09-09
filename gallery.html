@@ -270,7 +270,7 @@
     let currentIndex = 0;
     let visibleCards = [];
 
-    function createCardElement(item, idx, isWide) {
+    function createCardElement(item, idx, customAspect) {
       const article = document.createElement('article');
       article.className = 'gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high w-full';
       article.setAttribute('data-badge', item.badge || '갤러리');
@@ -281,7 +281,7 @@
       article.setAttribute('data-desc', item.desc || item.title || '강의와 워크숍 현장의 순간을 기록한 아카이브입니다.');
       article.setAttribute('data-index', idx + 1);
 
-      const aspectClass = isWide ? 'aspect-[16/10]' : 'aspect-[4/5]';
+      const aspectClass = customAspect || 'aspect-[4/5]';
 
       article.innerHTML = `
         <div class="relative w-full ${aspectClass} overflow-hidden">
@@ -304,29 +304,81 @@
       container.innerHTML = '';
 
       let i = 0;
+      let patternStep = 0;
+
       while (i < items.length) {
-        // 1. 와이드 16:10 카드 (1개)
-        const wideCard = createCardElement(items[i], i, true);
-        container.appendChild(wideCard);
-        i++;
+        const step = patternStep % 5;
 
-        // 2. 2열 세로 4:5 카드 그리드 (2개 세트)
-        if (i < items.length) {
-          const gridDiv = document.createElement('div');
-          gridDiv.className = 'grid grid-cols-2 gap-3 sm:gap-4 w-full gallery-grid-wrapper';
-
-          const pair1 = createCardElement(items[i], i, false);
-          gridDiv.appendChild(pair1);
+        if (step === 0) {
+          // 패턴 1: 전폭 와이드 메인 카드 (16:10)
+          container.appendChild(createCardElement(items[i], i, 'aspect-[16/10]'));
           i++;
-
+        } else if (step === 1) {
+          // 패턴 2: 2열 동일 세로 카드 세트 (4:5)
           if (i < items.length) {
-            const pair2 = createCardElement(items[i], i, false);
-            gridDiv.appendChild(pair2);
+            const gridDiv = document.createElement('div');
+            gridDiv.className = 'grid grid-cols-2 gap-3 sm:gap-4 w-full gallery-grid-wrapper';
+            gridDiv.appendChild(createCardElement(items[i], i, 'aspect-[4/5]'));
             i++;
+            if (i < items.length) {
+              gridDiv.appendChild(createCardElement(items[i], i, 'aspect-[4/5]'));
+              i++;
+            }
+            container.appendChild(gridDiv);
           }
+        } else if (step === 2) {
+          // 패턴 3: 비대칭 60:40 분할 (4:3 + 4:5)
+          if (i < items.length) {
+            const gridDiv = document.createElement('div');
+            gridDiv.className = 'grid grid-cols-5 gap-3 sm:gap-4 w-full gallery-grid-wrapper items-center';
 
-          container.appendChild(gridDiv);
+            const card1 = createCardElement(items[i], i, 'aspect-[4/3]');
+            card1.classList.add('col-span-3');
+            gridDiv.appendChild(card1);
+            i++;
+
+            if (i < items.length) {
+              const card2 = createCardElement(items[i], i, 'aspect-[4/5]');
+              card2.classList.add('col-span-2');
+              gridDiv.appendChild(card2);
+              i++;
+            }
+            container.appendChild(gridDiv);
+          }
+        } else if (step === 3) {
+          // 패턴 4: 3열 미니 카드 세트 (정사각형 1:1)
+          if (i < items.length) {
+            const gridDiv = document.createElement('div');
+            gridDiv.className = 'grid grid-cols-3 gap-2.5 sm:gap-3.5 w-full gallery-grid-wrapper';
+
+            for (let k = 0; k < 3 && i < items.length; k++) {
+              gridDiv.appendChild(createCardElement(items[i], i, 'aspect-square'));
+              i++;
+            }
+            container.appendChild(gridDiv);
+          }
+        } else if (step === 4) {
+          // 패턴 5: 반전 비대칭 40:60 분할 (4:5 + 4:3)
+          if (i < items.length) {
+            const gridDiv = document.createElement('div');
+            gridDiv.className = 'grid grid-cols-5 gap-3 sm:gap-4 w-full gallery-grid-wrapper items-center';
+
+            const card1 = createCardElement(items[i], i, 'aspect-[4/5]');
+            card1.classList.add('col-span-2');
+            gridDiv.appendChild(card1);
+            i++;
+
+            if (i < items.length) {
+              const card2 = createCardElement(items[i], i, 'aspect-[4/3]');
+              card2.classList.add('col-span-3');
+              gridDiv.appendChild(card2);
+              i++;
+            }
+            container.appendChild(gridDiv);
+          }
         }
+
+        patternStep++;
       }
 
       refreshCardEvents();
