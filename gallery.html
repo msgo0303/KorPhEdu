@@ -106,8 +106,8 @@
 </button>
 </div>
 </div>
-<!-- Editorial Asymmetric Masonry Layout -->
-<div class="px-space-base mt-6 columns-1 sm:columns-2 md:columns-3 gap-4 sm:gap-6 space-y-4 sm:space-y-6 max-w-7xl mx-auto w-full" id="galleryContainer">
+<!-- Editorial Asymmetric Layout (Matching Screenshot: 1 Wide Card -> 2 Portrait Cards Grid) -->
+<div class="px-space-base mt-6 flex flex-col gap-3.5 sm:gap-5 max-w-7xl mx-auto w-full" id="galleryContainer">
 <!-- Featured Large Card: Lecturer Photo -->
 <article class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high" data-badge="정규강의" data-category="lecture" data-cohort="정규 4주차 종합세미나" data-date="2026. 08. 21" data-desc="강단 위와 스크린을 넘나들며 심리적 이동 궤적을 나누고, 자아 확장의 기제를 다룬 본원 대강의실 라이브 강의 전경." data-index="1" data-title="자기이동: 나를 찾는 여정 강좌">
 <div class="relative w-full aspect-[4/5] overflow-hidden">
@@ -270,70 +270,67 @@
     let currentIndex = 0;
     let visibleCards = [];
 
+    function createCardElement(item, idx, isWide) {
+      const article = document.createElement('article');
+      article.className = 'gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high w-full';
+      article.setAttribute('data-badge', item.badge || '갤러리');
+      article.setAttribute('data-category', item.category || 'lecture');
+      article.setAttribute('data-date', item.date || '');
+      article.setAttribute('data-title', item.title || '');
+      article.setAttribute('data-cohort', item.cohort || 'KSUI 교육 현장');
+      article.setAttribute('data-desc', item.desc || item.title || '강의와 워크숍 현장의 순간을 기록한 아카이브입니다.');
+      article.setAttribute('data-index', idx + 1);
+
+      const aspectClass = isWide ? 'aspect-[16/10]' : 'aspect-[4/5]';
+
+      article.innerHTML = `
+        <div class="relative w-full ${aspectClass} overflow-hidden">
+          <img src="${item.src}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+          <div class="absolute bottom-0 inset-x-0 p-space-base flex flex-col justify-end text-white">
+            <span class="text-[11px] text-white/80 font-normal tracking-wide">${item.date || ''}</span>
+            <h3 class="text-headline-sm font-bold text-white leading-tight mt-0.5">${item.title || ''}</h3>
+            <span class="text-[11px] text-white/75 mt-0.5 font-light">${item.badge || ''}</span>
+          </div>
+        </div>
+      `;
+      return article;
+    }
+
     function renderGalleryData(items) {
       const container = document.getElementById('galleryContainer');
       if (!container || !Array.isArray(items) || items.length === 0) return;
 
       container.innerHTML = '';
-      items.forEach((item, idx) => {
-        const article = document.createElement('article');
-        article.className = 'gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high break-inside-avoid inline-block w-full mb-4 sm:mb-6';
-        article.setAttribute('data-badge', item.badge || '갤러리');
-        article.setAttribute('data-category', item.category || 'lecture');
-        article.setAttribute('data-date', item.date || '');
-        article.setAttribute('data-title', item.title || '');
-        article.setAttribute('data-cohort', item.cohort || 'KSUI 교육 현장');
-        article.setAttribute('data-desc', item.desc || item.title || '강의와 워크숍 현장의 순간을 기록한 아카이브입니다.');
-        article.setAttribute('data-index', idx + 1);
 
-        // 기본 리듬 비율 패턴 (순환)
-        const defaultRatios = ['aspect-[16/10]', 'aspect-[4/5]', 'aspect-[4/3]', 'aspect-square', 'aspect-[3/4]'];
-        const initialRatio = defaultRatios[idx % defaultRatios.length];
+      let i = 0;
+      while (i < items.length) {
+        // 1. 와이드 16:10 카드 (1개)
+        const wideCard = createCardElement(items[i], i, true);
+        container.appendChild(wideCard);
+        i++;
 
-        article.innerHTML = `
-          <div class="card-frame relative w-full ${initialRatio} overflow-hidden transition-all duration-300">
-            <img src="${item.src}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105" loading="lazy" onload="autoDetectFrameRatio(this)">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-            <div class="absolute bottom-0 inset-x-0 p-space-base flex flex-col justify-end text-white">
-              <span class="text-[11px] text-white/80 font-normal tracking-wide">${item.date || ''}</span>
-              <h3 class="text-headline-sm font-bold text-white leading-tight mt-0.5">${item.title || ''}</h3>
-              <span class="text-[11px] text-white/75 mt-0.5 font-light">${item.badge || ''}</span>
-            </div>
-          </div>
-        `;
-        container.appendChild(article);
-      });
+        // 2. 2열 세로 4:5 카드 그리드 (2개 세트)
+        if (i < items.length) {
+          const gridDiv = document.createElement('div');
+          gridDiv.className = 'grid grid-cols-2 gap-3 sm:gap-4 w-full gallery-grid-wrapper';
+
+          const pair1 = createCardElement(items[i], i, false);
+          gridDiv.appendChild(pair1);
+          i++;
+
+          if (i < items.length) {
+            const pair2 = createCardElement(items[i], i, false);
+            gridDiv.appendChild(pair2);
+            i++;
+          }
+
+          container.appendChild(gridDiv);
+        }
+      }
+
       refreshCardEvents();
     }
-
-    // 사진의 실제 가로/세로 비율을 자동 감지하여 가장 예쁜 프레임을 자동 적용
-    window.autoDetectFrameRatio = function(img) {
-      if (!img || !img.naturalWidth || !img.naturalHeight) return;
-      const frame = img.closest('.card-frame');
-      if (!frame) return;
-
-      const ratio = img.naturalWidth / img.naturalHeight;
-
-      // 이전 비율 클래스 제거
-      frame.classList.remove('aspect-[16/10]', 'aspect-[4/5]', 'aspect-[4/3]', 'aspect-square', 'aspect-[3/4]');
-
-      if (ratio > 1.35) {
-        // 넓은 가로 사진
-        frame.classList.add('aspect-[16/10]');
-      } else if (ratio > 1.08) {
-        // 일반 가로 사진
-        frame.classList.add('aspect-[4/3]');
-      } else if (ratio < 0.82) {
-        // 슬림 세로 사진
-        frame.classList.add('aspect-[3/4]');
-      } else if (ratio < 0.95) {
-        // 일반 세로 사진
-        frame.classList.add('aspect-[4/5]');
-      } else {
-        // 정사각형에 가까운 사진
-        frame.classList.add('aspect-square');
-      }
-    };
 
     function refreshCardEvents() {
       cardNodes = Array.from(document.querySelectorAll('.gallery-card'));
@@ -390,6 +387,16 @@
             card.style.display = '';
           } else {
             card.style.display = 'none';
+          }
+        });
+
+        // 2열 그리드 감싸는 div도 숨김/노출 처리
+        document.querySelectorAll('.gallery-grid-wrapper').forEach(grid => {
+          const visibleChildren = Array.from(grid.querySelectorAll('.gallery-card')).filter(c => c.style.display !== 'none');
+          if (visibleChildren.length === 0) {
+            grid.style.display = 'none';
+          } else {
+            grid.style.display = 'grid';
           }
         });
 
