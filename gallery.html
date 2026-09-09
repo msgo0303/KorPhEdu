@@ -451,7 +451,7 @@
         let visibleCards = [];
         let allGalleryData = [];
 
-        // 스크롤 시 화면에 감지되면 순차 등장 애니메이션 실행 (Scroll-Triggered Staggered Animation)
+        // 스크롤 시 화면 도달 250px 전에 미리 감지하여 빈 흰 공간(여백)이 전혀 보이지 않도록 즉시 pre-trigger 실행
         const scrollObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -459,12 +459,12 @@
               scrollObserver.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0, rootMargin: '250px 0px 100px 0px' });
 
         function createCardElement(item, idx, customAspect) {
           const article = document.createElement('article');
           article.className = 'gallery-card opacity-0 group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high w-full';
-          article.style.animationDelay = `${Math.min(idx * 35, 350)}ms`;
+          article.style.animationDelay = `${Math.min((idx % 6) * 30, 150)}ms`;
           article.setAttribute('data-badge', item.badge || '갤러리');
           article.setAttribute('data-category', item.category || 'lecture');
           article.setAttribute('data-date', item.date || '');
