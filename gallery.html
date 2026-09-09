@@ -1,568 +1,676 @@
-<!DOCTYPE html><html lang="ko" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><title>갤러리 | 한국자기이해교육원 KSUI</title>
-<!-- Pretendard Font -->
-<link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<!-- Plus Jakarta Sans & Material Symbols -->
-<link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<!-- Lucide Icons -->
-<script src="https://unpkg.com/lucide@latest"></script>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "navy": { DEFAULT: '#1E3A8A', light: '#2563EB', dark: '#0F172A' }, "teal": { DEFAULT: '#0F766E', light: '#14B8A6' }, "on-secondary-fixed": "#00201d", "outline": "#757682", "on-error": "#ffffff", "on-primary-container": "#90a8ff", "secondary-fixed": "#9cf2e8", "error": "#ba1a1a", "inverse-on-surface": "#ecf1ff", "on-secondary-container": "#006f67", "tertiary-fixed": "#71f8e4", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#80d5cb", "on-primary": "#ffffff", "primary-fixed-dim": "#b6c4ff", "surface": "#f9f9ff", "surface-dim": "#cfdaf2", "tertiary-fixed-dim": "#4fdbc8", "on-primary-fixed-variant": "#264191", "secondary": "#006a63", "surface-container": "#e7eeff", "on-tertiary-container": "#27c0ae", "surface-container-low": "#f0f3ff", "surface-variant": "#d8e3fb", "surface-container-high": "#dee8ff", "primary": "#00236f", "secondary-container": "#99efe5", "on-primary-fixed": "#00164e", "on-secondary": "#ffffff", "on-tertiary-fixed-variant": "#005048", "inverse-surface": "#263143", "primary-container": "#1e3a8a", "on-surface": "#111c2d", "tertiary": "#00312b", "surface-tint": "#4059aa", "surface-container-highest": "#d8e3fb", "error-container": "#ffdad6", "on-background": "#111c2d", "on-tertiary-fixed": "#00201c", "surface-bright": "#f9f9ff", "on-secondary-fixed-variant": "#00504a", "inverse-primary": "#b6c4ff", "background": "#f9f9ff", "tertiary-container": "#004941", "primary-fixed": "#dce1ff", "on-error-container": "#93000a", "on-tertiary": "#ffffff", "outline-variant": "#c5c5d3", "on-surface-variant": "#444651" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xl": "1.5rem", "space-base": "1rem", "gutter-masonry": "0.5rem", "space-sm": "0.5rem", "space-3xl": "3rem", "space-md": "0.75rem", "space-xs": "0.25rem", "header-safe-top": "3.5rem", "bottom-nav-height": "4rem", "space-2xl": "2rem", "margin-mobile": "1rem", "space-lg": "1.25rem", "space-2xs": "0.125rem" }, "fontFamily": { "sans": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "body-default": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "display-hero": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "display-hero-mobile": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "label-caption": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "label-caps": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "body-editorial": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "badge-label": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "headline-sm": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "headline-lg": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "body-compact": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "headline-md": ["Pretendard", "Plus Jakarta Sans", "sans-serif"] }, "fontSize": { "body-default": ["14px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400"}], "display-hero": ["38px", {"lineHeight": "46px", "letterSpacing": "-0.03em", "fontWeight": "700"}], "display-hero-mobile": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.025em", "fontWeight": "700"}], "label-caption": ["12px", {"lineHeight": "16px", "letterSpacing": "-0.005em", "fontWeight": "500"}], "label-caps": ["11px", {"lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "600"}], "body-editorial": ["16px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "400"}], "badge-label": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}], "headline-sm": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}], "headline-lg": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600"}], "body-compact": ["13px", {"lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400"}], "headline-md": ["21px", {"lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600"}] } } } }</script>
-<link rel="stylesheet" href="style.css">
-<script src="gallery-data.js"></script>
-<script src="script.js" defer></script>
-</head><body class="bg-surface font-sans text-body-default text-on-surface flex flex-col antialiased selection:bg-secondary-container selection:text-on-secondary-container">
-<!-- 상단 네비게이션바 -->
-<nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-transparent" id="navbar">
+<!DOCTYPE html>
+<html lang="ko" style="">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    name="viewport">
+  <title>갤러리 | 한국자기이해교육원 KSUI</title>
+  <!-- Pretendard Font -->
+  <link rel="stylesheet" as="style" crossorigin=""
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <!-- Plus Jakarta Sans & Material Symbols -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script
+    id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "navy": { DEFAULT: '#1E3A8A', light: '#2563EB', dark: '#0F172A' }, "teal": { DEFAULT: '#0F766E', light: '#14B8A6' }, "on-secondary-fixed": "#00201d", "outline": "#757682", "on-error": "#ffffff", "on-primary-container": "#90a8ff", "secondary-fixed": "#9cf2e8", "error": "#ba1a1a", "inverse-on-surface": "#ecf1ff", "on-secondary-container": "#006f67", "tertiary-fixed": "#71f8e4", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#80d5cb", "on-primary": "#ffffff", "primary-fixed-dim": "#b6c4ff", "surface": "#f9f9ff", "surface-dim": "#cfdaf2", "tertiary-fixed-dim": "#4fdbc8", "on-primary-fixed-variant": "#264191", "secondary": "#006a63", "surface-container": "#e7eeff", "on-tertiary-container": "#27c0ae", "surface-container-low": "#f0f3ff", "surface-variant": "#d8e3fb", "surface-container-high": "#dee8ff", "primary": "#00236f", "secondary-container": "#99efe5", "on-primary-fixed": "#00164e", "on-secondary": "#ffffff", "on-tertiary-fixed-variant": "#005048", "inverse-surface": "#263143", "primary-container": "#1e3a8a", "on-surface": "#111c2d", "tertiary": "#00312b", "surface-tint": "#4059aa", "surface-container-highest": "#d8e3fb", "error-container": "#ffdad6", "on-background": "#111c2d", "on-tertiary-fixed": "#00201c", "surface-bright": "#f9f9ff", "on-secondary-fixed-variant": "#00504a", "inverse-primary": "#b6c4ff", "background": "#f9f9ff", "tertiary-container": "#004941", "primary-fixed": "#dce1ff", "on-error-container": "#93000a", "on-tertiary": "#ffffff", "outline-variant": "#c5c5d3", "on-surface-variant": "#444651" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xl": "1.5rem", "space-base": "1rem", "gutter-masonry": "0.5rem", "space-sm": "0.5rem", "space-3xl": "3rem", "space-md": "0.75rem", "space-xs": "0.25rem", "header-safe-top": "3.5rem", "bottom-nav-height": "4rem", "space-2xl": "2rem", "margin-mobile": "1rem", "space-lg": "1.25rem", "space-2xs": "0.125rem" }, "fontFamily": { "sans": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "body-default": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "display-hero": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "display-hero-mobile": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "label-caption": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "label-caps": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "body-editorial": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "badge-label": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "headline-sm": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "headline-lg": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "body-compact": ["Pretendard", "Plus Jakarta Sans", "sans-serif"], "headline-md": ["Pretendard", "Plus Jakarta Sans", "sans-serif"] }, "fontSize": { "body-default": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "display-hero": ["38px", { "lineHeight": "46px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "label-caption": ["12px", { "lineHeight": "16px", "letterSpacing": "-0.005em", "fontWeight": "500" }], "label-caps": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "600" }], "body-editorial": ["16px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "badge-label": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-compact": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-md": ["21px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }] } } } }</script>
+  <link rel="stylesheet" href="style.css">
+  <script src="gallery-data.js"></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body
+  class="bg-surface font-sans text-body-default text-on-surface flex flex-col antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+  <!-- 상단 네비게이션바 -->
+  <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-transparent" id="navbar">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-50" id="nav-container">
-        <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
-            <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" id="nav-logo-box">
-            <span class="text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors" id="nav-brand">한국자기이해교육원</span>
-        </div>
-        <!-- PC 버전 메뉴 구역 -->
-        <div class="hidden md:flex gap-8 items-center">
-            <a href="Menu_1.html" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm">기관소개</a>
-            <a href="Menu_2.html" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm">비즈니스</a>
-            <a href="Menu_3.html" class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm">연구진</a>
-            <a href="gallery.html" class="nav-link text-white font-semibold transition-colors drop-shadow-sm border-b-2 border-white pb-0.5">갤러리</a>
-            <button class="modal-trigger bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm cursor-pointer" data-target="modal-contact">문의하기</button>
-        </div>
-        <!-- 모바일 햄버거 메뉴 버튼 -->
-        <button class="block md:hidden text-white focus:outline-none transition-colors" id="mobile-menu-btn">
-            <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
+      <div class="flex items-center gap-3 cursor-pointer" onclick="location.href='index.html'">
+        <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain" id="nav-logo-box">
+        <span class="text-white font-semibold tracking-tight text-lg drop-shadow-md transition-colors"
+          id="nav-brand">한국자기이해교육원</span>
+      </div>
+      <!-- PC 버전 메뉴 구역 -->
+      <div class="hidden md:flex gap-8 items-center">
+        <a href="Menu_1.html"
+          class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm">기관소개</a>
+        <a href="Menu_2.html"
+          class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm">비즈니스</a>
+        <a href="Menu_3.html"
+          class="nav-link text-white/90 hover:text-white text-sm font-medium transition-colors drop-shadow-sm">연구진</a>
+        <a href="gallery.html"
+          class="nav-link text-white font-semibold transition-colors drop-shadow-sm border-b-2 border-white pb-0.5">갤러리</a>
+        <button
+          class="modal-trigger bg-teal text-white px-5 py-2 rounded-md text-sm font-medium hover:bg-teal-600 transition-colors shadow-sm cursor-pointer"
+          data-target="modal-contact">문의하기</button>
+      </div>
+      <!-- 모바일 햄버거 메뉴 버튼 -->
+      <button class="block md:hidden text-white focus:outline-none transition-colors" id="mobile-menu-btn">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
     </div>
     <!-- 모바일 드로어 영역 -->
-    <div id="mobile-drawer" class="absolute top-full left-0 w-full bg-transparent overflow-hidden transition-all duration-300 ease-in-out flex flex-col md:hidden" style="height: 0px; opacity: 0;">
-        <div class="py-6 px-6 flex flex-col gap-5 border-t border-white/10 transition-colors duration-300" id="mobile-drawer-content">
-            <a href="Menu_1.html" class="mobile-link text-white/80 hover:text-white text-base font-medium transition-colors py-1">기관소개</a>
-            <a href="Menu_2.html" class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">비즈니스</a>
-            <a href="Menu_3.html" class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">연구진</a>
-            <a href="gallery.html" class="mobile-link text-navy font-semibold text-base transition-colors py-1">갤러리</a>
-            <button class="modal-trigger text-slate-600 hover:text-navy text-base font-medium transition-colors py-1 text-left w-full cursor-pointer" data-target="modal-contact" onclick="toggleMobileMenu()">문의하기</button>
-        </div>
+    <div id="mobile-drawer"
+      class="absolute top-full left-0 w-full bg-transparent overflow-hidden transition-all duration-300 ease-in-out flex flex-col md:hidden"
+      style="height: 0px; opacity: 0;">
+      <div class="py-6 px-6 flex flex-col gap-5 border-t border-white/10 transition-colors duration-300"
+        id="mobile-drawer-content">
+        <a href="Menu_1.html"
+          class="mobile-link text-white/80 hover:text-white text-base font-medium transition-colors py-1">기관소개</a>
+        <a href="Menu_2.html"
+          class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">비즈니스</a>
+        <a href="Menu_3.html"
+          class="mobile-link text-slate-600 hover:text-navy text-base font-medium transition-colors py-1">연구진</a>
+        <a href="gallery.html" class="mobile-link text-navy font-semibold text-base transition-colors py-1">갤러리</a>
+        <button
+          class="modal-trigger text-slate-600 hover:text-navy text-base font-medium transition-colors py-1 text-left w-full cursor-pointer"
+          data-target="modal-contact" onclick="toggleMobileMenu()">문의하기</button>
+      </div>
     </div>
-</nav>
+  </nav>
 
-<main class="flex flex-col relative w-full bg-surface">
-<!-- 1. TOP HERO SECTION -->
-<section class="relative w-full h-screen min-h-[640px] flex flex-col justify-start bg-black text-white">
-<div class="absolute inset-0 z-0 overflow-hidden">
-<img alt="배움의 현장 - 강의실 세미나 참여자 시점" class="w-full h-full object-cover object-center" src="images/gallery/hero.png">
-<!-- Top subtle blur mask to enhance readability of typography while keeping lower area crisp -->
-<div class="absolute inset-0 z-0 backdrop-blur-md pointer-events-none" style="mask-image: linear-gradient(rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 35%, rgba(0, 0, 0, 0) 65%); -webkit-mask-image: linear-gradient(rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 35%, rgba(0, 0, 0, 0) 65%);"></div>
-<div class="absolute inset-0 z-0 bg-gradient-to-b from-black/65 via-black/30 to-transparent pointer-events-none"></div>
-<!-- Seamless gradient fade to archive surface background -->
-<div class="absolute bottom-0 inset-x-0 h-40 pointer-events-none" style="background: linear-gradient(to bottom, rgba(249, 249, 255, 0) 0%, rgba(249, 249, 255, 0.35) 45%, rgba(249, 249, 255, 0.85) 75%, rgb(249, 249, 255) 100%);"></div>
-</div>
-<!-- Hero Text Block -->
-<div class="relative z-10 px-space-base mt-28 md:mt-32 flex flex-col items-start max-w-7xl mx-auto w-full">
-<div class="mb-2.5">
-<span class="text-[11px] font-bold tracking-[0.25em] text-white/85 uppercase font-label-caps">GALLERY</span>
-</div>
-<h1 class="text-[28px] sm:text-[36px] md:text-[44px] font-bold text-white leading-[1.28] tracking-tight whitespace-pre-line font-display-hero-mobile drop-shadow-sm">배움이 만들어가는
-특별한 순간들</h1>
-<p class="text-[13.5px] sm:text-[15px] text-white/85 leading-relaxed font-normal mt-3 max-w-[420px] whitespace-pre-line drop-shadow-sm">강의실 안팎에서 펼쳐지는 다양한 순간들을 통해
-우리의 배움이 어떻게 이어지는지 확인해보세요.</p>
-</div>
-<!-- Moving Animated Bounce Scroll Guide (Centered Horizontally at Bottom) -->
-<div class="absolute bottom-6 left-1/2 -translate-x-1/2 translate-y-[50px] z-20 flex flex-col items-center justify-center gap-1 pointer-events-none select-none">
-<span class="text-[10px] font-mono tracking-[0.25em] text-on-surface/75 uppercase font-semibold text-center">SCROLL</span>
-<div class="flex flex-col items-center animate-bounce duration-1000">
-<span class="w-[1.5px] h-5 bg-gradient-to-b from-primary/70 to-primary/20 rounded-full inline-block"></span>
-<span class="material-symbols-outlined text-[18px] text-primary/75 -mt-1">keyboard_arrow_down</span>
-</div>
-</div>
-</section>
-<!-- 2. ARCHIVE SECTION -->
-<div class="flex flex-col w-full bg-surface">
-<!-- Section Title Block -->
-<section class="px-space-base pt-16 pb-6 flex flex-col gap-3.5 max-w-7xl mx-auto w-full">
-<h2 class="text-[26px] sm:text-[28px] font-bold text-[#1E293B] tracking-[0.04em] uppercase leading-none">
-      GALLERY
-    </h2>
-<div class="text-[16px] sm:text-[17px] text-[#475569] leading-relaxed font-normal">
-<p>함께한 모든 순간이</p>
-<p>배움의 기록이 됩니다.</p>
-</div>
-</section>
-<!-- Curatorial Sticky-Aware Filter Bar -->
-<div class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-space-base py-4 border-b border-slate-100 shadow-[0_1px_4px_rgba(0,0,0,0.02)]">
-<div class="grid grid-cols-5 gap-1.5 sm:gap-2.5 w-full max-w-7xl mx-auto items-center" id="categoryFilterBar">
-<button class="filter-btn active w-full h-10 sm:h-11 px-2 rounded-full text-[13.5px] sm:text-[14.5px] font-semibold transition-all flex items-center justify-center bg-[#1E2E4A] text-white border border-[#1E2E4A] shadow-xs cursor-pointer text-center" data-filter="all" type="button">
-<span class="text-white">전체</span>
-</button>
-<button class="filter-btn w-full h-10 sm:h-11 px-2 rounded-full text-[13.5px] sm:text-[14.5px] font-medium transition-all flex items-center justify-center bg-white text-[#64748B] border border-slate-200 hover:border-slate-300 hover:text-[#1E293B] cursor-pointer text-center" data-filter="lecture" type="button">
-<span class="">강의</span>
-</button>
-<button class="filter-btn w-full h-10 sm:h-11 px-2 rounded-full text-[13.5px] sm:text-[14.5px] font-medium transition-all flex items-center justify-center bg-white text-[#64748B] border border-slate-200 hover:border-slate-300 hover:text-[#1E293B] cursor-pointer text-center" data-filter="workshop" type="button">
-<span class="">워크숍</span>
-</button>
-<button class="filter-btn w-full h-10 sm:h-11 px-2 rounded-full text-[13.5px] sm:text-[14.5px] font-medium transition-all flex items-center justify-center bg-white text-[#64748B] border border-slate-200 hover:border-slate-300 hover:text-[#1E293B] cursor-pointer text-center" data-filter="event" type="button">
-<span class="">행사</span>
-</button>
-<button class="filter-btn w-full h-10 sm:h-11 px-2 rounded-full text-[13.5px] sm:text-[14.5px] font-medium transition-all flex items-center justify-center bg-white text-[#64748B] border border-slate-200 hover:border-slate-300 hover:text-[#1E293B] cursor-pointer text-center" data-filter="project" type="button">
-<span class="">프로젝트</span>
-</button>
-</div>
-</div>
-<!-- Editorial Asymmetric Layout (Matching Screenshot: 1 Wide Card -> 2 Portrait Cards Grid) -->
-<div class="px-space-base mt-6 flex flex-col gap-3.5 sm:gap-5 max-w-7xl mx-auto w-full" id="galleryContainer">
-<!-- Featured Large Card: Lecturer Photo -->
-<article class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high" data-badge="정규강의" data-category="lecture" data-cohort="정규 4주차 종합세미나" data-date="2026. 08. 21" data-desc="강단 위와 스크린을 넘나들며 심리적 이동 궤적을 나누고, 자아 확장의 기제를 다룬 본원 대강의실 라이브 강의 전경." data-index="1" data-title="자기이동: 나를 찾는 여정 강좌">
-<div class="relative w-full aspect-[4/5] overflow-hidden">
-<img alt="자기이동: 나를 찾는 여정 강좌 실습" class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1W8wGVbjR3Ho0HYXk1H6tuZKI4HOqoT1wR6guLsPk7QPjmDwhrPklnOodoprOlrd7httT0zbxRbES62sWrDgEupgKPibxVCr7KnWoFXIbt8ieXE774w9sZyXWzCmcF9O91qyjRZh8cZfPJMit5tl79gFVl84L-Bq57PWcsfRJQAYJkJjU_GmsMnKCkfV9hOrDYbZYuLsG8K8P8RUgG2y1rCohrwA9v8PR-8p5e20Q1RW_EQCNd9EUPPMB8">
-<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-<div class="absolute bottom-0 inset-x-0 p-space-base flex flex-col justify-end text-white">
-<span class="text-[11px] text-white/80 font-normal tracking-wide">2026. 08. 21</span>
-<h2 class="text-headline-sm font-bold text-white leading-tight mt-0.5">자기이동: 나를 찾는 여정 강좌</h2>
-<span class="text-[11px] text-white/75 mt-0.5 font-light">정규강의 / 정규 4주차 종합세미나</span>
-</div>
-</div>
-</article>
-<!-- Cards 02 & 03: 2-Column Grid -->
-<div class="grid grid-cols-2 gap-space-sm">
-<!-- Card 02: Psychological Assessment Toolkits -->
-<article class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high" data-badge="탐색교구" data-category="toolkit" data-cohort="연구개발실 배포본" data-date="2026. 08. 18" data-desc="참여자의 일상적 감정 문해력과 핵심 가치 선별을 돕기 위해 천연 질감 린넨 노트와 질문 카드로 섬세하게 설계된 수련 도구." data-index="2" data-title="자아탐색 툴킷">
-<div class="relative w-full aspect-[4/5] overflow-hidden">
-<img alt="자아탐색 툴킷 교구 사진" class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1V9k6XJXgSrwv1DTWEGxHReQlx_F5EbdK-RrwmJxfulz9sg5u_XJA-t4Nzaduwi3cffr-d1sB9pXLhsLtZtjqTU3Q27Yvut7w2kbRmbFDiX4kfB4b_e5IOtkq8CL2FwZ6WOd465_ImE7h5s-Ij2PcELsU08Vo7HglnbvkaBiYXe_Cmpi3gcEbiSzyaGVoRYH3_-3ADUZJ8rlplmKfy2qnmwe-vkyFv_F5qZQqdD1iHxaDH9JJ00laUucPk">
-<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-<div class="absolute bottom-0 inset-x-0 p-space-sm flex flex-col justify-end text-white">
-<span class="text-[11px] text-white/80 font-normal tracking-wide">2026. 08. 18</span>
-<h3 class="text-body-compact font-bold text-white leading-tight mt-0.5 line-clamp-1">자아탐색 툴킷</h3>
-<span class="text-[11px] text-white/75 mt-0.5 font-light">탐색교구</span>
-</div>
-</div>
-</article>
-<!-- Card 03: Workshop Smiling Female Educator -->
-<article class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high" data-badge="심화워크숍" data-category="workshop" data-cohort="임상코칭 수련기" data-date="2026. 08. 11" data-desc="소그룹 원탁에 둘러앉아 동료 연구원들과 감정 척도 카드를 나누고, 비폭력 대화 모델을 연습하는 역동적인 코칭 세션." data-index="3" data-title="감정지능 워크숍">
-<div class="relative w-full aspect-[4/5] overflow-hidden">
-<img alt="감정지능 워크숍 진행 장면" class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1WPTArR4eNC40xd-U-aHVfFkf_MqY4UK9CTjQna9F8C5AA0P2j-4HDf848FKSSIo1avVWjv2UuHNurMSvRK5TdsQmpv7YnfxImOQCS2v_f7j1OD6AgusSWqT5VK5RsnZp0Gu4pysUEBLi-auwcWybyeAQQAAq92FBCwtjyIAD3wPxruLSKQf0nq-8M-MnEiWdaJpvYC_9umbSF7MGkVaf00KifnuUOStBpq6GJHIyeKze52nwisR6NgAE8">
-<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-<div class="absolute bottom-0 inset-x-0 p-space-sm flex flex-col justify-end text-white">
-<span class="text-[11px] text-white/80 font-normal tracking-wide">2026. 08. 11</span>
-<h3 class="text-body-compact font-bold text-white leading-tight mt-0.5 line-clamp-1">감정지능 워크숍</h3>
-<span class="text-[11px] text-white/75 mt-0.5 font-light">심화워크숍</span>
-</div>
-</div>
-</article>
-</div>
+  <main class="flex flex-col relative w-full bg-surface">
+    <!-- 1. TOP HERO SECTION -->
+    <section class="relative w-full h-screen min-h-[640px] flex flex-col justify-start bg-black text-white">
+      <div class="absolute inset-0 z-0 overflow-hidden">
+        <img alt="배움의 현장 - 강의실 세미나 참여자 시점" class="w-full h-full object-cover object-center"
+          src="images/gallery/hero.png">
+        <!-- Top subtle blur mask to enhance readability of typography while keeping lower area crisp -->
+        <div class="absolute inset-0 z-0 backdrop-blur-md pointer-events-none"
+          style="mask-image: linear-gradient(rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 35%, rgba(0, 0, 0, 0) 65%); -webkit-mask-image: linear-gradient(rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 35%, rgba(0, 0, 0, 0) 65%);">
+        </div>
+        <div
+          class="absolute inset-0 z-0 bg-gradient-to-b from-black/65 via-black/30 to-transparent pointer-events-none">
+        </div>
+        <!-- Seamless gradient fade to archive surface background -->
+        <div class="absolute bottom-0 inset-x-0 h-40 pointer-events-none"
+          style="background: linear-gradient(to bottom, rgba(249, 249, 255, 0) 0%, rgba(249, 249, 255, 0.35) 45%, rgba(249, 249, 255, 0.85) 75%, rgb(249, 249, 255) 100%);">
+        </div>
+      </div>
+      <!-- Hero Text Block -->
+      <div class="relative z-10 px-space-base mt-28 md:mt-32 flex flex-col items-start max-w-7xl mx-auto w-full">
+        <div class="mb-1">
+          <span class="text-[11px] font-bold tracking-[0.25em] text-white/85 uppercase font-label-caps">GALLERY</span>
+        </div>
+        <h1
+          class="text-[28px] sm:text-[36px] md:text-[44px] font-bold text-white leading-[1.28] tracking-tight whitespace-pre-line font-display-hero-mobile drop-shadow-sm">
+          KSUI 교육의
+          특별한 순간들</h1>
+        <p
+          class="text-[13.5px] sm:text-[15px] text-white/85 leading-relaxed font-normal mt-1.5 max-w-[420px] whitespace-pre-line drop-shadow-sm">
+          강의실 안팎에서 펼쳐지는 교육을 통해
+          이루어지는 우리의 성장.</p>
+      </div>
+      <!-- Moving Animated Bounce Scroll Guide (Centered Horizontally at Bottom) -->
+      <div
+        class="absolute bottom-6 left-1/2 -translate-x-1/2 translate-y-[50px] z-20 flex flex-col items-center justify-center gap-1 pointer-events-none select-none">
+        <span
+          class="text-[10px] font-mono tracking-[0.25em] text-on-surface/75 uppercase font-semibold text-center">SCROLL</span>
+        <div class="flex flex-col items-center animate-bounce duration-1000">
+          <span class="w-[1.5px] h-5 bg-gradient-to-b from-primary/70 to-primary/20 rounded-full inline-block"></span>
+          <span class="material-symbols-outlined text-[18px] text-primary/75 -mt-1">keyboard_arrow_down</span>
+        </div>
+      </div>
+    </section>
+    <!-- 2. ARCHIVE SECTION -->
+    <div class="flex flex-col w-full bg-surface">
+      <!-- Section Title Block -->
+      <section class="px-space-base pt-16 pb-6 flex flex-col gap-3.5 max-w-7xl mx-auto w-full">
+        <h2 class="text-[26px] sm:text-[28px] font-bold text-[#1E293B] tracking-[0.04em] uppercase leading-none">
+          GALLERY
+        </h2>
+        <div class="text-[16px] sm:text-[17px] text-[#475569] leading-relaxed font-normal">
+          <p>함께한 모든 순간이</p>
+          <p>배움의 기록이 됩니다.</p>
+        </div>
+      </section>
+      <!-- Curatorial Sticky-Aware Filter Bar -->
+      <div
+        class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-space-base py-4 border-b border-slate-100 shadow-[0_1px_4px_rgba(0,0,0,0.02)]">
+        <div class="grid grid-cols-5 gap-1.5 sm:gap-2.5 w-full max-w-7xl mx-auto items-center" id="categoryFilterBar">
+          <button
+            class="filter-btn active w-full h-10 sm:h-11 px-2 rounded-full text-[13.5px] sm:text-[14.5px] font-semibold transition-all flex items-center justify-center bg-[#1E2E4A] text-white border border-[#1E2E4A] shadow-xs cursor-pointer text-center"
+            data-filter="all" type="button">
+            <span class="text-white">전체</span>
+          </button>
+          <button
+            class="filter-btn w-full h-10 sm:h-11 px-2 rounded-full text-[13.5px] sm:text-[14.5px] font-medium transition-all flex items-center justify-center bg-white text-[#64748B] border border-slate-200 hover:border-slate-300 hover:text-[#1E293B] cursor-pointer text-center"
+            data-filter="lecture" type="button">
+            <span class="">강의</span>
+          </button>
+          <button
+            class="filter-btn w-full h-10 sm:h-11 px-2 rounded-full text-[13.5px] sm:text-[14.5px] font-medium transition-all flex items-center justify-center bg-white text-[#64748B] border border-slate-200 hover:border-slate-300 hover:text-[#1E293B] cursor-pointer text-center"
+            data-filter="workshop" type="button">
+            <span class="">워크숍</span>
+          </button>
+          <button
+            class="filter-btn w-full h-10 sm:h-11 px-2 rounded-full text-[13.5px] sm:text-[14.5px] font-medium transition-all flex items-center justify-center bg-white text-[#64748B] border border-slate-200 hover:border-slate-300 hover:text-[#1E293B] cursor-pointer text-center"
+            data-filter="event" type="button">
+            <span class="">행사</span>
+          </button>
+          <button
+            class="filter-btn w-full h-10 sm:h-11 px-2 rounded-full text-[13.5px] sm:text-[14.5px] font-medium transition-all flex items-center justify-center bg-white text-[#64748B] border border-slate-200 hover:border-slate-300 hover:text-[#1E293B] cursor-pointer text-center"
+            data-filter="project" type="button">
+            <span class="">프로젝트</span>
+          </button>
+        </div>
+      </div>
+      <!-- Editorial Asymmetric Layout (Matching Screenshot: 1 Wide Card -> 2 Portrait Cards Grid) -->
+      <div class="px-space-base mt-6 flex flex-col gap-3.5 sm:gap-5 max-w-7xl mx-auto w-full" id="galleryContainer">
+        <!-- Featured Large Card: Lecturer Photo -->
+        <article
+          class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high"
+          data-badge="정규강의" data-category="lecture" data-cohort="정규 4주차 종합세미나" data-date="2026. 08. 21"
+          data-desc="강단 위와 스크린을 넘나들며 심리적 이동 궤적을 나누고, 자아 확장의 기제를 다룬 본원 대강의실 라이브 강의 전경." data-index="1"
+          data-title="자기이동: 나를 찾는 여정 강좌">
+          <div class="relative w-full aspect-[4/5] overflow-hidden">
+            <img alt="자기이동: 나를 찾는 여정 강좌 실습"
+              class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105"
+              src="https://lh3.googleusercontent.com/aida/AEtjO1W8wGVbjR3Ho0HYXk1H6tuZKI4HOqoT1wR6guLsPk7QPjmDwhrPklnOodoprOlrd7httT0zbxRbES62sWrDgEupgKPibxVCr7KnWoFXIbt8ieXE774w9sZyXWzCmcF9O91qyjRZh8cZfPJMit5tl79gFVl84L-Bq57PWcsfRJQAYJkJjU_GmsMnKCkfV9hOrDYbZYuLsG8K8P8RUgG2y1rCohrwA9v8PR-8p5e20Q1RW_EQCNd9EUPPMB8">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+            <div class="absolute bottom-0 inset-x-0 p-space-base flex flex-col justify-end text-white">
+              <span class="text-[11px] text-white/80 font-normal tracking-wide">2026. 08. 21</span>
+              <h2 class="text-headline-sm font-bold text-white leading-tight mt-0.5">자기이동: 나를 찾는 여정 강좌</h2>
+              <span class="text-[11px] text-white/75 mt-0.5 font-light">정규강의 / 정규 4주차 종합세미나</span>
+            </div>
+          </div>
+        </article>
+        <!-- Cards 02 & 03: 2-Column Grid -->
+        <div class="grid grid-cols-2 gap-space-sm">
+          <!-- Card 02: Psychological Assessment Toolkits -->
+          <article
+            class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high"
+            data-badge="탐색교구" data-category="toolkit" data-cohort="연구개발실 배포본" data-date="2026. 08. 18"
+            data-desc="참여자의 일상적 감정 문해력과 핵심 가치 선별을 돕기 위해 천연 질감 린넨 노트와 질문 카드로 섬세하게 설계된 수련 도구." data-index="2"
+            data-title="자아탐색 툴킷">
+            <div class="relative w-full aspect-[4/5] overflow-hidden">
+              <img alt="자아탐색 툴킷 교구 사진"
+                class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105"
+                src="https://lh3.googleusercontent.com/aida/AEtjO1V9k6XJXgSrwv1DTWEGxHReQlx_F5EbdK-RrwmJxfulz9sg5u_XJA-t4Nzaduwi3cffr-d1sB9pXLhsLtZtjqTU3Q27Yvut7w2kbRmbFDiX4kfB4b_e5IOtkq8CL2FwZ6WOd465_ImE7h5s-Ij2PcELsU08Vo7HglnbvkaBiYXe_Cmpi3gcEbiSzyaGVoRYH3_-3ADUZJ8rlplmKfy2qnmwe-vkyFv_F5qZQqdD1iHxaDH9JJ00laUucPk">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+              <div class="absolute bottom-0 inset-x-0 p-space-sm flex flex-col justify-end text-white">
+                <span class="text-[11px] text-white/80 font-normal tracking-wide">2026. 08. 18</span>
+                <h3 class="text-body-compact font-bold text-white leading-tight mt-0.5 line-clamp-1">자아탐색 툴킷</h3>
+                <span class="text-[11px] text-white/75 mt-0.5 font-light">탐색교구</span>
+              </div>
+            </div>
+          </article>
+          <!-- Card 03: Workshop Smiling Female Educator -->
+          <article
+            class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high"
+            data-badge="심화워크숍" data-category="workshop" data-cohort="임상코칭 수련기" data-date="2026. 08. 11"
+            data-desc="소그룹 원탁에 둘러앉아 동료 연구원들과 감정 척도 카드를 나누고, 비폭력 대화 모델을 연습하는 역동적인 코칭 세션." data-index="3"
+            data-title="감정지능 워크숍">
+            <div class="relative w-full aspect-[4/5] overflow-hidden">
+              <img alt="감정지능 워크숍 진행 장면"
+                class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105"
+                src="https://lh3.googleusercontent.com/aida/AEtjO1WPTArR4eNC40xd-U-aHVfFkf_MqY4UK9CTjQna9F8C5AA0P2j-4HDf848FKSSIo1avVWjv2UuHNurMSvRK5TdsQmpv7YnfxImOQCS2v_f7j1OD6AgusSWqT5VK5RsnZp0Gu4pysUEBLi-auwcWybyeAQQAAq92FBCwtjyIAD3wPxruLSKQf0nq-8M-MnEiWdaJpvYC_9umbSF7MGkVaf00KifnuUOStBpq6GJHIyeKze52nwisR6NgAE8">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+              <div class="absolute bottom-0 inset-x-0 p-space-sm flex flex-col justify-end text-white">
+                <span class="text-[11px] text-white/80 font-normal tracking-wide">2026. 08. 11</span>
+                <h3 class="text-body-compact font-bold text-white leading-tight mt-0.5 line-clamp-1">감정지능 워크숍</h3>
+                <span class="text-[11px] text-white/75 mt-0.5 font-light">심화워크숍</span>
+              </div>
+            </div>
+          </article>
+        </div>
 
-<!-- Card 04: Panoramic Landscape (Seminar) -->
-<article class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high" data-badge="연구세미나" data-category="seminar" data-cohort="가을 특별기획" data-date="2026. 08. 05" data-desc="도심이 내려다보이는 반포 센터의 창가 테이블에서 참여자들이 조용한 집중 속에 자아 성찰 서식을 작성하는 정적인 오후의 모습." data-index="4" data-title="성인 학습자 자아성찰 세미나">
-<div class="relative w-full aspect-[16/10] overflow-hidden">
-<img alt="성인 학습자 자아성찰 세미나 현장" class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1Ub1R8F9BE0mIFV6v-hDqKdNd2GRiXOX3JGEaS6WDZ_6iRBUpqAJlfQJr8c5sbCRc9qgIR_VUAnvEsEk_R-6sl9HhaNufygWX5q83H57TsAg3vPjXrGXRmVTt_fGvYUIA_OHpa2etUKRBqiE4BMZwOEu6j7M9ATOaobxs201UrqGpNpZu59GdFMuwAeyGRtG4-kukk_bUiRMBDEFNR_Ipx88QHR_01uFDwyEcoiLEEDpR28FD7DSc6ImmI">
-<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-<div class="absolute bottom-0 inset-x-0 p-space-base flex flex-col justify-end text-white">
-<span class="text-[11px] text-white/80 font-normal tracking-wide">2026. 08. 05</span>
-<h3 class="text-headline-sm font-bold text-white leading-tight mt-0.5">성인 학습자 자아성찰 세미나</h3>
-<span class="text-[11px] text-white/75 mt-0.5 font-light">연구세미나</span>
-</div>
-</div>
-</article>
-<!-- Cards 05 & 06: 2-Column Grid -->
-<div class="grid grid-cols-2 gap-space-sm">
-<!-- Card 05: Group Discussion Near Window -->
-<article class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high" data-badge="심화워크숍" data-category="workshop" data-cohort="가치관 코칭 워크숍" data-date="2026. 07. 29" data-desc="다양한 직업군의 학습자들이 각자의 우선순위 가치 카드를 비교하며 타인과의 다름을 이해하고 존중하는 상호작용." data-index="5" data-title="그룹 퍼실리테이션">
-<div class="relative w-full aspect-[4/5] overflow-hidden">
-<img alt="가치관 정렬 그룹 퍼실리테이션 워크숍" class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQDaBQwhQIYydJoONHqF5VrWk_hAbOwmQxS-hQL8PctW_L6f3qbLW2v5BTDO-IS0TECmsoXixWF9Wp9dKqMrufJNfig2NLxpwIdsRiAt_dUEs0AHn3V7jLCvZccqJ-gNE_qziwoqiuwYtRKGepkunA46snmoOkFzt0zETWMAFkPJXCdgWhW7o0K0J28GssWJOxDu_Ds1WeNViXY4gNDzk6W9t20KelUfF8x2fXtvASVvL2RvhDM1Ef">
-<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-<div class="absolute bottom-0 inset-x-0 p-space-sm flex flex-col justify-end text-white">
-<span class="text-[11px] text-white/80 font-normal tracking-wide">2026. 07. 29</span>
-<h3 class="text-body-compact font-bold text-white leading-tight mt-0.5 line-clamp-1">그룹 퍼실리테이션</h3>
-<span class="text-[11px] text-white/75 mt-0.5 font-light">심화워크숍</span>
-</div>
-</div>
-</article>
-<!-- Card 06: Citizen Lecture -->
-<article class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high" data-badge="시민특강" data-category="citizen" data-cohort="시민 오픈 포럼" data-date="2026. 07. 15" data-desc="부정적 자동사고를 식별하고 건강한 대안적 자아 담론을 수립하는 학술적 기법을 일반 대중과 함께 나눈 열린 강연." data-index="6" data-title="인지 재구조화 특강">
-<div class="relative w-full aspect-[4/5] overflow-hidden">
-<img alt="인지 재구조화 공개 특강 강연 현장" class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPDy8XrBYiT85PfiwMc0ZbvrizeEmjA3gvwqaRjRnv3kY1SQHOQLRoW2uIZGUVnDlgI0vvkhCNgkEXadKP_4tMG6zLO538R6r5qq7vgBjS14juih9mhFAEMNmVIvijV-zmgQr1z4NoEpAHwn6VkrHEzE48kK6lXLYQFdmTHNN-mvWn7BLiL4KFEwea92oD11ZmGM6goyynS7O5DcdcA527gUcsLU7p-uorHn37sa_eODTu8UkfTXWX">
-<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-<div class="absolute bottom-0 inset-x-0 p-space-sm flex flex-col justify-end text-white">
-<span class="text-[11px] text-white/80 font-normal tracking-wide">2026. 07. 15</span>
-<h3 class="text-body-compact font-bold text-white leading-tight mt-0.5 line-clamp-1">인지 재구조화 특강</h3>
-<span class="text-[11px] text-white/75 mt-0.5 font-light">시민특강</span>
-</div>
-</div>
-</article>
-</div>
-</div>
-</div>
-</main>
+        <!-- Card 04: Panoramic Landscape (Seminar) -->
+        <article
+          class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high"
+          data-badge="연구세미나" data-category="seminar" data-cohort="가을 특별기획" data-date="2026. 08. 05"
+          data-desc="도심이 내려다보이는 반포 센터의 창가 테이블에서 참여자들이 조용한 집중 속에 자아 성찰 서식을 작성하는 정적인 오후의 모습." data-index="4"
+          data-title="성인 학습자 자아성찰 세미나">
+          <div class="relative w-full aspect-[16/10] overflow-hidden">
+            <img alt="성인 학습자 자아성찰 세미나 현장"
+              class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105"
+              src="https://lh3.googleusercontent.com/aida/AEtjO1Ub1R8F9BE0mIFV6v-hDqKdNd2GRiXOX3JGEaS6WDZ_6iRBUpqAJlfQJr8c5sbCRc9qgIR_VUAnvEsEk_R-6sl9HhaNufygWX5q83H57TsAg3vPjXrGXRmVTt_fGvYUIA_OHpa2etUKRBqiE4BMZwOEu6j7M9ATOaobxs201UrqGpNpZu59GdFMuwAeyGRtG4-kukk_bUiRMBDEFNR_Ipx88QHR_01uFDwyEcoiLEEDpR28FD7DSc6ImmI">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+            <div class="absolute bottom-0 inset-x-0 p-space-base flex flex-col justify-end text-white">
+              <span class="text-[11px] text-white/80 font-normal tracking-wide">2026. 08. 05</span>
+              <h3 class="text-headline-sm font-bold text-white leading-tight mt-0.5">성인 학습자 자아성찰 세미나</h3>
+              <span class="text-[11px] text-white/75 mt-0.5 font-light">연구세미나</span>
+            </div>
+          </div>
+        </article>
+        <!-- Cards 05 & 06: 2-Column Grid -->
+        <div class="grid grid-cols-2 gap-space-sm">
+          <!-- Card 05: Group Discussion Near Window -->
+          <article
+            class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high"
+            data-badge="심화워크숍" data-category="workshop" data-cohort="가치관 코칭 워크숍" data-date="2026. 07. 29"
+            data-desc="다양한 직업군의 학습자들이 각자의 우선순위 가치 카드를 비교하며 타인과의 다름을 이해하고 존중하는 상호작용." data-index="5"
+            data-title="그룹 퍼실리테이션">
+            <div class="relative w-full aspect-[4/5] overflow-hidden">
+              <img alt="가치관 정렬 그룹 퍼실리테이션 워크숍"
+                class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQDaBQwhQIYydJoONHqF5VrWk_hAbOwmQxS-hQL8PctW_L6f3qbLW2v5BTDO-IS0TECmsoXixWF9Wp9dKqMrufJNfig2NLxpwIdsRiAt_dUEs0AHn3V7jLCvZccqJ-gNE_qziwoqiuwYtRKGepkunA46snmoOkFzt0zETWMAFkPJXCdgWhW7o0K0J28GssWJOxDu_Ds1WeNViXY4gNDzk6W9t20KelUfF8x2fXtvASVvL2RvhDM1Ef">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+              <div class="absolute bottom-0 inset-x-0 p-space-sm flex flex-col justify-end text-white">
+                <span class="text-[11px] text-white/80 font-normal tracking-wide">2026. 07. 29</span>
+                <h3 class="text-body-compact font-bold text-white leading-tight mt-0.5 line-clamp-1">그룹 퍼실리테이션</h3>
+                <span class="text-[11px] text-white/75 mt-0.5 font-light">심화워크숍</span>
+              </div>
+            </div>
+          </article>
+          <!-- Card 06: Citizen Lecture -->
+          <article
+            class="gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high"
+            data-badge="시민특강" data-category="citizen" data-cohort="시민 오픈 포럼" data-date="2026. 07. 15"
+            data-desc="부정적 자동사고를 식별하고 건강한 대안적 자아 담론을 수립하는 학술적 기법을 일반 대중과 함께 나눈 열린 강연." data-index="6"
+            data-title="인지 재구조화 특강">
+            <div class="relative w-full aspect-[4/5] overflow-hidden">
+              <img alt="인지 재구조화 공개 특강 강연 현장"
+                class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPDy8XrBYiT85PfiwMc0ZbvrizeEmjA3gvwqaRjRnv3kY1SQHOQLRoW2uIZGUVnDlgI0vvkhCNgkEXadKP_4tMG6zLO538R6r5qq7vgBjS14juih9mhFAEMNmVIvijV-zmgQr1z4NoEpAHwn6VkrHEzE48kK6lXLYQFdmTHNN-mvWn7BLiL4KFEwea92oD11ZmGM6goyynS7O5DcdcA527gUcsLU7p-uorHn37sa_eODTu8UkfTXWX">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+              <div class="absolute bottom-0 inset-x-0 p-space-sm flex flex-col justify-end text-white">
+                <span class="text-[11px] text-white/80 font-normal tracking-wide">2026. 07. 15</span>
+                <h3 class="text-body-compact font-bold text-white leading-tight mt-0.5 line-clamp-1">인지 재구조화 특강</h3>
+                <span class="text-[11px] text-white/75 mt-0.5 font-light">시민특강</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </main>
 
-<!-- 푸터 영역 (index.html 동일) -->
-<footer class="bg-[#0F172A] pt-16 pb-8 border-t-4 border-teal relative overflow-hidden mt-16">
+  <!-- 푸터 영역 (index.html 동일) -->
+  <footer class="bg-[#0F172A] pt-16 pb-8 border-t-4 border-teal relative overflow-hidden mt-16">
     <i data-lucide="book-open-check"
-        class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none"></i>
+      class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none"></i>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
 
-            <div class="lg:col-span-2">
-                <div class="flex items-center gap-2 mb-6">
-                    <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain">
-                    <span class="text-white font-bold text-xl tracking-tight">한국자기이해교육원</span>
-                </div>
-                <p class="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">
-                    과학적 성향 검사를 통한 자기 정체성 확립, 전문가 양성 및 공공 교육의 표준을 제시합니다.
-                </p>
-            </div>
-
-            <div class="col-span-1 lg:col-span-2 text-sm text-slate-400">
-                <h4
-                    class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block">
-                    INSTITUTE INFO</h4>
-                <ul class="space-y-3 font-light">
-                    <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">대표자</span>
-                        <span>김대표</span>
-                    </li>
-                    <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">사업자등록번호</span>
-                        <span class="font-mono">123-45-67890</span>
-                    </li>
-                    <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">민간자격등록</span>
-                        <span class="font-mono">제2026-001234호</span>
-                    </li>
-                    <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">소재지</span> <span
-                            class="break-keep">서울특별시 강남구 테헤란로 KSUT 빌딩 7층</span></li>
-                    <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">고객센터</span> <span
-                            class="text-white font-medium">02-1234-5678</span> <span class="text-xs">(평일 10:00 -
-                            17:00)</span></li>
-                </ul>
-            </div>
+        <div class="lg:col-span-2">
+          <div class="flex items-center gap-2 mb-6">
+            <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain">
+            <span class="text-white font-bold text-xl tracking-tight">한국자기이해교육원</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">
+            과학적 성향 검사를 통한 자기 정체성 확립, 전문가 양성 및 공공 교육의 표준을 제시합니다.
+          </p>
         </div>
 
-        <div
-            class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-            <p>© 2026 한국자기이해교육원 KSUT. All rights reserved.</p>
-            <div class="flex gap-6">
-                <a href="#" class="hover:text-white transition-colors">이용약관</a>
-                <a href="#" class="hover:text-white transition-colors font-semibold">개인정보처리방침</a>
-            </div>
+        <div class="col-span-1 lg:col-span-2 text-sm text-slate-400">
+          <h4
+            class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block">
+            INSTITUTE INFO</h4>
+          <ul class="space-y-3 font-light">
+            <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">대표자</span>
+              <span>김대표</span>
+            </li>
+            <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">사업자등록번호</span>
+              <span class="font-mono">123-45-67890</span>
+            </li>
+            <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">민간자격등록</span>
+              <span class="font-mono">제2026-001234호</span>
+            </li>
+            <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">소재지</span> <span
+                class="break-keep">서울특별시 강남구 테헤란로 KSUT 빌딩 7층</span></li>
+            <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">고객센터</span> <span
+                class="text-white font-medium">02-1234-5678</span> <span class="text-xs">(평일 10:00 -
+                17:00)</span></li>
+          </ul>
         </div>
+      </div>
+
+      <div
+        class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+        <p>© 2026 한국자기이해교육원 KSUT. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-white transition-colors">이용약관</a>
+          <a href="#" class="hover:text-white transition-colors font-semibold">개인정보처리방침</a>
+        </div>
+      </div>
     </div>
-</footer>
+  </footer>
 
-<!-- 문의하기 팝업 모달 (index.html 동일) -->
-<div id="modal-contact"
+  <!-- 문의하기 팝업 모달 (index.html 동일) -->
+  <div id="modal-contact"
     class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
     style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;">
-    <div
-        class="modal-card bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl p-8 relative">
-        <button
-            class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition font-bold text-xl">
-            &times;
-        </button>
-        <div class="mb-8">
-            <h3 class="text-2xl font-bold text-navy mb-2">문의 접수</h3>
-            <p class="text-slate-500 text-sm break-keep">기관명, 이름, 이메일, 상담 의뢰 내용을 작성해 주세요.</p>
+    <div class="modal-card bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl p-8 relative">
+      <button
+        class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition font-bold text-xl">
+        &times;
+      </button>
+      <div class="mb-8">
+        <h3 class="text-2xl font-bold text-navy mb-2">문의 접수</h3>
+        <p class="text-slate-500 text-sm break-keep">기관명, 이름, 이메일, 상담 의뢰 내용을 작성해 주세요.</p>
+      </div>
+      <form class="space-y-4 text-left"
+        onsubmit="event.preventDefault(); this.closest('.modal-overlay').classList.remove('show'); document.body.style.overflow = ''; alert('문의가 성공적으로 접수되었습니다.');">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">기관명</label>
+          <input type="text" required=""
+            class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
         </div>
-        <form class="space-y-4 text-left"
-            onsubmit="event.preventDefault(); this.closest('.modal-overlay').classList.remove('show'); document.body.style.overflow = ''; alert('문의가 성공적으로 접수되었습니다.');">
-            <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">기관명</label>
-                <input type="text" required=""
-                    class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">이름</label>
-                <input type="text" required=""
-                    class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">이메일</label>
-                <input type="email" required=""
-                    class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
-            </div>
-            <div>
-                <label class="block text-sm font-medium text-slate-700 mb-1">상담 의뢰 내용</label>
-                <textarea required="" rows="4"
-                    class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm resize-none"></textarea>
-            </div>
-            <button type="submit"
-                class="w-full bg-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-navy-dark transition shadow-sm mt-4">
-                제출하기
-            </button>
-        </form>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">이름</label>
+          <input type="text" required=""
+            class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">이메일</label>
+          <input type="email" required=""
+            class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1">상담 의뢰 내용</label>
+          <textarea required="" rows="4"
+            class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm resize-none"></textarea>
+        </div>
+        <button type="submit"
+          class="w-full bg-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-navy-dark transition shadow-sm mt-4">
+          제출하기
+        </button>
+      </form>
     </div>
-</div>
-<!-- Full-Screen Interactive Lightbox Overlay (Hidden by Default) -->
-<aside aria-modal="true" class="fixed inset-0 z-[100] hidden flex flex-col justify-between bg-black/90 backdrop-blur-md transition-all duration-300" id="lightboxModal" role="dialog">
-<!-- Top Action Bar -->
-<div class="flex items-center justify-between px-space-base pt-safe h-14 shrink-0 text-white border-b border-white/10">
-<div class="flex items-center gap-space-sm">
-<span class="font-mono text-xs text-white/60" id="lbIndexCounter">01 / 46</span>
-</div>
-<button aria-label="뷰어 닫기" class="w-10 h-10 rounded-full flex items-center justify-center text-white/80 hover:text-white hover:bg-white/10 transition-colors" id="lbCloseBtn" type="button">
-<span class="material-symbols-outlined text-[24px]">close</span>
-</button>
-</div>
-<!-- Center Interactive Image Area with Swipe Handlers -->
-<div class="relative flex-grow flex items-center justify-center p-4 overflow-hidden" id="lbGestureArea">
-<button aria-label="이전 사진" class="absolute left-4 z-10 w-11 h-11 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black/90 transition-colors shadow-md" id="lbPrevBtn" type="button">
-<span class="material-symbols-outlined text-[26px]">chevron_left</span>
-</button>
-<div class="relative max-w-full max-h-[72vh] flex items-center justify-center" id="lbImageWrapper">
-<img alt="갤러리 상세 이미지" class="max-w-full max-h-[72vh] w-auto h-auto object-contain rounded-lg shadow-2xl" id="lbMainImage" src="">
-</div>
-<button aria-label="다음 사진" class="absolute right-4 z-10 w-11 h-11 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black/90 transition-colors shadow-md" id="lbNextBtn" type="button">
-<span class="material-symbols-outlined text-[26px]">chevron_right</span>
-</button>
-</div>
-<!-- Bottom Simple Info Section (Title & Genre) -->
-<div class="px-6 py-4 bg-black/80 text-white text-center flex flex-col items-center justify-center gap-1.5 shrink-0 border-t border-white/10">
-<h3 class="text-base sm:text-lg font-bold text-white tracking-tight" id="lbTitle">
-      사진 제목
-    </h3>
-<div class="inline-flex items-center px-3 py-1 rounded-full bg-white/15 text-white/90 text-xs font-medium" id="lbCategoryBadge">
-      장르
+  </div>
+  <!-- Full-Screen Interactive Lightbox Overlay (Hidden by Default) -->
+  <aside aria-modal="true"
+    class="fixed inset-0 z-[100] hidden flex flex-col justify-between bg-black/90 backdrop-blur-md transition-all duration-300"
+    id="lightboxModal" role="dialog">
+    <!-- Top Action Bar -->
+    <div
+      class="flex items-center justify-between px-space-base pt-safe h-14 shrink-0 text-white border-b border-white/10">
+      <div class="flex items-center gap-space-sm">
+        <span class="font-mono text-xs text-white/60" id="lbIndexCounter">01 / 46</span>
+      </div>
+      <button aria-label="뷰어 닫기"
+        class="w-10 h-10 rounded-full flex items-center justify-center text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+        id="lbCloseBtn" type="button">
+        <span class="material-symbols-outlined text-[24px]">close</span>
+      </button>
     </div>
-</div>
-</aside>
-<script>
-  (function() {
-    const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
-    const modal = document.getElementById('lightboxModal');
-    const closeBtn = document.getElementById('lbCloseBtn');
-    const prevBtn = document.getElementById('lbPrevBtn');
-    const nextBtn = document.getElementById('lbNextBtn');
-    const mainImg = document.getElementById('lbMainImage');
-    const counterEl = document.getElementById('lbIndexCounter');
-    const badgeEl = document.getElementById('lbCategoryBadge');
-    const titleEl = document.getElementById('lbTitle');
-    const gestureArea = document.getElementById('lbGestureArea');
+    <!-- Center Interactive Image Area with Swipe Handlers -->
+    <div class="relative flex-grow flex items-center justify-center p-4 overflow-hidden" id="lbGestureArea">
+      <button aria-label="이전 사진"
+        class="absolute left-4 z-10 w-11 h-11 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black/90 transition-colors shadow-md"
+        id="lbPrevBtn" type="button">
+        <span class="material-symbols-outlined text-[26px]">chevron_left</span>
+      </button>
+      <div class="relative max-w-full max-h-[72vh] flex items-center justify-center" id="lbImageWrapper">
+        <img alt="갤러리 상세 이미지" class="max-w-full max-h-[72vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
+          id="lbMainImage" src="">
+      </div>
+      <button aria-label="다음 사진"
+        class="absolute right-4 z-10 w-11 h-11 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black/90 transition-colors shadow-md"
+        id="lbNextBtn" type="button">
+        <span class="material-symbols-outlined text-[26px]">chevron_right</span>
+      </button>
+    </div>
+    <!-- Bottom Simple Info Section (Title & Genre) -->
+    <div
+      class="px-6 py-4 bg-black/80 text-white text-center flex flex-col items-center justify-center gap-1.5 shrink-0 border-t border-white/10">
+      <h3 class="text-base sm:text-lg font-bold text-white tracking-tight" id="lbTitle">
+        사진 제목
+      </h3>
+      <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/15 text-white/90 text-xs font-medium"
+        id="lbCategoryBadge">
+        장르
+      </div>
+    </div>
+  </aside>
+  <script>
+      (function () {
+        const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+        const modal = document.getElementById('lightboxModal');
+        const closeBtn = document.getElementById('lbCloseBtn');
+        const prevBtn = document.getElementById('lbPrevBtn');
+        const nextBtn = document.getElementById('lbNextBtn');
+        const mainImg = document.getElementById('lbMainImage');
+        const counterEl = document.getElementById('lbIndexCounter');
+        const badgeEl = document.getElementById('lbCategoryBadge');
+        const titleEl = document.getElementById('lbTitle');
+        const gestureArea = document.getElementById('lbGestureArea');
 
-    let cardNodes = [];
-    let currentIndex = 0;
-    let visibleCards = [];
-    let allGalleryData = [];
+        let cardNodes = [];
+        let currentIndex = 0;
+        let visibleCards = [];
+        let allGalleryData = [];
 
-    function createCardElement(item, idx, customAspect) {
-      const article = document.createElement('article');
-      article.className = 'gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high w-full';
-      article.setAttribute('data-badge', item.badge || '갤러리');
-      article.setAttribute('data-category', item.category || 'lecture');
-      article.setAttribute('data-date', item.date || '');
-      article.setAttribute('data-title', item.title || '');
-      article.setAttribute('data-cohort', item.cohort || 'KSUI 교육 현장');
-      article.setAttribute('data-desc', item.desc || item.title || '강의와 워크숍 현장의 순간을 기록한 아카이브입니다.');
-      article.setAttribute('data-index', idx + 1);
+        function createCardElement(item, idx, customAspect) {
+          const article = document.createElement('article');
+          article.className = 'gallery-card group relative rounded-xl overflow-hidden shadow-sm cursor-pointer bg-surface-container-high w-full';
+          article.setAttribute('data-badge', item.badge || '갤러리');
+          article.setAttribute('data-category', item.category || 'lecture');
+          article.setAttribute('data-date', item.date || '');
+          article.setAttribute('data-title', item.title || '');
+          article.setAttribute('data-cohort', item.cohort || 'KSUI 교육 현장');
+          article.setAttribute('data-desc', item.desc || item.title || '강의와 워크숍 현장의 순간을 기록한 아카이브입니다.');
+          article.setAttribute('data-index', idx + 1);
 
-      const aspectClass = customAspect || 'aspect-[4/5]';
-      const isPrimary = item.isPrimary === true || /_1$/i.test(item.rawTitle || '') || / 1$/i.test(item.rawTitle || '');
+          const aspectClass = customAspect || 'aspect-[4/5]';
+          const isPrimary = item.isPrimary === true || /_1$/i.test(item.rawTitle || '') || / 1$/i.test(item.rawTitle || '');
 
-      const overlayHtml = isPrimary ? `
+          const overlayHtml = isPrimary ? `
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
         <div class="absolute bottom-0 inset-x-0 p-space-base flex flex-col justify-end text-white">
           <h3 class="text-headline-sm font-bold text-white leading-tight drop-shadow-sm">${item.title || ''}</h3>
         </div>
       ` : '';
 
-      article.innerHTML = `
+          article.innerHTML = `
         <div class="relative w-full ${aspectClass} overflow-hidden">
           <img src="${item.src}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-active:scale-105" loading="lazy">
           ${overlayHtml}
         </div>
       `;
-      return article;
-    }
+          return article;
+        }
 
-    function renderGalleryData(items) {
-      const container = document.getElementById('galleryContainer');
-      if (!container || !Array.isArray(items) || items.length === 0) return;
+        function renderGalleryData(items) {
+          const container = document.getElementById('galleryContainer');
+          if (!container || !Array.isArray(items) || items.length === 0) return;
 
-      container.innerHTML = '';
+          container.innerHTML = '';
 
-      let i = 0;
-      let patternStep = 0;
+          let i = 0;
+          let patternStep = 0;
 
-      while (i < items.length) {
-        const item = items[i];
-        const isPrimary = item.isPrimary === true || /_1$/i.test(item.rawTitle || '') || / 1$/i.test(item.rawTitle || '');
+          while (i < items.length) {
+            const item = items[i];
+            const isPrimary = item.isPrimary === true || /_1$/i.test(item.rawTitle || '') || / 1$/i.test(item.rawTitle || '');
 
-        // 1. 대표 이미지(_1)인 경우 -> 와이드 대형 프레임(aspect-[16/10])으로 큰 프레임 구성
-        if (isPrimary) {
-          container.appendChild(createCardElement(item, i, 'aspect-[16/10]'));
-          i += 1;
-        } else {
-          // 2. 대표 이미지가 아닌 서브 이미지들(_2, _3...) -> 서브 그리드로 정돈 배치
-          const nextIsPrimary = i + 1 < items.length && (items[i + 1].isPrimary === true || /_1$/i.test(items[i + 1].rawTitle || ''));
-          const rem = items.length - i;
-
-          if (nextIsPrimary || rem === 1) {
-            container.appendChild(createCardElement(items[i], i, 'aspect-[16/10]'));
-            i += 1;
-          } else if (rem === 2 || (i + 2 < items.length && items[i + 2].isPrimary)) {
-            const gridDiv = document.createElement('div');
-            gridDiv.className = 'grid grid-cols-2 gap-3 sm:gap-4 w-full gallery-grid-wrapper';
-            gridDiv.appendChild(createCardElement(items[i], i, 'aspect-[4/5]'));
-            gridDiv.appendChild(createCardElement(items[i + 1], i + 1, 'aspect-[4/5]'));
-            container.appendChild(gridDiv);
-            i += 2;
-          } else {
-            const step = patternStep % 3;
-            if (step === 0) {
-              const gridDiv = document.createElement('div');
-              gridDiv.className = 'grid grid-cols-2 gap-3 sm:gap-4 w-full gallery-grid-wrapper';
-              gridDiv.appendChild(createCardElement(items[i], i, 'aspect-[4/5]'));
-              gridDiv.appendChild(createCardElement(items[i + 1], i + 1, 'aspect-[4/5]'));
-              container.appendChild(gridDiv);
-              i += 2;
-            } else if (step === 1) {
-              const gridDiv = document.createElement('div');
-              gridDiv.className = 'grid grid-cols-3 gap-2.5 sm:gap-3.5 w-full gallery-grid-wrapper';
-              gridDiv.appendChild(createCardElement(items[i], i, 'aspect-square'));
-              gridDiv.appendChild(createCardElement(items[i + 1], i + 1, 'aspect-square'));
-              gridDiv.appendChild(createCardElement(items[i + 2], i + 2, 'aspect-square'));
-              container.appendChild(gridDiv);
-              i += 3;
+            // 1. 대표 이미지(_1)인 경우 -> 와이드 대형 프레임(aspect-[16/10])으로 큰 프레임 구성
+            if (isPrimary) {
+              container.appendChild(createCardElement(item, i, 'aspect-[16/10]'));
+              i += 1;
             } else {
-              const gridDiv = document.createElement('div');
-              gridDiv.className = 'grid grid-cols-5 gap-3 sm:gap-4 w-full gallery-grid-wrapper items-center';
-              const card1 = createCardElement(items[i], i, 'aspect-[4/3]');
-              card1.classList.add('col-span-3');
-              gridDiv.appendChild(card1);
-              const card2 = createCardElement(items[i + 1], i + 1, 'aspect-[4/5]');
-              card2.classList.add('col-span-2');
-              gridDiv.appendChild(card2);
-              container.appendChild(gridDiv);
-              i += 2;
+              // 2. 대표 이미지가 아닌 서브 이미지들(_2, _3...) -> 서브 그리드로 정돈 배치
+              const nextIsPrimary = i + 1 < items.length && (items[i + 1].isPrimary === true || /_1$/i.test(items[i + 1].rawTitle || ''));
+              const rem = items.length - i;
+
+              if (nextIsPrimary || rem === 1) {
+                container.appendChild(createCardElement(items[i], i, 'aspect-[16/10]'));
+                i += 1;
+              } else if (rem === 2 || (i + 2 < items.length && items[i + 2].isPrimary)) {
+                const gridDiv = document.createElement('div');
+                gridDiv.className = 'grid grid-cols-2 gap-3 sm:gap-4 w-full gallery-grid-wrapper';
+                gridDiv.appendChild(createCardElement(items[i], i, 'aspect-[4/5]'));
+                gridDiv.appendChild(createCardElement(items[i + 1], i + 1, 'aspect-[4/5]'));
+                container.appendChild(gridDiv);
+                i += 2;
+              } else {
+                const step = patternStep % 3;
+                if (step === 0) {
+                  const gridDiv = document.createElement('div');
+                  gridDiv.className = 'grid grid-cols-2 gap-3 sm:gap-4 w-full gallery-grid-wrapper';
+                  gridDiv.appendChild(createCardElement(items[i], i, 'aspect-[4/5]'));
+                  gridDiv.appendChild(createCardElement(items[i + 1], i + 1, 'aspect-[4/5]'));
+                  container.appendChild(gridDiv);
+                  i += 2;
+                } else if (step === 1) {
+                  const gridDiv = document.createElement('div');
+                  gridDiv.className = 'grid grid-cols-3 gap-2.5 sm:gap-3.5 w-full gallery-grid-wrapper';
+                  gridDiv.appendChild(createCardElement(items[i], i, 'aspect-square'));
+                  gridDiv.appendChild(createCardElement(items[i + 1], i + 1, 'aspect-square'));
+                  gridDiv.appendChild(createCardElement(items[i + 2], i + 2, 'aspect-square'));
+                  container.appendChild(gridDiv);
+                  i += 3;
+                } else {
+                  const gridDiv = document.createElement('div');
+                  gridDiv.className = 'grid grid-cols-5 gap-3 sm:gap-4 w-full gallery-grid-wrapper items-center';
+                  const card1 = createCardElement(items[i], i, 'aspect-[4/3]');
+                  card1.classList.add('col-span-3');
+                  gridDiv.appendChild(card1);
+                  const card2 = createCardElement(items[i + 1], i + 1, 'aspect-[4/5]');
+                  card2.classList.add('col-span-2');
+                  gridDiv.appendChild(card2);
+                  container.appendChild(gridDiv);
+                  i += 2;
+                }
+              }
+            }
+            patternStep++;
+          }
+          refreshCardEvents();
+        }
+
+        function refreshCardEvents() {
+          cardNodes = Array.from(document.querySelectorAll('.gallery-card'));
+          visibleCards = [...cardNodes];
+          cardNodes.forEach(card => {
+            card.onclick = () => {
+              const vIdx = visibleCards.indexOf(card);
+              if (vIdx !== -1) openLightbox(vIdx);
+            };
+          });
+        }
+
+        if (window.GALLERY_DATA && window.GALLERY_DATA.length > 0) {
+          allGalleryData = window.GALLERY_DATA;
+          renderGalleryData(allGalleryData);
+        } else {
+          fetch('gallery-data.json')
+            .then(res => res.json())
+            .then(data => {
+              if (Array.isArray(data) && data.length > 0) {
+                allGalleryData = data;
+                renderGalleryData(allGalleryData);
+              } else {
+                refreshCardEvents();
+              }
+            })
+            .catch(() => {
+              refreshCardEvents();
+            });
+        }
+
+        filterButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-filter');
+            filterButtons.forEach(b => {
+              b.classList.remove('bg-[#1E2E4A]', 'text-white', 'border-[#1E2E4A]', 'font-semibold', 'shadow-xs', 'active');
+              b.classList.add('bg-white', 'text-[#64748B]', 'border-slate-200', 'font-medium', 'hover:border-slate-300', 'hover:text-[#1E293B]');
+              const spanTag = b.querySelector('span');
+              if (spanTag) spanTag.className = '';
+            });
+
+            btn.classList.remove('bg-white', 'text-[#64748B]', 'border-slate-200', 'font-medium', 'hover:border-slate-300', 'hover:text-[#1E293B]');
+            btn.classList.add('bg-[#1E2E4A]', 'text-white', 'border-[#1E2E4A]', 'font-semibold', 'shadow-xs', 'active');
+            const activeSpan = btn.querySelector('span');
+            if (activeSpan) activeSpan.className = 'text-white';
+
+            if (allGalleryData && allGalleryData.length > 0) {
+              const filteredItems = allGalleryData.filter(item => {
+                const cat = item.category;
+                return filter === 'all' || cat === filter ||
+                  (filter === 'event' && (cat === 'seminar' || cat === 'citizen' || cat === 'event')) ||
+                  (filter === 'project' && (cat === 'toolkit' || cat === 'project'));
+              });
+              renderGalleryData(filteredItems);
+            }
+          });
+        });
+
+        // Lightbox Open Logic
+        function openLightbox(index) {
+          if (visibleCards.length === 0) return;
+          currentIndex = (index + visibleCards.length) % visibleCards.length;
+          const targetCard = visibleCards[currentIndex];
+
+          const imgTag = targetCard.querySelector('img');
+          if (imgTag) {
+            mainImg.src = imgTag.src;
+            mainImg.alt = imgTag.alt || '아카이브 고화질 상세';
+          }
+
+          if (counterEl) counterEl.textContent = `${String(currentIndex + 1).padStart(2, '0')} / ${String(visibleCards.length).padStart(2, '0')}`;
+          if (badgeEl) badgeEl.textContent = targetCard.getAttribute('data-badge') || '갤러리';
+          if (titleEl) titleEl.textContent = targetCard.getAttribute('data-title') || '';
+
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+
+        cardNodes.forEach(card => {
+          card.addEventListener('click', () => {
+            const vIdx = visibleCards.indexOf(card);
+            if (vIdx !== -1) openLightbox(vIdx);
+          });
+        });
+
+        closeBtn.addEventListener('click', closeLightbox);
+
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openLightbox(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openLightbox(currentIndex + 1);
+        });
+
+        // Swipe Gesture Detection
+        let startX = 0;
+        gestureArea.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+        }, { passive: true });
+
+        gestureArea.addEventListener('touchend', (e) => {
+          const endX = e.changedTouches[0].clientX;
+          const diff = startX - endX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) {
+              openLightbox(currentIndex + 1);
+            } else {
+              openLightbox(currentIndex - 1);
             }
           }
-        }
-        patternStep++;
-      }
-      refreshCardEvents();
-    }
+        }, { passive: true });
 
-    function refreshCardEvents() {
-      cardNodes = Array.from(document.querySelectorAll('.gallery-card'));
-      visibleCards = [...cardNodes];
-      cardNodes.forEach(card => {
-        card.onclick = () => {
-          const vIdx = visibleCards.indexOf(card);
-          if (vIdx !== -1) openLightbox(vIdx);
-        };
-      });
-    }
-
-    if (window.GALLERY_DATA && window.GALLERY_DATA.length > 0) {
-      allGalleryData = window.GALLERY_DATA;
-      renderGalleryData(allGalleryData);
-    } else {
-      fetch('gallery-data.json')
-        .then(res => res.json())
-        .then(data => {
-          if (Array.isArray(data) && data.length > 0) {
-            allGalleryData = data;
-            renderGalleryData(allGalleryData);
-          } else {
-            refreshCardEvents();
-          }
-        })
-        .catch(() => {
-          refreshCardEvents();
+        // Share Feedback
+        const shareBtn = document.getElementById('lbShareBtn');
+        shareBtn.addEventListener('click', () => {
+          const shareIcon = shareBtn.querySelector('.material-symbols-outlined');
+          shareIcon.textContent = 'check';
+          setTimeout(() => {
+            shareIcon.textContent = 'share';
+          }, 1500);
         });
-    }
+      })();
+  </script>
+</body>
 
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter');
-        filterButtons.forEach(b => {
-          b.classList.remove('bg-[#1E2E4A]', 'text-white', 'border-[#1E2E4A]', 'font-semibold', 'shadow-xs', 'active');
-          b.classList.add('bg-white', 'text-[#64748B]', 'border-slate-200', 'font-medium', 'hover:border-slate-300', 'hover:text-[#1E293B]');
-          const spanTag = b.querySelector('span');
-          if (spanTag) spanTag.className = '';
-        });
-
-        btn.classList.remove('bg-white', 'text-[#64748B]', 'border-slate-200', 'font-medium', 'hover:border-slate-300', 'hover:text-[#1E293B]');
-        btn.classList.add('bg-[#1E2E4A]', 'text-white', 'border-[#1E2E4A]', 'font-semibold', 'shadow-xs', 'active');
-        const activeSpan = btn.querySelector('span');
-        if (activeSpan) activeSpan.className = 'text-white';
-
-        if (allGalleryData && allGalleryData.length > 0) {
-          const filteredItems = allGalleryData.filter(item => {
-            const cat = item.category;
-            return filter === 'all' || cat === filter ||
-                   (filter === 'event' && (cat === 'seminar' || cat === 'citizen' || cat === 'event')) ||
-                   (filter === 'project' && (cat === 'toolkit' || cat === 'project'));
-          });
-          renderGalleryData(filteredItems);
-        }
-      });
-    });
-
-    // Lightbox Open Logic
-    function openLightbox(index) {
-      if (visibleCards.length === 0) return;
-      currentIndex = (index + visibleCards.length) % visibleCards.length;
-      const targetCard = visibleCards[currentIndex];
-
-      const imgTag = targetCard.querySelector('img');
-      if (imgTag) {
-        mainImg.src = imgTag.src;
-        mainImg.alt = imgTag.alt || '아카이브 고화질 상세';
-      }
-
-      if (counterEl) counterEl.textContent = `${String(currentIndex + 1).padStart(2, '0')} / ${String(visibleCards.length).padStart(2, '0')}`;
-      if (badgeEl) badgeEl.textContent = targetCard.getAttribute('data-badge') || '갤러리';
-      if (titleEl) titleEl.textContent = targetCard.getAttribute('data-title') || '';
-
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      modal.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-
-    cardNodes.forEach(card => {
-      card.addEventListener('click', () => {
-        const vIdx = visibleCards.indexOf(card);
-        if (vIdx !== -1) openLightbox(vIdx);
-      });
-    });
-
-    closeBtn.addEventListener('click', closeLightbox);
-
-    prevBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openLightbox(currentIndex - 1);
-    });
-
-    nextBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openLightbox(currentIndex + 1);
-    });
-
-    // Swipe Gesture Detection
-    let startX = 0;
-    gestureArea.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-    }, { passive: true });
-
-    gestureArea.addEventListener('touchend', (e) => {
-      const endX = e.changedTouches[0].clientX;
-      const diff = startX - endX;
-      if (Math.abs(diff) > 40) {
-        if (diff > 0) {
-          openLightbox(currentIndex + 1);
-        } else {
-          openLightbox(currentIndex - 1);
-        }
-      }
-    }, { passive: true });
-
-    // Share Feedback
-    const shareBtn = document.getElementById('lbShareBtn');
-    shareBtn.addEventListener('click', () => {
-      const shareIcon = shareBtn.querySelector('.material-symbols-outlined');
-      shareIcon.textContent = 'check';
-      setTimeout(() => {
-        shareIcon.textContent = 'share';
-      }, 1500);
-    });
-  })();
-</script>
-</body></html>
+</html>
