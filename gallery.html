@@ -44,7 +44,7 @@
     </div>
 </nav>
 
-<main class="flex flex-col relative w-full pb-20 bg-surface">
+<main class="flex flex-col relative w-full bg-surface">
 <!-- 1. TOP HERO SECTION -->
 <section class="relative w-full h-screen min-h-[640px] flex flex-col justify-start bg-black text-white">
 <div class="absolute inset-0 z-0 overflow-hidden">
@@ -189,6 +189,7 @@
 </div>
 </div>
 </div>
+</main>
 
 <!-- 푸터 영역 (index.html 동일) -->
 <footer class="bg-[#0F172A] pt-16 pb-8 border-t-4 border-teal relative overflow-hidden mt-16">
@@ -564,50 +565,4 @@
     });
   })();
 </script>
-</main>
-
-    <!-- 문의하기 팝업 모달 -->
-    <div id="modal-contact"
-        class="modal-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-        style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;">
-        <div
-            class="modal-card bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl p-8 relative">
-            <button
-                class="modal-close absolute right-4 top-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-navy transition font-bold text-xl">
-                &times;
-            </button>
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold text-navy mb-2">문의 접수</h3>
-                <p class="text-slate-500 text-sm break-keep">기관명, 이름, 이메일, 상담 의뢰 내용을 작성해 주세요.</p>
-            </div>
-            <form class="space-y-4 text-left"
-                onsubmit="event.preventDefault(); this.closest('.modal-overlay').classList.remove('show'); document.body.style.overflow = ''; alert('문의가 성공적으로 접수되었습니다.');">
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">기관명</label>
-                    <input type="text" required=""
-                        class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">이름</label>
-                    <input type="text" required=""
-                        class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">이메일</label>
-                    <input type="email" required=""
-                        class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-slate-700 mb-1">상담 의뢰 내용</label>
-                    <textarea required="" rows="4"
-                        class="w-full border border-slate-200 rounded-lg p-3 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/20 transition text-sm resize-none"></textarea>
-                </div>
-                <button type="submit"
-                    class="w-full bg-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-navy-dark transition shadow-sm mt-4">
-                    제출하기
-                </button>
-            </form>
-        </div>
-    </div>
-
 </body></html>
