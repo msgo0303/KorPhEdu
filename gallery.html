@@ -200,54 +200,36 @@
 </div>
 </div>
 <!-- Full-Screen Interactive Lightbox Overlay (Hidden by Default) -->
-<aside aria-modal="true" class="fixed inset-0 z-[100] hidden flex flex-col justify-between bg-inverse-surface/95 backdrop-blur-xl transition-all duration-300" id="lightboxModal" role="dialog">
+<aside aria-modal="true" class="fixed inset-0 z-[100] hidden flex flex-col justify-between bg-black/90 backdrop-blur-md transition-all duration-300" id="lightboxModal" role="dialog">
 <!-- Top Action Bar -->
-<div class="flex items-center justify-between px-space-base pt-safe h-16 shrink-0 text-on-primary border-b border-surface-variant/10">
+<div class="flex items-center justify-between px-space-base pt-safe h-14 shrink-0 text-white border-b border-white/10">
 <div class="flex items-center gap-space-sm">
-<span class="font-label-caps text-label-caps text-tertiary-fixed-dim" id="lbIndexCounter">01 / 06</span>
-<span class="px-2 py-0.5 rounded bg-surface-container-lowest/15 text-primary-fixed-dim font-label-caps text-[10px]" id="lbCategoryBadge">ARCHIVE</span>
+<span class="font-mono text-xs text-white/60" id="lbIndexCounter">01 / 46</span>
 </div>
-<div class="flex items-center gap-space-xs">
-<button aria-label="기록 공유" class="w-10 h-10 rounded-full flex items-center justify-center text-on-primary hover:bg-surface-variant/20 transition-colors" id="lbShareBtn" type="button">
-<span class="material-symbols-outlined text-[20px]">share</span>
-</button>
-<button aria-label="뷰어 닫기" class="w-10 h-10 rounded-full flex items-center justify-center text-on-primary hover:bg-surface-variant/20 transition-colors" id="lbCloseBtn" type="button">
+<button aria-label="뷰어 닫기" class="w-10 h-10 rounded-full flex items-center justify-center text-white/80 hover:text-white hover:bg-white/10 transition-colors" id="lbCloseBtn" type="button">
 <span class="material-symbols-outlined text-[24px]">close</span>
 </button>
 </div>
-</div>
 <!-- Center Interactive Image Area with Swipe Handlers -->
-<div class="relative flex-grow flex items-center justify-center px-space-sm py-space-base overflow-hidden" id="lbGestureArea">
-<button aria-label="이전 사진" class="absolute left-space-xs z-10 w-10 h-10 rounded-full bg-inverse-surface/60 text-on-primary flex items-center justify-center hover:bg-surface-variant/30 transition-colors" id="lbPrevBtn" type="button">
-<span class="material-symbols-outlined text-[24px]">chevron_left</span>
+<div class="relative flex-grow flex items-center justify-center p-4 overflow-hidden" id="lbGestureArea">
+<button aria-label="이전 사진" class="absolute left-4 z-10 w-11 h-11 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black/90 transition-colors shadow-md" id="lbPrevBtn" type="button">
+<span class="material-symbols-outlined text-[26px]">chevron_left</span>
 </button>
-<div class="relative max-w-full max-h-[62vh] rounded-lg overflow-hidden shadow-2xl transition-transform duration-200" id="lbImageWrapper">
-<img alt="아카이브 고화질 상세" class="max-w-full max-h-[62vh] object-contain rounded-lg shadow-xl" id="lbMainImage" src="https://lh3.googleusercontent.com/aida/AEtjO1W8wGVbjR3Ho0HYXk1H6tuZKI4HOqoT1wR6guLsPk7QPjmDwhrPklnOodoprOlrd7httT0zbxRbES62sWrDgEupgKPibxVCr7KnWoFXIbt8ieXE774w9sZyXWzCmcF9O91qyjRZh8cZfPJMit5tl79gFVl84L-Bq57PWcsfRJQAYJkJjU_GmsMnKCkfV9hOrDYbZYuLsG8K8P8RUgG2y1rCohrwA9v8PR-8p5e20Q1RW_EQCNd9EUPPMB8">
+<div class="relative max-w-full max-h-[72vh] flex items-center justify-center" id="lbImageWrapper">
+<img alt="갤러리 상세 이미지" class="max-w-full max-h-[72vh] w-auto h-auto object-contain rounded-lg shadow-2xl" id="lbMainImage" src="">
 </div>
-<button aria-label="다음 사진" class="absolute right-space-xs z-10 w-10 h-10 rounded-full bg-inverse-surface/60 text-on-primary flex items-center justify-center hover:bg-surface-variant/30 transition-colors" id="lbNextBtn" type="button">
-<span class="material-symbols-outlined text-[24px]">chevron_right</span>
+<button aria-label="다음 사진" class="absolute right-4 z-10 w-11 h-11 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black/90 transition-colors shadow-md" id="lbNextBtn" type="button">
+<span class="material-symbols-outlined text-[26px]">chevron_right</span>
 </button>
 </div>
-<!-- Bottom Curatorial Context Sheet -->
-<div class="px-space-base pb-safe pt-space-sm bg-inverse-surface text-inverse-on-surface shadow-[0_-4px_24px_rgba(0,0,0,0.5)]">
-<div class="w-12 h-1 rounded-full bg-outline/40 mx-auto mb-space-sm"></div>
-<div class="flex items-center justify-between mb-space-2xs">
-<span class="font-label-caption text-label-caption text-tertiary-fixed-dim" id="lbCohort">정규 4주차 종합세미나</span>
-<span class="font-label-caption text-label-caption text-outline-variant" id="lbDate">2026. 08. 21</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm font-bold text-inverse-on-surface tracking-tight" id="lbTitle">
-      자기이동: 나를 찾는 여정 강좌
+<!-- Bottom Simple Info Section (Title & Genre) -->
+<div class="px-6 py-4 bg-black/80 text-white text-center flex flex-col items-center justify-center gap-1.5 shrink-0 border-t border-white/10">
+<h3 class="text-base sm:text-lg font-bold text-white tracking-tight" id="lbTitle">
+      사진 제목
     </h3>
-<p class="font-body-compact text-body-compact text-surface-dim mt-space-2xs leading-relaxed line-clamp-3" id="lbDescription">
-      강단 위와 스크린을 넘나들며 심리적 이동 궤적을 나누고, 자아 확장의 기제를 다룬 본원 대강의실 라이브 강의 전경.
-    </p>
-<div class="mt-space-sm pt-space-xs flex items-center justify-between text-outline-variant font-label-caption text-label-caption">
-<span class="flex items-center gap-1">
-<span class="material-symbols-outlined text-[15px] text-secondary-fixed">verified</span>
-        KSUI 연구윤리 및 초상권 공시 완료
-      </span>
-<span class="">좌우 스와이프로 이동</span>
-</div>
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-white/15 text-white/90 text-xs font-medium" id="lbCategoryBadge">
+      장르
+    </div>
 </div>
 </aside>
 <script>
@@ -261,9 +243,6 @@
     const counterEl = document.getElementById('lbIndexCounter');
     const badgeEl = document.getElementById('lbCategoryBadge');
     const titleEl = document.getElementById('lbTitle');
-    const cohortEl = document.getElementById('lbCohort');
-    const dateEl = document.getElementById('lbDate');
-    const descEl = document.getElementById('lbDescription');
     const gestureArea = document.getElementById('lbGestureArea');
 
     let cardNodes = [];
@@ -438,12 +417,9 @@
         mainImg.alt = imgTag.alt || '아카이브 고화질 상세';
       }
 
-      counterEl.textContent = `${String(currentIndex + 1).padStart(2, '0')} / ${String(visibleCards.length).padStart(2, '0')}`;
-      badgeEl.textContent = targetCard.getAttribute('data-badge') || 'ARCHIVE';
-      titleEl.textContent = targetCard.getAttribute('data-title') || '';
-      cohortEl.textContent = targetCard.getAttribute('data-cohort') || 'KSUI';
-      dateEl.textContent = targetCard.getAttribute('data-date') || '';
-      descEl.textContent = targetCard.getAttribute('data-desc') || '';
+      if (counterEl) counterEl.textContent = `${String(currentIndex + 1).padStart(2, '0')} / ${String(visibleCards.length).padStart(2, '0')}`;
+      if (badgeEl) badgeEl.textContent = targetCard.getAttribute('data-badge') || '갤러리';
+      if (titleEl) titleEl.textContent = targetCard.getAttribute('data-title') || '';
 
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
