@@ -41,6 +41,23 @@
       opacity: 0;
       animation: cardAppear 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
+
+    @keyframes heroFadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(22px);
+        filter: blur(4px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+    .hero-text-anim {
+      opacity: 0;
+      animation: heroFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
   </style>
   <script src="gallery-data.js"></script>
   <script src="script.js" defer></script>
@@ -115,9 +132,9 @@
       </div>
       <!-- Hero Text Block -->
       <div class="relative z-10 px-space-base mt-28 md:mt-32 flex flex-col items-start max-w-7xl mx-auto w-full">
-        <span class="text-[11px] font-bold tracking-[0.25em] text-white/85 uppercase font-label-caps leading-none mb-1 block">GALLERY</span>
-        <h1 class="text-[28px] sm:text-[36px] md:text-[44px] font-bold text-white leading-[1.15] tracking-tight font-display-hero-mobile drop-shadow-sm">KSUI 교육의<br>특별한 순간들</h1>
-        <p class="text-[13.5px] sm:text-[15px] text-white/85 leading-snug font-normal mt-2 max-w-[420px] drop-shadow-sm">강의실 안팎에서 펼쳐지는 교육을 통해<br>이루어지는 우리의 성장.</p>
+        <span class="hero-text-anim [animation-delay:150ms] text-[11px] font-bold tracking-[0.25em] text-white/85 uppercase font-label-caps leading-none mb-1 block">GALLERY</span>
+        <h1 class="hero-text-anim [animation-delay:350ms] text-[28px] sm:text-[36px] md:text-[44px] font-bold text-white leading-[1.15] tracking-tight font-display-hero-mobile drop-shadow-sm">KSUI 교육의<br>특별한 순간들</h1>
+        <p class="hero-text-anim [animation-delay:550ms] text-[13.5px] sm:text-[15px] text-white/85 leading-snug font-normal mt-2 max-w-[420px] drop-shadow-sm">강의실 안팎에서 펼쳐지는 교육을 통해<br>이루어지는 우리의 성장.</p>
       </div>
       <!-- Moving Animated Bounce Scroll Guide (Centered Horizontally at Bottom) -->
       <div
