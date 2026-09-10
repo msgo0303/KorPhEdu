@@ -182,7 +182,7 @@ function renderPage(data) {
     if (data.proudSection) renderProud(data.proudSection);
     if (data.aboutSection) renderAbout(data.aboutSection);
     if (data.businessSection) renderBusiness(data.businessSection);
-    if (data.partnersSection) renderPartners(data.partnersSection);
+    // if (data.partnersSection) renderPartners(data.partnersSection);
     if (data.visionSection) renderVision(data.visionSection);
     if (data.footer) renderFooter(data.footer);
     if (data.contactModal) renderModal(data.contactModal);
