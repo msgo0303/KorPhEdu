@@ -30,7 +30,7 @@
     "contactBtn": "문의하기"
   },
   "hero": {
-    "bgImg": "images/hero_0.jpg",
+    "bgImg": "images/hero_0.png",
     "badge": "PUBLIC EDUCATION HUB",
     "title": "한국자기이해교육원",
     "subtitle": "과학적 성향 검사를 통한 자기 정체성 확립,<br class=\"hidden md:block\">전문가 양성 및 공공 교육의 표준을 제시합니다.",
