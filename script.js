@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1. 현재 실행 중인 페이지를 판별하여 로드할 JSON 파일 선택
         const path = window.location.pathname.toLowerCase();
+        const isGallery = path.includes('gallery');
         const isMenu1 = path.includes('menu_1');
         const isMenu2 = (path.includes('menu_2.html') || path.endsWith('menu_2') || path.endsWith('menu_2/')) && !path.includes('menu_2_');
         const isMenu2_1 = path.includes('menu_2_1');
@@ -127,7 +128,10 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 console.log(`${jsonFile} 로드 성공. 동적 데이터 바인딩을 적용합니다.`);
                 try {
-                    if (isMenu1) {
+                    if (isGallery) {
+                        if (data.nav) renderNav(data.nav);
+                        if (data.footer) renderFooter(data.footer);
+                    } else if (isMenu1) {
                         renderAboutPage(data);
                     } else if (isMenu2) {
                         renderBusinessPage(data);

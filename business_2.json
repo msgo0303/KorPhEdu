@@ -16,6 +16,10 @@
       {
         "text": "연구진",
         "href": "Menu_3.html"
+      },
+      {
+        "text": "갤러리",
+        "href": "gallery.html"
       }
     ],
     "contactBtn": "문의하기"

@@ -7,7 +7,8 @@
     "menu": [
       { "text": "기관소개", "href": "Menu_1.html" },
       { "text": "비즈니스", "href": "Menu_2.html" },
-      { "text": "연구진", "href": "Menu_3.html" }
+      { "text": "연구진", "href": "Menu_3.html" },
+      { "text": "갤러리", "href": "gallery.html" }
     ],
     "bookingBtn": "예약하기"
   },
