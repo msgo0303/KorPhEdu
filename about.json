@@ -85,7 +85,7 @@
         "align": "right"
       },
       {
-        "img": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+        "img": "images/menu1/menu_1_3.jpg",
         "imgAlt": "Data Analytics",
         "num": "03.",
         "title": "자체 빅데이터 분석 솔루션",
@@ -93,7 +93,7 @@
         "align": "left"
       },
       {
-        "img": "images/menu1/menu_1_4.jpg",
+        "img": "images/menu1/menu_1_4.webp",
         "imgAlt": "Partnership Ecosystem",
         "num": "04.",
         "title": "강력한 파트너 상생 생태계",
