@@ -13,7 +13,7 @@
     "contactBtn": "문의하기"
   },
   "hero": {
-    "bgImg": "images/menu2/menu_2_0.jpg",
+    "bgImg": "images/menu2/menu_2_0.webp",
     "bgAlt": "Business Analytics Networking",
     "title": "한국자기이해교육원",
     "subtitle": "비즈니스"
@@ -39,7 +39,7 @@
         "id": "02",
         "title": "02. 민간 자격증 및 강사 과정",
         "desc": "한국직업능력연구원 정식 등록 '자기이해지도사' 자격 과정 운영 (파트너 강사 양성 및 전국 출강 권한 인프라 연계)",
-        "img": "images/menu2/menu_2_2.jpg",
+        "img": "images/menu2/menu_2_2.png",
         "imgAlt": "민간 자격증 및 강사 과정",
         "link": "Menu_2_2.html",
         "delay": "delay-200"
