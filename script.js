@@ -2012,10 +2012,12 @@ function initBusinessSub3() {
                 const dynamicTitle = btn.querySelector('h4') ? btn.querySelector('h4').textContent : null;
                 const dynamicDesc = btn.querySelector('p') ? btn.querySelector('p').textContent : null;
                 
-                cardDetailTitle.textContent = dynamicTitle || data.title;
-                cardDetailImage.src = btn.getAttribute('data-detail-img') || data.image;
-                cardDetailImage.alt = dynamicTitle || data.title;
-                cardDetailDesc.textContent = btn.getAttribute('data-detail-desc') || data.desc;
+                if (cardDetailTitle) cardDetailTitle.textContent = dynamicTitle || data.title;
+                if (cardDetailImage) {
+                    cardDetailImage.src = btn.getAttribute('data-detail-img') || data.image;
+                    cardDetailImage.alt = dynamicTitle || data.title;
+                }
+                if (cardDetailDesc) cardDetailDesc.textContent = btn.getAttribute('data-detail-desc') || data.desc;
                 
                 if (cardDetailModal) {
                     cardDetailModal.classList.add('show');
@@ -2537,7 +2539,7 @@ window.loadExpertProfile = function(code) {
         if (code === '123456') {
             currentCode = code;
             const mockData = {
-                name: "홍길동 박사",
+                name: "임창현 박사",
                 role: "상임 연구위원",
                 position: "상임 연구위원",
                 imageUrl: "images/menu3/menu_3_1.jpg",
