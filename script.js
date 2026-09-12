@@ -1510,212 +1510,23 @@ function initBusinessIntersectionObserver() {
 
 function renderBusiness1Page(data) {
     if (data.nav) renderNav(data.nav);
-    if (data.hero) {
-        const titleLine1 = document.querySelector('.text-fill-anim.line-1');
-        const titleLine2 = document.querySelector('.text-fill-anim.line-2');
-        if (titleLine1) titleLine1.textContent = data.hero.title1;
-        if (titleLine2) titleLine2.textContent = data.hero.title2;
-        const subtext = document.getElementById('hero-subtext');
-        if (subtext) subtext.textContent = data.hero.desc;
-    }
-    if (data.descriptionSection) {
-        const heading = document.getElementById('blur-heading');
-        if (heading) heading.textContent = data.descriptionSection.heading;
-        const subHeading = document.querySelector('section.bg-slatebg h3');
-        if (subHeading) subHeading.innerHTML = data.descriptionSection.subHeading;
-        const text = document.querySelector('section.bg-slatebg p');
-        if (text) text.textContent = data.descriptionSection.text;
-    }
-    if (data.programs) {
-        const rows = document.querySelectorAll('.tw-row');
-        data.programs.forEach((prog, index) => {
-            const row = rows[index];
-            if (row) {
-                const img = row.querySelector('img');
-                if (img) {
-                    img.src = prog.img;
-                    img.alt = prog.imgAlt;
-                }
-                const num = row.querySelector('.inline-block');
-                if (num) num.textContent = prog.num;
-                const title = row.querySelector('h3');
-                if (title) title.textContent = prog.title;
-                const desc = row.querySelector('p');
-                if (desc) desc.textContent = prog.desc;
-            }
-        });
-    }
-    if (data.workflow) {
-        const badge = document.querySelector('section.border-t.border-slate-200 h4');
-        if (badge) badge.textContent = data.workflow.badge;
-        const title = document.querySelector('section.border-t.border-slate-200 h3');
-        if (title) title.innerHTML = data.workflow.title;
-
-        data.workflow.steps.forEach(step => {
-            const card = document.getElementById(step.id);
-            if (card) {
-                const num = card.querySelector('.w-12');
-                if (num) num.textContent = step.num;
-                const title = card.querySelector('h5');
-                if (title) title.textContent = step.title;
-                const desc = card.querySelector('p');
-                if (desc) desc.textContent = step.desc;
-            }
-        });
-    }
-    if (data.faqSection) {
-        renderSubFAQ(data.faqSection);
-    }
-    if (data.footer) {
-        renderBusinessFooter(data.footer);
-    }
+    if (data.faqSection) renderSubFAQ(data.faqSection);
+    if (data.footer) renderBusinessFooter(data.footer);
+    if (data.contactModal) renderModal(data.contactModal);
 }
 
 function renderBusiness2Page(data) {
     if (data.nav) renderNav(data.nav);
-    if (data.hero) {
-        const titleLine1 = document.querySelector('.text-fill-anim.line-1');
-        const titleLine2 = document.querySelector('.text-fill-anim.line-2');
-        if (titleLine1) titleLine1.textContent = data.hero.title1;
-        if (titleLine2) titleLine2.textContent = data.hero.title2;
-        const subtext = document.getElementById('hero-subtext');
-        if (subtext) subtext.textContent = data.hero.desc;
-    }
-    if (data.coursesSection) {
-        const badge = document.querySelector('section.bg-slatebg h2');
-        if (badge) badge.textContent = data.coursesSection.badge;
-        const desc = document.querySelector('section.bg-slatebg p');
-        if (desc) desc.textContent = data.coursesSection.desc;
-
-        const cards = document.querySelectorAll('section.bg-slatebg .unroll-card');
-        data.coursesSection.courses.forEach((course, index) => {
-            const card = cards[index];
-            if (card) {
-                const title = card.querySelector('h3');
-                if (title) title.textContent = course.title;
-                const desc = card.querySelector('p');
-                if (desc) desc.textContent = course.desc;
-                const img = card.querySelector('img');
-                if (img) {
-                    img.src = course.img;
-                    img.alt = course.imgAlt;
-                }
-                const curriculum = card.querySelector('.course-expand p');
-                if (curriculum) curriculum.textContent = course.curriculum;
-
-                const countrySpans = card.querySelectorAll('.country-badge');
-                countrySpans.forEach(span => {
-                    if (course.country) {
-                        span.textContent = course.country;
-                    }
-                });
-            }
-        });
-    }
-    if (data.licenseSection) {
-        const badge = document.querySelector('section.bg-white h2');
-        if (badge) badge.textContent = data.licenseSection.badge;
-        const desc = document.querySelector('section.bg-white p');
-        if (desc) desc.textContent = data.licenseSection.desc;
-
-        const cards = document.querySelectorAll('section.bg-white .unroll-card');
-        data.licenseSection.licenses.forEach((lic, index) => {
-            const card = cards[index];
-            if (card) {
-                const title = card.querySelector('h3');
-                if (title) title.textContent = lic.title;
-                const desc = card.querySelector('p');
-                if (desc) desc.textContent = lic.desc;
-                const img = card.querySelector('img');
-                if (img) {
-                    img.src = lic.img;
-                    img.alt = lic.imgAlt;
-                }
-                const detail = card.querySelector('.course-expand p');
-                if (detail) detail.textContent = lic.detail;
-
-                const countrySpans = card.querySelectorAll('.country-badge');
-                countrySpans.forEach(span => {
-                    if (lic.country) {
-                        span.textContent = lic.country;
-                    }
-                });
-            }
-        });
-    }
-    if (data.faqSection) {
-        renderSubFAQ(data.faqSection);
-    }
-    if (data.footer) {
-        renderBusinessFooter(data.footer);
-    }
+    if (data.faqSection) renderSubFAQ(data.faqSection);
+    if (data.footer) renderBusinessFooter(data.footer);
+    if (data.contactModal) renderModal(data.contactModal);
 }
 
 function renderBusiness3Page(data) {
     if (data.nav) renderNav(data.nav);
-    if (data.hero) {
-        const titleLine1 = document.querySelector('.text-fill-anim.line-1');
-        const titleLine2 = document.querySelector('.text-fill-anim.line-2');
-        if (titleLine1) titleLine1.textContent = data.hero.title1;
-        if (titleLine2) titleLine2.textContent = data.hero.title2;
-        const subtext = document.getElementById('hero-subtext');
-        if (subtext) subtext.textContent = data.hero.desc;
-    }
-    if (data.tabSection) {
-        const titleEl = document.querySelector('#tab-section-header h2');
-        const descEl = document.querySelector('#tab-section-header p');
-        if (titleEl && data.tabSection.title) titleEl.textContent = data.tabSection.title;
-        if (descEl && data.tabSection.desc) descEl.textContent = data.tabSection.desc;
-
-        const tabContents = document.querySelectorAll('.tab-content');
-        data.tabSection.tabs.forEach((tab, index) => {
-            const content = tabContents[index];
-            if (content) {
-                const heading = content.querySelector('h3');
-                if (heading) heading.textContent = tab.heading;
-                const desc = content.querySelector('p');
-                if (desc) desc.textContent = tab.desc;
-
-                const gridItems = content.querySelectorAll('button');
-                tab.items.forEach((item, itemIdx) => {
-                    const gridItem = gridItems[itemIdx];
-                    if (gridItem) {
-                        const title = gridItem.querySelector('h4');
-                        if (title) title.textContent = item.title;
-                        const desc = gridItem.querySelector('p');
-                        if (desc) desc.textContent = item.desc;
-
-                        // 데이터 속성에 상세 이미지와 설명 바인딩
-                        gridItem.setAttribute('data-detail-img', item.detailImg || "");
-                        gridItem.setAttribute('data-detail-desc', item.detailDesc || "");
-                    }
-                });
-            }
-        });
-    }
-    if (data.gridSection) {
-        const heading = document.querySelector('section.bg-slatebg h2');
-        if (heading) heading.textContent = data.gridSection.title;
-        const desc = document.querySelector('section.bg-slatebg p');
-        if (desc) desc.textContent = data.gridSection.desc;
-
-        const phases = document.querySelectorAll('.row-phase > div');
-        data.gridSection.phases.forEach((phase, index) => {
-            const div = phases[index];
-            if (div) {
-                const title = div.querySelector('h4');
-                if (title) title.textContent = phase.title;
-                const desc = div.querySelector('p');
-                if (desc) desc.textContent = phase.desc;
-            }
-        });
-    }
-    if (data.faqSection) {
-        renderSubFAQ(data.faqSection);
-    }
-    if (data.footer) {
-        renderBusinessFooter(data.footer);
-    }
+    if (data.faqSection) renderSubFAQ(data.faqSection);
+    if (data.footer) renderBusinessFooter(data.footer);
+    if (data.contactModal) renderModal(data.contactModal);
 }
 
 function renderSubFAQ(faqSection) {
