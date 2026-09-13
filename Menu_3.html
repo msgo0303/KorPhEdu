@@ -344,47 +344,56 @@
     </section>
 
 
-    <footer class="bg-[#0F172A] pt-16 pb-8 border-t-4 border-teal relative overflow-hidden" vid="106">
+    <!-- 푸터 영역 -->
+    <footer class="bg-[#0F172A] pt-16 pb-8 border-t-4 border-teal relative overflow-hidden">
         <i data-lucide="book-open-check"
-            class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none"
-            vid="107"></i>
-        <div class="max-w-7xl mx-auto px-6 relative z-10" vid="108">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12" vid="109">
-                <div class="lg:col-span-1" vid="110">
-                    <div class="flex items-center gap-2 mb-6" vid="111">
-                        <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain"
-                            vid="footer-logo-img">
-                        <span class="text-white font-bold text-xl tracking-tight" vid="114">한국자기이해교육원</span>
+            class="absolute -right-12 -bottom-12 w-64 h-64 text-slate-800/50 rotate-12 pointer-events-none"></i>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="images/logo_w.png" alt="한국자기이해교육원 로고" class="h-8 object-contain">
+                        <span class="text-white font-bold text-xl tracking-tight">한국자기이해교육원</span>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6 break-keep" vid="115">
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 max-w-sm">
                         과학적 성향 검사를 통한 자기 정체성 확립, 전문가 양성 및 공공 교육의 표준을 제시합니다.
                     </p>
                 </div>
-                <div class="col-span-1 lg:col-span-2 text-sm text-slate-400 flex flex-col lg:items-end" vid="116">
-                    <div class="w-full max-w-lg" vid="117">
-                        <h4 class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block"
-                            vid="118">INSTITUTE INFO</h4>
-                        <ul class="space-y-3 font-light" vid="119">
-                            <li class="flex gap-4" vid="120"><span class="w-24 text-slate-500 font-medium shrink-0"
-                                    vid="121">대표자</span> <span vid="122">김대표</span></li>
-                            <li class="flex gap-4" vid="123"><span class="w-24 text-slate-500 font-medium shrink-0"
-                                    vid="124">사업자등록번호</span> <span class="font-mono" vid="125">123-45-67890</span></li>
-                            <li class="flex gap-4" vid="126"><span class="w-24 text-slate-500 font-medium shrink-0"
-                                    vid="127">민간자격등록</span> <span class="font-mono" vid="128">제 2026-001234 호</span>
-                            </li>
-                            <li class="flex gap-4" vid="129"><span class="w-24 text-slate-500 font-medium shrink-0"
-                                    vid="130">소재지</span> <span class="break-keep" vid="131">서울특별시 강남구 테헤란로 123, 지식산업센터
-                                    15층</span></li>
+
+                <div class="col-span-1 lg:col-span-2 grid grid-cols-2 gap-8 text-sm text-slate-400">
+                    <div>
+                        <h4
+                            class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block">
+                            NAVIGATION</h4>
+                        <ul class="space-y-2.5 font-light">
+                            <li><a href="Menu_1.html" class="hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-teal-400"></i>기관소개</a></li>
+                            <li><a href="Menu_2.html" class="hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-teal-400"></i>비즈니스</a></li>
+                            <li><a href="Menu_3.html" class="hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-teal-400"></i>연구진</a></li>
+                            <li><a href="gallery.html" class="hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-teal-400"></i>갤러리</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4
+                            class="text-white font-semibold mb-4 text-xs tracking-widest uppercase border-b border-slate-700 pb-2 inline-block">
+                            SERVICES</h4>
+                        <ul class="space-y-2.5 font-light">
+                            <li><a href="Menu_2_1.html" class="hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-teal-400"></i>성향분석 및 교육</a></li>
+                            <li><a href="Menu_2_2.html" class="hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-teal-400"></i>자격증 과정</a></li>
+                            <li><a href="Menu_2_3.html" class="hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-teal-400"></i>기업 컨설팅</a></li>
+                            <li><button class="modal-trigger text-left hover:text-white transition-colors flex items-center gap-2 cursor-pointer" data-target="modal-contact"><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-teal-400"></i>온라인 문의</button></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500"
-                vid="132">
-                <p vid="133">© 2026 KSUI. All rights reserved.</p>
-                <div class="flex gap-6" vid="134">
-                    <a href="#" class="hover:text-white transition-colors" vid="135">이용약관</a>
-                    <a href="#" class="hover:text-white transition-colors font-semibold" vid="136">개인정보처리방침</a>
+
+            <div
+                class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                <p>© 2026 한국자기이해교육원 KSUI. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">이용약관</a>
+                    <a href="#" class="hover:text-white transition-colors font-semibold">개인정보처리방침</a>
                 </div>
             </div>
         </div>

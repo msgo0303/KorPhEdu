@@ -504,17 +504,6 @@ function renderFooter(footerData) {
         const desc = footer.querySelector('p.text-slate-400');
         if (desc && footerData.desc) desc.textContent = footerData.desc;
 
-        const infoList = footer.querySelector('ul');
-        if (infoList) {
-            infoList.innerHTML = `
-                <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">대표자</span> <span>${footerData.info.representative}</span></li>
-                <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">사업자등록번호</span> <span class="font-mono">${footerData.info.businessNum}</span></li>
-                <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">민간자격등록</span> <span class="font-mono">${footerData.info.licenseNum}</span></li>
-                <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">소재지</span> <span class="break-keep">${footerData.info.address}</span></li>
-                <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">고객센터</span> <span class="text-white font-medium">${footerData.info.phone}</span> <span class="text-xs">(${footerData.info.workHours})</span></li>
-            `;
-        }
-
         const copyright = footer.querySelector('.border-t p');
         if (copyright) copyright.textContent = footerData.copyright;
 
@@ -1396,16 +1385,6 @@ function renderBusinessFooter(footerData) {
 
         const desc = footer.querySelector('p.text-slate-400');
         if (desc && footerData.desc) desc.textContent = footerData.desc;
-
-        const infoList = footer.querySelector('ul');
-        if (infoList && footerData.info) {
-            infoList.innerHTML = `
-                <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">대표자</span> <span>${footerData.info.representative}</span></li>
-                <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">사업자등록번호</span> <span class="font-mono">${footerData.info.businessNum}</span></li>
-                <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">민간자격등록</span> <span class="font-mono">${footerData.info.licenseNum}</span></li>
-                <li class="flex gap-4"><span class="w-24 text-slate-500 font-medium shrink-0">소재지</span> <span class="break-keep">${footerData.info.address}</span></li>
-            `;
-        }
 
         const copyright = footer.querySelector('.border-t p');
         if (copyright) copyright.textContent = footerData.copyright;
