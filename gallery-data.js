@@ -7,7 +7,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2024_브랜딩_1",
     "isPrimary": true,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2024 브랜딩 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/lecture/2024_브랜딩_1.webp"
   },
@@ -19,7 +19,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2024_브랜딩_2",
     "isPrimary": false,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2024 브랜딩 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/lecture/2024_브랜딩_2.webp"
   },
@@ -31,7 +31,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2024_솔루션_1",
     "isPrimary": true,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2024 솔루션 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/lecture/2024_솔루션_1.webp"
   },
@@ -43,7 +43,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2024_프리뷰_1",
     "isPrimary": true,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2024 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/lecture/2024_프리뷰_1.webp"
   },
@@ -55,7 +55,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2024_프리뷰_2",
     "isPrimary": false,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2024 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/lecture/2024_프리뷰_2.webp"
   },
@@ -67,7 +67,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 트랜드 프리뷰_1",
     "isPrimary": true,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 트랜드 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/lecture/2025 트랜드 프리뷰_1.webp"
   },
@@ -76,144 +76,108 @@ window.GALLERY_DATA = [
     "category": "lecture",
     "badge": "강의",
     "title": "2025 트랜드 프리뷰",
-    "rawTitle": "2025 트랜드 프리뷰_3",
+    "rawTitle": "2025 트랜드 프리뷰_4",
     "isPrimary": false,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 트랜드 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
-    "src": "images/gallery/lecture/2025 트랜드 프리뷰_3.JPG"
+    "src": "images/gallery/lecture/2025 트랜드 프리뷰_4.webp"
   },
   {
     "id": "lecture-8",
     "category": "lecture",
     "badge": "강의",
     "title": "2025 트랜드 프리뷰",
-    "rawTitle": "2025 트랜드 프리뷰_4",
+    "rawTitle": "2025 트랜드 프리뷰_5",
     "isPrimary": false,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 트랜드 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
-    "src": "images/gallery/lecture/2025 트랜드 프리뷰_4.webp"
+    "src": "images/gallery/lecture/2025 트랜드 프리뷰_5.webp"
   },
   {
     "id": "lecture-9",
     "category": "lecture",
     "badge": "강의",
     "title": "2025 트랜드 프리뷰",
-    "rawTitle": "2025 트랜드 프리뷰_5",
+    "rawTitle": "2025 트랜드 프리뷰_6",
     "isPrimary": false,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 트랜드 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
-    "src": "images/gallery/lecture/2025 트랜드 프리뷰_5.webp"
+    "src": "images/gallery/lecture/2025 트랜드 프리뷰_6.webp"
   },
   {
     "id": "lecture-10",
     "category": "lecture",
     "badge": "강의",
     "title": "2025 트랜드 프리뷰",
-    "rawTitle": "2025 트랜드 프리뷰_6",
+    "rawTitle": "2025 트랜드 프리뷰_8",
     "isPrimary": false,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 트랜드 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
-    "src": "images/gallery/lecture/2025 트랜드 프리뷰_6.webp"
+    "src": "images/gallery/lecture/2025 트랜드 프리뷰_8.JPG"
   },
   {
     "id": "lecture-11",
     "category": "lecture",
     "badge": "강의",
     "title": "2025 트랜드 프리뷰",
-    "rawTitle": "2025 트랜드 프리뷰_8",
+    "rawTitle": "2025 트랜드 프리뷰_13",
     "isPrimary": false,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 트랜드 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
-    "src": "images/gallery/lecture/2025 트랜드 프리뷰_8.JPG"
+    "src": "images/gallery/lecture/2025 트랜드 프리뷰_13.jpg"
   },
   {
     "id": "lecture-12",
     "category": "lecture",
     "badge": "강의",
     "title": "2025 트랜드 프리뷰",
-    "rawTitle": "2025 트랜드 프리뷰_13",
+    "rawTitle": "2025 트랜드 프리뷰_14",
     "isPrimary": false,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 트랜드 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
-    "src": "images/gallery/lecture/2025 트랜드 프리뷰_13.jpg"
+    "src": "images/gallery/lecture/2025 트랜드 프리뷰_14.jpg"
   },
   {
     "id": "lecture-13",
     "category": "lecture",
     "badge": "강의",
     "title": "2025 트랜드 프리뷰",
-    "rawTitle": "2025 트랜드 프리뷰_14",
-    "isPrimary": false,
-    "cohort": "강의 세션",
-    "date": "2026. 09. 10",
-    "desc": "2025 트랜드 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
-    "src": "images/gallery/lecture/2025 트랜드 프리뷰_14.jpg"
-  },
-  {
-    "id": "lecture-14",
-    "category": "lecture",
-    "badge": "강의",
-    "title": "2025 트랜드 프리뷰",
-    "rawTitle": "2025 트랜드 프리뷰_15",
-    "isPrimary": false,
-    "cohort": "강의 세션",
-    "date": "2026. 09. 10",
-    "desc": "2025 트랜드 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
-    "src": "images/gallery/lecture/2025 트랜드 프리뷰_15.jpg"
-  },
-  {
-    "id": "lecture-15",
-    "category": "lecture",
-    "badge": "강의",
-    "title": "2025 트랜드 프리뷰",
     "rawTitle": "2025 트랜드 프리뷰_17",
     "isPrimary": false,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 트랜드 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/lecture/2025 트랜드 프리뷰_17.webp"
   },
   {
-    "id": "lecture-16",
+    "id": "lecture-14",
     "category": "lecture",
     "badge": "강의",
     "title": "2025 이벤트강연",
     "rawTitle": "2025_이벤트강연_1",
     "isPrimary": true,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 이벤트강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/lecture/2025_이벤트강연_1.webp"
   },
   {
-    "id": "lecture-17",
+    "id": "lecture-15",
     "category": "lecture",
     "badge": "강의",
     "title": "2025 이벤트강연",
     "rawTitle": "2025_이벤트강연_2",
     "isPrimary": false,
     "cohort": "강의 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 이벤트강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/lecture/2025_이벤트강연_2.webp"
-  },
-  {
-    "id": "lecture-18",
-    "category": "lecture",
-    "badge": "강의",
-    "title": "2025 이벤트강연",
-    "rawTitle": "2025_이벤트강연_3",
-    "isPrimary": false,
-    "cohort": "강의 세션",
-    "date": "2026. 09. 10",
-    "desc": "2025 이벤트강연 관련 현장 기록 및 교육 수련 장면입니다.",
-    "src": "images/gallery/lecture/2025_이벤트강연_3.webp"
   },
   {
     "id": "workshop-1",
@@ -223,7 +187,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2024_계획 강연_1",
     "isPrimary": true,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2024 계획 강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2024_계획 강연_1.webp"
   },
@@ -235,7 +199,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2024_계획 강연_2",
     "isPrimary": false,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2024 계획 강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2024_계획 강연_2.webp"
   },
@@ -247,7 +211,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2024_계획 강연_3",
     "isPrimary": false,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2024 계획 강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2024_계획 강연_3.webp"
   },
@@ -259,7 +223,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2024_계획 강연_4",
     "isPrimary": false,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2024 계획 강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2024_계획 강연_4.webp"
   },
@@ -271,7 +235,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_관계강연_1",
     "isPrimary": true,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 관계강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2025_관계강연_1.webp"
   },
@@ -283,7 +247,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_관계강연_2",
     "isPrimary": false,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 관계강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2025_관계강연_2.webp"
   },
@@ -295,7 +259,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_관계강연_3",
     "isPrimary": false,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 관계강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2025_관계강연_3.webp"
   },
@@ -307,7 +271,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_관계강연_4",
     "isPrimary": false,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 관계강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2025_관계강연_4.webp"
   },
@@ -319,7 +283,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_관계강연_5",
     "isPrimary": false,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 관계강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2025_관계강연_5.webp"
   },
@@ -331,7 +295,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2026_플랜_1",
     "isPrimary": true,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2026 플랜 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2026_플랜_1.webp"
   },
@@ -343,7 +307,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2026_플랜_2",
     "isPrimary": false,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2026 플랜 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2026_플랜_2.webp"
   },
@@ -355,7 +319,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2026_플랜_3",
     "isPrimary": false,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2026 플랜 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2026_플랜_3.webp"
   },
@@ -367,7 +331,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2026_플랜_4",
     "isPrimary": false,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2026 플랜 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2026_플랜_4.webp"
   },
@@ -379,7 +343,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2026_플랜_5",
     "isPrimary": false,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2026 플랜 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2026_플랜_5.webp"
   },
@@ -391,7 +355,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2026년 도파민 워크샵_1",
     "isPrimary": true,
     "cohort": "워크숍 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2026년 도파민 워크샵 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/workshop/2026년 도파민 워크샵_1.webp"
   },
@@ -403,7 +367,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2024_z미디어_1",
     "isPrimary": true,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2024 z미디어 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2024_z미디어_1.webp"
   },
@@ -415,7 +379,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2024_z미디어_2",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2024 z미디어 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2024_z미디어_2.webp"
   },
@@ -427,7 +391,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 세미나_1",
     "isPrimary": true,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 세미나 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025 세미나_1.webp"
   },
@@ -439,7 +403,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 세미나_2",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 세미나 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025 세미나_2.webp"
   },
@@ -451,7 +415,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 세미나_3",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 세미나 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025 세미나_3.webp"
   },
@@ -463,7 +427,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 세미나_4",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 세미나 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025 세미나_4.webp"
   },
@@ -475,7 +439,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 세미나_5",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 세미나 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025 세미나_5.jpg"
   },
@@ -487,7 +451,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어브리즈_1",
     "isPrimary": true,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어브리즈 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025_미디어브리즈_1.webp"
   },
@@ -499,7 +463,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어브리즈_2",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어브리즈 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025_미디어브리즈_2.webp"
   },
@@ -511,7 +475,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어브리즈_3",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어브리즈 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025_미디어브리즈_3.webp"
   },
@@ -523,7 +487,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어브리즈_4",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어브리즈 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025_미디어브리즈_4.webp"
   },
@@ -535,7 +499,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어브리즈_5",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어브리즈 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025_미디어브리즈_5.webp"
   },
@@ -547,7 +511,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어브리즈_6",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어브리즈 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025_미디어브리즈_6.webp"
   },
@@ -559,7 +523,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어브리즈_7",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어브리즈 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025_미디어브리즈_7.webp"
   },
@@ -571,7 +535,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어브리즈_8",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어브리즈 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025_미디어브리즈_8.webp"
   },
@@ -583,7 +547,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어브리즈_9",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어브리즈 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025_미디어브리즈_9.webp"
   },
@@ -595,7 +559,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어브리즈_10",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어브리즈 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025_미디어브리즈_10.webp"
   },
@@ -607,7 +571,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어브리즈_11",
     "isPrimary": false,
     "cohort": "행사 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어브리즈 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/event/2025_미디어브리즈_11.webp"
   },
@@ -619,7 +583,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 멘탈 강연_1",
     "isPrimary": true,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 멘탈 강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025 멘탈 강연_1.webp"
   },
@@ -631,7 +595,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 멘탈 강연_2",
     "isPrimary": false,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 멘탈 강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025 멘탈 강연_2.webp"
   },
@@ -643,7 +607,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 멘탈 강연_4",
     "isPrimary": false,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 멘탈 강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025 멘탈 강연_4.webp"
   },
@@ -655,7 +619,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 멘탈 강연_5",
     "isPrimary": false,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 멘탈 강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025 멘탈 강연_5.webp"
   },
@@ -667,7 +631,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 멘탈 강연_6",
     "isPrimary": false,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 멘탈 강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025 멘탈 강연_6.webp"
   },
@@ -679,7 +643,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 멘탈 강연_7",
     "isPrimary": false,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 멘탈 강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025 멘탈 강연_7.webp"
   },
@@ -691,7 +655,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 멘탈 강연_9",
     "isPrimary": false,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 멘탈 강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025 멘탈 강연_9.webp"
   },
@@ -703,7 +667,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025 멘탈 강연_33",
     "isPrimary": false,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 멘탈 강연 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025 멘탈 강연_33.webp"
   },
@@ -715,7 +679,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어_1",
     "isPrimary": true,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025_미디어_1.webp"
   },
@@ -727,7 +691,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_미디어_2",
     "isPrimary": false,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 미디어 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025_미디어_2.webp"
   },
@@ -739,7 +703,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_mental_1",
     "isPrimary": true,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 mental 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025_mental_1.webp"
   },
@@ -751,7 +715,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_mental_2",
     "isPrimary": false,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 mental 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025_mental_2.webp"
   },
@@ -763,7 +727,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_mental_3",
     "isPrimary": false,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 mental 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025_mental_3.webp"
   },
@@ -775,7 +739,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2025_mental_4",
     "isPrimary": false,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2025 mental 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2025_mental_4.webp"
   },
@@ -787,7 +751,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2026_미디어_1",
     "isPrimary": true,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2026 미디어 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2026_미디어_1.webp"
   },
@@ -799,7 +763,7 @@ window.GALLERY_DATA = [
     "rawTitle": "2026_미디어_3",
     "isPrimary": false,
     "cohort": "프로젝트 세션",
-    "date": "2026. 09. 10",
+    "date": "2026. 09. 14",
     "desc": "2026 미디어 관련 현장 기록 및 교육 수련 장면입니다.",
     "src": "images/gallery/project/2026_미디어_3.webp"
   }
