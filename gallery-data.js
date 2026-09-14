@@ -147,18 +147,6 @@ window.GALLERY_DATA = [
     "id": "lecture-13",
     "category": "lecture",
     "badge": "강의",
-    "title": "2025 트랜드 프리뷰",
-    "rawTitle": "2025 트랜드 프리뷰_17",
-    "isPrimary": false,
-    "cohort": "강의 세션",
-    "date": "2026. 09. 14",
-    "desc": "2025 트랜드 프리뷰 관련 현장 기록 및 교육 수련 장면입니다.",
-    "src": "images/gallery/lecture/2025 트랜드 프리뷰_17.webp"
-  },
-  {
-    "id": "lecture-14",
-    "category": "lecture",
-    "badge": "강의",
     "title": "2025 이벤트강연",
     "rawTitle": "2025_이벤트강연_1",
     "isPrimary": true,
@@ -168,7 +156,7 @@ window.GALLERY_DATA = [
     "src": "images/gallery/lecture/2025_이벤트강연_1.webp"
   },
   {
-    "id": "lecture-15",
+    "id": "lecture-14",
     "category": "lecture",
     "badge": "강의",
     "title": "2025 이벤트강연",
