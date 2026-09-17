@@ -870,6 +870,334 @@
         </div>
     </div>
 
+    <!-- ========================================== -->
+    <!-- v0 공지사항 팝업 요소 (Floating Card & Sheet & ImageViewer) -->
+    <!-- ========================================== -->
+
+    <!-- 1. 우측 하단 플로팅 공지 팝업 카드 -->
+    <div id="announcement-card" class="fixed inset-x-4 z-40 sm:inset-x-auto sm:right-6 sm:w-[380px] transition-all duration-300 ease-out" style="bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);">
+        <button type="button" onclick="openAnnouncementSheet()" aria-haspopup="dialog" class="flex w-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white/95 p-3 text-left shadow-[0_8px_30px_-8px_rgba(15,23,42,0.15)] backdrop-blur-sm transition-all duration-300 ease-out active:scale-[0.98] hover:shadow-xl cursor-pointer group">
+            <img src="images/reimg/RPRE-1.jpg" alt="2026 하반기 리프레이밍 프로그램" class="w-[52px] h-[52px] shrink-0 rounded-xl object-cover">
+            <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-1.5">
+                    <span class="inline-flex items-center rounded-full bg-teal px-1.5 py-0.5 text-[10px] font-semibold leading-none text-white">NEW</span>
+                    <p class="truncate text-[13px] font-bold text-slate-900 group-hover:text-teal transition-colors">2026 하반기 리프레이밍 프로그램</p>
+                </div>
+                <p class="mt-0.5 truncate text-[12px] font-medium text-slate-500">리프레이밍 교육 과정 및 안내서를 확인해보세요.</p>
+            </div>
+            <i data-lucide="chevron-right" class="w-5 h-5 shrink-0 text-slate-400 group-hover:translate-x-0.5 transition-transform"></i>
+            <span class="sr-only">공지사항 자세히 보기</span>
+        </button>
+    </div>
+
+    <!-- 2. 공지사항 상세 바텀시트 / 모달 -->
+    <div id="announcement-sheet-overlay" class="fixed inset-0 z-50 hidden transition-opacity duration-300 opacity-0" role="presentation">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]" onclick="closeAnnouncementSheet()" aria-hidden="true"></div>
+        <div id="announcement-sheet" role="dialog" aria-modal="true" aria-labelledby="announcement-sheet-title" class="absolute inset-x-0 bottom-0 mx-auto flex max-h-[88vh] w-full flex-col rounded-t-3xl bg-white shadow-[0_-8px_40px_-4px_rgba(15,23,42,0.25)] transition-transform duration-300 ease-out sm:max-w-[480px] sm:rounded-3xl sm:bottom-6 sm:right-6 sm:left-auto sm:mx-0 sm:max-h-[85vh] translate-y-full">
+            <div class="flex shrink-0 items-center justify-between px-4 pt-3">
+                <div class="flex flex-1 justify-center">
+                    <span class="h-1.5 w-10 rounded-full bg-slate-200" aria-hidden="true"></span>
+                </div>
+            </div>
+            <button type="button" onclick="closeAnnouncementSheet()" aria-label="공지사항 닫기" class="absolute right-3 top-3 flex size-9 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="min-h-0 flex-1 overflow-y-auto px-5 pb-6" style="padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);">
+                <div class="pt-2 pb-4">
+                    <span class="mb-2 inline-flex items-center rounded-full bg-teal px-2 py-0.5 text-[11px] font-semibold leading-none text-white">NEW</span>
+                    <h2 id="announcement-sheet-title" class="text-[22px] font-bold leading-tight text-slate-900">2026 하반기 리프레이밍 프로그램</h2>
+                    <p class="mt-1.5 text-[15px] leading-relaxed text-slate-500">한국자기이해교육원의 2026년 하반기 리프레이밍 교육 과정 및 안내 소식입니다.</p>
+                </div>
+
+                <!-- 캐러셀 영역 -->
+                <div class="w-full">
+                    <div class="relative w-full overflow-hidden rounded-2xl bg-slate-100 aspect-[2197/2500]" id="carousel-touch-area" style="aspect-ratio: 2197 / 2500;">
+                        <div id="carousel-track" class="flex h-full transition-transform duration-300 ease-out">
+                            <button type="button" onclick="openImageViewer(0)" class="relative h-full w-full shrink-0 cursor-pointer">
+                                <img src="images/reimg/RPRE-1.jpg" alt="리프레이밍 프로그램 1" class="w-full h-full object-cover">
+                            </button>
+                            <button type="button" onclick="openImageViewer(1)" class="relative h-full w-full shrink-0 cursor-pointer">
+                                <img src="images/reimg/RPRE-2.jpg" alt="리프레이밍 프로그램 2" class="w-full h-full object-cover">
+                            </button>
+                            <button type="button" onclick="openImageViewer(2)" class="relative h-full w-full shrink-0 cursor-pointer">
+                                <img src="images/reimg/RPRE-8.jpg" alt="리프레이밍 프로그램 3" class="w-full h-full object-cover">
+                            </button>
+                            <button type="button" onclick="openImageViewer(3)" class="relative h-full w-full shrink-0 cursor-pointer">
+                                <img src="images/reimg/RPRE-10.jpg" alt="리프레이밍 프로그램 4" class="w-full h-full object-cover">
+                            </button>
+                        </div>
+                        <!-- 이전/다음 버튼 -->
+                        <button type="button" id="carousel-prev" onclick="moveCarousel(-1)" aria-label="이전 이미지" class="absolute left-2 top-1/2 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow-sm backdrop-blur-sm transition-opacity disabled:opacity-0 disabled:pointer-events-none cursor-pointer">
+                            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        </button>
+                        <button type="button" id="carousel-next" onclick="moveCarousel(1)" aria-label="다음 이미지" class="absolute right-2 top-1/2 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow-sm backdrop-blur-sm transition-opacity disabled:opacity-0 disabled:pointer-events-none cursor-pointer">
+                            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- 도트 인디케이터 -->
+                    <div id="carousel-dots" class="mt-3 flex items-center justify-center gap-1.5">
+                        <button type="button" onclick="goCarouselTo(0)" class="h-1.5 rounded-full transition-all duration-300 w-5 bg-teal"></button>
+                        <button type="button" onclick="goCarouselTo(1)" class="h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300"></button>
+                        <button type="button" onclick="goCarouselTo(2)" class="h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300"></button>
+                        <button type="button" onclick="goCarouselTo(3)" class="h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300"></button>
+                    </div>
+                </div>
+
+                <!-- 첨부파일 (PDF) -->
+                <div class="mt-6">
+                    <div class="flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-slate-50/80 p-3.5 transition-colors hover:bg-slate-100/80">
+                        <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-teal/10 text-teal">
+                            <i data-lucide="file-text" class="w-5 h-5"></i>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <p class="truncate text-[13px] font-bold text-slate-900">리프레이밍 프로그램 안내서 PDF</p>
+                            <p class="mt-0.5 truncate text-[12px] font-medium text-slate-500">RPRE.pdf · 82.6 MB</p>
+                        </div>
+                        <a href="images/RPRE.pdf" download="RPRE.pdf" class="flex size-8 shrink-0 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-white hover:text-teal hover:shadow-sm" aria-label="PDF 다운로드" title="PDF 다운로드">
+                            <i data-lucide="download" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 관련 이미지 썸네일 그리드 -->
+                <div class="mt-6">
+                    <p class="text-[12px] font-semibold uppercase tracking-wider text-slate-400 mb-2">관련 이미지 (4)</p>
+                    <div id="thumb-grid" class="grid grid-cols-4 gap-2">
+                        <button type="button" onclick="goCarouselTo(0)" class="group relative overflow-hidden rounded-xl bg-slate-100 aspect-square border-2 border-teal cursor-pointer">
+                            <img src="images/reimg/RPRE-1.jpg" alt="썸네일 1" class="h-full w-full object-cover">
+                        </button>
+                        <button type="button" onclick="goCarouselTo(1)" class="group relative overflow-hidden rounded-xl bg-slate-100 aspect-square border-2 border-transparent hover:border-slate-300 cursor-pointer">
+                            <img src="images/reimg/RPRE-2.jpg" alt="썸네일 2" class="h-full w-full object-cover">
+                        </button>
+                        <button type="button" onclick="goCarouselTo(2)" class="group relative overflow-hidden rounded-xl bg-slate-100 aspect-square border-2 border-transparent hover:border-slate-300 cursor-pointer">
+                            <img src="images/reimg/RPRE-8.jpg" alt="썸네일 3" class="h-full w-full object-cover">
+                        </button>
+                        <button type="button" onclick="goCarouselTo(3)" class="group relative overflow-hidden rounded-xl bg-slate-100 aspect-square border-2 border-transparent hover:border-slate-300 cursor-pointer">
+                            <img src="images/reimg/RPRE-10.jpg" alt="썸네일 4" class="h-full w-full object-cover">
+                        </button>
+                    </div>
+                </div>
+
+                <a href="gallery.html" class="mt-7 flex w-full items-center justify-center gap-1 text-[14px] font-semibold text-slate-500 transition-colors hover:text-navy">
+                    전체 공지사항 / 갤러리 보기 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 이미지 전체화면 뷰어 모달 -->
+    <div id="announcement-viewer-overlay" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/90 transition-opacity duration-200 opacity-0" onclick="closeImageViewer()">
+        <button type="button" onclick="closeImageViewer()" aria-label="이미지 뷰어 닫기" class="absolute right-4 top-4 flex size-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 z-10 cursor-pointer" style="top: calc(env(safe-area-inset-top, 0px) + 16px);">
+            <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <p id="viewer-counter" class="absolute top-4 left-1/2 -translate-x-1/2 text-sm font-medium text-white/80 z-10" style="top: calc(env(safe-area-inset-top, 0px) + 20px);">1 / 4</p>
+        <div class="relative flex h-full w-full items-center justify-center px-4" onclick="event.stopPropagation()">
+            <img id="viewer-image" src="images/reimg/RPRE-1.jpg" alt="전체화면 이미지" class="max-h-[80vh] max-w-full rounded-lg object-contain select-none">
+            <button type="button" id="viewer-prev" onclick="moveViewer(-1)" aria-label="이전 이미지" class="absolute left-2 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-opacity disabled:opacity-30 disabled:pointer-events-none cursor-pointer">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+            <button type="button" id="viewer-next" onclick="moveViewer(1)" aria-label="다음 이미지" class="absolute right-2 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-opacity disabled:opacity-30 disabled:pointer-events-none cursor-pointer">
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 공지사항 팝업 스크립트 -->
+    <script>
+        let currentCarouselIndex = 0;
+        const announcementImages = [
+            { src: 'images/reimg/RPRE-1.jpg', alt: '2026 하반기 리프레이밍 프로그램 1' },
+            { src: 'images/reimg/RPRE-2.jpg', alt: '2026 하반기 리프레이밍 프로그램 2' },
+            { src: 'images/reimg/RPRE-8.jpg', alt: '2026 하반기 리프레이밍 프로그램 3' },
+            { src: 'images/reimg/RPRE-10.jpg', alt: '2026 하반기 리프레이밍 프로그램 4' }
+        ];
+
+        function openAnnouncementSheet() {
+            const overlay = document.getElementById('announcement-sheet-overlay');
+            const sheet = document.getElementById('announcement-sheet');
+            const card = document.getElementById('announcement-card');
+            if (!overlay || !sheet) return;
+
+            overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            if (card) {
+                card.classList.add('opacity-0', 'pointer-events-none');
+            }
+
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+                overlay.classList.add('opacity-100');
+                sheet.classList.remove('translate-y-full');
+                sheet.classList.add('translate-y-0');
+            }, 10);
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closeAnnouncementSheet() {
+            const overlay = document.getElementById('announcement-sheet-overlay');
+            const sheet = document.getElementById('announcement-sheet');
+            const card = document.getElementById('announcement-card');
+            if (!overlay || !sheet) return;
+
+            sheet.classList.remove('translate-y-0');
+            sheet.classList.add('translate-y-full');
+            overlay.classList.remove('opacity-100');
+            overlay.classList.add('opacity-0');
+
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+                if (card) {
+                    card.classList.remove('opacity-0', 'pointer-events-none');
+                }
+            }, 300);
+        }
+
+        function updateCarouselUI() {
+            const track = document.getElementById('carousel-track');
+            const prevBtn = document.getElementById('carousel-prev');
+            const nextBtn = document.getElementById('carousel-next');
+            const dotsContainer = document.getElementById('carousel-dots');
+            const thumbGrid = document.getElementById('thumb-grid');
+
+            if (track) {
+                track.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+            }
+            if (prevBtn) prevBtn.disabled = currentCarouselIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentCarouselIndex === announcementImages.length - 1;
+
+            if (dotsContainer) {
+                const dots = dotsContainer.querySelectorAll('button');
+                dots.forEach((dot, idx) => {
+                    if (idx === currentCarouselIndex) {
+                        dot.className = 'h-1.5 rounded-full transition-all duration-300 w-5 bg-teal';
+                    } else {
+                        dot.className = 'h-1.5 rounded-full transition-all duration-300 w-1.5 bg-slate-300';
+                    }
+                });
+            }
+
+            if (thumbGrid) {
+                const thumbs = thumbGrid.querySelectorAll('button');
+                thumbs.forEach((thumb, idx) => {
+                    if (idx === currentCarouselIndex) {
+                        thumb.className = 'group relative overflow-hidden rounded-xl bg-slate-100 aspect-square border-2 border-teal cursor-pointer';
+                    } else {
+                        thumb.className = 'group relative overflow-hidden rounded-xl bg-slate-100 aspect-square border-2 border-transparent hover:border-slate-300 cursor-pointer';
+                    }
+                });
+            }
+        }
+
+        function goCarouselTo(index) {
+            currentCarouselIndex = Math.max(0, Math.min(announcementImages.length - 1, index));
+            updateCarouselUI();
+        }
+
+        function moveCarousel(step) {
+            goCarouselTo(currentCarouselIndex + step);
+        }
+
+        let currentViewerIndex = 0;
+
+        function openImageViewer(index) {
+            currentViewerIndex = index;
+            const overlay = document.getElementById('announcement-viewer-overlay');
+            const img = document.getElementById('viewer-image');
+            const counter = document.getElementById('viewer-counter');
+            const prevBtn = document.getElementById('viewer-prev');
+            const nextBtn = document.getElementById('viewer-next');
+
+            if (!overlay || !img) return;
+
+            img.src = announcementImages[currentViewerIndex].src;
+            img.alt = announcementImages[currentViewerIndex].alt;
+            if (counter) counter.textContent = `${currentViewerIndex + 1} / ${announcementImages.length}`;
+            if (prevBtn) prevBtn.disabled = currentViewerIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentViewerIndex === announcementImages.length - 1;
+
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+                overlay.classList.add('opacity-100');
+            }, 10);
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closeImageViewer() {
+            const overlay = document.getElementById('announcement-viewer-overlay');
+            if (!overlay) return;
+
+            overlay.classList.remove('opacity-100');
+            overlay.classList.add('opacity-0');
+            setTimeout(() => {
+                overlay.classList.remove('flex');
+                overlay.classList.add('hidden');
+            }, 200);
+        }
+
+        function moveViewer(step) {
+            const newIdx = Math.max(0, Math.min(announcementImages.length - 1, currentViewerIndex + step));
+            openImageViewer(newIdx);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCarouselUI();
+
+            const carouselArea = document.getElementById('carousel-touch-area');
+            let startX = 0;
+            let deltaX = 0;
+
+            if (carouselArea) {
+                carouselArea.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    deltaX = 0;
+                }, { passive: true });
+
+                carouselArea.addEventListener('touchmove', (e) => {
+                    deltaX = e.touches[0].clientX - startX;
+                }, { passive: true });
+
+                carouselArea.addEventListener('touchend', () => {
+                    if (deltaX > 40) moveCarousel(-1);
+                    else if (deltaX < -40) moveCarousel(1);
+                });
+            }
+
+            const viewerOverlay = document.getElementById('announcement-viewer-overlay');
+            if (viewerOverlay) {
+                viewerOverlay.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    deltaX = 0;
+                }, { passive: true });
+
+                viewerOverlay.addEventListener('touchmove', (e) => {
+                    deltaX = e.touches[0].clientX - startX;
+                }, { passive: true });
+
+                viewerOverlay.addEventListener('touchend', () => {
+                    if (deltaX > 40) moveViewer(-1);
+                    else if (deltaX < -40) moveViewer(1);
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                const viewerOverlay = document.getElementById('announcement-viewer-overlay');
+                if (viewerOverlay && !viewerOverlay.classList.contains('hidden')) {
+                    if (e.key === 'Escape') closeImageViewer();
+                    if (e.key === 'ArrowLeft') moveViewer(-1);
+                    if (e.key === 'ArrowRight') moveViewer(1);
+                } else {
+                    const sheetOverlay = document.getElementById('announcement-sheet-overlay');
+                    if (sheetOverlay && !sheetOverlay.classList.contains('hidden')) {
+                        if (e.key === 'Escape') closeAnnouncementSheet();
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
