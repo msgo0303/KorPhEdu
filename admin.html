@@ -322,6 +322,7 @@
     <!-- 대분류 탭 바 -->
     <div class="main-tabs-container" id="main-tabs-container">
         <button class="main-tab-btn active" id="main-tab-pending" onclick="switchMainTab('pending')">📋 승인 대기 회원 및 예약 현황</button>
+        <button class="main-tab-btn" id="main-tab-reframing" onclick="switchMainTab('reframing')">✨ 리프레이밍 프로젝트 신청 현황</button>
         <button class="main-tab-btn" id="main-tab-approved" onclick="switchMainTab('approved')">👥 등록 완료 회원 관리</button>
     </div>
 
@@ -344,6 +345,19 @@
             
             <div id="booking-list">예약 데이터를 불러오는 중...</div>
         </div>
+    </div>
+
+    <!-- 리프레이밍 프로젝트 신청 현황 섹션 -->
+    <div id="reframing-section" style="display: none;">
+        <h2>✨ 리프레이밍 프로젝트 신청서 접수 목록</h2>
+        
+        <!-- 검색 필터 바 -->
+        <div style="margin-bottom: 20px; display: flex; gap: 8px; max-width: 450px;">
+            <input type="text" id="reframing-search-input" placeholder="신청자 이름 또는 연락처 검색..." oninput="filterReframingByName()" style="margin-bottom: 0; flex: 1; padding: 10px; border-radius: 6px;">
+            <button onclick="clearReframingSearch()" style="background: #64748b; color: white; border-radius: 6px; padding: 10px 18px; font-weight: bold; margin-right: 0;">초기화</button>
+        </div>
+        
+        <div id="reframing-list">신청 데이터를 불러오는 중...</div>
     </div>
 
     <!-- 등록 완료 회원 관리 섹션 -->
@@ -381,15 +395,18 @@
         let currentMainTab = 'pending';
         let currentTab = '전체';
         let bookingSearchQuery = '';
+        let reframingSearchQuery = '';
         let pendingUsers = {};
         let bookings = {};
         let approvedUsers = {};
+        let reframingApplications = {};
         let dbListenersStarted = false;
 
         // ── DOM 참조 ──
-        const userListDiv       = document.getElementById('user-list');
-        const bookingListDiv    = document.getElementById('booking-list');
+        const userListDiv         = document.getElementById('user-list');
+        const bookingListDiv      = document.getElementById('booking-list');
         const approvedUserListDiv = document.getElementById('approved-user-list');
+        const reframingListDiv    = document.getElementById('reframing-list');
 
         // ── 로그인 / 로그아웃 ──
         function doLogin() {
@@ -452,11 +469,12 @@
             database.ref('bookings').on('value', snapshot => {
                 bookings = snapshot.val() || {};
                 if (currentMainTab === 'pending') renderBookings();
+                if (currentMainTab === 'reframing') renderReframingApplications();
             });
             database.ref('approved_users').on('value', snapshot => {
                 approvedUsers = snapshot.val() || {};
                 if (currentMainTab === 'pending') { renderPendingUsers(); renderBookings(); }
-                else { renderApprovedUsers(); }
+                else if (currentMainTab === 'approved') { renderApprovedUsers(); }
             });
         }
 
@@ -474,7 +492,7 @@
                     btn.classList.add('active');
                     currentTab = loc;
                     if (currentMainTab === 'pending') { renderPendingUsers(); renderBookings(); }
-                    else { renderApprovedUsers(); }
+                    else if (currentMainTab === 'approved') { renderApprovedUsers(); }
                 };
                 tabsContainer.appendChild(btn);
             });
@@ -485,21 +503,40 @@
             currentMainTab = tab;
             const btnPending   = document.getElementById('main-tab-pending');
             const btnApproved  = document.getElementById('main-tab-approved');
-            const pendingSection  = document.getElementById('pending-section');
-            const approvedSection = document.getElementById('approved-section');
+            const btnReframing = document.getElementById('main-tab-reframing');
+            const pendingSection   = document.getElementById('pending-section');
+            const approvedSection  = document.getElementById('approved-section');
+            const reframingSection = document.getElementById('reframing-section');
+            const tabsContainer    = document.getElementById('tabs-container');
+
             if (tab === 'pending') {
                 btnPending.classList.add('active');
                 btnApproved.classList.remove('active');
-                pendingSection.style.display  = 'block';
-                approvedSection.style.display = 'none';
+                if (btnReframing) btnReframing.classList.remove('active');
+                pendingSection.style.display   = 'block';
+                approvedSection.style.display  = 'none';
+                if (reframingSection) reframingSection.style.display = 'none';
+                if (tabsContainer) tabsContainer.style.display = 'flex';
                 renderPendingUsers();
                 renderBookings();
-            } else {
+            } else if (tab === 'approved') {
                 btnPending.classList.remove('active');
                 btnApproved.classList.add('active');
-                pendingSection.style.display  = 'none';
-                approvedSection.style.display = 'block';
+                if (btnReframing) btnReframing.classList.remove('active');
+                pendingSection.style.display   = 'none';
+                approvedSection.style.display  = 'block';
+                if (reframingSection) reframingSection.style.display = 'none';
+                if (tabsContainer) tabsContainer.style.display = 'flex';
                 renderApprovedUsers();
+            } else if (tab === 'reframing') {
+                btnPending.classList.remove('active');
+                btnApproved.classList.remove('active');
+                if (btnReframing) btnReframing.classList.add('active');
+                pendingSection.style.display   = 'none';
+                approvedSection.style.display  = 'none';
+                if (reframingSection) reframingSection.style.display = 'block';
+                if (tabsContainer) tabsContainer.style.display = 'none';
+                renderReframingApplications();
             }
         };
 
@@ -634,6 +671,7 @@
             let count = 0;
             for (let id of keys) {
                 const booking = bookings[id];
+                if (booking.isReframing || booking.consType === '리프레이밍 프로젝트') continue;
                 const bookingName = (booking.userName || '').toLowerCase();
                 if (bookingSearchQuery && !bookingName.includes(bookingSearchQuery)) continue;
                 const expertCode = booking.expertCode;
@@ -734,6 +772,79 @@
             if (confirm('정말로 이 예약 신청 기록을 삭제하시겠습니까?')) {
                 database.ref('bookings/' + id).remove()
                     .then(() => alert('예약 내역이 취소/삭제되었습니다.'))
+                    .catch(err => alert('삭제 오류: ' + err));
+            }
+        };
+
+        // ── 리프레이밍 프로젝트 신청 렌더링 ──
+        function renderReframingApplications() {
+            if (!reframingListDiv) return;
+            reframingListDiv.innerHTML = '';
+            const keys = Object.keys(bookings).reverse();
+            let count = 0;
+            for (let id of keys) {
+                const item = bookings[id];
+                if (!item.isReframing && item.consType !== '리프레이밍 프로젝트') continue;
+
+                const name  = (item.name || item.userName || '').toLowerCase();
+                const phone = (item.phone || item.userPhone || '').toLowerCase();
+
+                if (reframingSearchQuery && !name.includes(reframingSearchQuery) && !phone.includes(reframingSearchQuery)) {
+                    continue;
+                }
+                count++;
+
+                const timeText = item.submittedAtFormatted || (item.submittedAt ? new Date(item.submittedAt).toLocaleString('ko-KR') : '시간 미기재');
+                const displayName = item.name || item.userName || '이름 없음';
+                const displayAge = item.age || item.userAge;
+                const displayPhone = item.phone || item.userPhone || '미입력';
+
+                const card = document.createElement('div');
+                card.className = 'booking-card';
+                card.style.borderLeftColor = '#2563eb';
+                card.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <h3 style="color:#1e40af; margin:0 0 12px 0;">📝 [리프레이밍 신청] ${displayName} ${displayAge ? '(' + displayAge + '세)' : ''}</h3>
+                        <span style="font-size:12px; background:#eff6ff; color:#1e40af; padding:4px 8px; border-radius:4px; font-weight:bold;">
+                            ${timeText}
+                        </span>
+                    </div>
+                    <div class="booking-detail">
+                        <p><strong>희망 시간대:</strong> <span style="font-weight:bold; color:#0f766e;">${item.timeSlot || '미선택'}</span></p>
+                        <p><strong>연락처:</strong> <a href="tel:${displayPhone}" style="color:#2563eb; font-weight:bold; text-decoration:underline;">${displayPhone}</a></p>
+                        <p><strong>주소 (동까지):</strong> ${item.address || '미입력'}</p>
+                        <p><strong>약관 동의:</strong> ${item.agree ? '✅ 동의함' : '❌ 미동의'}</p>
+                    </div>
+                    <button class="btn-reject btn-delete" onclick="deleteReframingApplication('${id}')">🗑️ 신청서 삭제</button>
+                `;
+                reframingListDiv.appendChild(card);
+            }
+            if (count === 0) {
+                reframingListDiv.innerHTML = `<p style="padding: 20px; background: white; border-radius: 8px; color: #64748b;">접수된 리프레이밍 프로젝트 신청서가 없거나 검색 결과가 없습니다. 😎</p>`;
+            }
+        }
+
+        window.filterReframingByName = function() {
+            const input = document.getElementById('reframing-search-input');
+            if (input) {
+                reframingSearchQuery = input.value.trim().toLowerCase();
+                renderReframingApplications();
+            }
+        };
+
+        window.clearReframingSearch = function() {
+            const input = document.getElementById('reframing-search-input');
+            if (input) {
+                input.value = '';
+                reframingSearchQuery = '';
+                renderReframingApplications();
+            }
+        };
+
+        window.deleteReframingApplication = function(id) {
+            if (confirm('정말로 이 리프레이밍 프로젝트 신청서를 삭제하시겠습니까?')) {
+                database.ref('bookings/' + id).remove()
+                    .then(() => alert('신청서가 삭제되었습니다.'))
                     .catch(err => alert('삭제 오류: ' + err));
             }
         };
