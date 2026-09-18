@@ -292,6 +292,96 @@
             color: white;
             margin-top: 12px;
         }
+
+        /* ── 검색 필터 바 기본 스타일 ── */
+        .search-filter-bar {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 8px;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        /* ── 모바일/태블릿 반응형 최적화 ── */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px 10px;
+            }
+            #login-box {
+                padding: 36px 20px 28px;
+                border-radius: 16px;
+                max-width: 90%;
+            }
+            #dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 14px 16px;
+            }
+            #dashboard-header h1 {
+                font-size: 15px;
+                line-height: 1.4;
+            }
+            #logout-btn {
+                align-self: flex-end;
+                padding: 6px 14px;
+                font-size: 12px;
+            }
+            .main-tabs-container {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                gap: 8px;
+                padding-bottom: 8px;
+                -webkit-overflow-scrolling: touch;
+            }
+            .main-tab-btn {
+                padding: 10px 14px;
+                font-size: 13px;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+            .tabs-container {
+                padding: 6px 0;
+                margin-bottom: 16px;
+            }
+            .tab-btn {
+                padding: 8px 14px;
+                font-size: 12px;
+            }
+            .user-card {
+                margin-bottom: 16px;
+            }
+            .user-card-body {
+                padding: 14px !important;
+            }
+            .booking-card {
+                padding: 14px;
+                margin-bottom: 14px;
+            }
+            .booking-card h3 {
+                font-size: 15px;
+                line-height: 1.4;
+            }
+            .booking-detail {
+                font-size: 13px;
+            }
+            .booking-detail strong {
+                width: 85px;
+                font-size: 12px;
+            }
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .btn-group button {
+                margin-right: 0;
+                width: 100%;
+            }
+            .search-filter-bar {
+                max-width: 100% !important;
+            }
+        }
     </style>
 </head>
 
@@ -338,7 +428,7 @@
             <h2>📅 실시간 전문가 상담 예약 신청 현황</h2>
             
             <!-- 이름 검색 필터 바 추가 -->
-            <div style="margin-bottom: 20px; display: flex; gap: 8px; max-width: 450px;">
+            <div class="search-filter-bar">
                 <input type="text" id="booking-search-input" placeholder="예약 신청인 이름 검색..." oninput="filterBookingsByName()" style="margin-bottom: 0; flex: 1; padding: 10px; border-radius: 6px;">
                 <button onclick="clearBookingSearch()" style="background: #64748b; color: white; border-radius: 6px; padding: 10px 18px; font-weight: bold; margin-right: 0;">초기화</button>
             </div>
@@ -352,7 +442,7 @@
         <h2>✨ 리프레이밍 프로젝트 신청서 접수 목록</h2>
         
         <!-- 검색 필터 바 -->
-        <div style="margin-bottom: 20px; display: flex; gap: 8px; max-width: 450px;">
+        <div class="search-filter-bar">
             <input type="text" id="reframing-search-input" placeholder="신청자 이름 또는 연락처 검색..." oninput="filterReframingByName()" style="margin-bottom: 0; flex: 1; padding: 10px; border-radius: 6px;">
             <button onclick="clearReframingSearch()" style="background: #64748b; color: white; border-radius: 6px; padding: 10px 18px; font-weight: bold; margin-right: 0;">초기화</button>
         </div>
